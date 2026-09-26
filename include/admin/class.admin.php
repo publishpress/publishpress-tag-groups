@@ -80,21 +80,23 @@ if (!class_exists('TagGroups_Admin')) {
                 $tag_group_role_edit_groups = TagGroups_Options::get_option('tag_group_role_edit_groups', 'edit_pages');
             }
 
-            $tag_group_post_types = TagGroups_Taxonomy::post_types_from_taxonomies($tag_group_taxonomies);
-            foreach ($tag_group_post_types as $post_type) {
-                if ('post' == $post_type) {
-                    $post_type_query = '';
-                } else {
-                    $post_type_query = '?post_type=' . $post_type;
-                }
+            if (TagGroups_Options::get_option('tag_group_enable_groups', 1)) {
+                $tag_group_post_types = TagGroups_Taxonomy::post_types_from_taxonomies($tag_group_taxonomies);
+                foreach ($tag_group_post_types as $post_type) {
+                    if ('post' == $post_type) {
+                        $post_type_query = '';
+                    } else {
+                        $post_type_query = '?post_type=' . $post_type;
+                    }
 
-                $submenu_page = add_submenu_page('edit.php' . $post_type_query, __('Tag Group Admin', 'tag-groups'), __('Tag Group Admin', 'tag-groups'), $tag_group_role_edit_groups, 'tag-groups_' . $post_type, array( 'TagGroups_Group_Admin', 'render_group_administration' ));
-                if (
-                    TagGroups_Utilities::is_premium_plan()
-                    && class_exists('TagGroups_Premium_Admin')
-                    && method_exists('TagGroups_Premium_Admin', 'add_screen_option')
-                ) {
-                    add_action("load-$submenu_page", array( 'TagGroups_Premium_Admin', 'add_screen_option' ));
+                    $submenu_page = add_submenu_page('edit.php' . $post_type_query, __('Tag Group Admin', 'tag-groups'), __('Tag Group Admin', 'tag-groups'), $tag_group_role_edit_groups, 'tag-groups_' . $post_type, array( 'TagGroups_Group_Admin', 'render_group_administration' ));
+                    if (
+                        TagGroups_Utilities::is_premium_plan()
+                        && class_exists('TagGroups_Premium_Admin')
+                        && method_exists('TagGroups_Premium_Admin', 'add_screen_option')
+                    ) {
+                        add_action("load-$submenu_page", array( 'TagGroups_Premium_Admin', 'add_screen_option' ));
+                    }
                 }
             }
         }

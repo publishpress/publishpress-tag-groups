@@ -165,6 +165,11 @@ if (! class_exists('TagGroups_Options')) {
             'export' => true,
             'type'    => self::INTEGER
             );
+            $available_options['tag_group_enable_groups'] = array(
+            'origin' => self::TAG_GROUPS_PLUGIN,
+            'export' => true,
+            'type'    => self::INTEGER
+            );
             $available_options['tag_group_enable_group_public_api_access'] = array(
             'origin' => self::TAG_GROUPS_PLUGIN,
             'export' => true,
