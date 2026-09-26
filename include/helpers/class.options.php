@@ -150,11 +150,6 @@ if (! class_exists('TagGroups_Options')) {
             'export' => true,
             'type'    => self::INTEGER
             );
-            $available_options['tag_group_shortcode_widget'] = array(
-            'origin' => self::TAG_GROUPS_PLUGIN,
-            'export' => true,
-            'type'    => self::INTEGER
-            );
             $available_options['tag_group_show_filter'] = array(
             'origin' => self::TAG_GROUPS_PLUGIN,
             'export' => true,
@@ -184,11 +179,6 @@ if (! class_exists('TagGroups_Options')) {
             'origin' => self::TAG_GROUPS_PLUGIN,
             'export' => false,
             'type'    => self::ARRAY_OF_STRINGS_HTML
-            );
-            $available_options['tag_group_shortcode_enqueue_always'] = array(
-            'origin' => self::TAG_GROUPS_PLUGIN,
-            'export' => true,
-            'type'    => self::INTEGER
             );
             $available_options['tag_group_tags_filter'] = array(
             'origin' => self::TAG_GROUPS_PLUGIN,

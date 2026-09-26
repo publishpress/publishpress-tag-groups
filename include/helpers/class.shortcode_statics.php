@@ -95,11 +95,7 @@ if (! class_exists('TagGroups_Shortcode_Statics')) {
        */
         static function maybe_do_shortcode_in_widgets()
         {
-
-            $tag_group_shortcode_widget = TagGroups_Options::get_option('tag_group_shortcode_widget', 0);
-            if ($tag_group_shortcode_widget) {
-                add_filter('widget_text', 'do_shortcode');
-            }
+            add_filter('widget_text', 'do_shortcode');
         }
 
       /**

@@ -91,31 +91,6 @@
     </div>
   </div>
 
-  <p>&nbsp;</p>
-  <h3><?php _e('Settings', 'tag-groups') ?></h3>
-  <form method="POST" action="<?php /* phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized */ echo isset($_SERVER['REQUEST_URI']) ? esc_url(wp_unslash($_SERVER['REQUEST_URI'])) : ''; ?>">
-    <input type="hidden" name="tag-groups-shortcode-nonce" id="tag-groups-shortcode-nonce" value="<?php echo esc_attr(wp_create_nonce('tag-groups-shortcode')) ?>" />
-    <p>
-      <input type="checkbox" name="widget" autocomplete="off" id="tg_widget" value="1" <?php if ($tag_group_shortcode_widget) :
-            ?> checked<?php 
-                                                                                       endif; ?>>&nbsp;
-      <label for="tg_widget"><?php _e('Enable shortcode in sidebar widgets (if not visible anyway).', 'tag-groups') ?></label>
-    </p>
-    <p>
-      <input type="checkbox" name="enqueue" id="tg_enqueue" autocomplete="off" value="1" <?php if ($tag_group_shortcode_enqueue_always) :
-            ?> checked<?php 
-                                                                                         endif; ?>>&nbsp;
-      <label for="tg_enqueue"><?php _e('Always load shortcode scripts.', 'tag-groups') ?></label>
-      <span class="dashicons dashicons-editor-help chatty-mango-help-icon" data-topic="load-scripts" title="<?php _e('Click for more information', 'tag-groups') ?>"></span>
-    </p>
-    <div class="chatty-mango-help-container chatty-mango-help-container-load-scripts" style="display:none; max-width:60%; clear:none;">
-      <p><?php _e('Turn off to load the scripts only on posts and pages where a shortcode appears.', 'tag-groups') ?></p>
-      <p><span class="dashicons dashicons-warning"></span><?php _e('Turn on if you use these shortcodes in widgets.', 'tag-groups') ?></p>
-    </div>
-    <input type="hidden" id="action" name="tg_action" value="shortcode">
-    <input class="button-primary" type="submit" name="save" value="<?php _e('Save Settings', 'tag-groups') ?>" id="submitbutton" />
-  </form>
-
   <!-- begin Tag Groups plugin -->
   <script>
     jQuery(function() {

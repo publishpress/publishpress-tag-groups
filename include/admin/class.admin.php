@@ -30,16 +30,23 @@ if (!class_exists('TagGroups_Admin')) {
                 'function' => array( 'TagGroups_Settings', 'settings_page_home' ),
             ),
                 3  => array(
+                'title'    => __('Features', 'tag-groups'),
+                'slug'     => 'tag-groups-settings-features',
+                'parent'   => 'tag-groups-settings',
+                'user_can' => 'manage_options',
+                'function' => array( 'TagGroups_Settings', 'settings_page_features' ),
+            ),
+                4  => array(
                 'title'    => __('Front End', 'tag-groups'),
                 'slug'     => 'tag-groups-settings-front-end',
-                'parent'   => 'tag-groups-settings',
+                'parent'   => null,
                 'user_can' => 'manage_options',
                 'function' => array( 'TagGroups_Settings', 'settings_page_front_end' ),
             ),
-                4  => array(
+                5  => array(
                 'title'    => __('Back End', 'tag-groups'),
                 'slug'     => 'tag-groups-settings-back-end',
-                'parent'   => 'tag-groups-settings',
+                'parent'   => null,
                 'user_can' => 'manage_options',
                 'function' => array( 'TagGroups_Settings', 'settings_page_back_end' ),
             ),

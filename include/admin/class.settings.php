@@ -78,6 +78,42 @@ if (!class_exists('TagGroups_Settings')) {
             $view->render();
         }
 
+        /**
+         * Redirects legacy feature pages to the unified Features screen
+         *
+         * @param string $default_tab
+         * @return void
+         */
+        private static function redirect_features_page($default_tab)
+        {
+            // Make very sure that only administrators can access this page
+            if (!current_user_can('manage_options')) {
+                wp_die("Capability check failed");
+            }
+
+            $active_tab = $default_tab;
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only redirect to preserve the selected tab
+            if (isset($_GET['active-tab'])) {
+                // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only redirect to preserve the selected tab
+                $active_tab = sanitize_title(wp_unslash($_GET['active-tab']));
+            }
+
+            if (empty($active_tab)) {
+                $active_tab = $default_tab;
+            }
+
+            wp_safe_redirect(
+                add_query_arg(
+                    array(
+                        'page'       => 'tag-groups-settings-features',
+                        'active-tab' => $active_tab,
+                    ),
+                    admin_url('admin.php')
+                )
+            );
+            exit;
+        }
+
         
         /**
          * renders a settings page: home
@@ -132,118 +168,61 @@ if (!class_exists('TagGroups_Settings')) {
             <?php
             self::add_footer();
         }
-        /**
-         * renders a settings page: back end
-         *
-         * @param void
-         * @return void
-         */
-        public static function settings_page_back_end()
-        {
-            // Make very sure that only administrators can access this page
-            if (!current_user_can('manage_options')) {
-                wp_die("Capability check failed");
-            }
-            self::add_header();
-            self::add_settings_help();
-            $tabs = array();
-            $tabs = apply_filters('tag_groups_settings_back_end_tabs', $tabs);
-            $tabs['filters'] = __('Filters', 'tag-groups');
-            if (TagGroups_Gutenberg::is_gutenberg_active()) {
-                $tabs['gutenberg'] = __('Gutenberg', 'tag-groups');
-            }
-            if (TagGroups_WPML::is_multilingual()) {
-                $tabs['multilingual'] = __('Multilingual', 'tag-groups');
-            }
-            $active_tab = self::get_active_tab($tabs);
-            ?>
-            <div class="pp-columns-wrapper<?php echo (!TagGroups_Utilities::is_premium_plan()) ? ' pp-enable-sidebar' : '' ?>">
-                <div class="pp-column-left">
-                    <?php
-                    self::add_tabs('tag-groups-settings-back-end', $tabs, $active_tab);
-                    switch ($active_tab) {
-                        case 'filters':
-                            $show_filter_posts = TagGroups_Options::get_option('tag_group_show_filter', 0);
-                            $show_filter_tags = TagGroups_Options::get_option('tag_group_show_filter_tags', 0);
-                            $view = new TagGroups_View('admin/settings_back_end_filters');
-                            $view->set(array(
-                                'show_filter_posts' => $show_filter_posts,
-                                'show_filter_tags'  => $show_filter_tags,
-                            ));
-                            $view->render();
-                            break;
-                            // filters
-                        // filters
-                        case 'gutenberg':
-                            $tag_group_server_side_render = TagGroups_Options::get_option('tag_group_server_side_render', 1);
-                            $view = new TagGroups_View('admin/settings_back_end_gutenberg');
-                            $view->set(array(
-                                'tag_group_server_side_render' => $tag_group_server_side_render,
-                            ));
-                            $view->render();
-                            break;
-                            // gutenberg
-                        // gutenberg
-                        case 'multilingual':
-                            $tag_group_multilingual_sync_groups = TagGroups_Options::get_option('tag_group_multilingual_sync_groups', 1);
-                            $view = new TagGroups_View('admin/settings_back_end_multilingual');
-                            $view->set(array(
-                                'tag_group_multilingual_sync_groups' => $tag_group_multilingual_sync_groups,
-                            ));
-                            $view->render();
-                            break;
-                            // gutenberg
-                        // gutenberg
-                        default:
-                            if (class_exists('TagGroups_Premium_Settings')) {
-                                TagGroups_Premium_Settings::get_content($active_tab);
-                            }
-                            break;
-                    }
-                    ?>
-                </div>
-                <?php if (!TagGroups_Utilities::is_premium_plan()) : ?>
-                    <div class="pp-column-right">
-                        <?php do_action('tag_groups_settings_right_sidebar'); ?>
-                    </div>
-                <?php endif; ?>
-            </div>
-            <?php
-            self::add_footer();
-        }
 
         /**
-         * renders a settings page: front end
+         * renders a settings page: features
          *
          * @param void
          * @return void
          */
-        public static function settings_page_front_end()
+        public static function settings_page_features()
         {
             // Make very sure that only administrators can access this page
             if (!current_user_can('manage_options')) {
                 wp_die("Capability check failed");
             }
+
             $default_themes = explode(',', TAG_GROUPS_BUILT_IN_THEMES);
             $tag_group_theme = TagGroups_Options::get_option('tag_group_theme', TAG_GROUPS_STANDARD_THEME);
             $tag_group_mouseover = TagGroups_Options::get_option('tag_group_mouseover', 0);
             $tag_group_collapsible = TagGroups_Options::get_option('tag_group_collapsible', 0);
             $tag_group_enqueue_jquery = TagGroups_Options::get_option('tag_group_enqueue_jquery', 1);
             $tag_group_html_description = TagGroups_Options::get_option('tag_group_html_description', 0);
-            $tag_group_shortcode_widget = TagGroups_Options::get_option('tag_group_shortcode_widget');
-            $tag_group_shortcode_enqueue_always = TagGroups_Options::get_option('tag_group_shortcode_enqueue_always', 1);
+
             self::add_header();
             self::add_settings_help();
-            $tabs = array();
-            $tabs['shortcodes'] = __('Shortcodes', 'tag-groups');
-            $tabs['themes'] = __('Themes and Appearance', 'tag-groups');
-            $tabs = apply_filters('tag_groups_settings_front_end_tabs', $tabs);
+
+            $front_end_tabs = array(
+                'shortcodes' => __('General', 'tag-groups'),
+                'themes'     => __('Themes and Appearance', 'tag-groups'),
+            );
+            $front_end_tabs = apply_filters('tag_groups_settings_front_end_tabs', $front_end_tabs);
+
+            $back_end_tabs = array();
+            $back_end_tabs = apply_filters('tag_groups_settings_back_end_tabs', $back_end_tabs);
+            $back_end_tabs['filters'] = __('Filters', 'tag-groups');
+            if (TagGroups_Gutenberg::is_gutenberg_active()) {
+                $back_end_tabs['gutenberg'] = __('Gutenberg', 'tag-groups');
+            }
+            if (TagGroups_WPML::is_multilingual()) {
+                $back_end_tabs['multilingual'] = __('Multilingual', 'tag-groups');
+            }
+
+            $tabs = array(
+                'shortcodes' => isset($front_end_tabs['shortcodes']) ? $front_end_tabs['shortcodes'] : __('General', 'tag-groups'),
+                'filters'    => $back_end_tabs['filters'],
+                'themes'     => isset($front_end_tabs['themes']) ? $front_end_tabs['themes'] : __('Themes and Appearance', 'tag-groups'),
+            );
+            unset($front_end_tabs['shortcodes'], $front_end_tabs['themes'], $back_end_tabs['filters']);
+            $tabs = array_merge($tabs, $front_end_tabs, $back_end_tabs);
+            $tabs = apply_filters('tag_groups_settings_features_tabs', $tabs);
+
             $active_tab = self::get_active_tab($tabs);
             ?>
             <div class="pp-columns-wrapper<?php echo (!TagGroups_Utilities::is_premium_plan()) ? ' pp-enable-sidebar' : '' ?>">
                 <div class="pp-column-left">
                     <?php
-                    self::add_tabs('tag-groups-settings-front-end', $tabs, $active_tab);
+                    self::add_tabs('tag-groups-settings-features', $tabs, $active_tab);
                     switch ($active_tab) {
                         case 'shortcodes':
                             /**
@@ -253,10 +232,18 @@ if (!class_exists('TagGroups_Settings')) {
                             $view = new TagGroups_View('admin/settings_front_end_shortcodes');
                             $gutenberg_documentation_link = '';
                             $view->set(array(
-                                'premium_shortcode_info'             => $premium_shortcode_info,
-                                'tag_group_shortcode_enqueue_always' => $tag_group_shortcode_enqueue_always,
-                                'tag_group_shortcode_widget'         => $tag_group_shortcode_widget,
-                                'gutenberg_documentation_link'       => $gutenberg_documentation_link,
+                                'premium_shortcode_info'       => $premium_shortcode_info,
+                                'gutenberg_documentation_link' => $gutenberg_documentation_link,
+                            ));
+                            $view->render();
+                            break;
+                        case 'filters':
+                            $show_filter_posts = TagGroups_Options::get_option('tag_group_show_filter', 0);
+                            $show_filter_tags = TagGroups_Options::get_option('tag_group_show_filter_tags', 0);
+                            $view = new TagGroups_View('admin/settings_back_end_filters');
+                            $view->set(array(
+                                'show_filter_posts' => $show_filter_posts,
+                                'show_filter_tags'  => $show_filter_tags,
                             ));
                             $view->render();
                             break;
@@ -278,6 +265,22 @@ if (!class_exists('TagGroups_Settings')) {
                             ));
                             $view->render();
                             break;
+                        case 'gutenberg':
+                            $tag_group_server_side_render = TagGroups_Options::get_option('tag_group_server_side_render', 1);
+                            $view = new TagGroups_View('admin/settings_back_end_gutenberg');
+                            $view->set(array(
+                                'tag_group_server_side_render' => $tag_group_server_side_render,
+                            ));
+                            $view->render();
+                            break;
+                        case 'multilingual':
+                            $tag_group_multilingual_sync_groups = TagGroups_Options::get_option('tag_group_multilingual_sync_groups', 1);
+                            $view = new TagGroups_View('admin/settings_back_end_multilingual');
+                            $view->set(array(
+                                'tag_group_multilingual_sync_groups' => $tag_group_multilingual_sync_groups,
+                            ));
+                            $view->render();
+                            break;
                         default:
                             if (class_exists('TagGroups_Premium_Settings')) {
                                 TagGroups_Premium_Settings::get_content($active_tab);
@@ -294,6 +297,28 @@ if (!class_exists('TagGroups_Settings')) {
             </div>
             <?php
             self::add_footer();
+        }
+
+        /**
+         * redirects the legacy back end page to the unified features screen
+         *
+         * @param void
+         * @return void
+         */
+        public static function settings_page_back_end()
+        {
+            self::redirect_features_page('filters');
+        }
+
+        /**
+         * redirects the legacy front end page to the unified features screen
+         *
+         * @param void
+         * @return void
+         */
+        public static function settings_page_front_end()
+        {
+            self::redirect_features_page('shortcodes');
         }
 
         /**
@@ -522,31 +547,6 @@ if (!class_exists('TagGroups_Settings')) {
             }
 
             switch ($tg_action) {
-                case 'shortcode':
-                    // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Nonce verification
-                    if (!isset($_POST['tag-groups-shortcode-nonce']) || !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['tag-groups-shortcode-nonce'])), 'tag-groups-shortcode')) {
-                        die("Security check");
-                    }
-                    // Make sure that only administrators can save settings
-                    if (!current_user_can('manage_options')) {
-                        wp_die("Capability check failed");
-                    }
-
-                    if (isset($_POST['widget']) && $_POST['widget'] == '1') {
-                        update_option('tag_group_shortcode_widget', 1);
-                    } else {
-                        update_option('tag_group_shortcode_widget', 0);
-                    }
-
-
-                    if (isset($_POST['enqueue']) && $_POST['enqueue'] == '1') {
-                        update_option('tag_group_shortcode_enqueue_always', 1);
-                    } else {
-                        update_option('tag_group_shortcode_enqueue_always', 0);
-                    }
-
-                    TagGroups_Admin_Notice::add('success', __('Your settings have been saved.', 'tag-groups'));
-                    break;
                 case 'rest_api':
                     // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Nonce verification
                     if (!isset($_POST['tag-groups-rest-api-nonce']) || !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['tag-groups-rest-api-nonce'])), 'tag-groups-rest-api')) {
@@ -828,8 +828,8 @@ if (!class_exists('TagGroups_Settings')) {
                 'keywords' => array_merge(array_keys($public_taxonomies_names), array_values($public_taxonomies_names), array( __('tag groups', 'tag-groups') )),
             ),
                 'shortcodes'      => array(
-                'title'    => __('Shortcodes', 'tag-groups'),
-                'page'     => 'tag-groups-settings-front-end',
+                'title'    => __('General', 'tag-groups'),
+                'page'     => 'tag-groups-settings-features',
                 'keywords' => array(
                 __('tag cloud', 'tag-groups'),
                 __('group info', 'tag-groups'),
@@ -843,7 +843,7 @@ if (!class_exists('TagGroups_Settings')) {
             ),
                 'themes'          => array(
                 'title'    => __('Themes and Appearance', 'tag-groups'),
-                'page'     => 'tag-groups-settings-front-end',
+                'page'     => 'tag-groups-settings-features',
                 'keywords' => array(
                 __('tag cloud', 'tag-groups'),
                 'CSS',
@@ -855,7 +855,7 @@ if (!class_exists('TagGroups_Settings')) {
             ),
                 'filters'         => array(
                 'title'    => __('Filters', 'tag-groups'),
-                'page'     => 'tag-groups-settings-back-end',
+                'page'     => 'tag-groups-settings-features',
                 'keywords' => array( __('tag filter', 'tag-groups'), __('post filter', 'tag-groups') ),
             ),
                 'export_import'   => array(
@@ -955,14 +955,14 @@ if (!class_exists('TagGroups_Settings')) {
             if (TagGroups_Gutenberg::is_gutenberg_active()) {
                 $topics['gutenberg'] = array(
                     'title'    => __('Gutenberg', 'tag-groups'),
-                    'page'     => 'tag-groups-settings-back-end',
+                    'page'     => 'tag-groups-settings-features',
                     'keywords' => array( __('live block preview', 'tag-groups') ),
                 );
             }
             if (TagGroups_WPML::is_multilingual()) {
                 $topics['multilingual'] = array(
                     'title'    => __('Multilingual', 'tag-groups'),
-                    'page'     => 'tag-groups-settings-back-end',
+                    'page'     => 'tag-groups-settings-features',
                     'keywords' => array( 'WPML', 'Polylang', __('translation', 'tag-groups') ),
                 );
             }

@@ -29,65 +29,31 @@ if (! class_exists('TagGroups_Enqueue')) {
                 return;
             }
 
-            global $post;
+            if (TagGroups_Options::get_option('tag_group_enqueue_jquery', 1)) {
+                wp_enqueue_script('jquery');
 
-            $tag_group_shortcode_enqueue_always = TagGroups_Options::get_option('tag_group_shortcode_enqueue_always', 1);
+                wp_enqueue_script('jquery-ui-core');
 
-          /* enqueue frontend scripts and styling only if shortcode in use */
+                wp_enqueue_script('jquery-ui-tabs');
 
-            if (
-                $tag_group_shortcode_enqueue_always ||
-                ! is_a($post, 'WP_Post') ||
-                has_shortcode($post->post_content, 'tag_groups_cloud') ||
-                has_shortcode($post->post_content, 'tag_groups_accordion') ||
-                has_shortcode($post->post_content, 'tag_groups_alphabet_tabs') ||
-                // phpcs:ignore Squiz.PHP.CommentedOutCode.Found
-                // has_shortcode($post->post_content, 'tag_groups_tabs') ||
-                strpos($post->post_content, '<!-- wp:chatty-mango/tag-groups-cloud-tabs') !== false ||
-                strpos($post->post_content, '<!-- wp:chatty-mango/tag-groups-cloud-accordion') !== false ||
-                strpos($post->post_content, '<!-- wp:chatty-mango/tag-groups-alphabet-tabs') !== false
-            ) {
-                if (TagGroups_Options::get_option('tag_group_enqueue_jquery', 1)) {
-                    wp_enqueue_script('jquery');
-
-                    wp_enqueue_script('jquery-ui-core');
-
-                    wp_enqueue_script('jquery-ui-tabs');
-
-                    wp_enqueue_script('jquery-ui-accordion');
-                }
-
-                if (defined('WP_DEBUG') && WP_DEBUG) {
-                    wp_register_script('tag-groups-js-frontend', TAG_GROUPS_PLUGIN_URL . '/assets/js/frontend.js', array(), TAG_GROUPS_VERSION);
-                } else {
-                    wp_register_script('tag-groups-js-frontend', TAG_GROUPS_PLUGIN_URL . '/assets/js/frontend.min.js', array(), TAG_GROUPS_VERSION);
-                }
-
-                wp_enqueue_script('tag-groups-js-frontend');
-
-                $this->load_theme_css();
-
-                wp_enqueue_style('tag-groups-css-frontend-structure');
-
-                wp_enqueue_style('tag-groups-css-frontend-theme');
-
-                $this->enqueue_frontend_css();
+                wp_enqueue_script('jquery-ui-accordion');
             }
 
-
-          /**
-           * Equeue features that appear in lists and don't need jQuery UI
-           */
-            if (
-                $tag_group_shortcode_enqueue_always ||
-                ! is_a($post, 'WP_Post') ||
-                has_shortcode($post->post_content, 'tag_groups_tag_list') ||
-                has_shortcode($post->post_content, 'tag_groups_alphabetical_index') ||
-                strpos($post->post_content, '<!-- wp:chatty-mango/tag-groups-tag-list') !== false ||
-                strpos($post->post_content, '<!-- wp:chatty-mango/tag-groups-alphabetical-tag-index') !== false
-            ) {
-                $this->enqueue_frontend_css();
+            if (defined('WP_DEBUG') && WP_DEBUG) {
+                wp_register_script('tag-groups-js-frontend', TAG_GROUPS_PLUGIN_URL . '/assets/js/frontend.js', array(), TAG_GROUPS_VERSION);
+            } else {
+                wp_register_script('tag-groups-js-frontend', TAG_GROUPS_PLUGIN_URL . '/assets/js/frontend.min.js', array(), TAG_GROUPS_VERSION);
             }
+
+            wp_enqueue_script('tag-groups-js-frontend');
+
+            $this->load_theme_css();
+
+            wp_enqueue_style('tag-groups-css-frontend-structure');
+
+            wp_enqueue_style('tag-groups-css-frontend-theme');
+
+            $this->enqueue_frontend_css();
         }
 
       /**

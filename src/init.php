@@ -66,7 +66,7 @@ function chatty_mango_tag_groups_editor_assets()
         'serverSideRender'  => $server_side_render,
         'collapsible'       => TagGroups_Options::get_option('tag_group_collapsible', 0),
         'mouseover'         => TagGroups_Options::get_option('tag_group_mouseover', 0),
-        'gutenbergSettings' => admin_url('admin.php?page=tag-groups-settings-back-end&active-tab=gutenberg')
+        'gutenbergSettings' => admin_url('admin.php?page=tag-groups-settings-features&active-tab=gutenberg')
     );
     $block_asset_url = TAG_GROUPS_PLUGIN_URL;
     $block_asset_path = TAG_GROUPS_PLUGIN_ABSOLUTE_PATH;
