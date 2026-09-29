@@ -470,15 +470,15 @@
 }
 
 .tg_premium_backend_call_to_action h3 {
-  color: #009cd0;
+  color: #655997;
   font-size: 28px;
   line-height: 40px;
 }
 
 .tg_premium_backend_call_to_action_button {
   border-radius: 7px;
-  border: 2px solid #009cd0;
-  color: #009cd0;
+  border: 2px solid #655997;
+  color: #655997;
   margin: 0 0.25em;
   overflow: hidden;
   padding: 24px 16px 24px 16px;
@@ -490,8 +490,22 @@
 }
 
 .tg_premium_backend_call_to_action_button:hover {
-  background-color: #009cd0;
+  background-color: #655997;
   color: #fff;
+}
+
+.tag-groups-brand-header {
+  background: #fff;
+  border-bottom: 1px solid #dcdcde;
+  margin: 0 -20px 24px;
+  padding: 18px 28px;
+}
+
+.tag-groups-brand-header img {
+  display: block;
+  height: auto;
+  max-width: 100%;
+  width: 520px;
 }
 
 .tg_premium_backend_right_image_box {
