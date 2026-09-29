@@ -788,7 +788,7 @@ var cmTagGroupsAlphabetBlock = registerBlockType(
     icon: 'tag', // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
     category: 'chatty-mango',
     description: __('Show your tags in a list sorted by first letters.'),
-    keywords: [__('alphabet'), __('tag cloud'), 'Chatty Mango'],
+    keywords: [__('alphabet'), __('tag cloud'), 'PublishPress'],
     html: false,
     transforms: {
       to: [

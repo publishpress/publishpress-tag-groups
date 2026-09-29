@@ -451,7 +451,7 @@ if (!class_exists('TagGroups_Settings')) {
                             $view->render();
                             break;
                         case 'debug':
-                            $help_url = 'https://taxopress.com/docs/how-to-use-the-debug-log/';
+                            $help_url = 'https://publishpress.com/tag-groups/';
                             $view = new TagGroups_View('admin/settings_troubleshooting_debug');
                             $verbose_is_on_hardcoded = defined('CM_DEBUG') && strtolower(CM_DEBUG) == 'verbose';
                             $verbose_is_on_option = (bool) TagGroups_Options::get_option('tag_group_verbose_debug', 0);
@@ -894,7 +894,7 @@ if (!class_exists('TagGroups_Settings')) {
                 ),
             ),
                 'premium'         => array(
-                'title'    => __('Tag Groups Pro', 'tag-groups'),
+                'title'    => __('PublishPress Tag Groups Pro', 'tag-groups'),
                 'page'     => 'tag-groups-settings-premium',
                 'keywords' => array(
                 __('upgrade', 'tag-groups'),

@@ -1,13 +1,13 @@
 {
-    "name": "taxopress/tag-groups",
+    "name": "publishpress/publishpress-tag-groups",
     "type": "wordpress-plugin",
     "license": "GPL-3.0-or-later",
-    "description": "Tag Groups allows you to organize your WordPress taxonomy terms and show them in clouds, tabs, accordions, tables, lists and much more.",
+    "description": "PublishPress Tag Groups allows you to organize your WordPress taxonomy terms and show them in clouds, tabs, accordions, tables, lists and much more.",
     "authors": [
         {
-            "name": "TaxoPress",
-            "email": "help@taxopress.com",
-            "homepage": "https://taxopress.com",
+            "name": "PublishPress",
+            "email": "help@publishpress.com",
+            "homepage": "https://publishpress.com",
             "role": "Developer"
         }
     ],
@@ -30,6 +30,9 @@
     "require": {
         "php": ">=7.2.5"
     },
+    "replace": {
+        "taxopress/tag-groups": "self.version"
+    },
     "require-dev": {
         "publishpress/dev-workspace": "^1.3"
     },
@@ -46,7 +49,7 @@
         "plugin-folder": "tag-groups",
         "version-constant": "TAG_GROUPS_VERSION",
         "plugin-lang-domain": "tag-groups",
-        "plugin-github-repo": "TaxoPress/Tag-Groups",
-        "plugin-composer-package": "taxopress/tag-groups"
+        "plugin-github-repo": "publishpress/publishpress-tag-groups",
+        "plugin-composer-package": "publishpress/publishpress-tag-groups"
     }
 }

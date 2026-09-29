@@ -157,7 +157,7 @@ if (!class_exists('TagGroups_Loader')) {
             if (version_compare($wp_version, TAG_GROUPS_MINIMUM_VERSION_WP, '<')) {
                 TagGroups_Error::log('[Tag Groups] Insufficient WordPress version for Tag Groups plugin.');
                 /* translators: %1$s is the plugin name, %2$s is the minimum WordPress version */
-                TagGroups_Admin_Notice::add('error', sprintf(__('The plugin %1$s requires WordPress %2$s to function properly.', 'tag-groups'), '<b>Tag Groups</b>', TAG_GROUPS_MINIMUM_VERSION_WP) . __('Please upgrade WordPress and then try again.', 'tag-groups'));
+                TagGroups_Admin_Notice::add('error', sprintf(__('The plugin %1$s requires WordPress %2$s to function properly.', 'tag-groups'), '<b>PublishPress Tag Groups</b>', TAG_GROUPS_MINIMUM_VERSION_WP) . __('Please upgrade WordPress and then try again.', 'tag-groups'));
                 return;
             }
         }

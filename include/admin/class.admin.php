@@ -19,7 +19,7 @@ if (!class_exists('TagGroups_Admin')) {
         public static function register_menus()
         {
             // Add the main menu
-            add_menu_page(__('Home', 'tag-groups'), 'Tag Groups', 'manage_options', 'tag-groups-settings', array( 'TagGroups_Settings', 'settings_page_home' ), 'dashicons-tag', '99.01');
+            add_menu_page(__('Home', 'tag-groups'), 'PublishPress Tag Groups', 'manage_options', 'tag-groups-settings', array( 'TagGroups_Settings', 'settings_page_home' ), 'dashicons-tag', '99.01');
 // Define the menu structure
             $tag_groups_admin_structure = array(
                 0  => array(

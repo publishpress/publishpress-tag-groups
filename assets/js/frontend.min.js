@@ -1,7 +1,7 @@
 /*!
  * Last modified: 2021/10/27 17:52:13
- * Part of the WordPress plugin Tag Groups
- * Plugin URI: https://chattymango.com/tag-groups/
+ * Part of the WordPress plugin PublishPress Tag Groups
+ * Plugin URI: https://publishpress.com/tag-groups/
  * Author: Christoph Amthor
  * License: GNU GENERAL PUBLIC LICENSE, Version 3
  */
