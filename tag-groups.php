@@ -6,7 +6,7 @@
  * Description: PublishPress Tag Groups allows you to organize your WordPress taxonomy terms and show them in clouds, tabs, accordions, tables, lists and much more.
  * Author: PublishPress
  * Author URI: https://publishpress.com
- * Version: 2.2.2
+ * Version: 3.0.0
  * License: GPL-3.0-or-later
  * License URI: https://www.gnu.org/licenses/gpl-3.0.html
  * Text Domain: tag-groups
@@ -24,6 +24,7 @@
 // define( "CM_TGP_KERNL_UUID", '' );
 
 defined('ABSPATH') || exit;
+
 $includeFileRelativePath = '/publishpress/instance-protection/include.php';
 if (file_exists(__DIR__ . '/lib/vendor' . $includeFileRelativePath)) {
     require_once __DIR__ . '/lib/vendor' . $includeFileRelativePath;
@@ -35,7 +36,7 @@ if (class_exists('PublishPressInstanceProtection\Config')) {
     $pluginCheckerConfig = new PublishPressInstanceProtection\Config();
     $pluginCheckerConfig->pluginSlug = 'tag-groups';
     $pluginCheckerConfig->pluginName = 'PublishPress Tag Groups';
-    $pluginCheckerConfig->pluginFolder = 'publishpress-tag-groups';
+    $pluginCheckerConfig->pluginFolder = 'tag-groups';
     $pluginChecker = new PublishPressInstanceProtection\InstanceChecker($pluginCheckerConfig);
 }
 
@@ -64,8 +65,8 @@ if (!function_exists('tag_groups_free_plugin_basenames')) {
     /**
      * Return the supported free-plugin entry paths.
      *
-     * The legacy WordPress.org folder remains supported while new packages use
-     * the PublishPress-branded folder name.
+     * The WordPress.org folder remains the canonical installation path. The
+     * branded folder is accepted for compatibility with pre-release packages.
      *
      * @return string[]
      */

@@ -29,8 +29,6 @@ if (! class_exists('TagGroups_Activation_Deactivation')) {
                 return;
             }
 
-            self::deactivate_legacy_plugin($network_wide);
-
             if (TAG_GROUPS_PLUGIN_IS_KERNL) {
                 register_uninstall_hook(TAG_GROUPS_PLUGIN_ABSOLUTE_PATH, array( 'TagGroups_Activation_Deactivation', 'on_uninstall' ));
             }
@@ -49,38 +47,6 @@ if (! class_exists('TagGroups_Activation_Deactivation')) {
                   $update_scripts->run_general_scripts();
             }
         }
-
-
-      /**
-      * Deactivate the legacy standalone plugin when the renamed plugin is activated.
-      *
-      * Existing settings remain untouched because the legacy plugin is deactivated,
-      * not uninstalled.
-      *
-      * @param bool $network_wide Whether the new plugin is being activated network-wide.
-      * @return void
-      */
-        private static function deactivate_legacy_plugin($network_wide)
-        {
-            $legacy_plugin = 'tag-groups/tag-groups.php';
-
-            if (! defined('TAG_GROUPS_PLUGIN_BASENAME') || 'publishpress-tag-groups/tag-groups.php' !== TAG_GROUPS_PLUGIN_BASENAME) {
-                return;
-            }
-
-            if (! function_exists('is_plugin_active')) {
-                require_once ABSPATH . 'wp-admin/includes/plugin.php';
-            }
-
-            $legacy_is_network_active = is_multisite() && is_plugin_active_for_network($legacy_plugin);
-
-            if ($network_wide && $legacy_is_network_active) {
-                deactivate_plugins($legacy_plugin, true, true);
-            } elseif (! $legacy_is_network_active && is_plugin_active($legacy_plugin)) {
-                deactivate_plugins($legacy_plugin, true, false);
-            }
-        }
-
 
       /**
       * This script is executed when the (inactive) plugin is deleted through the admin backend.
