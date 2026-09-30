@@ -1,4 +1,4 @@
-# Copyright (C) 2026 TaxoPress
+# Copyright (C) 2026 PublishPress
 # This file is distributed under the GPL-3.0-or-later.
 msgid ""
 msgstr ""
@@ -10,21 +10,18 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-06-15T12:41:40+00:00\n"
-"PO-Revision-Date: 2026-06-22 16:18+0000\n"
+"PO-Revision-Date: 2026-09-30 10:10+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: tag-groups\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Language: el\n"
 
 #: tag-groups.php:4
-#: include/admin/class.admin.php:229
-#: views/admin/edit_tag_main.view.php:2
-#: views/admin/new_tag_from_list.view.php:2
 #. Plugin Name of the plugin
-msgid "Tag Groups"
-msgstr "Tag-Groups"
+msgid "PublishPress Tag Groups Free"
+msgstr "Δωρεάν Ομάδες Ετικετών PublishPress"
 
-#: tag-groups.php:5, fuzzy
+#: tag-groups.php:5
 #. Plugin URI of the plugin
 msgid "https://wordpress.org/plugins/tag-groups/"
 msgstr "https://wordpress.org/plugins/tag-groups/"
@@ -32,29 +29,38 @@ msgstr "https://wordpress.org/plugins/tag-groups/"
 #: tag-groups.php:6
 #. Description of the plugin
 msgid ""
-"Tag Groups allows you to organize your WordPress taxonomy terms and show "
-"them in clouds, tabs, accordions, tables, lists and much more."
+"PublishPress Tag Groups allows you to organize your WordPress taxonomy "
+"terms and show them in clouds, tabs, accordions, tables, lists and much "
+"more."
 msgstr ""
-"Το Tag-Groups σας επιτρέπει να οργανώνετε τους όρους ταξινόμησης του "
-"WordPress και να τους εμφανίζετε σε σύννεφα, καρτέλες, ακορντεόν, πίνακες, "
-"λίστες και πολλά άλλα."
+"Οι Ομάδες Ετικετών PublishPress σας επιτρέπουν να οργανώσετε τους όρους "
+"ταξινόμησης WordPress και να τους εμφανίσετε σε σύννεφα, καρτέλες, "
+"ακορντεόν, πίνακες, λίστες και πολλά άλλα."
 
 #: tag-groups.php:7
+#: views/partials/admin_footer_rating.view.php:26
 #. Author of the plugin
-msgid "TaxoPress"
-msgstr "TaxoPress"
+msgid "PublishPress"
+msgstr "PublishPress"
 
-#: tag-groups.php:8, fuzzy
+#: tag-groups.php:8
 #. Author URI of the plugin
-msgid "https://taxopress.com"
-msgstr "https://taxopress.com"
+msgid "https://publishpress.com"
+msgstr "https://publishpress.com"
 
 #: include/admin/class.admin.php:22
 msgid "Home"
 msgstr "Αρχική"
 
+#: include/admin/class.admin.php:22
+#: include/admin/class.admin.php:229
+#: views/admin/edit_tag_main.view.php:2
+#: views/admin/new_tag_from_list.view.php:2
+msgid "Tag Groups"
+msgstr "Tag-Groups"
+
 #: include/admin/class.admin.php:26
-#: include/admin/class.settings.php:827
+#: include/admin/class.settings.php:826
 #: include/admin/class.setup_wizard.php:98
 msgid "Taxonomies"
 msgstr "Taxonomies"
@@ -68,18 +74,18 @@ msgid "Back End"
 msgstr "Πίσω Εμφάνιση"
 
 #: include/admin/class.admin.php:47
-#: include/admin/class.settings.php:935
+#: include/admin/class.settings.php:934
 #: views/admin/onboarding.view.php:1
 msgid "First Steps"
 msgstr "Πρώτα Βήματα"
 
 #: include/admin/class.admin.php:54
-#: include/admin/class.settings.php:940
+#: include/admin/class.settings.php:939
 msgid "Setup Wizard"
 msgstr "Οδηγός Ρύθμισης"
 
 #: include/admin/class.admin.php:61
-#: include/admin/class.admin.php:1013
+#: include/admin/class.admin.php:1008
 #: views/admin/settings_front_end_shortcodes.view.php:95
 msgid "Settings"
 msgstr "Ρυθμίσεις"
@@ -88,19 +94,19 @@ msgstr "Ρυθμίσεις"
 msgid "Tag Group Admin"
 msgstr "Διαχείριση Ομάδας Ετικετών"
 
-#: include/admin/class.admin.php:457
+#: include/admin/class.admin.php:456
 msgid "The term has been removed from all groups."
 msgstr "Ο όρος έχει αφαιρεθεί από όλες τις ομάδες."
 
-#: include/admin/class.admin.php:588
+#: include/admin/class.admin.php:587
 msgid "Edit this item inline"
 msgstr "Επεξεργαστείτε αυτό το στοιχείο inline"
 
-#: include/admin/class.admin.php:590
+#: include/admin/class.admin.php:589
 msgid "Quick&nbsp;Edit"
 msgstr "Γρήγορη&nbsp;Επεξεργασία"
 
-#: include/admin/class.admin.php:1067
+#: include/admin/class.admin.php:1062
 #. translators: %s is the href attribute with URL
 #, php-format
 msgid ""
@@ -268,30 +274,30 @@ msgstr[0] "Η πληροφορία της ομάδας του %d όρου ενη
 msgstr[1] "Η πληροφορία της ομάδας των %d όρων ενημερώθηκε."
 
 #: include/admin/class.settings.php:151
-#: include/admin/class.settings.php:858
+#: include/admin/class.settings.php:857
 #: views/admin/tag_groups_admin.view.php:26
 #: views/admin/tag_groups_admin.view.php:39
 msgid "Filters"
 msgstr "Φίλτρα"
 
 #: include/admin/class.settings.php:153
-#: include/admin/class.settings.php:958, fuzzy
+#: include/admin/class.settings.php:957, fuzzy
 msgid "Gutenberg"
 msgstr "Gutenberg"
 
 #: include/admin/class.settings.php:156
-#: include/admin/class.settings.php:965
+#: include/admin/class.settings.php:964
 msgid "Multilingual"
 msgstr "Πολυγλωσσική"
 
 #: include/admin/class.settings.php:238
-#: include/admin/class.settings.php:832
+#: include/admin/class.settings.php:831
 #: views/admin/settings_front_end_shortcodes.view.php:9
 msgid "Shortcodes"
 msgstr "Συντομεύσεις"
 
 #: include/admin/class.settings.php:239
-#: include/admin/class.settings.php:846
+#: include/admin/class.settings.php:845
 msgid "Themes and Appearance"
 msgstr "Θέματα και Εμφάνιση"
 
@@ -312,7 +318,7 @@ msgid "use unfiltered_html filter"
 msgstr "χρήση φίλτρου unfiltered_html"
 
 #: include/admin/class.settings.php:317
-#: include/admin/class.settings.php:945
+#: include/admin/class.settings.php:944
 msgid "First Aid"
 msgstr "Πρώτες Βοήθειες"
 
@@ -321,22 +327,22 @@ msgid "REST API"
 msgstr "REST API"
 
 #: include/admin/class.settings.php:319
-#: include/admin/class.settings.php:873
+#: include/admin/class.settings.php:872
 msgid "System Information"
 msgstr "Πληροφορίες Συστήματος"
 
 #: include/admin/class.settings.php:320
-#: include/admin/class.settings.php:887
+#: include/admin/class.settings.php:886
 msgid "Debugging"
 msgstr "Αποσφαλμάτωση"
 
 #: include/admin/class.settings.php:321
-#: include/admin/class.settings.php:863
+#: include/admin/class.settings.php:862
 msgid "Export/Import"
 msgstr "Εξαγωγή/Εισαγωγή"
 
 #: include/admin/class.settings.php:322
-#: include/admin/class.settings.php:868
+#: include/admin/class.settings.php:867
 msgid "Reset"
 msgstr "Επαναφορά"
 
@@ -345,33 +351,33 @@ msgid "Licences"
 msgstr "Άδειες"
 
 #: include/admin/class.settings.php:422
-#: include/admin/class.settings_ajax.php:42
+#: include/admin/class.settings_ajax.php:69
 msgid "Transients"
 msgstr "Προσωρινά"
 
 #: include/admin/class.settings.php:423
-#: include/admin/class.settings_ajax.php:43
+#: include/admin/class.settings_ajax.php:70
 msgid "Database"
 msgstr "Βάση Δεδομένων"
 
 #: include/admin/class.settings.php:424
-#: include/admin/class.settings_ajax.php:44
+#: include/admin/class.settings_ajax.php:71
 msgid "Filesystem"
 msgstr "Σύστημα Αρχείων"
 
 #: include/admin/class.settings.php:425
-#: include/admin/class.settings_ajax.php:45, fuzzy
+#: include/admin/class.settings_ajax.php:72, fuzzy
 msgid "WP Object Cache"
 msgstr "WP Object Cache"
 
 #: include/admin/class.settings.php:548
 #: include/admin/class.settings.php:604
 #: include/admin/class.settings.php:642
-#: include/admin/class.settings.php:676
-#: include/admin/class.settings.php:691
-#: include/admin/class.settings.php:704
-#: include/admin/class.settings.php:717
-#: include/admin/class.settings.php:786
+#: include/admin/class.settings.php:675
+#: include/admin/class.settings.php:690
+#: include/admin/class.settings.php:703
+#: include/admin/class.settings.php:716
+#: include/admin/class.settings.php:785
 msgid "Your settings have been saved."
 msgstr "Οι ρυθμίσεις σας έχουν αποθηκευτεί."
 
@@ -383,251 +389,272 @@ msgstr "Οι ρυθμίσεις σας έχουν αποθηκευτεί."
 msgid "All groups have been deleted and assignments reset."
 msgstr "Όλες οι ομάδες έχουν διαγραφεί και οι αναθέσεις έχουν επαναφερθεί."
 
-#: include/admin/class.settings.php:733
+#: include/admin/class.settings.php:732
 msgid "The filter on the tags page has been reset to show all tags."
 msgstr ""
 "Το φίλτρο στη σελίδα ετικετών έχει επαναφερθεί για να εμφανίζει όλες τις "
 "ετικέτες."
 
-#: include/admin/class.settings.php:829, fuzzy
+#: include/admin/class.settings.php:828, fuzzy
 msgid "tag groups"
 msgstr "tag groups"
 
-#: include/admin/class.settings.php:835
-#: include/admin/class.settings.php:849
-#: include/admin/class.settings.php:904, fuzzy
+#: include/admin/class.settings.php:834
+#: include/admin/class.settings.php:848
+#: include/admin/class.settings.php:903, fuzzy
 msgid "tag cloud"
 msgstr "tag cloud"
 
-#: include/admin/class.settings.php:836, fuzzy
+#: include/admin/class.settings.php:835, fuzzy
 msgid "group info"
 msgstr "group info"
 
-#: include/admin/class.settings.php:837, fuzzy
+#: include/admin/class.settings.php:836, fuzzy
 msgid "sidebar widget"
 msgstr "sidebar widget"
 
-#: include/admin/class.settings.php:838, fuzzy
+#: include/admin/class.settings.php:837, fuzzy
 msgid "accordion"
 msgstr "accordion"
 
-#: include/admin/class.settings.php:839, fuzzy
+#: include/admin/class.settings.php:838, fuzzy
 msgid "tabs"
 msgstr "tabs"
 
-#: include/admin/class.settings.php:840, fuzzy
+#: include/admin/class.settings.php:839, fuzzy
 msgid "alphabetical"
 msgstr "alphabetical"
 
-#: include/admin/class.settings.php:841, fuzzy
+#: include/admin/class.settings.php:840, fuzzy
 msgid "post list"
 msgstr "post list"
 
-#: include/admin/class.settings.php:853, fuzzy
+#: include/admin/class.settings.php:852, fuzzy
 msgid "colors"
 msgstr "colors"
 
-#: include/admin/class.settings.php:854, fuzzy
+#: include/admin/class.settings.php:853, fuzzy
 msgid "tag description"
 msgstr "tag description"
 
-#: include/admin/class.settings.php:860
-#: include/admin/class.settings.php:952, fuzzy
+#: include/admin/class.settings.php:859
+#: include/admin/class.settings.php:951, fuzzy
 msgid "tag filter"
 msgstr "tag filter"
 
-#: include/admin/class.settings.php:860, fuzzy
+#: include/admin/class.settings.php:859, fuzzy
 msgid "post filter"
 msgstr "post filter"
 
-#: include/admin/class.settings.php:865, fuzzy
+#: include/admin/class.settings.php:864, fuzzy
 msgid "backup"
 msgstr "backup"
 
-#: include/admin/class.settings.php:870, fuzzy
+#: include/admin/class.settings.php:869, fuzzy
 msgid "remove plugin"
 msgstr "remove plugin"
 
-#: include/admin/class.settings.php:870, fuzzy
+#: include/admin/class.settings.php:869, fuzzy
 msgid "remove data"
 msgstr "remove data"
 
-#: include/admin/class.settings.php:870, fuzzy
+#: include/admin/class.settings.php:869, fuzzy
 msgid "delete groups"
 msgstr "delete groups"
 
-#: include/admin/class.settings.php:876
-#: include/admin/class.settings.php:890, fuzzy
+#: include/admin/class.settings.php:875
+#: include/admin/class.settings.php:889, fuzzy
 msgid "debugging"
 msgstr "debugging"
 
-#: include/admin/class.settings.php:877, fuzzy
+#: include/admin/class.settings.php:876, fuzzy
 msgid "PHP Version"
 msgstr "PHP Version"
 
-#: include/admin/class.settings.php:878
+#: include/admin/class.settings.php:877
 #: views/admin/settings_troubleshooting_system.view.php:21, fuzzy
 msgid "Ajax Test"
 msgstr "Ajax Test"
 
-#: include/admin/class.settings.php:879
-#: include/admin/class.settings.php:891
-#: include/admin/class.settings.php:948, fuzzy
+#: include/admin/class.settings.php:878
+#: include/admin/class.settings.php:890
+#: include/admin/class.settings.php:947, fuzzy
 msgid "troubleshooting"
 msgstr "troubleshooting"
 
-#: include/admin/class.settings.php:880
+#: include/admin/class.settings.php:879
 msgid "benchmarks"
 msgstr "δείκτες"
 
-#: include/admin/class.settings.php:881
+#: include/admin/class.settings.php:880
 msgid "speed test"
 msgstr "δοκιμή ταχύτητας"
 
-#: include/admin/class.settings.php:882
-#: include/admin/class.settings.php:892
+#: include/admin/class.settings.php:881
+#: include/admin/class.settings.php:891
 msgid "error"
 msgstr "σφάλμα"
 
-#: include/admin/class.settings.php:883
-#: include/admin/class.settings.php:893
+#: include/admin/class.settings.php:882
+#: include/admin/class.settings.php:892
 msgid "testing"
 msgstr "δοκιμή"
 
-#: include/admin/class.settings.php:894
-#: include/admin/class.settings.php:937
-#: include/admin/class.settings.php:950
+#: include/admin/class.settings.php:893
+#: include/admin/class.settings.php:936
+#: include/admin/class.settings.php:949
 msgid "help"
 msgstr "βοήθεια"
 
-#: include/admin/class.settings.php:898, fuzzy
-msgid "Tag Groups Pro"
-msgstr "Tag Groups Pro"
+#: include/admin/class.settings.php:897
+msgid "PublishPress Tag Groups Pro"
+msgstr "Ομάδες Ετικετών PublishPress Pro"
 
-#: include/admin/class.settings.php:901
+#: include/admin/class.settings.php:900
 msgid "upgrade"
 msgstr "αναβάθμιση"
 
-#: include/admin/class.settings.php:902
+#: include/admin/class.settings.php:901
 msgid "more groups"
 msgstr "περισσότερες ομάδες"
 
-#: include/admin/class.settings.php:903
+#: include/admin/class.settings.php:902
 msgid "posts"
 msgstr "αναρτήσεις"
 
-#: include/admin/class.settings.php:905
+#: include/admin/class.settings.php:904
 msgid "filter"
 msgstr "φίλτρο"
 
-#: include/admin/class.settings.php:906
+#: include/admin/class.settings.php:905
 msgid "animated"
 msgstr "κινούμενα"
 
-#: include/admin/class.settings.php:907
+#: include/admin/class.settings.php:906
 msgid "searchable"
 msgstr "αναζητήσιμο"
 
-#: include/admin/class.settings.php:915
+#: include/admin/class.settings.php:914
 msgid "Info"
 msgstr "Πληροφορίες"
 
-#: include/admin/class.settings.php:918
+#: include/admin/class.settings.php:917
 msgid "author"
 msgstr "συγγραφέας"
 
-#: include/admin/class.settings.php:919
+#: include/admin/class.settings.php:918
 msgid "version"
 msgstr "έκδοση"
 
-#: include/admin/class.settings.php:920
+#: include/admin/class.settings.php:919
 msgid "contact"
 msgstr "επικοινωνία"
 
-#: include/admin/class.settings.php:921
+#: include/admin/class.settings.php:920
 msgid "about"
 msgstr "σχετικά"
 
-#: include/admin/class.settings.php:925
+#: include/admin/class.settings.php:924
 msgid "Licenses"
 msgstr "Άδειες"
 
-#: include/admin/class.settings.php:927
+#: include/admin/class.settings.php:926
 msgid "Credits"
 msgstr "Πιστώσεις"
 
-#: include/admin/class.settings.php:930
+#: include/admin/class.settings.php:929
 msgid "Development News"
 msgstr "Νέα Ανάπτυξης"
 
-#: include/admin/class.settings.php:932
+#: include/admin/class.settings.php:931
 msgid "blog"
 msgstr "ιστολόγιο"
 
-#: include/admin/class.settings.php:932
+#: include/admin/class.settings.php:931
 msgid "updates"
 msgstr "ενημερώσεις"
 
-#: include/admin/class.settings.php:937
-#: include/admin/class.settings.php:942
+#: include/admin/class.settings.php:936
+#: include/admin/class.settings.php:941
 msgid "getting started"
 msgstr "ξεκινώντας"
 
-#: include/admin/class.settings.php:937
-#: include/admin/class.settings.php:942
+#: include/admin/class.settings.php:936
+#: include/admin/class.settings.php:941
 msgid "introduction"
 msgstr "εισαγωγή"
 
-#: include/admin/class.settings.php:942
+#: include/admin/class.settings.php:941
 msgid "sample"
 msgstr "δείγμα"
 
-#: include/admin/class.settings.php:949
+#: include/admin/class.settings.php:948
 msgid "migrate"
 msgstr "μεταφορά"
 
-#: include/admin/class.settings.php:951
+#: include/admin/class.settings.php:950
 msgid "problem"
 msgstr "πρόβλημα"
 
-#: include/admin/class.settings.php:960
+#: include/admin/class.settings.php:959
 msgid "live block preview"
 msgstr "προεπισκόπηση ζωντανών μπλοκ"
 
-#: include/admin/class.settings.php:967
+#: include/admin/class.settings.php:966
 msgid "translation"
 msgstr "μετάφραση"
 
-#: include/admin/class.settings.php:998
+#: include/admin/class.settings.php:997
 msgid "Migrating the term meta"
 msgstr "Μεταφορά του όρου meta"
 
-#: include/admin/class.settings.php:999
+#: include/admin/class.settings.php:998
 msgid "Fixing incorrect tag groups"
 msgstr "Διόρθωση λανθασμένων ομάδων ετικετών"
 
-#: include/admin/class.settings.php:1000
+#: include/admin/class.settings.php:999
 msgid "Fixing incorrect groups in term meta"
 msgstr "Διόρθωση λανθασμένων ομάδων στο meta του όρου"
 
-#: include/admin/class.settings.php:1001
+#: include/admin/class.settings.php:1000
 msgid "Sorting groups in term meta"
 msgstr "Ταξινόμηση ομάδων στο meta του όρου"
 
-#: include/admin/class.settings.php:1002
+#: include/admin/class.settings.php:1001
 msgid "Checking the tag names"
 msgstr "Έλεγχος των ονομάτων ετικετών"
 
-#: include/admin/class.settings_ajax.php:48
-#: views/admin/settings_troubleshooting_system.view.php:126
+#: include/admin/class.settings_ajax.php:29
+msgid "You are not allowed to run cache benchmarks."
+msgstr "Δεν έχετε δικαίωμα να εκτελέσετε αναλύσεις ταχύτητας cache."
+
+#: include/admin/class.settings_ajax.php:34
+msgid "Invalid request method."
+msgstr "Μη έγκυρη μέθοδος αιτήματος."
+
+#: include/admin/class.settings_ajax.php:38
+msgid "The security check failed."
+msgstr "Η έλεγχος ασφαλείας απέτυχε."
+
+#: include/admin/class.settings_ajax.php:43
+msgid "Invalid benchmark task."
+msgstr "Μη έγκυρη εργασία αναφοράς."
+
+#: include/admin/class.settings_ajax.php:49
+#: include/admin/class.settings_ajax.php:57
+msgid "A cache benchmark is already running."
+msgstr "Μια ανάλυση ταχύτητας cache εκτελείται ήδη."
+
+#: include/admin/class.settings_ajax.php:75
+#: views/admin/settings_troubleshooting_system.view.php:125
 msgid "Cache"
 msgstr "Κρυφή μνήμη"
 
-#: include/admin/class.settings_ajax.php:48
+#: include/admin/class.settings_ajax.php:75
 msgid "(1000x read, 100x write)"
 msgstr "(1000x ανάγνωση, 100x εγγραφή)"
 
-#: include/admin/class.settings_ajax.php:63
+#: include/admin/class.settings_ajax.php:89
 msgid "ineffective"
 msgstr "αναποτελεσματικό"
 
@@ -694,11 +721,11 @@ msgstr "μη ανατεθειμένο"
 #. translators: %1$s and %2$s are opening and closing anchor tags for the upgrade link
 #, php-format
 msgid ""
-"You're using Tag Groups Free. The Pro version has more features and "
-"support. %1$sUpgrade to Pro%2$s"
+"You're using PublishPress Tag Groups Free. The Pro version has more "
+"features and support. %1$sUpgrade to Pro%2$s"
 msgstr ""
-"Χρησιμοποιείτε τις Ομάδες Ετικετών Δωρεάν. Η Pro έκδοση έχει περισσότερες "
-"δυνατότητες και υποστήριξη. %1$sΑναβάθμιση σε Pro%2$s"
+"Χρησιμοποιείτε τις Δωρεάν Ομάδες Ετικετών PublishPress. Η Pro έκδοση "
+"διαθέτει περισσότερες δυνατότητες και υποστήριξη. %1$sΑναβάθμιση σε Pro%2$s"
 
 #: includes-core/TagGroupsCoreAdmin.php:98
 #: includes-core/TagGroupsCoreAdmin.php:142
@@ -706,12 +733,12 @@ msgid "Upgrade to Pro"
 msgstr "Αναβάθμιση σε Pro"
 
 #: includes-core/TagGroupsCoreAdmin.php:115
-msgid "Upgrade to Tag Groups Pro"
-msgstr "Αναβάθμιση σε Tag Groups Pro"
+msgid "Upgrade to PublishPress Tag Groups Pro"
+msgstr "Αναβάθμιση σε Ομάδες Ετικετών PublishPress Pro"
 
 #: includes-core/TagGroupsCoreAdmin.php:120
-msgid "Enhance the power of Tag Groups with the Pro version:"
-msgstr "Ενισχύστε τη δύναμη των Tag Groups με την Pro έκδοση:"
+msgid "Enhance the power of PublishPress Tag Groups with the Pro version:"
+msgstr "Ενισχύστε τη δύναμη των Ομάδων Ετικετών PublishPress με την Pro έκδοση:"
 
 #: includes-core/TagGroupsCoreAdmin.php:123, fuzzy
 msgid "21 Shortcodes"
@@ -782,8 +809,8 @@ msgid "Parent Group Level"
 msgstr "Επίπεδο Γονικής Ομάδας"
 
 #: includes-core/TagGroupsCoreAdmin.php:149
-msgid "Need Tag Groups Support?"
-msgstr "Χρειάζεστε υποστήριξη για Ομάδες Ετικετών;"
+msgid "Need PublishPress Tag Groups Support?"
+msgstr "Χρειάζεστε υποστήριξη για τις Ομάδες Ετικετών PublishPress;"
 
 #: includes-core/TagGroupsCoreAdmin.php:154
 msgid "If you need help or have a new feature request, let us know."
@@ -801,13 +828,15 @@ msgstr "Λεπτομερής τεκμηρίωση είναι επίσης δια
 msgid "View Knowledge Base"
 msgstr "Δείτε τη Βάση Γνώσεων"
 
-#: tag-groups.php:177
-msgid "The free Tag Groups plugin cannot be active together with Tag Groups Pro."
+#: tag-groups.php:196
+msgid ""
+"The free PublishPress Tag Groups plugin cannot be active together with "
+"PublishPress Tag Groups Pro."
 msgstr ""
-"Το δωρεάν πρόσθετο Ομάδες Ετικετών δεν μπορεί να είναι ενεργό μαζί με το "
-"Tag Groups Pro."
+"Το δωρεάν πρόσθετο Ομάδες Ετικετών PublishPress δεν μπορεί να είναι ενεργό "
+"μαζί με τις Ομάδες Ετικετών PublishPress Pro."
 
-#: tag-groups.php:177
+#: tag-groups.php:196
 msgid "more information"
 msgstr "περισσότερες πληροφορίες"
 
@@ -884,12 +913,13 @@ msgstr "Φιλτράρετε ανά ομάδα ετικετών"
 #. translators: %s is the author display name
 #, php-format
 msgid ""
-"%s created this sample page in the Setup Wizard of the <b>Tag Groups</b> "
-"plugin. You can safely edit and delete it or keep it for future reference."
+"%s created this sample page in the Setup Wizard of the <b>PublishPress Tag "
+"Groups</b> plugin. You can safely edit and delete it or keep it for future "
+"reference."
 msgstr ""
-"%s δημιούργησε αυτή τη δείγμα σελίδα στον Οδηγό Ρυθμίσεων του <b>Plugin "
-"Ομάδων Ετικετών</b>. Μπορείτε να την επεξεργαστείτε με ασφάλεια ή να την "
-"διαγράψετε ή να την κρατήσετε για μελλοντική αναφορά."
+"%s δημιούργησε αυτή τη δείγμα σελίδα στον Οδηγό Ρύθμισης του <b>Ομάδες "
+"Ετικετών PublishPress</b> πρόσθετου. Μπορείτε να την επεξεργαστείτε ή να "
+"την διαγράψετε με ασφάλεια ή να την κρατήσετε για μελλοντική αναφορά."
 
 #: views/admin/sample_page.view.php:6
 msgid ""
@@ -1630,15 +1660,15 @@ msgstr "Εμφάνιση της Απόκρισης"
 msgid "passed"
 msgstr "επιτυχής"
 
-#: views/admin/settings_troubleshooting_system.view.php:99
+#: views/admin/settings_troubleshooting_system.view.php:98
 msgid "failed"
 msgstr "αποτυχία"
 
-#: views/admin/settings_troubleshooting_system.view.php:106
+#: views/admin/settings_troubleshooting_system.view.php:105
 msgid "Benchmarks"
 msgstr "Δοκιμές"
 
-#: views/admin/settings_troubleshooting_system.view.php:128
+#: views/admin/settings_troubleshooting_system.view.php:127
 msgid "Tag groups pro only"
 msgstr "Ομάδες ετικετών μόνο για pro"
 
@@ -1695,8 +1725,8 @@ msgid "Happy tagging!"
 msgstr "Καλή ετικετοποίηση!"
 
 #: views/admin/setup_wizard_header.view.php:1
-msgid "Tag Groups Setup Wizard"
-msgstr "Οδηγός Ρύθμισης Ομάδων Ετικετών"
+msgid "PublishPress Tag Groups Setup Wizard"
+msgstr "Οδηγός Ρύθμισης Ομάδων Ετικετών PublishPress"
 
 #: views/admin/setup_wizard_sample_content.view.php:3
 msgid ""
@@ -1881,13 +1911,31 @@ msgstr "Παρακαλώ επισκεφθείτε <a %1$s>%2$s</a>."
 msgid "Read more"
 msgstr "Διαβάστε περισσότερα"
 
-#: views/partials/admin_footer_rating.view.php:4
-#. translators: 1: Opening TaxoPress link tag, 2: Closing link tag, 3: Plugin version.
+#: views/partials/admin_footer_rating.view.php:9
+#. translators: %1$s: plugin name, %2$s: five-star rating icons.
 #, php-format
-msgid "Thanks for using Tag Groups | %1$sTaxoPress.com%2$s | Version %3$s"
-msgstr ""
-"Ευχαριστώ που χρησιμοποιείτε τις Ομάδες Ετικετών | %1$sTaxoPress.com%2$s | "
-"Έκδοση %3$s"
+msgid "If you like %1$s please leave us a %2$s rating. Thank you!"
+msgstr "Αν σας αρέσει το %1$s παρακαλώ αφήστε μας μια αξιολόγηση %2$s. Ευχαριστώ!"
+
+#: views/partials/admin_footer_rating.view.php:10
+msgid "PublishPress Tag Groups"
+msgstr "Ομάδες Ετικετών PublishPress"
+
+#: views/partials/admin_footer_rating.view.php:17
+msgid "PublishPress Tag Groups resources"
+msgstr "Πόροι Ομάδων Ετικετών PublishPress"
+
+#: views/partials/admin_footer_rating.view.php:19
+msgid "About"
+msgstr "Σχετικά"
+
+#: views/partials/admin_footer_rating.view.php:20
+msgid "Documentation"
+msgstr "Τεκμηρίωση"
+
+#: views/partials/admin_footer_rating.view.php:21
+msgid "Contact"
+msgstr "Επικοινωνία"
 
 #: views/partials/bulk_admin_footer.view.php:10
 #: views/partials/bulk_admin_footer.view.php:11

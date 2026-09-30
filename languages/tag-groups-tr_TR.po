@@ -1,4 +1,4 @@
-# Copyright (C) 2026 TaxoPress
+# Copyright (C) 2026 PublishPress
 # This file is distributed under the GPL-3.0-or-later.
 msgid ""
 msgstr ""
@@ -10,21 +10,18 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-06-15T12:41:40+00:00\n"
-"PO-Revision-Date: 2026-06-22 16:18+0000\n"
+"PO-Revision-Date: 2026-09-30 10:10+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: tag-groups\n"
 "Language: tr_TR\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: tag-groups.php:4
-#: include/admin/class.admin.php:229
-#: views/admin/edit_tag_main.view.php:2
-#: views/admin/new_tag_from_list.view.php:2
 #. Plugin Name of the plugin
-msgid "Tag Groups"
-msgstr "Tag Grupları"
+msgid "PublishPress Tag Groups Free"
+msgstr "PublishPress Tag Grupları Ücretsiz"
 
-#: tag-groups.php:5, fuzzy
+#: tag-groups.php:5
 #. Plugin URI of the plugin
 msgid "https://wordpress.org/plugins/tag-groups/"
 msgstr "https://wordpress.org/plugins/tag-groups/"
@@ -32,29 +29,38 @@ msgstr "https://wordpress.org/plugins/tag-groups/"
 #: tag-groups.php:6
 #. Description of the plugin
 msgid ""
-"Tag Groups allows you to organize your WordPress taxonomy terms and show "
-"them in clouds, tabs, accordions, tables, lists and much more."
+"PublishPress Tag Groups allows you to organize your WordPress taxonomy "
+"terms and show them in clouds, tabs, accordions, tables, lists and much "
+"more."
 msgstr ""
-"Tag Grupları, WordPress taksonomi terimlerinizi düzenlemenizi ve bunları "
-"bulutlar, sekmeler, akordeonlar, tablolar, listeler ve daha fazlası "
-"şeklinde göstermenizi sağlar."
+"PublishPress Tag Grupları, WordPress taksonomi terimlerinizi düzenlemenizi "
+"ve bunları bulutlar, sekmeler, akordiyonlar, tablolar, listeler ve daha "
+"fazlası içinde göstermenizi sağlar."
 
 #: tag-groups.php:7
+#: views/partials/admin_footer_rating.view.php:26
 #. Author of the plugin
-msgid "TaxoPress"
-msgstr "TaxoPress"
+msgid "PublishPress"
+msgstr "PublishPress"
 
-#: tag-groups.php:8, fuzzy
+#: tag-groups.php:8
 #. Author URI of the plugin
-msgid "https://taxopress.com"
-msgstr "https://taxopress.com"
+msgid "https://publishpress.com"
+msgstr "https://publishpress.com"
 
 #: include/admin/class.admin.php:22
 msgid "Home"
 msgstr "Ana Sayfa"
 
+#: include/admin/class.admin.php:22
+#: include/admin/class.admin.php:229
+#: views/admin/edit_tag_main.view.php:2
+#: views/admin/new_tag_from_list.view.php:2
+msgid "Tag Groups"
+msgstr "Tag Grupları"
+
 #: include/admin/class.admin.php:26
-#: include/admin/class.settings.php:827
+#: include/admin/class.settings.php:826
 #: include/admin/class.setup_wizard.php:98
 msgid "Taxonomies"
 msgstr "Taksonomiler"
@@ -68,18 +74,18 @@ msgid "Back End"
 msgstr "Arka Uç"
 
 #: include/admin/class.admin.php:47
-#: include/admin/class.settings.php:935
+#: include/admin/class.settings.php:934
 #: views/admin/onboarding.view.php:1
 msgid "First Steps"
 msgstr "İlk Adımlar"
 
 #: include/admin/class.admin.php:54
-#: include/admin/class.settings.php:940
+#: include/admin/class.settings.php:939
 msgid "Setup Wizard"
 msgstr "Kurulum Sihirbazı"
 
 #: include/admin/class.admin.php:61
-#: include/admin/class.admin.php:1013
+#: include/admin/class.admin.php:1008
 #: views/admin/settings_front_end_shortcodes.view.php:95
 msgid "Settings"
 msgstr "Ayarlar"
@@ -88,19 +94,19 @@ msgstr "Ayarlar"
 msgid "Tag Group Admin"
 msgstr "Tag Grubu Yönetimi"
 
-#: include/admin/class.admin.php:457
+#: include/admin/class.admin.php:456
 msgid "The term has been removed from all groups."
 msgstr "Terim tüm gruplardan kaldırıldı."
 
-#: include/admin/class.admin.php:588
+#: include/admin/class.admin.php:587
 msgid "Edit this item inline"
 msgstr "Bu öğeyi çevrimiçi düzenleyin"
 
-#: include/admin/class.admin.php:590
+#: include/admin/class.admin.php:589
 msgid "Quick&nbsp;Edit"
 msgstr "Hızlı&nbsp;Düzenle"
 
-#: include/admin/class.admin.php:1067
+#: include/admin/class.admin.php:1062
 #. translators: %s is the href attribute with URL
 #, php-format
 msgid ""
@@ -265,30 +271,30 @@ msgstr[0] "%d terimin grup bilgisi güncellendi."
 msgstr[1] "%d terimin grup bilgisi güncellendi."
 
 #: include/admin/class.settings.php:151
-#: include/admin/class.settings.php:858
+#: include/admin/class.settings.php:857
 #: views/admin/tag_groups_admin.view.php:26
 #: views/admin/tag_groups_admin.view.php:39
 msgid "Filters"
 msgstr "Filtreler"
 
 #: include/admin/class.settings.php:153
-#: include/admin/class.settings.php:958, fuzzy
+#: include/admin/class.settings.php:957, fuzzy
 msgid "Gutenberg"
 msgstr "Gutenberg"
 
 #: include/admin/class.settings.php:156
-#: include/admin/class.settings.php:965
+#: include/admin/class.settings.php:964
 msgid "Multilingual"
 msgstr "Çok Dilli"
 
 #: include/admin/class.settings.php:238
-#: include/admin/class.settings.php:832
+#: include/admin/class.settings.php:831
 #: views/admin/settings_front_end_shortcodes.view.php:9
 msgid "Shortcodes"
 msgstr "Kısa Kodlar"
 
 #: include/admin/class.settings.php:239
-#: include/admin/class.settings.php:846
+#: include/admin/class.settings.php:845
 msgid "Themes and Appearance"
 msgstr "Temalar ve Görünüm"
 
@@ -309,7 +315,7 @@ msgid "use unfiltered_html filter"
 msgstr "unfiltered_html filtresini kullan"
 
 #: include/admin/class.settings.php:317
-#: include/admin/class.settings.php:945
+#: include/admin/class.settings.php:944
 msgid "First Aid"
 msgstr "İlk Yardım"
 
@@ -318,22 +324,22 @@ msgid "REST API"
 msgstr "REST API"
 
 #: include/admin/class.settings.php:319
-#: include/admin/class.settings.php:873
+#: include/admin/class.settings.php:872
 msgid "System Information"
 msgstr "Sistem Bilgisi"
 
 #: include/admin/class.settings.php:320
-#: include/admin/class.settings.php:887
+#: include/admin/class.settings.php:886
 msgid "Debugging"
 msgstr "Hata Ayıklama"
 
 #: include/admin/class.settings.php:321
-#: include/admin/class.settings.php:863
+#: include/admin/class.settings.php:862
 msgid "Export/Import"
 msgstr "Dışa Aktarma/İçe Aktarma"
 
 #: include/admin/class.settings.php:322
-#: include/admin/class.settings.php:868
+#: include/admin/class.settings.php:867
 msgid "Reset"
 msgstr "Sıfırla"
 
@@ -342,33 +348,33 @@ msgid "Licences"
 msgstr "Lisanslar"
 
 #: include/admin/class.settings.php:422
-#: include/admin/class.settings_ajax.php:42
+#: include/admin/class.settings_ajax.php:69
 msgid "Transients"
 msgstr "Geçici Veriler"
 
 #: include/admin/class.settings.php:423
-#: include/admin/class.settings_ajax.php:43
+#: include/admin/class.settings_ajax.php:70
 msgid "Database"
 msgstr "Veritabanı"
 
 #: include/admin/class.settings.php:424
-#: include/admin/class.settings_ajax.php:44
+#: include/admin/class.settings_ajax.php:71
 msgid "Filesystem"
 msgstr "Dosya Sistemi"
 
 #: include/admin/class.settings.php:425
-#: include/admin/class.settings_ajax.php:45
+#: include/admin/class.settings_ajax.php:72
 msgid "WP Object Cache"
 msgstr "WP Nesne Önbelleği"
 
 #: include/admin/class.settings.php:548
 #: include/admin/class.settings.php:604
 #: include/admin/class.settings.php:642
-#: include/admin/class.settings.php:676
-#: include/admin/class.settings.php:691
-#: include/admin/class.settings.php:704
-#: include/admin/class.settings.php:717
-#: include/admin/class.settings.php:786
+#: include/admin/class.settings.php:675
+#: include/admin/class.settings.php:690
+#: include/admin/class.settings.php:703
+#: include/admin/class.settings.php:716
+#: include/admin/class.settings.php:785
 msgid "Your settings have been saved."
 msgstr "Ayarlarınız kaydedildi."
 
@@ -380,249 +386,270 @@ msgstr "Ayarlarınız kaydedildi."
 msgid "All groups have been deleted and assignments reset."
 msgstr "Tüm gruplar silindi ve atamalar sıfırlandı."
 
-#: include/admin/class.settings.php:733
+#: include/admin/class.settings.php:732
 msgid "The filter on the tags page has been reset to show all tags."
 msgstr "Etiketler sayfasındaki filtre, tüm etiketleri gösterecek şekilde sıfırlandı."
 
-#: include/admin/class.settings.php:829
+#: include/admin/class.settings.php:828
 msgid "tag groups"
 msgstr "etiket grupları"
 
-#: include/admin/class.settings.php:835
-#: include/admin/class.settings.php:849
-#: include/admin/class.settings.php:904
+#: include/admin/class.settings.php:834
+#: include/admin/class.settings.php:848
+#: include/admin/class.settings.php:903
 msgid "tag cloud"
 msgstr "etiket bulutu"
 
-#: include/admin/class.settings.php:836
+#: include/admin/class.settings.php:835
 msgid "group info"
 msgstr "grup bilgisi"
 
-#: include/admin/class.settings.php:837
+#: include/admin/class.settings.php:836
 msgid "sidebar widget"
 msgstr "yan panel widget"
 
-#: include/admin/class.settings.php:838
+#: include/admin/class.settings.php:837
 msgid "accordion"
 msgstr "akordeon"
 
-#: include/admin/class.settings.php:839
+#: include/admin/class.settings.php:838
 msgid "tabs"
 msgstr "sekme"
 
-#: include/admin/class.settings.php:840
+#: include/admin/class.settings.php:839
 msgid "alphabetical"
 msgstr "alfabetik"
 
-#: include/admin/class.settings.php:841
+#: include/admin/class.settings.php:840
 msgid "post list"
 msgstr "gönderi listesi"
 
-#: include/admin/class.settings.php:853
+#: include/admin/class.settings.php:852
 msgid "colors"
 msgstr "renkler"
 
-#: include/admin/class.settings.php:854
+#: include/admin/class.settings.php:853
 msgid "tag description"
 msgstr "etiket açıklaması"
 
-#: include/admin/class.settings.php:860
-#: include/admin/class.settings.php:952
+#: include/admin/class.settings.php:859
+#: include/admin/class.settings.php:951
 msgid "tag filter"
 msgstr "etiket filtresi"
 
-#: include/admin/class.settings.php:860
+#: include/admin/class.settings.php:859
 msgid "post filter"
 msgstr "gönderi filtresi"
 
-#: include/admin/class.settings.php:865
+#: include/admin/class.settings.php:864
 msgid "backup"
 msgstr "yedekleme"
 
-#: include/admin/class.settings.php:870
+#: include/admin/class.settings.php:869
 msgid "remove plugin"
 msgstr "eklenti kaldır"
 
-#: include/admin/class.settings.php:870
+#: include/admin/class.settings.php:869
 msgid "remove data"
 msgstr "veri kaldır"
 
-#: include/admin/class.settings.php:870
+#: include/admin/class.settings.php:869
 msgid "delete groups"
 msgstr "grupları sil"
 
-#: include/admin/class.settings.php:876
-#: include/admin/class.settings.php:890
+#: include/admin/class.settings.php:875
+#: include/admin/class.settings.php:889
 msgid "debugging"
 msgstr "hata ayıklama"
 
-#: include/admin/class.settings.php:877
+#: include/admin/class.settings.php:876
 msgid "PHP Version"
 msgstr "PHP Versiyonu"
 
-#: include/admin/class.settings.php:878
+#: include/admin/class.settings.php:877
 #: views/admin/settings_troubleshooting_system.view.php:21
 msgid "Ajax Test"
 msgstr "Ajax Testi"
 
-#: include/admin/class.settings.php:879
-#: include/admin/class.settings.php:891
-#: include/admin/class.settings.php:948
+#: include/admin/class.settings.php:878
+#: include/admin/class.settings.php:890
+#: include/admin/class.settings.php:947
 msgid "troubleshooting"
 msgstr "sorun giderme"
 
-#: include/admin/class.settings.php:880
+#: include/admin/class.settings.php:879
 msgid "benchmarks"
 msgstr "karşılaştırmalar"
 
-#: include/admin/class.settings.php:881
+#: include/admin/class.settings.php:880
 msgid "speed test"
 msgstr "hız testi"
 
-#: include/admin/class.settings.php:882
-#: include/admin/class.settings.php:892
+#: include/admin/class.settings.php:881
+#: include/admin/class.settings.php:891
 msgid "error"
 msgstr "hata"
 
-#: include/admin/class.settings.php:883
-#: include/admin/class.settings.php:893
+#: include/admin/class.settings.php:882
+#: include/admin/class.settings.php:892
 msgid "testing"
 msgstr "test etme"
 
-#: include/admin/class.settings.php:894
-#: include/admin/class.settings.php:937
-#: include/admin/class.settings.php:950
+#: include/admin/class.settings.php:893
+#: include/admin/class.settings.php:936
+#: include/admin/class.settings.php:949
 msgid "help"
 msgstr "yardım"
 
-#: include/admin/class.settings.php:898
-msgid "Tag Groups Pro"
-msgstr "Etiket Grupları Pro"
+#: include/admin/class.settings.php:897
+msgid "PublishPress Tag Groups Pro"
+msgstr "PublishPress Tag Grupları Pro"
 
-#: include/admin/class.settings.php:901
+#: include/admin/class.settings.php:900
 msgid "upgrade"
 msgstr "yükseltme"
 
-#: include/admin/class.settings.php:902
+#: include/admin/class.settings.php:901
 msgid "more groups"
 msgstr "daha fazla grup"
 
-#: include/admin/class.settings.php:903
+#: include/admin/class.settings.php:902
 msgid "posts"
 msgstr "gönderiler"
 
-#: include/admin/class.settings.php:905
+#: include/admin/class.settings.php:904
 msgid "filter"
 msgstr "filtre"
 
-#: include/admin/class.settings.php:906
+#: include/admin/class.settings.php:905
 msgid "animated"
 msgstr "animasyonlu"
 
-#: include/admin/class.settings.php:907
+#: include/admin/class.settings.php:906
 msgid "searchable"
 msgstr "arama yapılabilir"
 
-#: include/admin/class.settings.php:915
+#: include/admin/class.settings.php:914
 msgid "Info"
 msgstr "Bilgi"
 
-#: include/admin/class.settings.php:918
+#: include/admin/class.settings.php:917
 msgid "author"
 msgstr "yazar"
 
-#: include/admin/class.settings.php:919
+#: include/admin/class.settings.php:918
 msgid "version"
 msgstr "sürüm"
 
-#: include/admin/class.settings.php:920
+#: include/admin/class.settings.php:919
 msgid "contact"
 msgstr "iletişim"
 
-#: include/admin/class.settings.php:921
+#: include/admin/class.settings.php:920
 msgid "about"
 msgstr "hakkında"
 
-#: include/admin/class.settings.php:925
+#: include/admin/class.settings.php:924
 msgid "Licenses"
 msgstr "Lisanslar"
 
-#: include/admin/class.settings.php:927
+#: include/admin/class.settings.php:926
 msgid "Credits"
 msgstr "Krediler"
 
-#: include/admin/class.settings.php:930
+#: include/admin/class.settings.php:929
 msgid "Development News"
 msgstr "Geliştirme Haberleri"
 
-#: include/admin/class.settings.php:932, fuzzy
+#: include/admin/class.settings.php:931, fuzzy
 msgid "blog"
 msgstr "blog"
 
-#: include/admin/class.settings.php:932
+#: include/admin/class.settings.php:931
 msgid "updates"
 msgstr "güncellemeler"
 
-#: include/admin/class.settings.php:937
-#: include/admin/class.settings.php:942
+#: include/admin/class.settings.php:936
+#: include/admin/class.settings.php:941
 msgid "getting started"
 msgstr "başlarken"
 
-#: include/admin/class.settings.php:937
-#: include/admin/class.settings.php:942
+#: include/admin/class.settings.php:936
+#: include/admin/class.settings.php:941
 msgid "introduction"
 msgstr "giriş"
 
-#: include/admin/class.settings.php:942
+#: include/admin/class.settings.php:941
 msgid "sample"
 msgstr "örnek"
 
-#: include/admin/class.settings.php:949
+#: include/admin/class.settings.php:948
 msgid "migrate"
 msgstr "taşımak"
 
-#: include/admin/class.settings.php:951, fuzzy
+#: include/admin/class.settings.php:950, fuzzy
 msgid "problem"
 msgstr "problem"
 
-#: include/admin/class.settings.php:960
+#: include/admin/class.settings.php:959
 msgid "live block preview"
 msgstr "canlı blok önizlemesi"
 
-#: include/admin/class.settings.php:967
+#: include/admin/class.settings.php:966
 msgid "translation"
 msgstr "çeviri"
 
-#: include/admin/class.settings.php:998
+#: include/admin/class.settings.php:997
 msgid "Migrating the term meta"
 msgstr "Terim meta taşıma"
 
-#: include/admin/class.settings.php:999
+#: include/admin/class.settings.php:998
 msgid "Fixing incorrect tag groups"
 msgstr "Yanlış etiket gruplarını düzeltme"
 
-#: include/admin/class.settings.php:1000
+#: include/admin/class.settings.php:999
 msgid "Fixing incorrect groups in term meta"
 msgstr "Terim meta içinde yanlış grupları düzeltme"
 
-#: include/admin/class.settings.php:1001
+#: include/admin/class.settings.php:1000
 msgid "Sorting groups in term meta"
 msgstr "Terim meta içinde grupları sıralama"
 
-#: include/admin/class.settings.php:1002
+#: include/admin/class.settings.php:1001
 msgid "Checking the tag names"
 msgstr "Etiket adlarını kontrol etme"
 
-#: include/admin/class.settings_ajax.php:48
-#: views/admin/settings_troubleshooting_system.view.php:126
+#: include/admin/class.settings_ajax.php:29
+msgid "You are not allowed to run cache benchmarks."
+msgstr "Önbellek karşılaştırmalarını çalıştırmanıza izin verilmiyor."
+
+#: include/admin/class.settings_ajax.php:34
+msgid "Invalid request method."
+msgstr "Geçersiz istek yöntemi."
+
+#: include/admin/class.settings_ajax.php:38
+msgid "The security check failed."
+msgstr "Güvenlik kontrolü başarısız oldu."
+
+#: include/admin/class.settings_ajax.php:43
+msgid "Invalid benchmark task."
+msgstr "Geçersiz karşılaştırma görevi."
+
+#: include/admin/class.settings_ajax.php:49
+#: include/admin/class.settings_ajax.php:57
+msgid "A cache benchmark is already running."
+msgstr "Bir önbellek karşılaştırması zaten çalışıyor."
+
+#: include/admin/class.settings_ajax.php:75
+#: views/admin/settings_troubleshooting_system.view.php:125
 msgid "Cache"
 msgstr "Önbellek"
 
-#: include/admin/class.settings_ajax.php:48
+#: include/admin/class.settings_ajax.php:75
 msgid "(1000x read, 100x write)"
 msgstr "(1000x okuma, 100x yazma)"
 
-#: include/admin/class.settings_ajax.php:63
+#: include/admin/class.settings_ajax.php:89
 msgid "ineffective"
 msgstr "etkisiz"
 
@@ -689,11 +716,11 @@ msgstr "atanmamış"
 #. translators: %1$s and %2$s are opening and closing anchor tags for the upgrade link
 #, php-format
 msgid ""
-"You're using Tag Groups Free. The Pro version has more features and "
-"support. %1$sUpgrade to Pro%2$s"
+"You're using PublishPress Tag Groups Free. The Pro version has more "
+"features and support. %1$sUpgrade to Pro%2$s"
 msgstr ""
-"Tag Gruplarını Ücretsiz kullanıyorsunuz. Pro versiyonu daha fazla özellik "
-"ve destek sunar. %1$sPro'ya yükselt%2$s"
+"PublishPress Tag Grupları Ücretsiz kullanıyorsunuz. Pro sürümü daha fazla "
+"özellik ve destek sunar. %1$sPro'ya Yükselt%2$s"
 
 #: includes-core/TagGroupsCoreAdmin.php:98
 #: includes-core/TagGroupsCoreAdmin.php:142
@@ -701,12 +728,12 @@ msgid "Upgrade to Pro"
 msgstr "Pro'ya yükselt"
 
 #: includes-core/TagGroupsCoreAdmin.php:115
-msgid "Upgrade to Tag Groups Pro"
-msgstr "Tag Groups Pro'ya yükselt"
+msgid "Upgrade to PublishPress Tag Groups Pro"
+msgstr "PublishPress Tag Grupları Pro'ya Yükselt"
 
 #: includes-core/TagGroupsCoreAdmin.php:120
-msgid "Enhance the power of Tag Groups with the Pro version:"
-msgstr "Tag Groups'un gücünü Pro versiyon ile artırın:"
+msgid "Enhance the power of PublishPress Tag Groups with the Pro version:"
+msgstr "PublishPress Tag Grupları'nın gücünü Pro sürümü ile artırın:"
 
 #: includes-core/TagGroupsCoreAdmin.php:123
 msgid "21 Shortcodes"
@@ -777,8 +804,8 @@ msgid "Parent Group Level"
 msgstr "Üst Grup Seviyesi"
 
 #: includes-core/TagGroupsCoreAdmin.php:149
-msgid "Need Tag Groups Support?"
-msgstr "Etiket Grupları Desteğine mi İhtiyacınız Var?"
+msgid "Need PublishPress Tag Groups Support?"
+msgstr "PublishPress Tag Grupları Desteğine mi ihtiyacınız var?"
 
 #: includes-core/TagGroupsCoreAdmin.php:154
 msgid "If you need help or have a new feature request, let us know."
@@ -796,13 +823,15 @@ msgstr "Detaylı belgeler ayrıca eklenti web sitesinde mevcuttur."
 msgid "View Knowledge Base"
 msgstr "Bilgi Tabanını Görüntüle"
 
-#: tag-groups.php:177
-msgid "The free Tag Groups plugin cannot be active together with Tag Groups Pro."
+#: tag-groups.php:196
+msgid ""
+"The free PublishPress Tag Groups plugin cannot be active together with "
+"PublishPress Tag Groups Pro."
 msgstr ""
-"Ücretsiz Etiket Grupları eklentisi, Etiket Grupları Pro ile birlikte aktif "
-"olamaz."
+"Ücretsiz PublishPress Tag Grupları eklentisi, PublishPress Tag Grupları Pro "
+"ile birlikte aktif olamaz."
 
-#: tag-groups.php:177
+#: tag-groups.php:196
 msgid "more information"
 msgstr "daha fazla bilgi"
 
@@ -875,12 +904,13 @@ msgstr "Etiket grubuna göre filtrele"
 #. translators: %s is the author display name
 #, php-format
 msgid ""
-"%s created this sample page in the Setup Wizard of the <b>Tag Groups</b> "
-"plugin. You can safely edit and delete it or keep it for future reference."
+"%s created this sample page in the Setup Wizard of the <b>PublishPress Tag "
+"Groups</b> plugin. You can safely edit and delete it or keep it for future "
+"reference."
 msgstr ""
-"%s bu örnek sayfayı <b>Tag Grupları</b> eklentisinin Kurulum Sihirbazında "
-"oluşturdu. Güvenle düzenleyip silebilir veya gelecekteki referans için "
-"saklayabilirsiniz."
+"%s, <b>PublishPress Tag Grupları</b> eklentisinin Kurulum Sihirbazı'nda bu "
+"örnek sayfayı oluşturdu. Bunu güvenle düzenleyebilir ve silebilir veya "
+"gelecekte referans için saklayabilirsiniz."
 
 #: views/admin/sample_page.view.php:6
 msgid ""
@@ -1594,15 +1624,15 @@ msgstr "Yanıtı Göster"
 msgid "passed"
 msgstr "başarılı"
 
-#: views/admin/settings_troubleshooting_system.view.php:99
+#: views/admin/settings_troubleshooting_system.view.php:98
 msgid "failed"
 msgstr "başarısız"
 
-#: views/admin/settings_troubleshooting_system.view.php:106
+#: views/admin/settings_troubleshooting_system.view.php:105
 msgid "Benchmarks"
 msgstr "Kıyaslamalar"
 
-#: views/admin/settings_troubleshooting_system.view.php:128
+#: views/admin/settings_troubleshooting_system.view.php:127
 msgid "Tag groups pro only"
 msgstr "Etiket grupları yalnızca pro"
 
@@ -1659,8 +1689,8 @@ msgid "Happy tagging!"
 msgstr "Etiketleme keyfi!"
 
 #: views/admin/setup_wizard_header.view.php:1
-msgid "Tag Groups Setup Wizard"
-msgstr "Tag Groups Kurulum Sihirbazı"
+msgid "PublishPress Tag Groups Setup Wizard"
+msgstr "PublishPress Tag Grupları Kurulum Sihirbazı"
 
 #: views/admin/setup_wizard_sample_content.view.php:3
 msgid ""
@@ -1841,13 +1871,31 @@ msgstr "Lütfen <a %1$s>%2$s</a> adresini ziyaret edin."
 msgid "Read more"
 msgstr "Daha fazla oku"
 
-#: views/partials/admin_footer_rating.view.php:4
-#. translators: 1: Opening TaxoPress link tag, 2: Closing link tag, 3: Plugin version.
+#: views/partials/admin_footer_rating.view.php:9
+#. translators: %1$s: plugin name, %2$s: five-star rating icons.
 #, php-format
-msgid "Thanks for using Tag Groups | %1$sTaxoPress.com%2$s | Version %3$s"
-msgstr ""
-"Tag Gruplarını kullandığınız için teşekkürler | %1$sTaxoPress.com%2$s | "
-"Versiyon %3$s"
+msgid "If you like %1$s please leave us a %2$s rating. Thank you!"
+msgstr "Eğer %1$s'yi beğendiyseniz lütfen bize %2$s puanı bırakın. Teşekkür ederiz!"
+
+#: views/partials/admin_footer_rating.view.php:10
+msgid "PublishPress Tag Groups"
+msgstr "PublishPress Tag Grupları"
+
+#: views/partials/admin_footer_rating.view.php:17
+msgid "PublishPress Tag Groups resources"
+msgstr "PublishPress Tag Grupları kaynakları"
+
+#: views/partials/admin_footer_rating.view.php:19
+msgid "About"
+msgstr "Hakkında"
+
+#: views/partials/admin_footer_rating.view.php:20
+msgid "Documentation"
+msgstr "Dokümantasyon"
+
+#: views/partials/admin_footer_rating.view.php:21
+msgid "Contact"
+msgstr "İletişim"
 
 #: views/partials/bulk_admin_footer.view.php:10
 #: views/partials/bulk_admin_footer.view.php:11
