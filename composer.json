@@ -45,8 +45,8 @@
     },
     "extra": {
         "plugin-slug": "tag-groups",
-        "plugin-name": "tag-groups",
-        "plugin-folder": "tag-groups",
+        "plugin-name": "publishpress-tag-groups",
+        "plugin-folder": "publishpress-tag-groups",
         "version-constant": "TAG_GROUPS_VERSION",
         "plugin-lang-domain": "tag-groups",
         "plugin-github-repo": "publishpress/publishpress-tag-groups",

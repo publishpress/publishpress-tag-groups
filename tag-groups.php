@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Plugin Name: PublishPress Tag Groups
+ * Plugin Name: PublishPress Tag Groups Free
  * Plugin URI: https://wordpress.org/plugins/tag-groups/
  * Description: PublishPress Tag Groups allows you to organize your WordPress taxonomy terms and show them in clouds, tabs, accordions, tables, lists and much more.
  * Author: PublishPress
@@ -35,6 +35,7 @@ if (class_exists('PublishPressInstanceProtection\Config')) {
     $pluginCheckerConfig = new PublishPressInstanceProtection\Config();
     $pluginCheckerConfig->pluginSlug = 'tag-groups';
     $pluginCheckerConfig->pluginName = 'PublishPress Tag Groups';
+    $pluginCheckerConfig->pluginFolder = 'publishpress-tag-groups';
     $pluginChecker = new PublishPressInstanceProtection\InstanceChecker($pluginCheckerConfig);
 }
 
@@ -59,8 +60,26 @@ if (file_exists(__DIR__ . '/lib/vendor' . $wordpressVersionNoticesPath)) {
     require_once __DIR__ . '/vendor' . $wordpressVersionNoticesPath;
 }
 
+if (!function_exists('tag_groups_free_plugin_basenames')) {
+    /**
+     * Return the supported free-plugin entry paths.
+     *
+     * The legacy WordPress.org folder remains supported while new packages use
+     * the PublishPress-branded folder name.
+     *
+     * @return string[]
+     */
+    function tag_groups_free_plugin_basenames()
+    {
+        return [
+            'publishpress-tag-groups/tag-groups.php',
+            'tag-groups/tag-groups.php',
+        ];
+    }
+}
+
 if (!defined('TAG_GROUPS_PLUGIN_IS_FREE')) {
-    if (plugin_basename(__FILE__) == 'tag-groups/tag-groups.php') {
+    if (in_array(plugin_basename(__FILE__), tag_groups_free_plugin_basenames(), true)) {
         define('TAG_GROUPS_PLUGIN_IS_FREE', true);
     } else {
     // Don't define the constant! If the premium plugin runs earlier, the free plugin still needs to define it.
@@ -155,7 +174,7 @@ if (!function_exists('tag_groups_init')) {
     function tag_groups_init()
     {
         global $tag_groups_loader ;
-        if (plugin_basename(__FILE__) != 'tag-groups/tag-groups.php') {
+        if (!in_array(plugin_basename(__FILE__), tag_groups_free_plugin_basenames(), true)) {
         /**
                      *  TGP-Codester or TGP-Freemius
                      */
@@ -170,7 +189,7 @@ if (!function_exists('tag_groups_init')) {
                  */
                 update_option('tag_group_reset_when_uninstall', 0);
                 require_once ABSPATH . 'wp-admin/includes/plugin.php';
-                deactivate_plugins('tag-groups/tag-groups.php', true);
+                deactivate_plugins(tag_groups_free_plugin_basenames(), true);
 // add the hook directly
                 add_action('admin_notices', function () {
 

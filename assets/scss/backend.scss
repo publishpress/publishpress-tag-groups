@@ -510,20 +510,6 @@
   }
 }
 
-.tag-groups-brand-header {
-  background: #fff;
-  border-bottom: 1px solid #dcdcde;
-  margin: 0 -20px 24px;
-  padding: 18px 28px;
-}
-
-.tag-groups-brand-header img {
-  display: block;
-  height: auto;
-  max-width: 100%;
-  width: 520px;
-}
-
 .tg_premium_backend_right_image_box {
   float: right;
   margin: 10px;
@@ -677,4 +663,59 @@ body[class*="tag-groups_page_"] .pp-version-notice-bold-purple-button:hover,
 body[class*="_page_tag-groups_"] .pp-version-notice-bold-purple-button:hover,
 body[class*="tag-groups-settings"] .pp-version-notice-bold-purple-button:hover {
   background: #fcca46 !important;
+}
+
+.tag-groups-admin-footer {
+  clear: both;
+  width: 100%;
+
+  > footer {
+    text-align: center;
+
+    > .tag-groups-rating {
+      font-size: 12px;
+      margin-bottom: 10px;
+      margin-top: 30px;
+    }
+
+    * {
+      color: #777;
+    }
+
+    > nav ul {
+      list-style: none;
+      margin: 12px 0;
+      padding: 0;
+
+      > li {
+        display: inline-block;
+
+        &:not(:first-child) {
+          margin-left: 15px;
+        }
+
+        > a {
+          font-weight: bold;
+        }
+      }
+    }
+
+    .dashicons-star-filled {
+      color: #ffb300;
+      font-size: 12px;
+      height: 12px;
+      line-height: 18px;
+      transition: color 200ms ease-in-out;
+      width: 12px;
+    }
+  }
+
+  .tag-groups-publishpress-logo {
+    margin-top: 10px;
+
+    img {
+      max-width: 100%;
+      width: 170px;
+    }
+  }
 }
