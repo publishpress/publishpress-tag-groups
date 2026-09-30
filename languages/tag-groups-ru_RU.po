@@ -1,4 +1,4 @@
-# Copyright (C) 2026 TaxoPress
+# Copyright (C) 2026 PublishPress
 # This file is distributed under the GPL-3.0-or-later.
 msgid ""
 msgstr ""
@@ -10,23 +10,21 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-06-15T12:41:40+00:00\n"
-"PO-Revision-Date: 2026-06-22 16:18+0000\n"
+"PO-Revision-Date: 2026-09-30 10:10+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: tag-groups\n"
 ">= 2 && n % 10 <= 4 && (n % 100 < 10 || n % 100 >= 20) ? 1 : 2);\n"
+">= 2 && n % 10 <= 4 && (n % 100 < 10 || n % 100 >= 20) ? 1: 2);\n"
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1: 2);\n"
 "Language: ru_RU\n"
 "Plural-Forms: nplurals=3; plural=(n % 10 == 1 && n % 100 != 11 ? 0 : n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 10 || n % 100 >= 20) ? 1 : 2);\n"
 
 #: tag-groups.php:4
-#: include/admin/class.admin.php:229
-#: views/admin/edit_tag_main.view.php:2
-#: views/admin/new_tag_from_list.view.php:2
 #. Plugin Name of the plugin
-msgid "Tag Groups"
-msgstr "Группы тегов"
+msgid "PublishPress Tag Groups Free"
+msgstr "Платное издание PublishPress Tag Groups"
 
-#: tag-groups.php:5, fuzzy
+#: tag-groups.php:5
 #. Plugin URI of the plugin
 msgid "https://wordpress.org/plugins/tag-groups/"
 msgstr "https://wordpress.org/plugins/tag-groups/"
@@ -34,29 +32,38 @@ msgstr "https://wordpress.org/plugins/tag-groups/"
 #: tag-groups.php:6
 #. Description of the plugin
 msgid ""
-"Tag Groups allows you to organize your WordPress taxonomy terms and show "
-"them in clouds, tabs, accordions, tables, lists and much more."
+"PublishPress Tag Groups allows you to organize your WordPress taxonomy "
+"terms and show them in clouds, tabs, accordions, tables, lists and much "
+"more."
 msgstr ""
-"Группы тегов позволяют организовать ваши термины таксономии WordPress и "
-"отображать их в облаках, вкладках, аккордеонах, таблицах, списках и многом "
-"другом."
+"PublishPress Tag Groups позволяет вам организовать ваши термины таксономии "
+"WordPress и отображать их в облаках, вкладках, аккордеонах, таблицах, "
+"списках и многом другом."
 
 #: tag-groups.php:7
+#: views/partials/admin_footer_rating.view.php:26
 #. Author of the plugin
-msgid "TaxoPress"
-msgstr "TaxoPress"
+msgid "PublishPress"
+msgstr "PublishPress"
 
-#: tag-groups.php:8, fuzzy
+#: tag-groups.php:8
 #. Author URI of the plugin
-msgid "https://taxopress.com"
-msgstr "https://taxopress.com"
+msgid "https://publishpress.com"
+msgstr "https://publishpress.com"
 
 #: include/admin/class.admin.php:22
 msgid "Home"
 msgstr "Домашняя страница"
 
+#: include/admin/class.admin.php:22
+#: include/admin/class.admin.php:229
+#: views/admin/edit_tag_main.view.php:2
+#: views/admin/new_tag_from_list.view.php:2
+msgid "Tag Groups"
+msgstr "Группы тегов"
+
 #: include/admin/class.admin.php:26
-#: include/admin/class.settings.php:827
+#: include/admin/class.settings.php:826
 #: include/admin/class.setup_wizard.php:98
 msgid "Taxonomies"
 msgstr "Таксономии"
@@ -70,18 +77,18 @@ msgid "Back End"
 msgstr "Бэкенд"
 
 #: include/admin/class.admin.php:47
-#: include/admin/class.settings.php:935
+#: include/admin/class.settings.php:934
 #: views/admin/onboarding.view.php:1
 msgid "First Steps"
 msgstr "Первый шаг"
 
 #: include/admin/class.admin.php:54
-#: include/admin/class.settings.php:940
+#: include/admin/class.settings.php:939
 msgid "Setup Wizard"
 msgstr "Мастер настройки"
 
 #: include/admin/class.admin.php:61
-#: include/admin/class.admin.php:1013
+#: include/admin/class.admin.php:1008
 #: views/admin/settings_front_end_shortcodes.view.php:95
 msgid "Settings"
 msgstr "Настройки"
@@ -90,19 +97,19 @@ msgstr "Настройки"
 msgid "Tag Group Admin"
 msgstr "Администратор группы тегов"
 
-#: include/admin/class.admin.php:457
+#: include/admin/class.admin.php:456
 msgid "The term has been removed from all groups."
 msgstr "Термин был удалён из всех групп."
 
-#: include/admin/class.admin.php:588
+#: include/admin/class.admin.php:587
 msgid "Edit this item inline"
 msgstr "Редактировать этот элемент на месте"
 
-#: include/admin/class.admin.php:590
+#: include/admin/class.admin.php:589
 msgid "Quick&nbsp;Edit"
 msgstr "Быстрое редактирование"
 
-#: include/admin/class.admin.php:1067
+#: include/admin/class.admin.php:1062
 #. translators: %s is the href attribute with URL
 #, php-format
 msgid ""
@@ -269,30 +276,30 @@ msgstr[1] "Информация о группе %d термина была об�
 msgstr[2] "Информация о группе %d терминов была обновлена."
 
 #: include/admin/class.settings.php:151
-#: include/admin/class.settings.php:858
+#: include/admin/class.settings.php:857
 #: views/admin/tag_groups_admin.view.php:26
 #: views/admin/tag_groups_admin.view.php:39
 msgid "Filters"
 msgstr "Фильтры"
 
 #: include/admin/class.settings.php:153
-#: include/admin/class.settings.php:958
+#: include/admin/class.settings.php:957
 msgid "Gutenberg"
 msgstr "Гутенберг"
 
 #: include/admin/class.settings.php:156
-#: include/admin/class.settings.php:965
+#: include/admin/class.settings.php:964
 msgid "Multilingual"
 msgstr "Многоязычный"
 
 #: include/admin/class.settings.php:238
-#: include/admin/class.settings.php:832
+#: include/admin/class.settings.php:831
 #: views/admin/settings_front_end_shortcodes.view.php:9
 msgid "Shortcodes"
 msgstr "Короткие коды"
 
 #: include/admin/class.settings.php:239
-#: include/admin/class.settings.php:846
+#: include/admin/class.settings.php:845
 msgid "Themes and Appearance"
 msgstr "Темы и внешний вид"
 
@@ -313,7 +320,7 @@ msgid "use unfiltered_html filter"
 msgstr "использовать фильтр unfiltered_html"
 
 #: include/admin/class.settings.php:317
-#: include/admin/class.settings.php:945
+#: include/admin/class.settings.php:944
 msgid "First Aid"
 msgstr "Первая помощь"
 
@@ -322,22 +329,22 @@ msgid "REST API"
 msgstr "REST API"
 
 #: include/admin/class.settings.php:319
-#: include/admin/class.settings.php:873
+#: include/admin/class.settings.php:872
 msgid "System Information"
 msgstr "Информация о системе"
 
 #: include/admin/class.settings.php:320
-#: include/admin/class.settings.php:887
+#: include/admin/class.settings.php:886
 msgid "Debugging"
 msgstr "Отладка"
 
 #: include/admin/class.settings.php:321
-#: include/admin/class.settings.php:863
+#: include/admin/class.settings.php:862
 msgid "Export/Import"
 msgstr "Экспорт/Импорт"
 
 #: include/admin/class.settings.php:322
-#: include/admin/class.settings.php:868
+#: include/admin/class.settings.php:867
 msgid "Reset"
 msgstr "Сброс"
 
@@ -346,33 +353,33 @@ msgid "Licences"
 msgstr "Лицензии"
 
 #: include/admin/class.settings.php:422
-#: include/admin/class.settings_ajax.php:42
+#: include/admin/class.settings_ajax.php:69
 msgid "Transients"
 msgstr "Временные данные"
 
 #: include/admin/class.settings.php:423
-#: include/admin/class.settings_ajax.php:43
+#: include/admin/class.settings_ajax.php:70
 msgid "Database"
 msgstr "База данных"
 
 #: include/admin/class.settings.php:424
-#: include/admin/class.settings_ajax.php:44
+#: include/admin/class.settings_ajax.php:71
 msgid "Filesystem"
 msgstr "Файловая система"
 
 #: include/admin/class.settings.php:425
-#: include/admin/class.settings_ajax.php:45
+#: include/admin/class.settings_ajax.php:72
 msgid "WP Object Cache"
 msgstr "Кэш объектов WP"
 
 #: include/admin/class.settings.php:548
 #: include/admin/class.settings.php:604
 #: include/admin/class.settings.php:642
-#: include/admin/class.settings.php:676
-#: include/admin/class.settings.php:691
-#: include/admin/class.settings.php:704
-#: include/admin/class.settings.php:717
-#: include/admin/class.settings.php:786
+#: include/admin/class.settings.php:675
+#: include/admin/class.settings.php:690
+#: include/admin/class.settings.php:703
+#: include/admin/class.settings.php:716
+#: include/admin/class.settings.php:785
 msgid "Your settings have been saved."
 msgstr "Ваши настройки были сохранены."
 
@@ -384,249 +391,270 @@ msgstr "Ваши настройки были сохранены."
 msgid "All groups have been deleted and assignments reset."
 msgstr "Все группы были удалены, а назначения сброшены."
 
-#: include/admin/class.settings.php:733
+#: include/admin/class.settings.php:732
 msgid "The filter on the tags page has been reset to show all tags."
 msgstr "Фильтр на странице тегов был сброшен, чтобы показать все теги."
 
-#: include/admin/class.settings.php:829
+#: include/admin/class.settings.php:828
 msgid "tag groups"
 msgstr "группы тегов"
 
-#: include/admin/class.settings.php:835
-#: include/admin/class.settings.php:849
-#: include/admin/class.settings.php:904
+#: include/admin/class.settings.php:834
+#: include/admin/class.settings.php:848
+#: include/admin/class.settings.php:903
 msgid "tag cloud"
 msgstr "облако тегов"
 
-#: include/admin/class.settings.php:836
+#: include/admin/class.settings.php:835
 msgid "group info"
 msgstr "информация о группе"
 
-#: include/admin/class.settings.php:837
+#: include/admin/class.settings.php:836
 msgid "sidebar widget"
 msgstr "виджет боковой панели"
 
-#: include/admin/class.settings.php:838
+#: include/admin/class.settings.php:837
 msgid "accordion"
 msgstr "аккордеон"
 
-#: include/admin/class.settings.php:839
+#: include/admin/class.settings.php:838
 msgid "tabs"
 msgstr "вкладки"
 
-#: include/admin/class.settings.php:840
+#: include/admin/class.settings.php:839
 msgid "alphabetical"
 msgstr "в алфавитном порядке"
 
-#: include/admin/class.settings.php:841
+#: include/admin/class.settings.php:840
 msgid "post list"
 msgstr "список записей"
 
-#: include/admin/class.settings.php:853
+#: include/admin/class.settings.php:852
 msgid "colors"
 msgstr "цвета"
 
-#: include/admin/class.settings.php:854
+#: include/admin/class.settings.php:853
 msgid "tag description"
 msgstr "описание тега"
 
-#: include/admin/class.settings.php:860
-#: include/admin/class.settings.php:952
+#: include/admin/class.settings.php:859
+#: include/admin/class.settings.php:951
 msgid "tag filter"
 msgstr "фильтр тегов"
 
-#: include/admin/class.settings.php:860
+#: include/admin/class.settings.php:859
 msgid "post filter"
 msgstr "фильтр записей"
 
-#: include/admin/class.settings.php:865
+#: include/admin/class.settings.php:864
 msgid "backup"
 msgstr "резервное копирование"
 
-#: include/admin/class.settings.php:870
+#: include/admin/class.settings.php:869
 msgid "remove plugin"
 msgstr "удалить плагин"
 
-#: include/admin/class.settings.php:870
+#: include/admin/class.settings.php:869
 msgid "remove data"
 msgstr "удалить данные"
 
-#: include/admin/class.settings.php:870
+#: include/admin/class.settings.php:869
 msgid "delete groups"
 msgstr "удалить группы"
 
-#: include/admin/class.settings.php:876
-#: include/admin/class.settings.php:890
+#: include/admin/class.settings.php:875
+#: include/admin/class.settings.php:889
 msgid "debugging"
 msgstr "отладка"
 
-#: include/admin/class.settings.php:877
+#: include/admin/class.settings.php:876
 msgid "PHP Version"
 msgstr "Версия PHP"
 
-#: include/admin/class.settings.php:878
+#: include/admin/class.settings.php:877
 #: views/admin/settings_troubleshooting_system.view.php:21
 msgid "Ajax Test"
 msgstr "Тест Ajax"
 
-#: include/admin/class.settings.php:879
-#: include/admin/class.settings.php:891
-#: include/admin/class.settings.php:948
+#: include/admin/class.settings.php:878
+#: include/admin/class.settings.php:890
+#: include/admin/class.settings.php:947
 msgid "troubleshooting"
 msgstr "поиск и устранение неисправностей"
 
-#: include/admin/class.settings.php:880
+#: include/admin/class.settings.php:879
 msgid "benchmarks"
 msgstr "бенчмарки"
 
-#: include/admin/class.settings.php:881
+#: include/admin/class.settings.php:880
 msgid "speed test"
 msgstr "тест скорости"
 
-#: include/admin/class.settings.php:882
-#: include/admin/class.settings.php:892
+#: include/admin/class.settings.php:881
+#: include/admin/class.settings.php:891
 msgid "error"
 msgstr "ошибка"
 
-#: include/admin/class.settings.php:883
-#: include/admin/class.settings.php:893
+#: include/admin/class.settings.php:882
+#: include/admin/class.settings.php:892
 msgid "testing"
 msgstr "тестирование"
 
-#: include/admin/class.settings.php:894
-#: include/admin/class.settings.php:937
-#: include/admin/class.settings.php:950
+#: include/admin/class.settings.php:893
+#: include/admin/class.settings.php:936
+#: include/admin/class.settings.php:949
 msgid "help"
 msgstr "помощь"
 
-#: include/admin/class.settings.php:898, fuzzy
-msgid "Tag Groups Pro"
-msgstr "Tag Groups Pro"
+#: include/admin/class.settings.php:897
+msgid "PublishPress Tag Groups Pro"
+msgstr "Платное издание PublishPress Tag Groups"
 
-#: include/admin/class.settings.php:901
+#: include/admin/class.settings.php:900
 msgid "upgrade"
 msgstr "обновление"
 
-#: include/admin/class.settings.php:902
+#: include/admin/class.settings.php:901
 msgid "more groups"
 msgstr "больше групп"
 
-#: include/admin/class.settings.php:903
+#: include/admin/class.settings.php:902
 msgid "posts"
 msgstr "посты"
 
-#: include/admin/class.settings.php:905
+#: include/admin/class.settings.php:904
 msgid "filter"
 msgstr "фильтр"
 
-#: include/admin/class.settings.php:906
+#: include/admin/class.settings.php:905
 msgid "animated"
 msgstr "анимированный"
 
-#: include/admin/class.settings.php:907
+#: include/admin/class.settings.php:906
 msgid "searchable"
 msgstr "поисковый"
 
-#: include/admin/class.settings.php:915
+#: include/admin/class.settings.php:914
 msgid "Info"
 msgstr "Информация"
 
-#: include/admin/class.settings.php:918
+#: include/admin/class.settings.php:917
 msgid "author"
 msgstr "автор"
 
-#: include/admin/class.settings.php:919
+#: include/admin/class.settings.php:918
 msgid "version"
 msgstr "версия"
 
-#: include/admin/class.settings.php:920
+#: include/admin/class.settings.php:919
 msgid "contact"
 msgstr "контакт"
 
-#: include/admin/class.settings.php:921
+#: include/admin/class.settings.php:920
 msgid "about"
 msgstr "о программе"
 
-#: include/admin/class.settings.php:925
+#: include/admin/class.settings.php:924
 msgid "Licenses"
 msgstr "Лицензии"
 
-#: include/admin/class.settings.php:927
+#: include/admin/class.settings.php:926
 msgid "Credits"
 msgstr "Кредиты"
 
-#: include/admin/class.settings.php:930
+#: include/admin/class.settings.php:929
 msgid "Development News"
 msgstr "Новости разработки"
 
-#: include/admin/class.settings.php:932
+#: include/admin/class.settings.php:931
 msgid "blog"
 msgstr "блог"
 
-#: include/admin/class.settings.php:932
+#: include/admin/class.settings.php:931
 msgid "updates"
 msgstr "обновления"
 
-#: include/admin/class.settings.php:937
-#: include/admin/class.settings.php:942
+#: include/admin/class.settings.php:936
+#: include/admin/class.settings.php:941
 msgid "getting started"
 msgstr "начало работы"
 
-#: include/admin/class.settings.php:937
-#: include/admin/class.settings.php:942
+#: include/admin/class.settings.php:936
+#: include/admin/class.settings.php:941
 msgid "introduction"
 msgstr "введение"
 
-#: include/admin/class.settings.php:942
+#: include/admin/class.settings.php:941
 msgid "sample"
 msgstr "пример"
 
-#: include/admin/class.settings.php:949
+#: include/admin/class.settings.php:948
 msgid "migrate"
 msgstr "миграция"
 
-#: include/admin/class.settings.php:951
+#: include/admin/class.settings.php:950
 msgid "problem"
 msgstr "проблема"
 
-#: include/admin/class.settings.php:960
+#: include/admin/class.settings.php:959
 msgid "live block preview"
 msgstr "предварительный просмотр живого блока"
 
-#: include/admin/class.settings.php:967
+#: include/admin/class.settings.php:966
 msgid "translation"
 msgstr "перевод"
 
-#: include/admin/class.settings.php:998
+#: include/admin/class.settings.php:997
 msgid "Migrating the term meta"
 msgstr "Миграция метаданных термина"
 
-#: include/admin/class.settings.php:999
+#: include/admin/class.settings.php:998
 msgid "Fixing incorrect tag groups"
 msgstr "Исправление некорректных групп тегов"
 
-#: include/admin/class.settings.php:1000
+#: include/admin/class.settings.php:999
 msgid "Fixing incorrect groups in term meta"
 msgstr "Исправление некорректных групп в метаданных термина"
 
-#: include/admin/class.settings.php:1001
+#: include/admin/class.settings.php:1000
 msgid "Sorting groups in term meta"
 msgstr "Сортировка групп в метаданных термина"
 
-#: include/admin/class.settings.php:1002
+#: include/admin/class.settings.php:1001
 msgid "Checking the tag names"
 msgstr "Проверка имен тегов"
 
-#: include/admin/class.settings_ajax.php:48
-#: views/admin/settings_troubleshooting_system.view.php:126
+#: include/admin/class.settings_ajax.php:29
+msgid "You are not allowed to run cache benchmarks."
+msgstr "Вам не разрешено запускать тесты производительности кеша."
+
+#: include/admin/class.settings_ajax.php:34
+msgid "Invalid request method."
+msgstr "Неверный метод запроса."
+
+#: include/admin/class.settings_ajax.php:38
+msgid "The security check failed."
+msgstr "Проверка безопасности не прошла."
+
+#: include/admin/class.settings_ajax.php:43
+msgid "Invalid benchmark task."
+msgstr "Неверная задача для теста производительности."
+
+#: include/admin/class.settings_ajax.php:49
+#: include/admin/class.settings_ajax.php:57
+msgid "A cache benchmark is already running."
+msgstr "Тест производительности кеша уже запущен."
+
+#: include/admin/class.settings_ajax.php:75
+#: views/admin/settings_troubleshooting_system.view.php:125
 msgid "Cache"
 msgstr "Кэш"
 
-#: include/admin/class.settings_ajax.php:48
+#: include/admin/class.settings_ajax.php:75
 msgid "(1000x read, 100x write)"
 msgstr "(1000x чтение, 100x запись)"
 
-#: include/admin/class.settings_ajax.php:63
+#: include/admin/class.settings_ajax.php:89
 msgid "ineffective"
 msgstr "неэффективный"
 
@@ -693,11 +721,11 @@ msgstr "не назначено"
 #. translators: %1$s and %2$s are opening and closing anchor tags for the upgrade link
 #, php-format
 msgid ""
-"You're using Tag Groups Free. The Pro version has more features and "
-"support. %1$sUpgrade to Pro%2$s"
+"You're using PublishPress Tag Groups Free. The Pro version has more "
+"features and support. %1$sUpgrade to Pro%2$s"
 msgstr ""
-"Вы используете Tag Groups Free. Профессиональная версия имеет больше "
-"функций и поддержку. %1$sОбновить до Pro%2$s"
+"Вы используете бесплатную версию PublishPress Tag Groups. Платная версия "
+"имеет больше функций и поддержку. %1$sОбновить до Pro%2$s"
 
 #: includes-core/TagGroupsCoreAdmin.php:98
 #: includes-core/TagGroupsCoreAdmin.php:142
@@ -705,12 +733,12 @@ msgid "Upgrade to Pro"
 msgstr "Перейти на Pro"
 
 #: includes-core/TagGroupsCoreAdmin.php:115
-msgid "Upgrade to Tag Groups Pro"
-msgstr "Перейти на Tag Groups Pro"
+msgid "Upgrade to PublishPress Tag Groups Pro"
+msgstr "Обновить до платного издания PublishPress Tag Groups Pro"
 
 #: includes-core/TagGroupsCoreAdmin.php:120
-msgid "Enhance the power of Tag Groups with the Pro version:"
-msgstr "Увеличьте возможности Tag Groups с помощью профессиональной версии:"
+msgid "Enhance the power of PublishPress Tag Groups with the Pro version:"
+msgstr "Увеличьте возможности PublishPress Tag Groups с помощью платного издания:"
 
 #: includes-core/TagGroupsCoreAdmin.php:123
 msgid "21 Shortcodes"
@@ -781,8 +809,8 @@ msgid "Parent Group Level"
 msgstr "Уровень родительской группы"
 
 #: includes-core/TagGroupsCoreAdmin.php:149
-msgid "Need Tag Groups Support?"
-msgstr "Нужна поддержка групп тегов?"
+msgid "Need PublishPress Tag Groups Support?"
+msgstr "Нужна поддержка PublishPress Tag Groups?"
 
 #: includes-core/TagGroupsCoreAdmin.php:154
 msgid "If you need help or have a new feature request, let us know."
@@ -802,13 +830,15 @@ msgstr "Подробная документация также доступна 
 msgid "View Knowledge Base"
 msgstr "Просмотреть базу знаний"
 
-#: tag-groups.php:177
-msgid "The free Tag Groups plugin cannot be active together with Tag Groups Pro."
+#: tag-groups.php:196
+msgid ""
+"The free PublishPress Tag Groups plugin cannot be active together with "
+"PublishPress Tag Groups Pro."
 msgstr ""
-"Бесплатный плагин групп тегов не может быть активен одновременно с Tag "
-"Groups Pro."
+"Бесплатный плагин PublishPress Tag Groups не может быть активным вместе с "
+"платной версией PublishPress Tag Groups Pro."
 
-#: tag-groups.php:177
+#: tag-groups.php:196
 msgid "more information"
 msgstr "больше информации"
 
@@ -883,12 +913,13 @@ msgstr "Фильтровать по группе меток"
 #. translators: %s is the author display name
 #, php-format
 msgid ""
-"%s created this sample page in the Setup Wizard of the <b>Tag Groups</b> "
-"plugin. You can safely edit and delete it or keep it for future reference."
+"%s created this sample page in the Setup Wizard of the <b>PublishPress Tag "
+"Groups</b> plugin. You can safely edit and delete it or keep it for future "
+"reference."
 msgstr ""
-"%s создал эту образцовую страницу в Мастере настройки плагина <b>Tag "
-"Groups</b>. Вы можете безопасно редактировать и удалять её или оставить для "
-"будущего использования."
+"%s создал эту страницу-пример в Мастере настройки плагина <b>PublishPress "
+"Tag Groups</b>. Вы можете безопасно редактировать и удалять её или оставить "
+"для будущего использования."
 
 #: views/admin/sample_page.view.php:6
 msgid ""
@@ -1605,15 +1636,15 @@ msgstr "Показать ответ"
 msgid "passed"
 msgstr "пройдено"
 
-#: views/admin/settings_troubleshooting_system.view.php:99
+#: views/admin/settings_troubleshooting_system.view.php:98
 msgid "failed"
 msgstr "не пройдено"
 
-#: views/admin/settings_troubleshooting_system.view.php:106
+#: views/admin/settings_troubleshooting_system.view.php:105
 msgid "Benchmarks"
 msgstr "Бенчмарки"
 
-#: views/admin/settings_troubleshooting_system.view.php:128
+#: views/admin/settings_troubleshooting_system.view.php:127
 msgid "Tag groups pro only"
 msgstr "Только для pro групп тегов"
 
@@ -1670,8 +1701,8 @@ msgid "Happy tagging!"
 msgstr "Счастливого тегирования!"
 
 #: views/admin/setup_wizard_header.view.php:1
-msgid "Tag Groups Setup Wizard"
-msgstr "Мастер настройки групп тегов"
+msgid "PublishPress Tag Groups Setup Wizard"
+msgstr "Мастер настройки PublishPress Tag Groups"
 
 #: views/admin/setup_wizard_sample_content.view.php:3
 msgid ""
@@ -1853,11 +1884,31 @@ msgstr "Пожалуйста, посетите <a %1$s>%2$s</a>."
 msgid "Read more"
 msgstr "Читать далее"
 
-#: views/partials/admin_footer_rating.view.php:4
-#. translators: 1: Opening TaxoPress link tag, 2: Closing link tag, 3: Plugin version.
+#: views/partials/admin_footer_rating.view.php:9
+#. translators: %1$s: plugin name, %2$s: five-star rating icons.
 #, php-format
-msgid "Thanks for using Tag Groups | %1$sTaxoPress.com%2$s | Version %3$s"
-msgstr "Спасибо за использование Tag Groups | %1$sTaxoPress.com%2$s | Версия %3$s"
+msgid "If you like %1$s please leave us a %2$s rating. Thank you!"
+msgstr "Если вам нравится %1$s, пожалуйста, оставьте нам оценку %2$s. Спасибо!"
+
+#: views/partials/admin_footer_rating.view.php:10, fuzzy
+msgid "PublishPress Tag Groups"
+msgstr "PublishPress Tag Groups"
+
+#: views/partials/admin_footer_rating.view.php:17
+msgid "PublishPress Tag Groups resources"
+msgstr "Ресурсы PublishPress Tag Groups"
+
+#: views/partials/admin_footer_rating.view.php:19
+msgid "About"
+msgstr "О программе"
+
+#: views/partials/admin_footer_rating.view.php:20
+msgid "Documentation"
+msgstr "Документация"
+
+#: views/partials/admin_footer_rating.view.php:21
+msgid "Contact"
+msgstr "Контакт"
 
 #: views/partials/bulk_admin_footer.view.php:10
 #: views/partials/bulk_admin_footer.view.php:11

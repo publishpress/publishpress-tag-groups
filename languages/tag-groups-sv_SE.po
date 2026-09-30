@@ -1,4 +1,4 @@
-# Copyright (C) 2026 TaxoPress
+# Copyright (C) 2026 PublishPress
 # This file is distributed under the GPL-3.0-or-later.
 msgid ""
 msgstr ""
@@ -10,21 +10,18 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-06-15T12:41:40+00:00\n"
-"PO-Revision-Date: 2026-06-22 16:18+0000\n"
+"PO-Revision-Date: 2026-09-30 10:10+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: tag-groups\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Language: sv-SE\n"
 
 #: tag-groups.php:4
-#: include/admin/class.admin.php:229
-#: views/admin/edit_tag_main.view.php:2
-#: views/admin/new_tag_from_list.view.php:2
 #. Plugin Name of the plugin
-msgid "Tag Groups"
-msgstr "Tag-Groups"
+msgid "PublishPress Tag Groups Free"
+msgstr "PublishPress Tag Groups Gratis"
 
-#: tag-groups.php:5, fuzzy
+#: tag-groups.php:5
 #. Plugin URI of the plugin
 msgid "https://wordpress.org/plugins/tag-groups/"
 msgstr "https://wordpress.org/plugins/tag-groups/"
@@ -32,28 +29,38 @@ msgstr "https://wordpress.org/plugins/tag-groups/"
 #: tag-groups.php:6
 #. Description of the plugin
 msgid ""
-"Tag Groups allows you to organize your WordPress taxonomy terms and show "
-"them in clouds, tabs, accordions, tables, lists and much more."
+"PublishPress Tag Groups allows you to organize your WordPress taxonomy "
+"terms and show them in clouds, tabs, accordions, tables, lists and much "
+"more."
 msgstr ""
-"Tag-Groups gör att du kan organisera dina WordPress taxonomiterm och visa "
-"dem i moln, flikar, ackordeon, tabeller, listor och mycket mer."
+"PublishPress Tag Groups gör att du kan organisera dina WordPress "
+"taxonomiterm och visa dem i moln, flikar, ackordioner, tabeller, listor och "
+"mycket mer."
 
 #: tag-groups.php:7
+#: views/partials/admin_footer_rating.view.php:26
 #. Author of the plugin
-msgid "TaxoPress"
-msgstr "TaxoPress"
+msgid "PublishPress"
+msgstr "PublishPress"
 
-#: tag-groups.php:8, fuzzy
+#: tag-groups.php:8
 #. Author URI of the plugin
-msgid "https://taxopress.com"
-msgstr "https://taxopress.com"
+msgid "https://publishpress.com"
+msgstr "https://publishpress.com"
 
 #: include/admin/class.admin.php:22
 msgid "Home"
 msgstr "Hem"
 
+#: include/admin/class.admin.php:22
+#: include/admin/class.admin.php:229
+#: views/admin/edit_tag_main.view.php:2
+#: views/admin/new_tag_from_list.view.php:2
+msgid "Tag Groups"
+msgstr "Tag-Groups"
+
 #: include/admin/class.admin.php:26
-#: include/admin/class.settings.php:827
+#: include/admin/class.settings.php:826
 #: include/admin/class.setup_wizard.php:98
 msgid "Taxonomies"
 msgstr "Taxonomier"
@@ -67,18 +74,18 @@ msgid "Back End"
 msgstr "Baksidan"
 
 #: include/admin/class.admin.php:47
-#: include/admin/class.settings.php:935
+#: include/admin/class.settings.php:934
 #: views/admin/onboarding.view.php:1
 msgid "First Steps"
 msgstr "Första Steg"
 
 #: include/admin/class.admin.php:54
-#: include/admin/class.settings.php:940
+#: include/admin/class.settings.php:939
 msgid "Setup Wizard"
 msgstr "Installationsguide"
 
 #: include/admin/class.admin.php:61
-#: include/admin/class.admin.php:1013
+#: include/admin/class.admin.php:1008
 #: views/admin/settings_front_end_shortcodes.view.php:95
 msgid "Settings"
 msgstr "Inställningar"
@@ -87,19 +94,19 @@ msgstr "Inställningar"
 msgid "Tag Group Admin"
 msgstr "Tag Group Admin"
 
-#: include/admin/class.admin.php:457
+#: include/admin/class.admin.php:456
 msgid "The term has been removed from all groups."
 msgstr "Termen har tagits bort från alla grupper."
 
-#: include/admin/class.admin.php:588
+#: include/admin/class.admin.php:587
 msgid "Edit this item inline"
 msgstr "Redigera detta objekt inline"
 
-#: include/admin/class.admin.php:590
+#: include/admin/class.admin.php:589
 msgid "Quick&nbsp;Edit"
 msgstr "Snabb&nbsp;Redigera"
 
-#: include/admin/class.admin.php:1067
+#: include/admin/class.admin.php:1062
 #. translators: %s is the href attribute with URL
 #, php-format
 msgid ""
@@ -262,30 +269,30 @@ msgstr[0] "Gruppinformationen för %d term har uppdaterats."
 msgstr[1] "Gruppinformationen för %d termer har uppdaterats."
 
 #: include/admin/class.settings.php:151
-#: include/admin/class.settings.php:858
+#: include/admin/class.settings.php:857
 #: views/admin/tag_groups_admin.view.php:26
 #: views/admin/tag_groups_admin.view.php:39
 msgid "Filters"
 msgstr "Filter"
 
 #: include/admin/class.settings.php:153
-#: include/admin/class.settings.php:958, fuzzy
+#: include/admin/class.settings.php:957, fuzzy
 msgid "Gutenberg"
 msgstr "Gutenberg"
 
 #: include/admin/class.settings.php:156
-#: include/admin/class.settings.php:965
+#: include/admin/class.settings.php:964
 msgid "Multilingual"
 msgstr "Flerspråkig"
 
 #: include/admin/class.settings.php:238
-#: include/admin/class.settings.php:832
+#: include/admin/class.settings.php:831
 #: views/admin/settings_front_end_shortcodes.view.php:9
 msgid "Shortcodes"
 msgstr "Kortkoder"
 
 #: include/admin/class.settings.php:239
-#: include/admin/class.settings.php:846
+#: include/admin/class.settings.php:845
 msgid "Themes and Appearance"
 msgstr "Teman och Utseende"
 
@@ -306,7 +313,7 @@ msgid "use unfiltered_html filter"
 msgstr "använd unfiltered_html filter"
 
 #: include/admin/class.settings.php:317
-#: include/admin/class.settings.php:945
+#: include/admin/class.settings.php:944
 msgid "First Aid"
 msgstr "Första Hjälpen"
 
@@ -315,22 +322,22 @@ msgid "REST API"
 msgstr "REST API"
 
 #: include/admin/class.settings.php:319
-#: include/admin/class.settings.php:873
+#: include/admin/class.settings.php:872
 msgid "System Information"
 msgstr "Systeminformation"
 
 #: include/admin/class.settings.php:320
-#: include/admin/class.settings.php:887
+#: include/admin/class.settings.php:886
 msgid "Debugging"
 msgstr "Felsökning"
 
 #: include/admin/class.settings.php:321
-#: include/admin/class.settings.php:863
+#: include/admin/class.settings.php:862
 msgid "Export/Import"
 msgstr "Exportera/Importera"
 
 #: include/admin/class.settings.php:322
-#: include/admin/class.settings.php:868
+#: include/admin/class.settings.php:867
 msgid "Reset"
 msgstr "Återställ"
 
@@ -339,33 +346,33 @@ msgid "Licences"
 msgstr "Licenser"
 
 #: include/admin/class.settings.php:422
-#: include/admin/class.settings_ajax.php:42
+#: include/admin/class.settings_ajax.php:69
 msgid "Transients"
 msgstr "Transienta"
 
 #: include/admin/class.settings.php:423
-#: include/admin/class.settings_ajax.php:43
+#: include/admin/class.settings_ajax.php:70
 msgid "Database"
 msgstr "Databas"
 
 #: include/admin/class.settings.php:424
-#: include/admin/class.settings_ajax.php:44
+#: include/admin/class.settings_ajax.php:71
 msgid "Filesystem"
 msgstr "Filsystem"
 
 #: include/admin/class.settings.php:425
-#: include/admin/class.settings_ajax.php:45
+#: include/admin/class.settings_ajax.php:72
 msgid "WP Object Cache"
 msgstr "WP Objekt Cache"
 
 #: include/admin/class.settings.php:548
 #: include/admin/class.settings.php:604
 #: include/admin/class.settings.php:642
-#: include/admin/class.settings.php:676
-#: include/admin/class.settings.php:691
-#: include/admin/class.settings.php:704
-#: include/admin/class.settings.php:717
-#: include/admin/class.settings.php:786
+#: include/admin/class.settings.php:675
+#: include/admin/class.settings.php:690
+#: include/admin/class.settings.php:703
+#: include/admin/class.settings.php:716
+#: include/admin/class.settings.php:785
 msgid "Your settings have been saved."
 msgstr "Dina inställningar har sparats."
 
@@ -377,249 +384,270 @@ msgstr "Dina inställningar har sparats."
 msgid "All groups have been deleted and assignments reset."
 msgstr "Alla grupper har raderats och tilldelningar har återställts."
 
-#: include/admin/class.settings.php:733
+#: include/admin/class.settings.php:732
 msgid "The filter on the tags page has been reset to show all tags."
 msgstr "Filtret på taggsidan har återställts för att visa alla taggar."
 
-#: include/admin/class.settings.php:829
+#: include/admin/class.settings.php:828
 msgid "tag groups"
 msgstr "taggrupper"
 
-#: include/admin/class.settings.php:835
-#: include/admin/class.settings.php:849
-#: include/admin/class.settings.php:904
+#: include/admin/class.settings.php:834
+#: include/admin/class.settings.php:848
+#: include/admin/class.settings.php:903
 msgid "tag cloud"
 msgstr "tagmoln"
 
-#: include/admin/class.settings.php:836
+#: include/admin/class.settings.php:835
 msgid "group info"
 msgstr "gruppinfo"
 
-#: include/admin/class.settings.php:837
+#: include/admin/class.settings.php:836
 msgid "sidebar widget"
 msgstr "sidofältwidget"
 
-#: include/admin/class.settings.php:838
+#: include/admin/class.settings.php:837
 msgid "accordion"
 msgstr "ackordion"
 
-#: include/admin/class.settings.php:839
+#: include/admin/class.settings.php:838
 msgid "tabs"
 msgstr "flikar"
 
-#: include/admin/class.settings.php:840
+#: include/admin/class.settings.php:839
 msgid "alphabetical"
 msgstr "alfabetisk"
 
-#: include/admin/class.settings.php:841
+#: include/admin/class.settings.php:840
 msgid "post list"
 msgstr "inläggslista"
 
-#: include/admin/class.settings.php:853
+#: include/admin/class.settings.php:852
 msgid "colors"
 msgstr "färger"
 
-#: include/admin/class.settings.php:854
+#: include/admin/class.settings.php:853
 msgid "tag description"
 msgstr "taggbeskrivning"
 
-#: include/admin/class.settings.php:860
-#: include/admin/class.settings.php:952
+#: include/admin/class.settings.php:859
+#: include/admin/class.settings.php:951
 msgid "tag filter"
 msgstr "taggfilter"
 
-#: include/admin/class.settings.php:860
+#: include/admin/class.settings.php:859
 msgid "post filter"
 msgstr "inläggsfilter"
 
-#: include/admin/class.settings.php:865, fuzzy
+#: include/admin/class.settings.php:864, fuzzy
 msgid "backup"
 msgstr "backup"
 
-#: include/admin/class.settings.php:870
+#: include/admin/class.settings.php:869
 msgid "remove plugin"
 msgstr "ta bort plugin"
 
-#: include/admin/class.settings.php:870
+#: include/admin/class.settings.php:869
 msgid "remove data"
 msgstr "ta bort data"
 
-#: include/admin/class.settings.php:870
+#: include/admin/class.settings.php:869
 msgid "delete groups"
 msgstr "ta bort grupper"
 
-#: include/admin/class.settings.php:876
-#: include/admin/class.settings.php:890
+#: include/admin/class.settings.php:875
+#: include/admin/class.settings.php:889
 msgid "debugging"
 msgstr "felsökning"
 
-#: include/admin/class.settings.php:877
+#: include/admin/class.settings.php:876
 msgid "PHP Version"
 msgstr "PHP-version"
 
-#: include/admin/class.settings.php:878
+#: include/admin/class.settings.php:877
 #: views/admin/settings_troubleshooting_system.view.php:21
 msgid "Ajax Test"
 msgstr "Ajax-test"
 
-#: include/admin/class.settings.php:879
-#: include/admin/class.settings.php:891
-#: include/admin/class.settings.php:948
+#: include/admin/class.settings.php:878
+#: include/admin/class.settings.php:890
+#: include/admin/class.settings.php:947
 msgid "troubleshooting"
 msgstr "felsökning"
 
-#: include/admin/class.settings.php:880
+#: include/admin/class.settings.php:879
 msgid "benchmarks"
 msgstr "prestandatester"
 
-#: include/admin/class.settings.php:881
+#: include/admin/class.settings.php:880
 msgid "speed test"
 msgstr "hastighetstest"
 
-#: include/admin/class.settings.php:882
-#: include/admin/class.settings.php:892
+#: include/admin/class.settings.php:881
+#: include/admin/class.settings.php:891
 msgid "error"
 msgstr "fel"
 
-#: include/admin/class.settings.php:883
-#: include/admin/class.settings.php:893
+#: include/admin/class.settings.php:882
+#: include/admin/class.settings.php:892
 msgid "testing"
 msgstr "testning"
 
-#: include/admin/class.settings.php:894
-#: include/admin/class.settings.php:937
-#: include/admin/class.settings.php:950
+#: include/admin/class.settings.php:893
+#: include/admin/class.settings.php:936
+#: include/admin/class.settings.php:949
 msgid "help"
 msgstr "hjälp"
 
-#: include/admin/class.settings.php:898, fuzzy
-msgid "Tag Groups Pro"
-msgstr "Tag Groups Pro"
+#: include/admin/class.settings.php:897, fuzzy
+msgid "PublishPress Tag Groups Pro"
+msgstr "PublishPress Tag Groups Pro"
 
-#: include/admin/class.settings.php:901
+#: include/admin/class.settings.php:900
 msgid "upgrade"
 msgstr "uppgradera"
 
-#: include/admin/class.settings.php:902
+#: include/admin/class.settings.php:901
 msgid "more groups"
 msgstr "fler grupper"
 
-#: include/admin/class.settings.php:903
+#: include/admin/class.settings.php:902
 msgid "posts"
 msgstr "inlägg"
 
-#: include/admin/class.settings.php:905, fuzzy
+#: include/admin/class.settings.php:904, fuzzy
 msgid "filter"
 msgstr "filter"
 
-#: include/admin/class.settings.php:906
+#: include/admin/class.settings.php:905
 msgid "animated"
 msgstr "animerad"
 
-#: include/admin/class.settings.php:907
+#: include/admin/class.settings.php:906
 msgid "searchable"
 msgstr "sökbar"
 
-#: include/admin/class.settings.php:915
+#: include/admin/class.settings.php:914
 msgid "Info"
 msgstr "Information"
 
-#: include/admin/class.settings.php:918
+#: include/admin/class.settings.php:917
 msgid "author"
 msgstr "författare"
 
-#: include/admin/class.settings.php:919, fuzzy
+#: include/admin/class.settings.php:918, fuzzy
 msgid "version"
 msgstr "version"
 
-#: include/admin/class.settings.php:920
+#: include/admin/class.settings.php:919
 msgid "contact"
 msgstr "kontakt"
 
-#: include/admin/class.settings.php:921
+#: include/admin/class.settings.php:920
 msgid "about"
 msgstr "om"
 
-#: include/admin/class.settings.php:925
+#: include/admin/class.settings.php:924
 msgid "Licenses"
 msgstr "Licenser"
 
-#: include/admin/class.settings.php:927
+#: include/admin/class.settings.php:926
 msgid "Credits"
 msgstr "Krediter"
 
-#: include/admin/class.settings.php:930
+#: include/admin/class.settings.php:929
 msgid "Development News"
 msgstr "Utvecklingsnyheter"
 
-#: include/admin/class.settings.php:932
+#: include/admin/class.settings.php:931
 msgid "blog"
 msgstr "blogg"
 
-#: include/admin/class.settings.php:932
+#: include/admin/class.settings.php:931
 msgid "updates"
 msgstr "uppdateringar"
 
-#: include/admin/class.settings.php:937
-#: include/admin/class.settings.php:942
+#: include/admin/class.settings.php:936
+#: include/admin/class.settings.php:941
 msgid "getting started"
 msgstr "komma igång"
 
-#: include/admin/class.settings.php:937
-#: include/admin/class.settings.php:942
+#: include/admin/class.settings.php:936
+#: include/admin/class.settings.php:941
 msgid "introduction"
 msgstr "introduktion"
 
-#: include/admin/class.settings.php:942
+#: include/admin/class.settings.php:941
 msgid "sample"
 msgstr "exempel"
 
-#: include/admin/class.settings.php:949
+#: include/admin/class.settings.php:948
 msgid "migrate"
 msgstr "migrera"
 
-#: include/admin/class.settings.php:951, fuzzy
+#: include/admin/class.settings.php:950, fuzzy
 msgid "problem"
 msgstr "problem"
 
-#: include/admin/class.settings.php:960
+#: include/admin/class.settings.php:959
 msgid "live block preview"
 msgstr "live blockförhandsvisning"
 
-#: include/admin/class.settings.php:967
+#: include/admin/class.settings.php:966
 msgid "translation"
 msgstr "översättning"
 
-#: include/admin/class.settings.php:998
+#: include/admin/class.settings.php:997
 msgid "Migrating the term meta"
 msgstr "Migrering av termen meta"
 
-#: include/admin/class.settings.php:999
+#: include/admin/class.settings.php:998
 msgid "Fixing incorrect tag groups"
 msgstr "Fixar felaktiga taggrupper"
 
-#: include/admin/class.settings.php:1000
+#: include/admin/class.settings.php:999
 msgid "Fixing incorrect groups in term meta"
 msgstr "Fixar felaktiga grupper i termen meta"
 
-#: include/admin/class.settings.php:1001
+#: include/admin/class.settings.php:1000
 msgid "Sorting groups in term meta"
 msgstr "Sortera grupper i termen meta"
 
-#: include/admin/class.settings.php:1002
+#: include/admin/class.settings.php:1001
 msgid "Checking the tag names"
 msgstr "Kontrollerar taggnamnen"
 
-#: include/admin/class.settings_ajax.php:48
-#: views/admin/settings_troubleshooting_system.view.php:126, fuzzy
+#: include/admin/class.settings_ajax.php:29
+msgid "You are not allowed to run cache benchmarks."
+msgstr "Du har inte tillåtelse att köra cache-benchmarking."
+
+#: include/admin/class.settings_ajax.php:34
+msgid "Invalid request method."
+msgstr "Ogiltig begäran metod."
+
+#: include/admin/class.settings_ajax.php:38
+msgid "The security check failed."
+msgstr "Säkerhetskontrollen misslyckades."
+
+#: include/admin/class.settings_ajax.php:43
+msgid "Invalid benchmark task."
+msgstr "Ogiltig benchmark-uppgift."
+
+#: include/admin/class.settings_ajax.php:49
+#: include/admin/class.settings_ajax.php:57
+msgid "A cache benchmark is already running."
+msgstr "En cache-benchmark körs redan."
+
+#: include/admin/class.settings_ajax.php:75
+#: views/admin/settings_troubleshooting_system.view.php:125, fuzzy
 msgid "Cache"
 msgstr "Cache"
 
-#: include/admin/class.settings_ajax.php:48
+#: include/admin/class.settings_ajax.php:75
 msgid "(1000x read, 100x write)"
 msgstr "(1000x läs, 100x skriv)"
 
-#: include/admin/class.settings_ajax.php:63
+#: include/admin/class.settings_ajax.php:89
 msgid "ineffective"
 msgstr "ineffektiv"
 
@@ -686,11 +714,11 @@ msgstr "inte tilldelad"
 #. translators: %1$s and %2$s are opening and closing anchor tags for the upgrade link
 #, php-format
 msgid ""
-"You're using Tag Groups Free. The Pro version has more features and "
-"support. %1$sUpgrade to Pro%2$s"
+"You're using PublishPress Tag Groups Free. The Pro version has more "
+"features and support. %1$sUpgrade to Pro%2$s"
 msgstr ""
-"Du använder Tag Grupper Gratis. Pro-versionen har fler funktioner och "
-"support. %1$sUppgradera till Pro%2$s"
+"Du använder PublishPress Tag Groups Gratis. Pro-versionen har fler "
+"funktioner och support. %1$sUppgradera till Pro%2$s"
 
 #: includes-core/TagGroupsCoreAdmin.php:98
 #: includes-core/TagGroupsCoreAdmin.php:142
@@ -698,12 +726,12 @@ msgid "Upgrade to Pro"
 msgstr "Uppgradera till Pro"
 
 #: includes-core/TagGroupsCoreAdmin.php:115
-msgid "Upgrade to Tag Groups Pro"
-msgstr "Uppgradera till Tag Groups Pro"
+msgid "Upgrade to PublishPress Tag Groups Pro"
+msgstr "Uppgradera till PublishPress Tag Groups Pro"
 
 #: includes-core/TagGroupsCoreAdmin.php:120
-msgid "Enhance the power of Tag Groups with the Pro version:"
-msgstr "Förbättra kraften i Tag Groups med Pro-versionen:"
+msgid "Enhance the power of PublishPress Tag Groups with the Pro version:"
+msgstr "Förbättra kraften i PublishPress Tag Groups med Pro-versionen:"
 
 #: includes-core/TagGroupsCoreAdmin.php:123
 msgid "21 Shortcodes"
@@ -774,8 +802,8 @@ msgid "Parent Group Level"
 msgstr "Föräldragruppsnivå"
 
 #: includes-core/TagGroupsCoreAdmin.php:149
-msgid "Need Tag Groups Support?"
-msgstr "Behöver du stöd för taggrupper?"
+msgid "Need PublishPress Tag Groups Support?"
+msgstr "Behöver du PublishPress Tag Groups support?"
 
 #: includes-core/TagGroupsCoreAdmin.php:154
 msgid "If you need help or have a new feature request, let us know."
@@ -793,13 +821,15 @@ msgstr "Detaljerad dokumentation finns också tillgänglig på pluginens webbpla
 msgid "View Knowledge Base"
 msgstr "Visa kunskapsbas"
 
-#: tag-groups.php:177
-msgid "The free Tag Groups plugin cannot be active together with Tag Groups Pro."
+#: tag-groups.php:196
+msgid ""
+"The free PublishPress Tag Groups plugin cannot be active together with "
+"PublishPress Tag Groups Pro."
 msgstr ""
-"Det kostnadsfria Tag Groups-pluginet kan inte vara aktivt tillsammans med "
-"Tag Groups Pro."
+"Den gratis PublishPress Tag Groups-plugin kan inte vara aktiv tillsammans "
+"med PublishPress Tag Groups Pro."
 
-#: tag-groups.php:177
+#: tag-groups.php:196
 msgid "more information"
 msgstr "mer information"
 
@@ -872,12 +902,13 @@ msgstr "Filtrera efter taggrupp"
 #. translators: %s is the author display name
 #, php-format
 msgid ""
-"%s created this sample page in the Setup Wizard of the <b>Tag Groups</b> "
-"plugin. You can safely edit and delete it or keep it for future reference."
+"%s created this sample page in the Setup Wizard of the <b>PublishPress Tag "
+"Groups</b> plugin. You can safely edit and delete it or keep it for future "
+"reference."
 msgstr ""
-"%s skapade denna exempel-sida i inställningsguiden för "
-"<b>Taggrupper</b>-pluginet. Du kan säkert redigera och ta bort den eller "
-"behålla den för framtida referens."
+"%s skapade denna exempel sida i Setup Wizard för <b>PublishPress Tag "
+"Groups</b> plugin. Du kan trygt redigera och ta bort den eller behålla den "
+"för framtida referens."
 
 #: views/admin/sample_page.view.php:6
 msgid ""
@@ -1591,15 +1622,15 @@ msgstr "Visa svaret"
 msgid "passed"
 msgstr "godkänd"
 
-#: views/admin/settings_troubleshooting_system.view.php:99
+#: views/admin/settings_troubleshooting_system.view.php:98
 msgid "failed"
 msgstr "misslyckad"
 
-#: views/admin/settings_troubleshooting_system.view.php:106
+#: views/admin/settings_troubleshooting_system.view.php:105
 msgid "Benchmarks"
 msgstr "Prestandatest"
 
-#: views/admin/settings_troubleshooting_system.view.php:128
+#: views/admin/settings_troubleshooting_system.view.php:127
 msgid "Tag groups pro only"
 msgstr "Taggrupper pro endast"
 
@@ -1656,8 +1687,8 @@ msgid "Happy tagging!"
 msgstr "Lycka till med taggningen!"
 
 #: views/admin/setup_wizard_header.view.php:1, fuzzy
-msgid "Tag Groups Setup Wizard"
-msgstr "Tag Groups Setup Wizard"
+msgid "PublishPress Tag Groups Setup Wizard"
+msgstr "PublishPress Tag Groups Setup Wizard"
 
 #: views/admin/setup_wizard_sample_content.view.php:3
 msgid ""
@@ -1841,11 +1872,31 @@ msgstr "Vänligen besök <a %1$s>%2$s</a>."
 msgid "Read more"
 msgstr "Läs mer"
 
-#: views/partials/admin_footer_rating.view.php:4
-#. translators: 1: Opening TaxoPress link tag, 2: Closing link tag, 3: Plugin version.
+#: views/partials/admin_footer_rating.view.php:9
+#. translators: %1$s: plugin name, %2$s: five-star rating icons.
 #, php-format
-msgid "Thanks for using Tag Groups | %1$sTaxoPress.com%2$s | Version %3$s"
-msgstr "Tack för att du använder Tag Grupper | %1$sTaxoPress.com%2$s | Version %3$s"
+msgid "If you like %1$s please leave us a %2$s rating. Thank you!"
+msgstr "Om du gillar %1$s vänligen ge oss en %2$s betyg. Tack!"
+
+#: views/partials/admin_footer_rating.view.php:10, fuzzy
+msgid "PublishPress Tag Groups"
+msgstr "PublishPress Tag Groups"
+
+#: views/partials/admin_footer_rating.view.php:17
+msgid "PublishPress Tag Groups resources"
+msgstr "PublishPress Tag Groups resurser"
+
+#: views/partials/admin_footer_rating.view.php:19
+msgid "About"
+msgstr "Om"
+
+#: views/partials/admin_footer_rating.view.php:20
+msgid "Documentation"
+msgstr "Dokumentation"
+
+#: views/partials/admin_footer_rating.view.php:21
+msgid "Contact"
+msgstr "Kontakt"
 
 #: views/partials/bulk_admin_footer.view.php:10
 #: views/partials/bulk_admin_footer.view.php:11
