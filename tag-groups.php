@@ -1,11 +1,11 @@
 <?php
 
 /**
- * Plugin Name: Tag Groups
+ * Plugin Name: PublishPress Tag Groups Free
  * Plugin URI: https://wordpress.org/plugins/tag-groups/
- * Description: Tag Groups allows you to organize your WordPress taxonomy terms and show them in clouds, tabs, accordions, tables, lists and much more.
- * Author: TaxoPress
- * Author URI: https://taxopress.com
+ * Description: PublishPress Tag Groups allows you to organize your WordPress taxonomy terms and show them in clouds, tabs, accordions, tables, lists and much more.
+ * Author: PublishPress
+ * Author URI: https://publishpress.com
  * Version: 2.2.2
  * License: GPL-3.0-or-later
  * License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -14,9 +14,9 @@
  * Requires at least: 5.5
  * Requires PHP: 7.2.5
  *
- * @package     TaxoPress\TagGroups
- * @author      TaxoPress
- * @copyright   Copyright (c) 2024, TaxoPress
+ * @package     PublishPress\TagGroups
+ * @author      PublishPress
+ * @copyright   Copyright (c) 2024, PublishPress
  * @license     GPL-3.0-or-later
  */
 
@@ -34,7 +34,8 @@ if (file_exists(__DIR__ . '/lib/vendor' . $includeFileRelativePath)) {
 if (class_exists('PublishPressInstanceProtection\Config')) {
     $pluginCheckerConfig = new PublishPressInstanceProtection\Config();
     $pluginCheckerConfig->pluginSlug = 'tag-groups';
-    $pluginCheckerConfig->pluginName = 'Tag Groups';
+    $pluginCheckerConfig->pluginName = 'PublishPress Tag Groups';
+    $pluginCheckerConfig->pluginFolder = 'publishpress-tag-groups';
     $pluginChecker = new PublishPressInstanceProtection\InstanceChecker($pluginCheckerConfig);
 }
 
@@ -59,8 +60,26 @@ if (file_exists(__DIR__ . '/lib/vendor' . $wordpressVersionNoticesPath)) {
     require_once __DIR__ . '/vendor' . $wordpressVersionNoticesPath;
 }
 
+if (!function_exists('tag_groups_free_plugin_basenames')) {
+    /**
+     * Return the supported free-plugin entry paths.
+     *
+     * The legacy WordPress.org folder remains supported while new packages use
+     * the PublishPress-branded folder name.
+     *
+     * @return string[]
+     */
+    function tag_groups_free_plugin_basenames()
+    {
+        return [
+            'publishpress-tag-groups/tag-groups.php',
+            'tag-groups/tag-groups.php',
+        ];
+    }
+}
+
 if (!defined('TAG_GROUPS_PLUGIN_IS_FREE')) {
-    if (plugin_basename(__FILE__) == 'tag-groups/tag-groups.php') {
+    if (in_array(plugin_basename(__FILE__), tag_groups_free_plugin_basenames(), true)) {
         define('TAG_GROUPS_PLUGIN_IS_FREE', true);
     } else {
     // Don't define the constant! If the premium plugin runs earlier, the free plugin still needs to define it.
@@ -155,7 +174,7 @@ if (!function_exists('tag_groups_init')) {
     function tag_groups_init()
     {
         global $tag_groups_loader ;
-        if (plugin_basename(__FILE__) != 'tag-groups/tag-groups.php') {
+        if (!in_array(plugin_basename(__FILE__), tag_groups_free_plugin_basenames(), true)) {
         /**
                      *  TGP-Codester or TGP-Freemius
                      */
@@ -170,11 +189,11 @@ if (!function_exists('tag_groups_init')) {
                  */
                 update_option('tag_group_reset_when_uninstall', 0);
                 require_once ABSPATH . 'wp-admin/includes/plugin.php';
-                deactivate_plugins('tag-groups/tag-groups.php', true);
+                deactivate_plugins(tag_groups_free_plugin_basenames(), true);
 // add the hook directly
                 add_action('admin_notices', function () {
 
-                    echo  '<div class="notice notice-info is-dismissible"><p>' . esc_html__('The free Tag Groups plugin cannot be active together with Tag Groups Pro.', 'tag-groups') . ' <a href="https://taxopress.com/docs/tag-groups/" target="_blank" style="text-decoration: none;" title="' . esc_attr__('more information', 'tag-groups') . '"><span class="dashicons dashicons-editor-help"></span></a></p></div><div clear="all" /></div>' ;
+                    echo  '<div class="notice notice-info is-dismissible"><p>' . esc_html__('The free PublishPress Tag Groups plugin cannot be active together with PublishPress Tag Groups Pro.', 'tag-groups') . ' <a href="https://publishpress.com/tag-groups/" target="_blank" style="text-decoration: none;" title="' . esc_attr__('more information', 'tag-groups') . '"><span class="dashicons dashicons-editor-help"></span></a></p></div><div clear="all" /></div>' ;
                 });
 /**
                  * Remove the misleading "Plugin activated" messaage
@@ -198,7 +217,16 @@ if (!function_exists('tag_groups_init')) {
                 // Only load free-only admin features if not running inside Pro
                 if (!defined('TAG_GROUPS_SKIP_VERSION_NOTICES') || !TAG_GROUPS_SKIP_VERSION_NOTICES) {
                     require_once(TAG_GROUPS_PLUGIN_ABSOLUTE_PATH . '/includes-core/TagGroupsCoreAdmin.php');
-                    new \TaxoPress\TagGroups\TagGroupsCoreAdmin();
+
+                    // Keep the former namespace available for third-party integrations during the rebrand.
+                    if (!class_exists('TaxoPress\\TagGroups\\TagGroupsCoreAdmin', false)) {
+                        class_alias(
+                            \PublishPress\TagGroups\TagGroupsCoreAdmin::class,
+                            'TaxoPress\\TagGroups\\TagGroupsCoreAdmin'
+                        );
+                    }
+
+                    new \PublishPress\TagGroups\TagGroupsCoreAdmin();
                     require_once(TAG_GROUPS_PLUGIN_ABSOLUTE_PATH . '/includes-core/TagGroupsReviews.php');
                 }
             }

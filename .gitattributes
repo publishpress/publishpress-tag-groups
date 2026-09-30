@@ -1,4 +1,6 @@
+.gitattributes text eol=lf
 .babelrc export-ignore
+*.php text eol=lf
 .cursor export-ignore
 .deploy-state.json export-ignore
 .distignore export-ignore

@@ -18,16 +18,18 @@ if (! class_exists('TagGroups_Activation_Deactivation')) {
       *   Initializes values and prevents errors that stem from wrong values, e.g. based on earlier bugs.
       *   Runs when plugin is activated.
       *
-      * @param void
+      * @param bool $network_wide Whether the plugin is being activated network-wide.
       * @return void
       */
-        public static function on_activation()
+        public static function on_activation($network_wide = false)
         {
 
             if (! current_user_can('activate_plugins')) {
                 TagGroups_Error::log('[Tag Groups] Insufficient permissions to activate plugin.');
                 return;
             }
+
+            self::deactivate_legacy_plugin($network_wide);
 
             if (TAG_GROUPS_PLUGIN_IS_KERNL) {
                 register_uninstall_hook(TAG_GROUPS_PLUGIN_ABSOLUTE_PATH, array( 'TagGroups_Activation_Deactivation', 'on_uninstall' ));
@@ -45,6 +47,37 @@ if (! class_exists('TagGroups_Activation_Deactivation')) {
 
                   $update_scripts->run_specific_scripts();
                   $update_scripts->run_general_scripts();
+            }
+        }
+
+
+      /**
+      * Deactivate the legacy standalone plugin when the renamed plugin is activated.
+      *
+      * Existing settings remain untouched because the legacy plugin is deactivated,
+      * not uninstalled.
+      *
+      * @param bool $network_wide Whether the new plugin is being activated network-wide.
+      * @return void
+      */
+        private static function deactivate_legacy_plugin($network_wide)
+        {
+            $legacy_plugin = 'tag-groups/tag-groups.php';
+
+            if (! defined('TAG_GROUPS_PLUGIN_BASENAME') || 'publishpress-tag-groups/tag-groups.php' !== TAG_GROUPS_PLUGIN_BASENAME) {
+                return;
+            }
+
+            if (! function_exists('is_plugin_active')) {
+                require_once ABSPATH . 'wp-admin/includes/plugin.php';
+            }
+
+            $legacy_is_network_active = is_multisite() && is_plugin_active_for_network($legacy_plugin);
+
+            if ($network_wide && $legacy_is_network_active) {
+                deactivate_plugins($legacy_plugin, true, true);
+            } elseif (! $legacy_is_network_active && is_plugin_active($legacy_plugin)) {
+                deactivate_plugins($legacy_plugin, true, false);
             }
         }
 

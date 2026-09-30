@@ -1,7 +1,7 @@
 /*!
 * Last modified: 2021/08/11 16:47:26
-* Part of the WordPress plugin Tag Groups
-* Plugin URI: https://chattymango.com/tag-groups/
+* Part of the WordPress plugin PublishPress Tag Groups
+* Plugin URI: https://publishpress.com/tag-groups/
 * Author: Christoph Amthor
 * License: GNU GENERAL PUBLIC LICENSE, Version 3
 */
@@ -470,15 +470,15 @@
 }
 
 .tg_premium_backend_call_to_action h3 {
-  color: #009cd0;
+  color: #655997;
   font-size: 28px;
   line-height: 40px;
 }
 
 .tg_premium_backend_call_to_action_button {
   border-radius: 7px;
-  border: 2px solid #009cd0;
-  color: #009cd0;
+  border: 2px solid #655997;
+  color: #655997;
   margin: 0 0.25em;
   overflow: hidden;
   padding: 24px 16px 24px 16px;
@@ -490,7 +490,7 @@
 }
 
 .tg_premium_backend_call_to_action_button:hover {
-  background-color: #009cd0;
+  background-color: #655997;
   color: #fff;
 }
 
@@ -674,7 +674,7 @@
   bottom: 0;
   left: 0;
   z-index: 0;
-  background-color: #3C50FF;
+  background-color: #655997;
   mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z'/></svg>");
   -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z'/></svg>");
   mask-size: 16px;
@@ -694,24 +694,74 @@
 
 .tag-groups-advertisement-right-sidebar .advertisement-box-header,
 .tag-groups-content-promo-box .advertisement-box-header {
-  background: #1F48AC;
+  background: #655997;
   color: #ffffff;
 }
 
 .tag-groups-advertisement-right-sidebar .advertisement-box-content,
 .tag-groups-content-promo-box.advertisement-box-content {
-  border: 1px solid #1F48AC;
+  border: 1px solid #655997;
 }
 
 body[class*=' toplevel_page_tag-groups-settings'] .pp-version-notice-bold-purple,
 body[class*=' tag-groups_page'] .pp-version-notice-bold-purple,
 body[class*=' posts_page_tag-groups_post'] .pp-version-notice-bold-purple {
-  background: #1F48AC;
+  background: #655997;
 }
 
-.footer_st {
+.tag-groups-admin-footer {
+  clear: both;
+  width: 100%;
+}
+
+.tag-groups-admin-footer > footer {
   text-align: center;
-  font-size: 14px !important;
+}
+
+.tag-groups-admin-footer > footer > .tag-groups-rating {
+  font-size: 12px;
+  margin-bottom: 10px;
+  margin-top: 30px;
+}
+
+.tag-groups-admin-footer > footer * {
+  color: #777;
+}
+
+.tag-groups-admin-footer > footer > nav ul {
+  list-style: none;
+  margin: 12px 0;
+  padding: 0;
+}
+
+.tag-groups-admin-footer > footer > nav ul > li {
+  display: inline-block;
+}
+
+.tag-groups-admin-footer > footer > nav ul > li:not(:first-child) {
+  margin-left: 15px;
+}
+
+.tag-groups-admin-footer > footer > nav ul > li > a {
+  font-weight: bold;
+}
+
+.tag-groups-admin-footer > footer .dashicons-star-filled {
+  color: #ffb300;
+  font-size: 12px;
+  height: 12px;
+  line-height: 18px;
+  transition: color 200ms ease-in-out;
+  width: 12px;
+}
+
+.tag-groups-admin-footer .tag-groups-publishpress-logo {
+  margin-top: 10px;
+}
+
+.tag-groups-admin-footer .tag-groups-publishpress-logo img {
+  max-width: 100%;
+  width: 170px;
 }
 
 .tg-settings-search-area {
@@ -763,7 +813,7 @@ body.posts_page_tag-groups_post .pp-version-notice-bold-purple,
 body[class*="tag-groups_page_"] .pp-version-notice-bold-purple,
 body[class*="_page_tag-groups_"] .pp-version-notice-bold-purple,
 body[class*="tag-groups-settings"] .pp-version-notice-bold-purple {
-    background: #1F48AC !important;
+    background: #655997 !important;
 }
 
 body.toplevel_page_tag-groups-settings .pp-version-notice-bold-purple-button,
@@ -792,24 +842,24 @@ body[class*="tag-groups-settings"] .pp-version-notice-bold-purple-button:hover {
 }
 
 .tag-groups-wp-reviews-notice .button.button-primary {
-    background-color: #1F48AC !important;
-    border-color: #1a3d91 !important;
+    background-color: #655997 !important;
+    border-color: #554a80 !important;
     color: #fff !important;
 }
 
 .tag-groups-wp-reviews-notice .button.button-primary:hover,
 .tag-groups-wp-reviews-notice .button.button-primary:focus {
-    background-color: #1a3d91 !important;
-    border-color: #153278 !important;
+    background-color: #554a80 !important;
+    border-color: #463d69 !important;
 }
 
 .tag-groups-wp-reviews-notice .button:not(.button-primary) {
-    border-color: #1F48AC !important;
-    color: #1F48AC !important;
+    border-color: #655997 !important;
+    color: #655997 !important;
 }
 
 .tag-groups-wp-reviews-notice .button:not(.button-primary):hover,
 .tag-groups-wp-reviews-notice .button:not(.button-primary):focus {
-    border-color: #1a3d91 !important;
-    color: #1a3d91 !important;
+    border-color: #554a80 !important;
+    color: #554a80 !important;
 }

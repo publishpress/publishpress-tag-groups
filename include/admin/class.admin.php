@@ -19,7 +19,7 @@ if (!class_exists('TagGroups_Admin')) {
         public static function register_menus()
         {
             // Add the main menu
-            add_menu_page(__('Home', 'tag-groups'), 'Tag Groups', 'manage_options', 'tag-groups-settings', array( 'TagGroups_Settings', 'settings_page_home' ), 'dashicons-tag', '99.01');
+            add_menu_page(__('Home', 'tag-groups'), __('Tag Groups', 'tag-groups'), 'manage_options', 'tag-groups-settings', array( 'TagGroups_Settings', 'settings_page_home' ), 'dashicons-tag', '99.01');
 // Define the menu structure
             $tag_groups_admin_structure = array(
                 0  => array(
@@ -732,24 +732,20 @@ if (!class_exists('TagGroups_Admin')) {
         }
 
         /**
-         * Adds a button to reset the filter on the tags page, in case JavaScript breaks
+         * Render the PublishPress footer on Tag Groups admin pages.
          *
-         * @since 1.25.0
-         *
-         * @param  string $text
-         * @return string
+         * @return void
          */
-        // phpcs:ignore PSR1.Methods.CamelCapsMethodName.NotCamelCaps -- Legacy method naming
-        public static function add_admin_footer_rating_text($text)
+        // phpcs:ignore PSR1.Methods.CamelCapsMethodName.NotCamelCaps -- Legacy class uses snake_case method names.
+        public static function render_admin_footer()
         {
             // phpcs:ignore WordPress.Security.NonceVerification.Recommended, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Read-only check for admin page
             if (empty($_GET['page']) || strpos(sanitize_key(wp_unslash($_GET['page'])), 'tag-groups') !== 0) {
-                return $text;
+                return;
             }
 
             $view = new TagGroups_View('partials/admin_footer_rating');
-            $text = $view->return_html() . $text;
-            return $text;
+            $view->render();
         }
 
         /**

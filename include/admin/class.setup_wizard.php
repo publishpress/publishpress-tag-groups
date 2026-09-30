@@ -34,12 +34,12 @@ if (!class_exists('TagGroups_Setup_Wizard')) {
             $settings_setup_wizard_link = admin_url('admin.php?page=tag-groups-settings-setup-wizard');
 
             if (defined('TAG_GROUPS_PLUGIN_IS_FREE') && TAG_GROUPS_PLUGIN_IS_FREE) {
-                $title = 'Tag Groups';
-                $documentation_link = 'https://taxopress.com/docs/tag-groups/';
+                $title = 'PublishPress Tag Groups';
+                $documentation_link = 'https://publishpress.com/tag-groups/';
                 $logo = '';
             } else {
-                $title = 'Tag Groups Pro';
-                $documentation_link = 'https://taxopress.com/docs/tag-groups/';
+                $title = 'PublishPress Tag Groups Pro';
+                $documentation_link = 'https://publishpress.com/tag-groups/';
                 $logo = '';
             }
 
@@ -76,13 +76,13 @@ if (!class_exists('TagGroups_Setup_Wizard')) {
             $setup_wizard_next_link = add_query_arg('step', $step + 1, admin_url('admin.php?page=tag-groups-settings-setup-wizard'));
 
             if (defined('TAG_GROUPS_PLUGIN_IS_FREE') && TAG_GROUPS_PLUGIN_IS_FREE) {
-                $title = 'Tag Groups';
+                $title = 'PublishPress Tag Groups';
                 $is_premium = false;
-                $documentation_link = 'https://taxopress.com/docs/tag-groups/';
+                $documentation_link = 'https://publishpress.com/tag-groups/';
             } else {
-                $title = 'Tag Groups Pro';
+                $title = 'PublishPress Tag Groups Pro';
                 $is_premium = true;
-                $documentation_link = 'https://taxopress.com/docs/tag-groups/';
+                $documentation_link = 'https://publishpress.com/tag-groups/';
             }
 
 
@@ -185,7 +185,7 @@ if (!class_exists('TagGroups_Setup_Wizard')) {
                     break;
                 case 'finished':
                     $view = new TagGroups_View('admin/setup_wizard_finished');
-                    $documentation_link = ( $is_premium ? 'https://taxopress.com/docs/tag-groups/' : 'https://taxopress.com/docs/how-do-i-change-the-styling-of-the-post-tags-under-the-posts/' );
+                    $documentation_link = 'https://publishpress.com/tag-groups/';
                     $enabled_taxonomies = TagGroups_Taxonomy::get_enabled_taxonomies();
                     $taxonomy = array_shift($enabled_taxonomies);
                     $view->set(array(
@@ -311,10 +311,10 @@ if (!class_exists('TagGroups_Setup_Wizard')) {
                     if (isset($_POST['tag-groups-create-sample-page']) && wp_unslash($_POST['tag-groups-create-sample-page'])) {
                         if (TagGroups_Gutenberg::is_gutenberg_active()) {
                             $view = new TagGroups_View('admin/sample_page_gutenberg');
-                            $sample_page_title = 'Tag Groups (Free) Sample Page - Gutenberg Editor';
+                            $sample_page_title = 'PublishPress Tag Groups (Free) Sample Page - Gutenberg Editor';
                         } else {
                             $view = new TagGroups_View('admin/sample_page');
-                            $sample_page_title = 'Tag Groups (Free) Sample Page - Classic Editor';
+                            $sample_page_title = 'PublishPress Tag Groups (Free) Sample Page - Classic Editor';
                         }
 
                         $tag_groups_settings_link = admin_url('admin.php?page=tag-groups-settings');

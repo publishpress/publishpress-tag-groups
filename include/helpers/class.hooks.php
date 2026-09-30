@@ -257,10 +257,9 @@ if (!class_exists('TagGroups_Hooks')) {
             add_filter('admin_footer_text', array( 'TagGroups_Admin', 'add_admin_footer_text' ), 100);
 
             /**
-             * Add the request to rate the plugin
+             * Add the PublishPress footer to Tag Groups admin pages.
              */
-            add_filter('admin_footer_text', array( 'TagGroups_Admin', 'add_admin_footer_rating_text' ), 101);
-
+            add_action('in_admin_footer', array( 'TagGroups_Admin', 'render_admin_footer' ));
             /**
              * Add the script for the jQuery tooltip plugin
              */

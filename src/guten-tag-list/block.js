@@ -822,7 +822,7 @@ var cmTagGroupsTabsBlock = registerBlockType(
     icon: 'tag', // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
     category: 'chatty-mango',
     description: __('Show your tags listed under groups.'),
-    keywords: [__('tabs'), __('tag cloud'), 'Chatty Mango'],
+    keywords: [__('tabs'), __('tag cloud'), 'PublishPress'],
     html: false,
     transforms: {
       to: [

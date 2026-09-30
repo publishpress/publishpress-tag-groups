@@ -1,5 +1,5 @@
 <p>
-  <?php /* translators: %s is the author display name */ printf(esc_html__('%s created this sample page in the Setup Wizard of the <b>Tag Groups</b> plugin. You can safely edit and delete it or keep it for future reference.', 'tag-groups'), esc_html($author_display_name)) ?>
+  <?php /* translators: %s is the author display name */ printf(esc_html__('%s created this sample page in the Setup Wizard of the <b>PublishPress Tag Groups</b> plugin. You can safely edit and delete it or keep it for future reference.', 'tag-groups'), esc_html($author_display_name)) ?>
 </p>
 
 <p>
@@ -41,4 +41,4 @@
 </p>
 <hr />
 
-<p>Created by <a href="https://chattymango.com/tag-groups/" target="_blank">Chatty Mango's Tag Groups plugin</a></p>
+<p>Created by the <a href="https://publishpress.com/tag-groups/" target="_blank" rel="noopener noreferrer">PublishPress Tag Groups plugin</a></p>

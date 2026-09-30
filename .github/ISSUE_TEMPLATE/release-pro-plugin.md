@@ -104,7 +104,7 @@ Before releasing the Pro plugin, ensure every step in this checklist is complete
 
 ### Post-Release Validation
 
-- [ ] Monitor [GitHub Actions](https://github.com/taxopress/tag-groups-pro/actions) and confirm all release and deployment workflows complete successfully
+- [ ] Monitor [GitHub Actions](https://github.com/publishpress/publishpress-tag-groups-pro/actions) and confirm all release and deployment workflows complete successfully
 - [ ] Monitor the Slack channel `#package-server` and confirm the deployment completes successfully
 - [ ] Test updating to the new version on a staging site and run a basic smoke test of core functionality
 - [ ] Close the GitHub milestone for `<version>`

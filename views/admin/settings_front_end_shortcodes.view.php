@@ -16,7 +16,7 @@
       <h4><?php _e('Example', 'tag-groups') ?></h4>
       <p>[tag_groups_cloud smallest=9 largest=30 include=1,2,10]</p>
       <h4><?php _e('Parameters', 'tag-groups') ?></h4>
-      <p><?php /* translators: %s is the href attribute with URL */ echo wp_kses_post(sprintf(__('Please find the parameters in the <a %s>documentation</a>.', 'tag-groups'), 'href="https://taxopress.com/docs/tabbed-tag-cloud-shortcode-parameters/" target="_blank"')); ?></p>
+      <p><?php /* translators: %s is the href attribute with URL */ echo wp_kses_post(sprintf(__('Please find the parameters in the <a %s>documentation</a>.', 'tag-groups'), 'href="https://publishpress.com/tag-groups/" target="_blank" rel="noopener noreferrer"')); ?></p>
     </div>
 
     <h4><span class="dashicons dashicons-menu"></span> <?php _e('Accordion', 'tag-groups') ?></h4>
@@ -27,7 +27,7 @@
       <h4><?php _e('Example', 'tag-groups') ?></h4>
       <p>[tag_groups_accordion smallest=9 largest=30 include=1,2,10]</p>
       <h4><?php _e('Parameters', 'tag-groups') ?></h4>
-      <p><?php echo wp_kses_post(sprintf(__('Please find the parameters in the <a %s>documentation</a>.', 'tag-groups'), 'href="https://taxopress.com/docs/accordion-tag-cloud-shortcode-parameters/" target="_blank"')); ?></p>
+      <p><?php echo wp_kses_post(sprintf(__('Please find the parameters in the <a %s>documentation</a>.', 'tag-groups'), 'href="https://publishpress.com/tag-groups/" target="_blank" rel="noopener noreferrer"')); ?></p>
     </div>
 
     <h4><span class="dashicons dashicons-tag"></span> <?php _e('Tag List', 'tag-groups') ?></h4>
@@ -38,7 +38,7 @@
       <h4><?php _e('Example', 'tag-groups') ?></h4>
       <p>[tag_groups_tag_list column_count=2 keep_together=0 include=1,2,10]</p>
       <h4><?php _e('Parameters', 'tag-groups') ?></h4>
-      <p><?php echo wp_kses_post(sprintf(__('Please find the parameters in the <a %s>documentation</a>.', 'tag-groups'), 'href="https://taxopress.com/docs/tag-list-shortcode-parameters/" target="_blank"')); ?></p>
+      <p><?php echo wp_kses_post(sprintf(__('Please find the parameters in the <a %s>documentation</a>.', 'tag-groups'), 'href="https://publishpress.com/tag-groups/" target="_blank" rel="noopener noreferrer"')); ?></p>
     </div>
 
     <h4><span class="dashicons dashicons-text"></span> <?php _e('Alphabetical Tag Cloud', 'tag-groups') ?></h4>
@@ -49,7 +49,7 @@
       <h4><?php _e('Example', 'tag-groups') ?></h4>
       <p>[tag_groups_alphabet_tabs exclude_letters="äöü"]</p>
       <h4><?php _e('Parameters', 'tag-groups') ?></h4>
-      <p><?php printf(esc_html__('Please find the parameters in the <a %s>documentation</a>.', 'tag-groups'), 'href="https://taxopress.com/docs/alphabetical-tag-cloud-shortcode-parameters/" target="_blank"') ?></p>
+      <p><?php printf(esc_html__('Please find the parameters in the <a %s>documentation</a>.', 'tag-groups'), 'href="https://publishpress.com/tag-groups/" target="_blank" rel="noopener noreferrer"') ?></p>
     </div>
 
     <h4><span class="dashicons dashicons-text"></span> <?php _e('Alphabetical Tag Index', 'tag-groups') ?></h4>
@@ -60,7 +60,7 @@
       <h4><?php _e('Example', 'tag-groups') ?></h4>
       <p>[tag_groups_alphabetical_index column_count=2 keep_together=0]</p>
       <h4><?php _e('Parameters', 'tag-groups') ?></h4>
-      <p><?php printf(esc_html__('Please find the parameters in the <a %s>documentation</a>.', 'tag-groups'), 'href="https://taxopress.com/docs/alphabetical-tag-cloud-shortcode-parameters/" target="_blank"') ?></p>
+      <p><?php printf(esc_html__('Please find the parameters in the <a %s>documentation</a>.', 'tag-groups'), 'href="https://publishpress.com/tag-groups/" target="_blank" rel="noopener noreferrer"') ?></p>
     </div>
     <?php echo wp_kses_post($premium_shortcode_info) ?>
 
@@ -71,7 +71,7 @@
       <h4><?php _e('Example', 'tag-groups') ?></h4>
       <p>[tag_groups_info group_id="all"]</p>
       <h4><?php _e('Parameters', 'tag-groups') ?></h4>
-      <p><?php echo wp_kses_post(sprintf(__('Please find the parameters in the <a %s>documentation</a>.', 'tag-groups'), 'href="https://taxopress.com/docs/tag-groups-info-shortcode-parameters/" target="_blank"')); ?></p>
+      <p><?php echo wp_kses_post(sprintf(__('Please find the parameters in the <a %s>documentation</a>.', 'tag-groups'), 'href="https://publishpress.com/tag-groups/" target="_blank" rel="noopener noreferrer"')); ?></p>
     </div>
   </div>
 
