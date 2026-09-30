@@ -94,7 +94,6 @@ echo esc_html($active_theme->get('Version'));
     jQuery("#chatty-mango-help-button-ajax").show();
 
     let learnHowToFixLink = " <a href=\"https://publishpress.com/tag-groups/\" target=\"_blank\" rel=\"noopener noreferrer\">Learn more</a>";
-
     jQuery("#ajax_test_field").html("<span class=\"dashicons dashicons-no\" style=\"color:red;\" title=\"<?php
     _e('failed', 'tag-groups');
     ?>\"></span> " + learnHowToFixLink);

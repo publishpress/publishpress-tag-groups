@@ -736,6 +736,7 @@ if (!class_exists('TagGroups_Admin')) {
          *
          * @return void
          */
+        // phpcs:ignore PSR1.Methods.CamelCapsMethodName.NotCamelCaps -- Legacy class uses snake_case method names.
         public static function render_admin_footer()
         {
             // phpcs:ignore WordPress.Security.NonceVerification.Recommended, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Read-only check for admin page

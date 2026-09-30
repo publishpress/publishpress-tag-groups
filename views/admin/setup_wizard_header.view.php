@@ -12,7 +12,7 @@
                 ?>style="color:#ccc"<?php 
             endif; ?>
             <?php if ($key == $step) :
-            ?>style="color:#655997"<?php
+                ?>style="color:#655997"<?php
             endif; ?>>
             <?php if ($key < $step) : ?>
             <span class="dashicons dashicons-yes-alt"></span>
