@@ -732,6 +732,23 @@ if (!class_exists('TagGroups_Admin')) {
         }
 
         /**
+         * Mark Tag Groups admin pages so the expanded footer can use normal flow.
+         *
+         * @param string $classes Existing admin body classes.
+         * @return string
+         */
+        // phpcs:ignore PSR1.Methods.CamelCapsMethodName.NotCamelCaps -- Legacy class uses snake_case method names.
+        public static function add_admin_page_body_class($classes)
+        {
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Read-only check for admin page.
+            if (! empty($_GET['page']) && strpos(sanitize_key(wp_unslash($_GET['page'])), 'tag-groups') === 0) {
+                $classes .= ' tag-groups-admin-page';
+            }
+
+            return $classes;
+        }
+
+        /**
          * Render the PublishPress footer on Tag Groups admin pages.
          *
          * @return void

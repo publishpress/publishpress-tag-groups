@@ -764,6 +764,11 @@ body[class*=' posts_page_tag-groups_post'] .pp-version-notice-bold-purple {
   width: 170px;
 }
 
+body.tag-groups-admin-page #wpfooter {
+  box-sizing: border-box;
+  position: static;
+}
+
 .tg-settings-search-area {
   margin-top: 10px;
   margin-bottom: 10px;
