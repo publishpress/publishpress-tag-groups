@@ -115,15 +115,15 @@ if (! function_exists('publishpress_tag_groups_deactivate_free_when_pro_is_activ
      * This also handles legacy Pro versions that predate the Pro-side
      * deactivation routine.
      *
+     * @param string $freePlugin Standalone Free plugin basename.
      * @return void
      */
-    function publishpress_tag_groups_deactivate_free_when_pro_is_active()
+    function publishpress_tag_groups_deactivate_free_when_pro_is_active($freePlugin = '')
     {
         if (! current_user_can('activate_plugins')) {
             return;
         }
 
-        $freePlugin = plugin_basename(__FILE__);
         if (! in_array($freePlugin, tag_groups_free_plugin_basenames(), true)) {
             return;
         }
@@ -200,8 +200,15 @@ if (! function_exists('publishpress_tag_groups_free_pro_network_notice')) {
     }
 }
 
-if (in_array(plugin_basename(__FILE__), tag_groups_free_plugin_basenames(), true)) {
-    add_action('admin_init', 'publishpress_tag_groups_deactivate_free_when_pro_is_active', 1);
+$publishpressTagGroupsFreePlugin = plugin_basename(__FILE__);
+if (in_array($publishpressTagGroupsFreePlugin, tag_groups_free_plugin_basenames(), true)) {
+    add_action(
+        'admin_init',
+        static function () use ($publishpressTagGroupsFreePlugin) {
+            publishpress_tag_groups_deactivate_free_when_pro_is_active($publishpressTagGroupsFreePlugin);
+        },
+        1
+    );
     add_action('admin_notices', 'publishpress_tag_groups_free_pro_activation_notice');
     add_action('network_admin_notices', 'publishpress_tag_groups_free_pro_network_notice');
 }
