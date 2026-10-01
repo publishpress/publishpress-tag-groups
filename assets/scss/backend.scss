@@ -719,3 +719,8 @@ body[class*="tag-groups-settings"] .pp-version-notice-bold-purple-button:hover {
     }
   }
 }
+
+body.tag-groups-admin-page #wpfooter {
+  box-sizing: border-box;
+  position: static;
+}
