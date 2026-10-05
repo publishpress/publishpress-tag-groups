@@ -62,7 +62,7 @@ if (! class_exists('TagGroups_Gutenberg')) {
             return in_array('chatty-mango', $category_slugs, true) ? $categories : array_merge($categories, array(
               array(
                   'slug'  => 'chatty-mango',
-                  'title' => 'Tag Groups',
+                  'title' => 'PublishPress Tag Groups',
                   // phpcs:ignore Squiz.PHP.CommentedOutCode.Found
                   'icon'  => null, //'admin-plugins', // icons might be removed in future
               ),

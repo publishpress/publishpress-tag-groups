@@ -31,6 +31,7 @@ if (! class_exists('TagGroups_Transients')) {
        * option name used to save array of used transient names
        */
         public const TRANSIENT_NAMES = 'tag_group_used_transient_names';
+        public const MAX_TRACKED_TRANSIENTS = 500;
 
       /**
        * Retrieves all transients created by Tag Groups Pro and deletes them
@@ -80,7 +81,18 @@ if (! class_exists('TagGroups_Transients')) {
         {
 
             if (self::TRANSIENT_NAMES) {
-                update_option(self::TRANSIENT_NAMES, $used_transient_names, true);
+                $used_transient_names = array_values(array_unique(array_filter((array) $used_transient_names, 'is_string')));
+                $used_transient_names = array_slice($used_transient_names, -self::MAX_TRACKED_TRANSIENTS);
+                update_option(self::TRANSIENT_NAMES, $used_transient_names, false);
+
+                global $wpdb;
+                $wpdb->update(
+                    $wpdb->options,
+                    array( 'autoload' => 'no' ),
+                    array( 'option_name' => self::TRANSIENT_NAMES ),
+                    array( '%s' ),
+                    array( '%s' )
+                );
     // phpcs:ignore Squiz.PHP.CommentedOutCode.Found
     // TagGroups_Error::verbose_log( '[Tag Groups] Saved array of %d transient name(s)', count( $used_transient_names ) );
             } else {
@@ -130,7 +142,7 @@ if (! class_exists('TagGroups_Transients')) {
             }
 
             $used_transient_names = self::get_used_names();
-            if (! in_array($transient, $used_transient_names)) {
+            if (! in_array($transient, $used_transient_names, true)) {
                   $used_transient_names[] = $transient;
                   self::set_used_names($used_transient_names);
             }

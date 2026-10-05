@@ -1,11 +1,11 @@
 <?php
 
-namespace TaxoPress\TagGroups;
+namespace PublishPress\TagGroups;
 
 /**
  * Class TagGroupsCoreAdmin
  *
- * @package TaxoPress\TagGroups
+ * @package PublishPress\TagGroups
  */
 // phpcs:disable PSR1.Methods.CamelCapsMethodName.NotCamelCaps -- WordPress naming conventions for hook callbacks
 class TagGroupsCoreAdmin
@@ -67,8 +67,8 @@ class TagGroupsCoreAdmin
     {
         $settings['publishpress-tag-groups'] = [
             /* translators: %1$s and %2$s are opening and closing anchor tags for the upgrade link */
-            'message' => esc_html__('You\'re using Tag Groups Free. The Pro version has more features and support. %1$sUpgrade to Pro%2$s', 'tag-groups'),
-            'link'    => 'https://taxopress.com/tag-groups/',
+            'message' => esc_html__('You\'re using PublishPress Tag Groups Free. The Pro version has more features and support. %1$sUpgrade to Pro%2$s', 'tag-groups'),
+            'link'    => 'https://publishpress.com/links/tag-groups-banner',
             'screens' => [
                 ['base' => 'toplevel_page_tag-groups-settings', 'id' => 'toplevel_page_tag-groups-settings'],
                 ['base' => 'tag-groups_page_tag-groups-settings-taxonomies', 'id' => 'tag-groups_page_tag-groups-settings-taxonomies'],
@@ -96,7 +96,7 @@ class TagGroupsCoreAdmin
         $settings['publishpress-tag-groups'] = [
             'parent' => 'tag-groups-settings',
             'label'  => __('Upgrade to Pro', 'tag-groups'),
-            'link'   => 'https://taxopress.com/tag-groups/',
+            'link'   => 'https://publishpress.com/links/tag-groups-sidebar',
         ];
 
         return $settings;
@@ -112,12 +112,12 @@ class TagGroupsCoreAdmin
                 <div class="advertisement-box-content postbox">
                     <div class="postbox-header">
                         <h3 class="advertisement-box-header hndle is-non-sortable">
-                            <span><?php echo esc_html__('Upgrade to Tag Groups Pro', 'tag-groups'); ?></span>
+                            <span><?php echo esc_html__('Upgrade to PublishPress Tag Groups Pro', 'tag-groups'); ?></span>
                         </h3>
                     </div>
 
                     <div class="inside">
-                        <p><?php echo esc_html__('Enhance the power of Tag Groups with the Pro version:', 'tag-groups'); ?>
+                        <p><?php echo esc_html__('Enhance the power of PublishPress Tag Groups with the Pro version:', 'tag-groups'); ?>
                         </p>
                         <ul>
                             <li><?php echo esc_html__('21 Shortcodes', 'tag-groups'); ?></li>
@@ -139,20 +139,20 @@ class TagGroupsCoreAdmin
                             <li><?php echo esc_html__('Parent Group Level', 'tag-groups'); ?></li>
                         </ul>
                         <div class="upgrade-btn">
-                            <a href="https://taxopress.com/tag-groups/" target="__blank"><?php echo esc_html__('Upgrade to Pro', 'tag-groups'); ?></a>
+                            <a href="https://publishpress.com/tag-groups/" target="_blank" rel="noopener noreferrer"><?php echo esc_html__('Upgrade to Pro', 'tag-groups'); ?></a>
                         </div>
                     </div>
                 </div>
                 <div class="advertisement-box-content postbox">
                     <div class="postbox-header">
                         <h3 class="advertisement-box-header hndle is-non-sortable">
-                            <span><?php echo esc_html__('Need Tag Groups Support?', 'tag-groups'); ?></span>
+                            <span><?php echo esc_html__('Need PublishPress Tag Groups Support?', 'tag-groups'); ?></span>
                         </h3>
                     </div>
 
                     <div class="inside">
                         <p><?php echo esc_html__('If you need help or have a new feature request, let us know.', 'tag-groups'); ?>
-                            <a class="advert-link" href="https://wordpress.org/support/plugin/tag-groups/" target="_blank">
+                            <a class="advert-link" href="https://wordpress.org/support/plugin/tag-groups/" target="_blank" rel="noopener noreferrer">
                             <?php echo esc_html__('Request Support', 'tag-groups'); ?>
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" class="linkIcon">
                                     <path
@@ -163,7 +163,7 @@ class TagGroupsCoreAdmin
                         </p>
                         <p>
                         <?php echo esc_html__('Detailed documentation is also available on the plugin website.', 'tag-groups'); ?>
-                            <a class="advert-link" href="https://taxopress.com/docs/" target="_blank">
+                            <a class="advert-link" href="https://publishpress.com/tag-groups/" target="_blank" rel="noopener noreferrer">
                             <?php echo esc_html__('View Knowledge Base', 'tag-groups'); ?>
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" class="linkIcon">
                                     <path

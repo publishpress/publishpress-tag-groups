@@ -18,10 +18,10 @@ if (! class_exists('TagGroups_Activation_Deactivation')) {
       *   Initializes values and prevents errors that stem from wrong values, e.g. based on earlier bugs.
       *   Runs when plugin is activated.
       *
-      * @param void
+      * @param bool $network_wide Whether the plugin is being activated network-wide.
       * @return void
       */
-        public static function on_activation()
+        public static function on_activation($network_wide = false)
         {
 
             if (! current_user_can('activate_plugins')) {
@@ -47,7 +47,6 @@ if (! class_exists('TagGroups_Activation_Deactivation')) {
                   $update_scripts->run_general_scripts();
             }
         }
-
 
       /**
       * This script is executed when the (inactive) plugin is deleted through the admin backend.

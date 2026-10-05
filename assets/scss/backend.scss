@@ -1,7 +1,7 @@
 /*!
 * Last modified: 2021/08/11 16:47:00
-* Part of the WordPress plugin Tag Groups
-* Plugin URI: https://chattymango.com/tag-groups/
+* Part of the WordPress plugin PublishPress Tag Groups
+* Plugin URI: https://publishpress.com/tag-groups/
 * Author: Christoph Amthor
 * License: GNU GENERAL PUBLIC LICENSE, Version 3
 */
@@ -484,7 +484,7 @@
   margin: 50px 10px 20px;
 
   h3 {
-    color: #009cd0;
+    color: #655997;
     font-size: 28px;
     line-height: 40px;
   }
@@ -492,8 +492,8 @@
 
 .tg_premium_backend_call_to_action_button {
   border-radius: 7px;
-  border: 2px solid #009cd0;
-  color: #009cd0;
+  border: 2px solid #655997;
+  color: #655997;
   // display: inline-block;
   margin: 0 0.25em;
   overflow: hidden;
@@ -505,7 +505,7 @@
   float: right;
 
   &:hover {
-    background-color: #009cd0;
+    background-color: #655997;
     color: #fff;
   }
 }
@@ -645,7 +645,7 @@ body.posts_page_tag-groups_post .pp-version-notice-bold-purple,
 body[class*="tag-groups_page_"] .pp-version-notice-bold-purple,
 body[class*="_page_tag-groups_"] .pp-version-notice-bold-purple,
 body[class*="tag-groups-settings"] .pp-version-notice-bold-purple {
-  background: #1F48AC !important;
+  background: #655997 !important;
 }
 
 body.toplevel_page_tag-groups-settings .pp-version-notice-bold-purple-button,
@@ -663,4 +663,64 @@ body[class*="tag-groups_page_"] .pp-version-notice-bold-purple-button:hover,
 body[class*="_page_tag-groups_"] .pp-version-notice-bold-purple-button:hover,
 body[class*="tag-groups-settings"] .pp-version-notice-bold-purple-button:hover {
   background: #fcca46 !important;
+}
+
+.tag-groups-admin-footer {
+  clear: both;
+  width: 100%;
+
+  > footer {
+    text-align: center;
+
+    > .tag-groups-rating {
+      font-size: 12px;
+      margin-bottom: 10px;
+      margin-top: 30px;
+    }
+
+    * {
+      color: #777;
+    }
+
+    > nav ul {
+      list-style: none;
+      margin: 12px 0;
+      padding: 0;
+
+      > li {
+        display: inline-block;
+
+        &:not(:first-child) {
+          margin-left: 15px;
+        }
+
+        > a {
+          font-weight: bold;
+        }
+      }
+    }
+
+    .dashicons-star-filled {
+      color: #ffb300;
+      font-size: 12px;
+      height: 12px;
+      line-height: 18px;
+      transition: color 200ms ease-in-out;
+      width: 12px;
+    }
+  }
+
+  .tag-groups-publishpress-logo {
+    margin-top: 10px;
+
+    img {
+      max-width: 100%;
+      width: 170px;
+    }
+  }
+}
+
+body.tag-groups-admin-page #wpfooter {
+  box-sizing: border-box;
+  position: static;
 }

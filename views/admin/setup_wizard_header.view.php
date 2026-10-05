@@ -1,4 +1,4 @@
-<h1><span class="dashicons dashicons-lightbulb"></span>&nbsp;<?php _e('Tag Groups Setup Wizard', 'tag-groups') ?></h1>
+<h1><span class="dashicons dashicons-lightbulb"></span>&nbsp;<?php _e('PublishPress Tag Groups Setup Wizard', 'tag-groups') ?></h1>
 <div class="tag-groups-wizard-box">
 <ul class="tag-groups-steps">
   <?php foreach ($steps as $key => $step_info) : ?>
@@ -12,7 +12,7 @@
                 ?>style="color:#ccc"<?php 
             endif; ?>
             <?php if ($key == $step) :
-                ?>style="color:#009CD0"<?php 
+                ?>style="color:#655997"<?php
             endif; ?>>
             <?php if ($key < $step) : ?>
             <span class="dashicons dashicons-yes-alt"></span>

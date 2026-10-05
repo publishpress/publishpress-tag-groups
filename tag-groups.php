@@ -1,12 +1,12 @@
 <?php
 
 /**
- * Plugin Name: Tag Groups
+ * Plugin Name: PublishPress Tag Groups Free
  * Plugin URI: https://wordpress.org/plugins/tag-groups/
- * Description: Tag Groups allows you to organize your WordPress taxonomy terms and show them in clouds, tabs, accordions, tables, lists and much more.
- * Author: TaxoPress
- * Author URI: https://taxopress.com
- * Version: 2.2.2
+ * Description: PublishPress Tag Groups allows you to organize your WordPress taxonomy terms and show them in clouds, tabs, accordions, tables, lists and much more.
+ * Author: PublishPress
+ * Author URI: https://publishpress.com
+ * Version: 3.0.0
  * License: GPL-3.0-or-later
  * License URI: https://www.gnu.org/licenses/gpl-3.0.html
  * Text Domain: tag-groups
@@ -14,9 +14,9 @@
  * Requires at least: 5.5
  * Requires PHP: 7.2.5
  *
- * @package     TaxoPress\TagGroups
- * @author      TaxoPress
- * @copyright   Copyright (c) 2024, TaxoPress
+ * @package     PublishPress\TagGroups
+ * @author      PublishPress
+ * @copyright   Copyright (c) 2024, PublishPress
  * @license     GPL-3.0-or-later
  */
 
@@ -24,6 +24,11 @@
 // define( "CM_TGP_KERNL_UUID", '' );
 
 defined('ABSPATH') || exit;
+
+if (! defined('TAG_GROUPS_VERSION')) {
+    define('TAG_GROUPS_VERSION', '3.0.0');
+}
+
 $includeFileRelativePath = '/publishpress/instance-protection/include.php';
 if (file_exists(__DIR__ . '/lib/vendor' . $includeFileRelativePath)) {
     require_once __DIR__ . '/lib/vendor' . $includeFileRelativePath;
@@ -34,7 +39,8 @@ if (file_exists(__DIR__ . '/lib/vendor' . $includeFileRelativePath)) {
 if (class_exists('PublishPressInstanceProtection\Config')) {
     $pluginCheckerConfig = new PublishPressInstanceProtection\Config();
     $pluginCheckerConfig->pluginSlug = 'tag-groups';
-    $pluginCheckerConfig->pluginName = 'Tag Groups';
+    $pluginCheckerConfig->pluginName = 'PublishPress Tag Groups';
+    $pluginCheckerConfig->pluginFolder = 'tag-groups';
     $pluginChecker = new PublishPressInstanceProtection\InstanceChecker($pluginCheckerConfig);
 }
 
@@ -59,8 +65,160 @@ if (file_exists(__DIR__ . '/lib/vendor' . $wordpressVersionNoticesPath)) {
     require_once __DIR__ . '/vendor' . $wordpressVersionNoticesPath;
 }
 
+if (!function_exists('tag_groups_free_plugin_basenames')) {
+    /**
+     * Return the supported free-plugin entry paths.
+     *
+     * The WordPress.org folder remains the canonical installation path. The
+     * branded folder is accepted for compatibility with pre-release packages.
+     *
+     * @return string[]
+     */
+    function tag_groups_free_plugin_basenames()
+    {
+        return [
+            'publishpress-tag-groups/tag-groups.php',
+            'tag-groups/tag-groups.php',
+        ];
+    }
+}
+
+if (! function_exists('publishpress_tag_groups_get_active_pro_plugin')) {
+    /**
+     * Return the active Pro entry path, including legacy and pre-release paths.
+     *
+     * @return string
+     */
+    function publishpress_tag_groups_get_active_pro_plugin()
+    {
+        $proPlugins = [
+            'tag-groups-pro/tag-groups-pro.php',
+            'tag-groups-pro/tag-groups.php',
+            'publishpress-tag-groups-pro/tag-groups-pro.php',
+            'publishpress-tag-groups-pro/publishpress-tag-groups-pro.php',
+        ];
+
+        if (! function_exists('is_plugin_active')) {
+            require_once ABSPATH . 'wp-admin/includes/plugin.php';
+        }
+
+        foreach ($proPlugins as $proPlugin) {
+            if (is_plugin_active($proPlugin)) {
+                return $proPlugin;
+            }
+        }
+
+        return '';
+    }
+}
+
+if (! function_exists('publishpress_tag_groups_deactivate_free_when_pro_is_active')) {
+    /**
+     * Prevent a standalone Free copy from remaining active alongside Pro.
+     *
+     * This also handles legacy Pro versions that predate the Pro-side
+     * deactivation routine.
+     *
+     * @param string $freePlugin Standalone Free plugin basename.
+     * @return void
+     */
+    function publishpress_tag_groups_deactivate_free_when_pro_is_active($freePlugin = '')
+    {
+        if (! current_user_can('activate_plugins')) {
+            return;
+        }
+
+        if (! in_array($freePlugin, tag_groups_free_plugin_basenames(), true)) {
+            return;
+        }
+
+        $proPlugin = publishpress_tag_groups_get_active_pro_plugin();
+        if (empty($proPlugin)) {
+            return;
+        }
+
+        if (is_multisite() && is_plugin_active_for_network($freePlugin)) {
+            if (is_plugin_active_for_network($proPlugin) && current_user_can('manage_network_plugins')) {
+                deactivate_plugins($freePlugin, true, true);
+                update_site_option('publishpress_tag_groups_network_free_deactivated_for_pro', 1);
+            } else {
+                update_site_option('publishpress_tag_groups_network_free_plugin_detected', 1);
+            }
+
+            return;
+        }
+
+        if (is_plugin_active($freePlugin)) {
+            deactivate_plugins($freePlugin, true, false);
+            update_option('publishpress_tag_groups_free_deactivated_for_pro', 1);
+        }
+    }
+}
+
+if (! function_exists('publishpress_tag_groups_free_pro_activation_notice')) {
+    /**
+     * Explain an automatic Free deactivation on the current admin request.
+     *
+     * @return void
+     */
+    function publishpress_tag_groups_free_pro_activation_notice()
+    {
+        if (! current_user_can('activate_plugins')) {
+            return;
+        }
+
+        if (get_option('publishpress_tag_groups_free_deactivated_for_pro')) {
+            delete_option('publishpress_tag_groups_free_deactivated_for_pro');
+            echo '<div class="notice notice-info is-dismissible"><p>'
+                . esc_html__('PublishPress Tag Groups Free was deactivated because PublishPress Tag Groups Pro is active.', 'tag-groups')
+                . '</p></div>';
+        }
+    }
+}
+
+if (! function_exists('publishpress_tag_groups_free_pro_network_notice')) {
+    /**
+     * Report network-level Free and Pro activation handling.
+     *
+     * @return void
+     */
+    function publishpress_tag_groups_free_pro_network_notice()
+    {
+        if (! is_network_admin() || ! current_user_can('manage_network_plugins')) {
+            return;
+        }
+
+        if (get_site_option('publishpress_tag_groups_network_free_deactivated_for_pro')) {
+            delete_site_option('publishpress_tag_groups_network_free_deactivated_for_pro');
+            echo '<div class="notice notice-info is-dismissible"><p>'
+                . esc_html__('PublishPress Tag Groups Free was deactivated network-wide because PublishPress Tag Groups Pro is active network-wide.', 'tag-groups')
+                . '</p></div>';
+        }
+
+        if (get_site_option('publishpress_tag_groups_network_free_plugin_detected')) {
+            delete_site_option('publishpress_tag_groups_network_free_plugin_detected');
+            echo '<div class="notice notice-warning"><p>'
+                . esc_html__('PublishPress Tag Groups Free remains active network-wide. Deactivate it network-wide or activate PublishPress Tag Groups Pro network-wide.', 'tag-groups')
+                . '</p></div>';
+        }
+    }
+}
+
+$publishpressTagGroupsFreePlugin = plugin_basename(__FILE__);
+if (in_array($publishpressTagGroupsFreePlugin, tag_groups_free_plugin_basenames(), true)) {
+    add_action(
+        'admin_init',
+        static function () use ($publishpressTagGroupsFreePlugin) {
+            publishpress_tag_groups_deactivate_free_when_pro_is_active($publishpressTagGroupsFreePlugin);
+        },
+        1
+    );
+    add_action('admin_notices', 'publishpress_tag_groups_free_pro_activation_notice');
+    add_action('network_admin_notices', 'publishpress_tag_groups_free_pro_network_notice');
+}
+
 if (!defined('TAG_GROUPS_PLUGIN_IS_FREE')) {
-    if (plugin_basename(__FILE__) == 'tag-groups/tag-groups.php') {
+    if (in_array(plugin_basename(__FILE__), tag_groups_free_plugin_basenames(), true)) {
         define('TAG_GROUPS_PLUGIN_IS_FREE', true);
     } else {
     // Don't define the constant! If the premium plugin runs earlier, the free plugin still needs to define it.
@@ -155,7 +313,7 @@ if (!function_exists('tag_groups_init')) {
     function tag_groups_init()
     {
         global $tag_groups_loader ;
-        if (plugin_basename(__FILE__) != 'tag-groups/tag-groups.php') {
+        if (!in_array(plugin_basename(__FILE__), tag_groups_free_plugin_basenames(), true)) {
         /**
                      *  TGP-Codester or TGP-Freemius
                      */
@@ -170,11 +328,11 @@ if (!function_exists('tag_groups_init')) {
                  */
                 update_option('tag_group_reset_when_uninstall', 0);
                 require_once ABSPATH . 'wp-admin/includes/plugin.php';
-                deactivate_plugins('tag-groups/tag-groups.php', true);
+                deactivate_plugins(tag_groups_free_plugin_basenames(), true);
 // add the hook directly
                 add_action('admin_notices', function () {
 
-                    echo  '<div class="notice notice-info is-dismissible"><p>' . esc_html__('The free Tag Groups plugin cannot be active together with Tag Groups Pro.', 'tag-groups') . ' <a href="https://taxopress.com/docs/tag-groups/" target="_blank" style="text-decoration: none;" title="' . esc_attr__('more information', 'tag-groups') . '"><span class="dashicons dashicons-editor-help"></span></a></p></div><div clear="all" /></div>' ;
+                    echo  '<div class="notice notice-info is-dismissible"><p>' . esc_html__('The free PublishPress Tag Groups plugin cannot be active together with PublishPress Tag Groups Pro.', 'tag-groups') . ' <a href="https://publishpress.com/tag-groups/" target="_blank" style="text-decoration: none;" title="' . esc_attr__('more information', 'tag-groups') . '"><span class="dashicons dashicons-editor-help"></span></a></p></div><div clear="all" /></div>' ;
                 });
 /**
                  * Remove the misleading "Plugin activated" messaage
@@ -198,7 +356,16 @@ if (!function_exists('tag_groups_init')) {
                 // Only load free-only admin features if not running inside Pro
                 if (!defined('TAG_GROUPS_SKIP_VERSION_NOTICES') || !TAG_GROUPS_SKIP_VERSION_NOTICES) {
                     require_once(TAG_GROUPS_PLUGIN_ABSOLUTE_PATH . '/includes-core/TagGroupsCoreAdmin.php');
-                    new \TaxoPress\TagGroups\TagGroupsCoreAdmin();
+
+                    // Keep the former namespace available for third-party integrations during the rebrand.
+                    if (!class_exists('TaxoPress\\TagGroups\\TagGroupsCoreAdmin', false)) {
+                        class_alias(
+                            \PublishPress\TagGroups\TagGroupsCoreAdmin::class,
+                            'TaxoPress\\TagGroups\\TagGroupsCoreAdmin'
+                        );
+                    }
+
+                    new \PublishPress\TagGroups\TagGroupsCoreAdmin();
                     require_once(TAG_GROUPS_PLUGIN_ABSOLUTE_PATH . '/includes-core/TagGroupsReviews.php');
                 }
             }

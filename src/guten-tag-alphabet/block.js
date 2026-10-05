@@ -800,32 +800,6 @@ class tagGroupsAlphabeticalCloudParameters extends Component {
               </div>
             )}
           </PanelBody>
-          <div className='chatty-mango-help-transform'>
-            <TagGroupsHelp
-              url={helpUrl}
-              product={this.helpProduct}
-              feature={this.helpFeature}
-              siteLang={siteLang}
-              topic='transform-your-block-for-more-options'
-            />
-            <div
-              className='dashicons-before dashicons-editor-code'
-              dangerouslySetInnerHTML={{
-                __html: __(
-                  'If you want to customize further options, you need to transform the block into a <b>shortcode block</b>.'
-                ),
-              }}
-            ></div>
-          </div>
-          <div
-            className='chatty-mango-inspector-help dashicons-before dashicons-admin-generic'
-            dangerouslySetInnerHTML={{
-              __html: __(
-                `The live preview of blocks can be turned on and off in the Tag Groups Settings under <a href="${gutenbergSettings}">Back End → Gutenberg</a>.`,
-                'tag-groups'
-              ),
-            }}
-          ></div>
         </div>
       </InspectorControls>,
       <div>
@@ -878,7 +852,7 @@ var cmTagGroupsAlphabetBlock = registerBlockType(
     icon: 'tagcloud', // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
     category: 'chatty-mango',
     description: __('Show your tags under tabs sorted by first letters.'),
-    keywords: [__('alphabet'), __('tag cloud'), 'Chatty Mango'],
+    keywords: [__('alphabet'), __('tag cloud'), 'PublishPress'],
     html: false,
     transforms: {
       to: [

@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Tag Groups Review Request System
+ * PublishPress Tag Groups Review Request System
  *
- * @package TaxoPress\TagGroups
+ * @package PublishPress\TagGroups
  */
 
 if (!defined('ABSPATH')) {
@@ -11,7 +11,7 @@ if (!defined('ABSPATH')) {
 }
 
 /**
- * Initialize the PublishPress WordPress Reviews library for Tag Groups
+ * Initialize the PublishPress WordPress Reviews library for PublishPress Tag Groups
  */
 function tag_groups_init_reviews()
 {
@@ -26,7 +26,7 @@ function tag_groups_init_reviews()
 
     $reviewsController = new \PublishPress\WordPressReviews\ReviewsController(
         'tag-groups',
-        'Tag Groups',
+        'PublishPress Tag Groups',
         $iconUrl
     );
 
