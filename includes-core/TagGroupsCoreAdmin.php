@@ -68,7 +68,7 @@ class TagGroupsCoreAdmin
         $settings['publishpress-tag-groups'] = [
             /* translators: %1$s and %2$s are opening and closing anchor tags for the upgrade link */
             'message' => esc_html__('You\'re using PublishPress Tag Groups Free. The Pro version has more features and support. %1$sUpgrade to Pro%2$s', 'tag-groups'),
-            'link'    => 'https://publishpress.com/tag-groups/',
+            'link'    => 'https://publishpress.com/links/tag-groups-banner',
             'screens' => [
                 ['base' => 'toplevel_page_tag-groups-settings', 'id' => 'toplevel_page_tag-groups-settings'],
                 ['base' => 'tag-groups_page_tag-groups-settings-taxonomies', 'id' => 'tag-groups_page_tag-groups-settings-taxonomies'],
@@ -96,7 +96,7 @@ class TagGroupsCoreAdmin
         $settings['publishpress-tag-groups'] = [
             'parent' => 'tag-groups-settings',
             'label'  => __('Upgrade to Pro', 'tag-groups'),
-            'link'   => 'https://publishpress.com/tag-groups/',
+            'link'   => 'https://publishpress.com/links/tag-groups-sidebar',
         ];
 
         return $settings;
