@@ -25,6 +25,10 @@
 
 defined('ABSPATH') || exit;
 
+if (! defined('TAG_GROUPS_VERSION')) {
+    define('TAG_GROUPS_VERSION', '2.2.2');
+}
+
 $includeFileRelativePath = '/publishpress/instance-protection/include.php';
 if (file_exists(__DIR__ . '/lib/vendor' . $includeFileRelativePath)) {
     require_once __DIR__ . '/lib/vendor' . $includeFileRelativePath;
