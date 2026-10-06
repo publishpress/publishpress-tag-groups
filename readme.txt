@@ -2,7 +2,7 @@
 Contributors: stevejburge, andergmartins, olatechpro, ojopaul
 Tags: tags, tag cloud, tabs, accordion, taxonomy, tag, woocommerce tags, Woocommerce categories, Tabbed Tag Cloud, Tag List, Accordion Tag Cloud, Alphabetical Tags, Alphabetical Tag Cloud, Alphabetical Tag Index, Post List, Post Filter
 Requires at least: 4.9
-Tested up to: 7.0
+Tested up to: 7.1
 Stable tag: 3.0.0
 Requires PHP: 7.2
 License: GPLv3
