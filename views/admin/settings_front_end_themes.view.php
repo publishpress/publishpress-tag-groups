@@ -3,15 +3,15 @@
   <form method="POST" action="<?php /* phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized */ echo isset($_SERVER['REQUEST_URI']) ? esc_url(wp_unslash($_SERVER['REQUEST_URI'])) : ''; ?>">
     <?php echo wp_nonce_field('tag-groups-settings', 'tag-groups-settings-nonce', true, false); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
     <div class="chatty-mango-settings-container">
-      <div style="min-width:500px;padding-right:20px;">
+      <div class="tg-settings-column" style="padding-right:20px;">
         <p>
           <?php _e("Here you can choose a theme for the Tabbed Tag Cloud and the Accordion Tag Cloud.", 'tag-groups')?>
-          <span class="dashicons dashicons-editor-help chatty-mango-help-icon" data-topic="themes" title="<?php _e('Click for more information', 'tag-groups') ?>"></span>
+          <button type="button" class="button-link dashicons dashicons-editor-help chatty-mango-help-icon" data-topic="themes" aria-expanded="false" aria-controls="tg-help-themes"><span class="screen-reader-text"><?php /* translators: %s: name of the setting */ echo esc_html(sprintf(__('More information: %s', 'tag-groups'), __('Themes', 'tag-groups'))); ?></span></button>
         </p>
 
-        <div class="chatty-mango-help-container chatty-mango-help-container-themes" style="display:none;">
+        <div id="tg-help-themes" class="chatty-mango-help-container chatty-mango-help-container-themes" style="display:none;">
           <p>
-            <?php _e('New themes can be created with the <a href="http://jqueryui.com/themeroller/" target="_blank">jQuery UI ThemeRoller</a>:', 'tag-groups')?>
+            <?php echo wp_kses_post(str_replace('</a>', '<span class="screen-reader-text"> ' . esc_html__('(opens in a new tab)', 'tag-groups') . '</span></a>', __('New themes can be created with the <a href="http://jqueryui.com/themeroller/" target="_blank">jQuery UI ThemeRoller</a>:', 'tag-groups'))); ?>
             <ol>
               <li><?php _e('On the page "Theme Roller" you can customize all features or pick one set from the gallery. Finish with the "download" button.', 'tag-groups')?></li>
               <li><?php _e('On the next page ("Download Builder") you will need to select the version 1.12.x and the components "Widget", "Accordion" and "Tabs". Make sure that before downloading you enter at the bottom as "CSS Scope" <b>.tag-groups-cloud</b> (including the dot).', 'tag-groups')?></li>
@@ -49,11 +49,11 @@
                 ?> checked<?php 
             endif;?>
             />&nbsp;
-            <label for="tg_none"><?php _e("Don't load a theme.", 'tag-groups')?></label> <span class="dashicons dashicons-editor-help chatty-mango-help-icon" title="<?php _e("Here you can turn off jQuery UI themes if your WordPress theme brings its own jQuery UI theme, in order to avoid conflicts.", 'tag-groups') ?>"></span>
+            <label for="tg_none"><?php _e("Don't load a theme.", 'tag-groups')?></label> <button type="button" class="button-link dashicons dashicons-editor-help chatty-mango-help-icon" data-topic="no-theme" aria-expanded="false" aria-controls="tg-help-no-theme"><span class="screen-reader-text"><?php /* translators: %s: name of the setting */ echo esc_html(sprintf(__('More information: %s', 'tag-groups'), __("Don't load a theme.", 'tag-groups'))); ?></span></button><span id="tg-help-no-theme" class="chatty-mango-help-container chatty-mango-help-container-no-theme" style="display:none;"><?php _e("Here you can turn off jQuery UI themes if your WordPress theme brings its own jQuery UI theme, in order to avoid conflicts.", 'tag-groups') ?></span>
           </li>
         </ul>
       </div>
-      <div style="min-width: 500px;">
+      <div class="tg-settings-column">
         <h4><?php _e('Further options', 'tag-groups')?></h4>
         <ul>
           <li>
@@ -88,11 +88,11 @@
                                endif; ?> ><?php echo esc_html($label) ?></option>
               <?php endforeach; ?>
             </select>&nbsp;
-            <span class="dashicons dashicons-editor-help chatty-mango-help-icon" title="<?php _e("By default the description appears in a tooltip when you hover the mouse over a tag in a tag cloud.", 'tag-groups') ?> <?php _e("If you don't trust all users of your site, remove the HTML or use a plugin to give the unfiltered_html capability only to users you trust.", 'tag-groups') ?>"></span>
+            <button type="button" class="button-link dashicons dashicons-editor-help chatty-mango-help-icon" data-topic="html-description" aria-expanded="false" aria-controls="tg-help-html-description"><span class="screen-reader-text"><?php /* translators: %s: name of the setting */ echo esc_html(sprintf(__('More information: %s', 'tag-groups'), __('HTML in tag description:', 'tag-groups'))); ?></span></button><span id="tg-help-html-description" class="chatty-mango-help-container chatty-mango-help-container-html-description" style="display:none;"><?php _e("By default the description appears in a tooltip when you hover the mouse over a tag in a tag cloud.", 'tag-groups') ?> <?php _e("If you don't trust all users of your site, remove the HTML or use a plugin to give the unfiltered_html capability only to users you trust.", 'tag-groups') ?></span>
           </li>
         </ul>
       </div>
-      <div style="width: 100%; min-width: 500px; float: left; padding: 20px 0;">
+      <div class="tg-settings-column" style="width: 100%; float: left; padding: 20px 0;">
         <input type="hidden" id="action" name="tg_action" value="theme">
         <input class="button-primary" type="submit" name="save" value="<?php _e("Save Theme Options", "tag-groups")?>" id="submitbutton" />
       </div>

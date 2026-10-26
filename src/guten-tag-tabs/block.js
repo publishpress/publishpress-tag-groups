@@ -250,6 +250,7 @@ class tagGroupsTabbedCloudParameters extends Component {
             />
             <RangeControl
               label={__('Smallest font size')}
+              help={__('Between 6 and 72. It cannot be larger than the largest font size.')}
               value={smallest !== undefined ? Number(smallest) : 12}
               onChange={(smallest) => {
                 if (smallest <= largest && smallest < 73)
@@ -267,6 +268,7 @@ class tagGroupsTabbedCloudParameters extends Component {
             />
             <RangeControl
               label={__('Largest font size')}
+              help={__('Between 6 and 72. It cannot be smaller than the smallest font size.')}
               value={largest !== undefined ? Number(largest) : 22}
               onChange={(largest) => {
                 if (smallest <= largest && largest > 5)
@@ -851,7 +853,7 @@ class tagGroupsTabbedCloudParameters extends Component {
       <div>
         {!!cover && (
           <Fragment>
-            <img src={pluginUrl + '/assets/images/features/' + cover} />
+            <img src={pluginUrl + '/assets/images/features/' + cover} alt='' />
           </Fragment>
         )}
         {!cover && serverSideRender && (

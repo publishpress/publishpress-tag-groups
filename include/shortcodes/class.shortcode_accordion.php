@@ -244,6 +244,7 @@ if (!class_exists('TagGroups_Shortcode_Accordion')) {
                 'smallest'              => 12,
                 'source'                => 'shortcode',
                 'tags_post_id'          => -1,
+                'target_size'           => 0,
                 'taxonomy'              => implode(',', TagGroups_Taxonomy::get_enabled_taxonomies()),
                 'threshold'             => 0,
             ), $atts));
@@ -262,6 +263,7 @@ if (!class_exists('TagGroups_Shortcode_Accordion')) {
             if ($this->attributes->delay) {
                 $this->attributes->div_class .= ' tag-groups-cloud-hidden';
             }
+            $this->attributes->div_class = TagGroups_Shortcode_Statics::maybe_add_target_size_class($this->attributes, $this->attributes->div_class);
             $div_id_output = ( $this->attributes->html_id ? ' id="' . TagGroups_Shortcode_Statics::sanitize_html_classes($this->attributes->html_id) . '"' : '' );
             $div_class_output = ( $this->attributes->div_class ? ' class="' . TagGroups_Shortcode_Statics::sanitize_html_classes($this->attributes->div_class) . '"' : '' );
             if (is_array($atts)) {
@@ -409,7 +411,7 @@ if (!class_exists('TagGroups_Shortcode_Accordion')) {
                     $font_size = $this->font_size($post_count, $this->min_max[$this->tag_group_data[$i]['term_group']]['min'], $this->min_max[$this->tag_group_data[$i]['term_group']]['max']);
                     $font_size_separator = ( $this->attributes->adjust_separator_size ? $font_size : $this->attributes->separator_size );
                     if ($this->count_amount > 0 && !empty($this->attributes->separator)) {
-                        $html_tags .= '<span style="font-size:' . $font_size_separator . 'px">' . $this->attributes->separator . '</span> ';
+                        $html_tags .= TagGroups_Shortcode_Statics::separator_html($this->attributes->separator, $font_size_separator);
                     }
                     $other_tag_classes = $this->get_assigned_tag_class($tag->term_id);
                     $title = $this->get_title($tag, $post_count);
@@ -505,6 +507,7 @@ if (!class_exists('TagGroups_Shortcode_Accordion')) {
                         $post_count,
                         $this->shortcode_id
                     );
+                    $html_tags .= TagGroups_Shortcode_Statics::sr_count_html($this->attributes, $post_count);
                     $html_tags .= '</a></span> ';
                     $this->count_amount++;
                 }
@@ -528,6 +531,9 @@ if (!class_exists('TagGroups_Shortcode_Accordion')) {
             $atts
         ) {
             $html = '<div' . $div_id_output . $div_class_output . '>' . $html . '</div>';
+            if ($this->attributes->delay) {
+                $html .= TagGroups_Shortcode_Statics::noscript_unhide_html();
+            }
             $html .= $this->custom_js_accordion();
             /**
              * Hook to filter final HTML

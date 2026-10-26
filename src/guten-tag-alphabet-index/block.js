@@ -12,7 +12,6 @@
 import '../editor.css';
 
 import Select from '../components/tag-groups-select';
-import HeadingToolbar from '../components/heading-toolbar';
 import TagGroupsServerSideRender from '../components/tag-groups-render';
 
 import TagGroupsHelp from '../components/tag-groups-help';
@@ -46,7 +45,7 @@ const { createBlock, registerBlockType } = wp.blocks;
 
 const { InspectorControls, PlainText } = wp.editor;
 
-const { PanelBody, ToggleControl, RangeControl } = wp.components;
+const { PanelBody, ToggleControl, RangeControl, SelectControl } = wp.components;
 
 const { Component, Fragment } = wp.element;
 
@@ -221,6 +220,7 @@ class editFunction extends Component {
             />
             <RangeControl
               label={__('Smallest font size')}
+              help={__('Between 6 and 72. It cannot be larger than the largest font size.')}
               value={smallest !== undefined ? Number(smallest) : 12}
               onChange={(smallest) => {
                 if (smallest <= largest && smallest < 73)
@@ -238,6 +238,7 @@ class editFunction extends Component {
             />
             <RangeControl
               label={__('Largest font size')}
+              help={__('Between 6 and 72. It cannot be smaller than the smallest font size.')}
               value={largest !== undefined ? Number(largest) : 22}
               onChange={(largest) => {
                 if (smallest <= largest && largest > 5)
@@ -631,15 +632,18 @@ class editFunction extends Component {
                 siteLang={siteLang}
                 topic='h_level'
               />
-              <label htmlFor='tg_input_h_level'>{'Title element'}</label>
             </div>
-            <HeadingToolbar
+            <SelectControl
               id='tg_input_h_level'
-              isCollapsed={false}
-              minLevel={1}
-              maxLevel={7}
-              selectedLevel={h_level}
-              onChange={(newLevel) => setAttributes({ h_level: newLevel })}
+              label={__('Title element')}
+              value={String(h_level)}
+              options={[1, 2, 3, 4, 5, 6].map((level) => ({
+                value: String(level),
+                label: 'h' + level,
+              }))}
+              onChange={(newLevel) =>
+                setAttributes({ h_level: Number(newLevel) })
+              }
             />
             <div>
               <TagGroupsHelp
@@ -742,7 +746,7 @@ class editFunction extends Component {
       <div>
         {!!cover && (
           <Fragment>
-            <img src={pluginUrl + '/assets/images/features/' + cover} />
+            <img src={pluginUrl + '/assets/images/features/' + cover} alt='' />
           </Fragment>
         )}
         {!cover && serverSideRender && (

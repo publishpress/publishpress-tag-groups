@@ -106,9 +106,9 @@
             ?> checked<?php 
                                                                                          endif; ?>>&nbsp;
       <label for="tg_enqueue"><?php _e('Always load shortcode scripts.', 'tag-groups') ?></label>
-      <span class="dashicons dashicons-editor-help chatty-mango-help-icon" data-topic="load-scripts" title="<?php _e('Click for more information', 'tag-groups') ?>"></span>
+      <button type="button" class="button-link dashicons dashicons-editor-help chatty-mango-help-icon" data-topic="load-scripts" aria-expanded="false" aria-controls="tg-help-load-scripts"><span class="screen-reader-text"><?php /* translators: %s: name of the setting */ echo esc_html(sprintf(__('More information: %s', 'tag-groups'), __('Always load shortcode scripts.', 'tag-groups'))); ?></span></button>
     </p>
-    <div class="chatty-mango-help-container chatty-mango-help-container-load-scripts" style="display:none; max-width:60%; clear:none;">
+    <div id="tg-help-load-scripts" class="chatty-mango-help-container chatty-mango-help-container-load-scripts" style="display:none; max-width:60%; clear:none;">
       <p><?php _e('Turn off to load the scripts only on posts and pages where a shortcode appears.', 'tag-groups') ?></p>
       <p><span class="dashicons dashicons-warning"></span><?php _e('Turn on if you use these shortcodes in widgets.', 'tag-groups') ?></p>
     </div>

@@ -442,7 +442,7 @@
   background-color: #fff;
   float: left;
   max-width: 95%;
-  min-width: 700px;
+  min-width: 700px; /* reset below 782px, see end of file */
   margin-top: 30px;
   border-radius: 5px;
   font-size: 1.1em;
@@ -679,7 +679,7 @@ body[class*="tag-groups-settings"] .pp-version-notice-bold-purple-button:hover {
     }
 
     * {
-      color: #777;
+      color: #50575e;
     }
 
     > nav ul {
@@ -723,4 +723,120 @@ body[class*="tag-groups-settings"] .pp-version-notice-bold-purple-button:hover {
 body.tag-groups-admin-page #wpfooter {
   box-sizing: border-box;
   position: static;
+}
+
+/* Accessibility: keyboard-operable controls in the group administration */
+.tg_icon_button.button-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  min-height: 24px;
+  padding: 0;
+  color: #3c434a;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+.tg_icon_button.button-link:hover {
+  color: #2271b1;
+}
+
+.tg_icon_link {
+  display: inline-block;
+  min-width: 24px;
+  min-height: 24px;
+  text-align: center;
+}
+
+.tg_move_wrapper {
+  overflow: hidden;
+  position: relative;
+  height: 26px;
+  clear: both;
+  padding: 1px;
+}
+
+.tg_up .dashicons,
+.tg_down .dashicons {
+  font-size: 24px;
+  width: 24px;
+  height: 24px;
+}
+
+.tg_edit_label.button-link {
+  color: #1d2327;
+  text-align: left;
+  cursor: text;
+  font-size: inherit;
+  min-height: 24px;
+}
+
+.tg_edit_label.tg_truncate {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.tg_edit_label .dashicons-edit {
+  visibility: hidden;
+}
+
+.tg_edit_label:hover .dashicons-edit,
+.tg_edit_label:focus .dashicons-edit,
+.tg_label_column:focus-within .dashicons-edit {
+  visibility: visible;
+}
+
+.tg_reload_button .dashicons {
+  vertical-align: middle;
+}
+
+#tg_message_container:focus {
+  outline: 2px solid #2271b1;
+  outline-offset: 2px;
+}
+
+/* Help icons rendered as buttons */
+button.chatty-mango-help-icon {
+  min-width: 24px;
+  min-height: 24px;
+  width: auto;
+  height: auto;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: #3c434a;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+button.chatty-mango-help-icon:hover {
+  color: #2271b1;
+}
+
+/* Setup wizard step indicator */
+.tag-groups-steps .tg-current-step {
+  border-bottom: 3px solid #655997;
+}
+
+/* Reflow on small screens */
+.tg-settings-column {
+  min-width: 500px;
+}
+
+@media screen and (max-width: 782px) {
+  .tg_premium_backend_main_box,
+  .tg-settings-column {
+    min-width: 0;
+    float: none;
+    max-width: 100%;
+  }
+
+  .tg_label_column {
+    width: auto;
+  }
+
+  .tg_truncate {
+    max-width: 100%;
+  }
 }

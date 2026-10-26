@@ -28,10 +28,15 @@ const tagGroupsHelp = (props) => {
       <a
         href={href}
         target='_blank'
+        rel='noopener noreferrer'
         style={{ textDecoration: 'none' }}
         title={__('Click for help!')}
+        aria-label={__('Help') + ' ' + __('(opens in a new tab)')}
       >
-        <span className='dashicons dashicons-editor-help tg_right chatty-mango-help-icon'></span>
+        <span
+          className='dashicons dashicons-editor-help tg_right chatty-mango-help-icon'
+          aria-hidden='true'
+        ></span>
       </a>
     </div>
   );

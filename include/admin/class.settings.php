@@ -582,6 +582,8 @@ if (!class_exists('TagGroups_Settings')) {
                          */
                         delete_option('tag_group_tags_filter');
                         TagGroups_Admin_Notice::add('success', __('All groups have been deleted and assignments reset.', 'tag-groups'));
+                    } else {
+                        TagGroups_Admin_Notice::add('error', __('Nothing was deleted. Please check the box "I know what I am doing." to confirm that you want to delete all groups.', 'tag-groups'));
                     }
 
                     break;

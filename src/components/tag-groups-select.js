@@ -33,9 +33,43 @@ function findSelectedOptions(options, values) {
   );
 }
 
+// WCAG contrast: placeholder #646970, border #8c8f94, visible focus ring
+const selectTheme = (theme) => ({
+  ...theme,
+  colors: {
+    ...theme.colors,
+    primary: "#2271b1",
+    neutral20: "#8c8f94",
+    neutral30: "#646970",
+    neutral40: "#50575e",
+    neutral50: "#646970",
+    neutral60: "#50575e",
+  },
+});
+
+const selectStyles = {
+  control: (base, state) => ({
+    ...base,
+    borderColor: state.isFocused ? "#2271b1" : "#8c8f94",
+    boxShadow: state.isFocused ? "0 0 0 1px #2271b1" : base.boxShadow,
+    outline: state.isFocused ? "2px solid transparent" : base.outline,
+    "&:hover": {
+      borderColor: state.isFocused ? "#2271b1" : "#50575e",
+    },
+  }),
+  placeholder: (base) => ({
+    ...base,
+    color: "#646970",
+  }),
+};
+
 export default function TagGroupsSelect({
   className = "",
   closeOnSelect,
+  id,
+  inputId,
+  styles,
+  theme,
   multi = false,
   onChange,
   options = [],
@@ -70,6 +104,9 @@ export default function TagGroupsSelect({
   return (
     <ReactSelect
       {...props}
+      inputId={inputId || id}
+      styles={{ ...selectStyles, ...(styles || {}) }}
+      theme={theme || selectTheme}
       className={["tag-groups-select", className].filter(Boolean).join(" ")}
       closeMenuOnSelect={closeOnSelect === undefined ? !multi : closeOnSelect}
       hideSelected={removeSelected === undefined ? multi : removeSelected}
