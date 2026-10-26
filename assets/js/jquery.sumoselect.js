@@ -10,6 +10,10 @@
  * Copyright 2015 Hemant Negi
  * Email : hemant.frnz@gmail.com
  * Compressor http://refresh-sf.com/
+ *
+ * Accessibility patch (PublishPress Tag Groups): combobox/listbox roles,
+ * accessible name from the original label, aria-selected/aria-activedescendant,
+ * Space to open/select, labelled search input.
  */
 
 (function (factory) {
@@ -25,6 +29,7 @@
 })(($) => {
 
   'namespace sumo';
+  let sumoUid = 0;
   $.fn.SumoSelect = function (options) {
     // Extra check for IE compatibility
     const dispatchEvent = (target, eventName) => {
@@ -101,16 +106,19 @@
         createElems () {
           const O = this;
           const selectedOptions = O.E.find('option:checked');
-          O.E.wrap('<div class="SumoSelect" tabindex="0" role="button" aria-expanded="false">');
+          sumoUid++;
+          O.uid = `sumo-${(O.E.attr('id') || 'select').replace(/[^\w-]/g, '')}-${sumoUid}`;
+          O.E.wrap('<div class="SumoSelect" tabindex="0" role="combobox" aria-haspopup="listbox" aria-expanded="false">');
           selectedOptions.each((_, selectedOption) => { // Fix for IE resetting index to 0 when -1
             selectedOption.selected = true;
           });
           O.select = O.E.parent();
-          O.caption = $('<span>');
-          O.CaptionCont = $(`<p class="CaptionCont SelectBox ${O.E.attr('class')}" ><label><i></i></label></p>`)
+          O.caption = $('<span>').attr('id', `${O.uid}-caption`);
+          O.CaptionCont = $(`<p class="CaptionCont SelectBox ${O.E.attr('class')}" ><label aria-hidden="true"><i></i></label></p>`)
             .attr('style', O.E.attr('style'))
             .prepend(O.caption);
           O.select.append(O.CaptionCont);
+          O.setAccessibleName();
 
           // default turn off if no multiselect
           if (!O.is_multi) settings.okCancelInMulti = false;
@@ -129,6 +137,7 @@
 
           //break for mobile rendring.. if forceCustomRendering is false
           if (O.isMobile() && !settings.forceCustomRendering) {
+            O.select.removeAttr('tabindex role aria-haspopup aria-expanded aria-labelledby');
             O.setNativeMobile();
             return;
           }
@@ -146,7 +155,11 @@
           O.floatingList();
 
           //Creating the markup for the available options
-          O.ul = $('<ul class="options">');
+          O.ul = $('<ul class="options" role="listbox">')
+            .attr('id', `${O.uid}-listbox`)
+            .attr('aria-labelledby', `${O.uid}-name`);
+          if (O.is_multi) O.ul.attr('aria-multiselectable', 'true');
+          O.select.attr('aria-controls', `${O.uid}-listbox`);
           O.optDiv.append(O.ul);
 
           // Select all functionality
@@ -164,6 +177,53 @@
           O._handleMax();
           O.basicEvents();
           O.selAllState();
+          O.syncAria();
+        },
+
+        // Name the combobox after the label of the original select (plus its current value).
+        setAccessibleName () {
+          const O = this;
+          const id = O.E.attr('id');
+          let labelText = '';
+          let $label = id ? $('label').filter((ix, l) => l.htmlFor === id) : $();
+          if (!$label.length) $label = O.E.closest('label');
+          if ($label.length) {
+            const $clone = $label.first().clone();
+            $clone.find('select, .SumoSelect, .sumo-name').remove();
+            labelText = $.trim($clone.text().replace(/\s+/g, ' '));
+            // clicking the label should focus the custom control, not the hidden select
+            O.labelEl = $label.first().on('click.sumo', (e) => {
+              if (O.select.is(e.target) || O.select.has(e.target).length) return;
+              e.preventDefault();
+              O.select.trigger('focus');
+            });
+          }
+          if (!labelText) labelText = O.E.attr('aria-label') || '';
+          if (!labelText && O.E.attr('aria-labelledby')) {
+            labelText = $.trim(O.E.attr('aria-labelledby').split(/\s+/).map(lid => $(document.getElementById(lid)).text()).join(' '));
+          }
+          if (!labelText) labelText = O.E.attr('title') || '';
+          O.nameEl = $('<span class="sumo-name" hidden></span>').attr('id', `${O.uid}-name`).text(labelText);
+          O.select.prepend(O.nameEl);
+          O.select.attr('aria-labelledby', labelText ? `${O.uid}-name ${O.uid}-caption` : `${O.uid}-caption`);
+        },
+
+        // keep ARIA states of options in sync with the visual state
+        syncAria () {
+          const O = this;
+          if (!O.ul || !O.ul.length) return;
+          O.ul.find('li.opt').each((ix, e) => {
+            const $e = $(e);
+            $e.attr('aria-selected', $e.hasClass('selected') ? 'true' : 'false');
+            if ($e.hasClass('disabled')) $e.attr('aria-disabled', 'true'); else $e.removeAttr('aria-disabled');
+          });
+        },
+
+        setActiveDescendant (li) {
+          const O = this;
+          const targets = O.ftxt ? O.select.add(O.ftxt) : O.select;
+          if (li && li.length && li.attr('id')) targets.attr('aria-activedescendant', li.attr('id'));
+          else targets.removeAttr('aria-activedescendant');
         },
 
         prepItems (opts, d) {
@@ -171,7 +231,8 @@
           $(opts).each((i, opt) => {       // parsing options to li
             const $opt = $(opt);
             lis.push($opt.is('optgroup') ?
-              $(`<li class="group ${opt.disabled ? 'disabled' : ''}"><label></label><ul></ul></li>`)
+              $(`<li class="group ${opt.disabled ? 'disabled' : ''}" role="group"><label aria-hidden="true"></label><ul role="presentation"></ul></li>`)
+                .attr('aria-label', $opt.attr('label'))
                 .find('label')
                 .text($opt.attr('label'))
                 .end()
@@ -191,14 +252,17 @@
           const O = this;
 
           if (!opt.attr('value')) opt.attr('value', opt.val());
-          const li = $(`<li class="opt"><label>${opt.html()}</label></li>`);
+          O.optCount = (O.optCount || 0) + 1;
+          const li = $(`<li class="opt" role="option"><label>${opt.html()}</label></li>`)
+            .attr('id', `${O.uid}-opt-${O.optCount}`)
+            .attr('aria-selected', opt[0].selected ? 'true' : 'false');
 
           li.data('opt', opt);    // store a direct reference to option.
           opt.data('li', li);    // store a direct reference to list item.
-          if (O.is_multi) li.prepend('<span><i></i></span>');
+          if (O.is_multi) li.prepend('<span aria-hidden="true"><i></i></span>');
 
           if (opt[0].disabled || d)
-            li.addClass('disabled');
+            li.addClass('disabled').attr('aria-disabled', 'true');
 
           O.onOptClick(li);
 
@@ -228,14 +292,14 @@
         multiSelelect () {
           const O = this;
           O.optDiv.addClass('multiple');
-          O.okbtn = $('<p tabindex="0" class="btnOk"></p>').click(() => {
+          O.okbtn = $('<p tabindex="0" role="button" class="btnOk"></p>').click(() => {
             //if combined change event is set.
             O._okbtn();
             O.hideOpts();
           });
           [O.okbtn[0].innerText] = settings.locale;
 
-          O.cancelBtn = $('<p tabindex="0" class="btnCancel"></p>').click(() => {
+          O.cancelBtn = $('<p tabindex="0" role="button" class="btnCancel"></p>').click(() => {
             O._cnbtn();
             O.hideOpts();
           });
@@ -301,6 +365,7 @@
             O.ul.find('li.opt').eq(O.Pstate[i]).addClass('selected');
           }
           O.selAllState();
+          O.syncAria();
         },
 
         _handleMax () {
@@ -320,13 +385,14 @@
                 }
               });
             }
+            this.syncAria();
           }
         },
 
         SelAll () {
           const O = this;
           if (!O.is_multi) return;
-          O.selAll = $('<p class="select-all"><span><i></i></span><label></label></p>');
+          O.selAll = $('<p class="select-all" role="button"><span aria-hidden="true"><i></i></span><label></label></p>');
           [, , O.selAll.find('label')[0].innerText] = settings.locale;
           O.optDiv.addClass('selall');
           O.selAll.on('click', () => {
@@ -342,14 +408,16 @@
         Search () {
           const O = this,
             cc = O.CaptionCont.addClass('search'),
-            P = $('<p class="no-match">'),
+            P = $('<p class="no-match" role="status">'),
             fn = (options.searchFn && typeof options.searchFn === 'function') ? options.searchFn : settings.searchFn;
 
-          O.ftxt = $('<input type="text" class="search-txt" value="" autocomplete="off">')
+          O.ftxt = $('<input type="text" class="search-txt" value="" autocomplete="off" aria-autocomplete="list">')
+            .attr('placeholder', settings.searchText)
+            .attr('aria-label', settings.searchText)
+            .attr('aria-controls', `${O.uid}-listbox`)
             .on('click', (e) => {
               e.stopPropagation();
             });
-          O.ftxt.placeholder = settings.searchText;
           cc.append(O.ftxt);
           O.optDiv.children('ul').after(P);
 
@@ -451,7 +519,10 @@
           if (O.is_opened) {
             O.E.trigger('sumo:closing', O);
             O.is_opened = false;
+            const hadFocus = O.optDiv.has(document.activeElement).length || (O.ftxt && O.ftxt.is(document.activeElement));
             O.select.removeClass('open').attr('aria-expanded', 'false').find('ul li.sel').removeClass('sel');
+            O.setActiveDescendant(null);
+            if (hadFocus) O.select.trigger('focus');
             O.E.trigger('sumo:closed', O);
             $(document).off('click.sumo');
             $('body').removeClass('sumoStopScroll');
@@ -473,6 +544,7 @@
           O.optDiv.find('li.sel').removeClass('sel');
           li.addClass('sel');
           O.showOpts();
+          O.setActiveDescendant(li);
         },
         nav (up) {
           const O = this;
@@ -489,6 +561,7 @@
 
             sel.removeClass('sel');
             sel = c.addClass('sel');
+            O.setActiveDescendant(sel);
 
             // setting sel item to visible view.
             const { ul } = O,
@@ -530,8 +603,13 @@
                 else
                   return;
 
-              case 32: // space
-                if (settings.search && O.ftxt.is(e.target)) return;
+              case 32: // space: open the list, or select the highlighted option
+                // allow typing spaces into a non-empty search term
+                if (settings.search && O.ftxt.is(e.target) && O.ftxt.val() !== '') return;
+                if (!O.is_opened)
+                  O.setOnOpen();
+                else if (O.optDiv.find('ul li.sel').length)
+                  O.optDiv.find('ul li.sel').trigger('click');
                 break;
               case 13: // enter
                 if (O.is_opened)
@@ -593,6 +671,7 @@
               O.callChange();
             }
 
+            O.syncAria();
             if (!O.is_multi) O.hideOpts(); //if its not a multiselect then hide on single select.
           });
         },
@@ -643,6 +722,7 @@
 
           //add class placeholder if its a placeholder text.
           if (is_placeholder) O.caption.addClass('placeholder'); else O.caption.removeClass('placeholder');
+          O.syncAria();
           return O.placeholder;
         },
 
@@ -724,6 +804,7 @@
           if (c) O.E.find('option')[i].selected = false;
           if (!O.mob) O.optDiv.find('ul.options li.opt').eq(i).toggleClass('disabled', c).removeClass('selected');
           O.setText();
+          O.syncAria();
         },
 
         // toggle disable/enable on complete select control
@@ -791,6 +872,7 @@
             O.setText();
             O.setPstate();
           }
+          O.syncAria();
         },
 
         /* outside accessibility options
@@ -804,6 +886,7 @@
         unload () {
           const O = this;
           O.select.before(O.E);
+          if (O.labelEl) O.labelEl.off('click.sumo');
           O.E.show();
           O.E[0].classList.remove('SumoUnder');
 

@@ -144,9 +144,9 @@ if (!class_exists('TagGroups_Export')) {
                 $settings_url = self::get_download_url($this->hash, 'settings');
                 $terms_url = self::get_download_url($this->hash, 'terms');
                 TagGroups_Admin_Notice::add('success', __('Your settings/groups and your terms have been exported. Please download the resulting files with right-click or ctrl-click:', 'tag-groups') . '  <p>
-        <a href="' . esc_url($settings_url) . '" target="_blank">tag_groups_settings-' . esc_html($this->hash) . '.json</a>
+        <a href="' . esc_url($settings_url) . '" target="_blank" rel="noopener noreferrer">tag_groups_settings-' . esc_html($this->hash) . '.json<span class="screen-reader-text"> ' . esc_html__('(opens in a new tab)', 'tag-groups') . '</span></a>
         </p>' . '  <p>
-        <a href="' . esc_url($terms_url) . '" target="_blank">tag_groups_terms-' . esc_html($this->hash) . '.json</a>
+        <a href="' . esc_url($terms_url) . '" target="_blank" rel="noopener noreferrer">tag_groups_terms-' . esc_html($this->hash) . '.json<span class="screen-reader-text"> ' . esc_html__('(opens in a new tab)', 'tag-groups') . '</span></a>
         </p>');
             } else {
                 TagGroups_Error::log('[Tag Groups] Error writing files');

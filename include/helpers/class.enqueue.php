@@ -151,9 +151,9 @@ if (! class_exists('TagGroups_Enqueue')) {
                 wp_enqueue_style('tag-groups-css-backend-tgb');
 
                 if (defined('WP_DEBUG') && WP_DEBUG) {
-                    wp_register_script('tag-groups-js-backend', TAG_GROUPS_PLUGIN_URL . '/assets/js/backend.js', array(), TAG_GROUPS_VERSION);
+                    wp_register_script('tag-groups-js-backend', TAG_GROUPS_PLUGIN_URL . '/assets/js/backend.js', array('jquery', 'wp-a11y'), TAG_GROUPS_VERSION);
                 } else {
-                    wp_register_script('tag-groups-js-backend', TAG_GROUPS_PLUGIN_URL . '/assets/js/backend.min.js', array(), TAG_GROUPS_VERSION);
+                    wp_register_script('tag-groups-js-backend', TAG_GROUPS_PLUGIN_URL . '/assets/js/backend.min.js', array('jquery', 'wp-a11y'), TAG_GROUPS_VERSION);
                 }
 
                 wp_enqueue_script('tag-groups-js-backend');

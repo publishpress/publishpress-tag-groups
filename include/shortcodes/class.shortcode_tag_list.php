@@ -218,6 +218,7 @@ if (!class_exists('TagGroups_Shortcode_Tag_List')) {
                 'source'              => 'shortcode',
                 'tags_div_class'      => 'tag-groups-tag-list-tags',
                 'tags_post_id'        => -1,
+                'target_size'         => 0,
                 'taxonomy'            => implode(',', TagGroups_Taxonomy::get_enabled_taxonomies()),
                 'threshold'           => 0,
             ), $atts));
@@ -227,6 +228,11 @@ if (!class_exists('TagGroups_Shortcode_Tag_List')) {
             if (empty($this->attributes->html_id)) {
                 $this->attributes->html_id = 'tag-groups-tag-list-' . uniqid();
             }
+            // Hook for the narrow-screen single-column rule; no styles of its own otherwise.
+            if (!empty($this->attributes->column_count)) {
+                $this->attributes->div_class .= ' tag-groups-columns';
+            }
+            $this->attributes->div_class = TagGroups_Shortcode_Statics::maybe_add_target_size_class($this->attributes, $this->attributes->div_class);
             $div_id_output = ( $this->attributes->html_id ? ' id="' . TagGroups_Shortcode_Statics::sanitize_html_classes($this->attributes->html_id) . '"' : '' );
             $div_class_output = ( $this->attributes->div_class ? ' class="' . TagGroups_Shortcode_Statics::sanitize_html_classes($this->attributes->div_class) . '"' : '' );
             $div_column_output = ( empty($this->attributes->column_count) ? '' : ' style="column-count:' . (int) $this->attributes->column_count . '; column-gap:' . $this->attributes->column_gap . '"' );
@@ -254,6 +260,7 @@ if (!class_exists('TagGroups_Shortcode_Tag_List')) {
             }
 
             $this->check_attributes();
+            $this->attributes->h_level = TagGroups_Shortcode_Statics::clamp_heading_level($this->attributes->h_level);
             $this->get_taxonomies();
             $this->get_tags();
             $this->make_include_array();
@@ -453,6 +460,7 @@ if (!class_exists('TagGroups_Shortcode_Tag_List')) {
                             $post_count,
                             $this->shortcode_id
                         );
+                        $html_tags .= TagGroups_Shortcode_Statics::sr_count_html($this->attributes, $post_count);
                         $html_tags .= '</a></span> ';
                         $count_amount++;
                     }

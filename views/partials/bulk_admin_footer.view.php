@@ -9,8 +9,9 @@
 jQuery(document).ready(function () {
   jQuery('<option>').val('assign').html('<?php _e('Assign to', 'tag-groups') ?>').appendTo("select[name='action']");
   jQuery('<option>').val('assign').html('<?php _e('Assign to', 'tag-groups') ?>').appendTo("select[name='action2']");
-  var sel_top = jQuery("<select name='term-group-top'>").insertAfter("select[name='action']");
-  var sel_bottom = jQuery("<select name='term-group-bottom'>").insertAfter("select[name='action2']");
+  var tgAssignLabel = <?php echo wp_json_encode(__('Tag group to assign', 'tag-groups')); ?>;
+  var sel_top = jQuery("<select name='term-group-top' id='term-group-top'>").attr('aria-label', tgAssignLabel).insertAfter("select[name='action']");
+  var sel_bottom = jQuery("<select name='term-group-bottom' id='term-group-bottom'>").attr('aria-label', tgAssignLabel).insertAfter("select[name='action2']");
   <?php foreach ($term_groups as $term_group) : ?>
   sel_top.append(jQuery("<option>").attr("value", "<?php echo esc_attr($term_group['term_group']) ?>").html("<?php echo esc_html($term_group['label']) ?>"));
   sel_bottom.append(jQuery("<option>").attr("value", "<?php echo esc_attr($term_group['term_group']) ?>").html("<?php echo esc_html($term_group['label']) ?>")); 

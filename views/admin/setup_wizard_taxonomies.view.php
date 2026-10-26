@@ -1,7 +1,7 @@
 <div style="margin: 50px 0 0;">
-  <p><?php _e('Choose the taxonomies for which you want to use tag groups.', 'tag-groups') ?> <?php _e("In most cases the default taxonomy <b>Tags (post_tag)</b> will do the job.", 'tag-groups') ?><span class="dashicons dashicons-editor-help chatty-mango-help-icon" data-topic="taxonomies" title="<?php _e('Click for more information', 'tag-groups') ?>"></span></p>
+  <p><?php _e('Choose the taxonomies for which you want to use tag groups.', 'tag-groups') ?> <?php _e("In most cases the default taxonomy <b>Tags (post_tag)</b> will do the job.", 'tag-groups') ?><button type="button" class="button-link dashicons dashicons-editor-help chatty-mango-help-icon" data-topic="taxonomies" aria-expanded="false" aria-controls="tg-help-taxonomies"><span class="screen-reader-text"><?php /* translators: %s: name of the setting */ echo esc_html(sprintf(__('More information: %s', 'tag-groups'), __('Taxonomies', 'tag-groups'))); ?></span></button></p>
 
-  <div class="chatty-mango-help-container chatty-mango-help-container-taxonomies" style="display:none;">
+  <div id="tg-help-taxonomies" class="chatty-mango-help-container chatty-mango-help-container-taxonomies" style="display:none;">
     <p><?php _e("The default texonomy is <b>Tags (post_tag)</b>. Please note that the tag clouds might not work with all taxonomies and that some taxonomies listed here may not be accessible in the admin backend. If you don't understand what is going on here, just leave the default.", 'tag-groups') ?></p>
   </div>
   <div class="chatty-mango-settings-container">
