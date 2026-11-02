@@ -13,6 +13,8 @@
  */
 
 // phpcs:disable PSR1.Classes.ClassDeclaration.MissingNamespace, Squiz.Classes.ValidClassName.NotCamelCaps, PSR1.Methods.CamelCapsMethodName.NotCamelCaps, WordPress.PHP.DiscouragedPHPFunctions.serialize_serialize, WordPress.DB.SlowDBQuery
+defined('ABSPATH') || exit;
+
 if (!class_exists('TagGroups_Group')) {
     class TagGroups_Group
     {
@@ -472,8 +474,12 @@ if (!class_exists('TagGroups_Group')) {
          * @param  int    $group_id ID of this group
          * @return object $this
          */
-        public function delete()
+        public function delete($schedule_repair = true, $term_ids = null)
         {
+            if (!$this->tg_groups->can_save()) {
+                $this->error = TagGroups_Groups::PERMISSION;
+                return $this;
+            }
 
             $group_ids = $this->tg_groups->get_group_ids();
 
@@ -494,6 +500,10 @@ if (!class_exists('TagGroups_Group')) {
 
                     if (is_array($translated_labels)) {
                         unset($translated_labels[$this->group_id]);
+                        if (!$this->tg_groups->can_save()) {
+                            $this->error = TagGroups_Groups::PERMISSION;
+                            return $this;
+                        }
                         TagGroups_Options::update_option('term_group_labels_' . $language, $translated_labels);
                     }
                 }
@@ -506,9 +516,12 @@ if (!class_exists('TagGroups_Group')) {
             $this->tg_groups->save();
             if (!empty($this->tg_groups->error)) {
                 $this->error = $this->tg_groups->error;
+                return $this;
             }
-            $this->remove_terms();
-            do_action('tag_groups_term_group_deleted', $this->group_id);
+            if ($term_ids !== array()) {
+                $this->remove_terms($term_ids === null ? array() : $term_ids);
+            }
+            do_action('tag_groups_term_group_deleted', $this->group_id, $schedule_repair);
             unset($this->group_id);
             return $this;
         }
