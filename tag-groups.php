@@ -6,7 +6,7 @@
  * Description: PublishPress Tag Groups allows you to organize your WordPress taxonomy terms and show them in clouds, tabs, accordions, tables, lists and much more.
  * Author: PublishPress
  * Author URI: https://publishpress.com
- * Version: 3.0.0
+ * Version: 3.0.1
  * License: GPL-3.0-or-later
  * License URI: https://www.gnu.org/licenses/gpl-3.0.html
  * Text Domain: tag-groups
@@ -26,7 +26,7 @@
 defined('ABSPATH') || exit;
 
 if (! defined('TAG_GROUPS_VERSION')) {
-    define('TAG_GROUPS_VERSION', '3.0.0');
+    define('TAG_GROUPS_VERSION', '3.0.1');
 }
 
 $includeFileRelativePath = '/publishpress/instance-protection/include.php';
