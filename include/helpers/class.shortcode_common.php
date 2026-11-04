@@ -839,6 +839,10 @@ if (!class_exists('TagGroups_Shortcode_Common')) {
                 }
             }
             
+            if (property_exists($this->attributes, 'separator')) {
+                $this->attributes->separator = esc_html($this->attributes->separator);
+            }
+            
             
             if (property_exists($this->attributes, 'threshold') && $this->attributes->threshold) {
                 $this->final_orderby = $this->attributes->orderby;
