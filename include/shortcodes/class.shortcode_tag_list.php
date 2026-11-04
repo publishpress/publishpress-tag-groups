@@ -229,7 +229,7 @@ if (!class_exists('TagGroups_Shortcode_Tag_List')) {
             }
             $div_id_output = ( $this->attributes->html_id ? ' id="' . TagGroups_Shortcode_Statics::sanitize_html_classes($this->attributes->html_id) . '"' : '' );
             $div_class_output = ( $this->attributes->div_class ? ' class="' . TagGroups_Shortcode_Statics::sanitize_html_classes($this->attributes->div_class) . '"' : '' );
-            $div_column_output = ( empty($this->attributes->column_count) ? '' : ' style="column-count:' . (int) $this->attributes->column_count . '; column-gap:' . $this->attributes->column_gap . '"' );
+            $div_column_output = ( empty($this->attributes->column_count) ? '' : ' style="column-count:' . (int) $this->attributes->column_count . '; column-gap:' . esc_attr($this->attributes->column_gap) . '"' );
             if (is_array($atts)) {
                 asort($atts);
             }
