@@ -1,3 +1,5 @@
+<?php defined('ABSPATH') || exit;
+?>
 <div id="tg_setting_help_search">
   <div class="tg-settings-search-area">
     <label for="tg_setting_help_search_field"></label><input id="tg_setting_help_search_field" placeholder="<?php _e('Search for settings', 'tag-groups') ?>" autocomplete="off"  title="<?php _e('Search for setting pages. Type a space to show all settings.', 'tag-groups') ?>">
