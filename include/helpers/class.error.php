@@ -9,6 +9,8 @@
  */
 
 // phpcs:disable PSR1.Classes.ClassDeclaration.MissingNamespace, Squiz.Classes.ValidClassName.NotCamelCaps, PSR1.Methods.CamelCapsMethodName.NotCamelCaps, WordPress.PHP.DevelopmentFunctions, PublishPressStandards.Debug.DisallowDebugFunctions
+defined('ABSPATH') || exit;
+
 if (! class_exists('TagGroups_Error')) {
 /**
    * Error processing

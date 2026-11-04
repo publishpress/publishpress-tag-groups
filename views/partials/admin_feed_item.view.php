@@ -1,3 +1,5 @@
+<?php defined('ABSPATH') || exit;
+?>
 <div class="tag_groups_feed_item">
     <div class="tag_groups_feed_image">
         <a href="<?php echo esc_url($link) ?>">

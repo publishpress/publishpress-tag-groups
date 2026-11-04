@@ -7,6 +7,8 @@
 * @license     GPL-3.0+
 */
 
+defined('ABSPATH') || exit;
+
 if (!class_exists('TagGroups_Export')) {
     /**
      *
