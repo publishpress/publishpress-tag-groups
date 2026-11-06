@@ -11,6 +11,8 @@
 
 import '../editor.css';
 
+import '../../assets/scss/_letter-strip.scss';
+
 import Select from '../components/tag-groups-select';
 import TagGroupsServerSideRender from '../components/tag-groups-render';
 
@@ -159,6 +161,8 @@ class tagGroupsAlphabeticalCloudParameters extends Component {
       exclude_letters,
       include_letters,
       largest,
+      letter_strip,
+      letter_strip_letters,
       link_append,
       link_target,
       mouseover,
@@ -574,6 +578,27 @@ class tagGroupsAlphabeticalCloudParameters extends Component {
               checked={delay}
               onChange={() => toggleOptionDelay(this)}
             />
+            <ToggleControl
+              label={__('Letter strip: compact A–Z bar that also shows letters without tags')}
+              checked={!!letter_strip}
+              onChange={(checked) => setAttributes({ letter_strip: checked ? 1 : 0 })}
+            />
+            {!!letter_strip && (
+              <div>
+                <label htmlFor='tg_input_letter_strip_letters'>
+                  {__('Letters in the strip')}
+                </label>
+                <PlainText
+                  id='tg_input_letter_strip_letters'
+                  className='input-control'
+                  value={letter_strip_letters ? letter_strip_letters : ''}
+                  placeholder='abcdefghijklmnopqrstuvwxyz'
+                  onChange={(letter_strip_letters) =>
+                    setAttributes({ letter_strip_letters })
+                  }
+                />
+              </div>
+            )}
             <div>
               <TagGroupsHelp
                 url={helpUrl}
@@ -1014,6 +1039,16 @@ var cmTagGroupsAlphabetBlock = registerBlockType(
         // only in shortcode
         type: 'string',
         default: '',
+      },
+      letter_strip: {
+        // configurable in block
+        type: 'integer',
+        default: 0,
+      },
+      letter_strip_letters: {
+        // configurable in block
+        type: 'string',
+        default: 'abcdefghijklmnopqrstuvwxyz',
       },
       largest: {
         // configurable in block

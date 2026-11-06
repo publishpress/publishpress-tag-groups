@@ -5,6 +5,10 @@
 * Author: Christoph Amthor
 * License: GNU GENERAL PUBLIC LICENSE, Version 3
 */
+
+/* Letter strip. Also imported by the Alphabetical Tabs block for the editor preview. */
+@use 'letter-strip';
+
 .tag-groups-tag-list h3,
 .tag-groups-alphabetical-index h3 {
   margin: 0 !important;
