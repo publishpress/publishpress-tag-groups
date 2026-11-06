@@ -11,6 +11,8 @@
 
 import '../editor.css';
 
+import '../../assets/scss/_tag-styles.scss';
+
 import Select from '../components/tag-groups-select';
 
 import TagGroupsServerSideRender from '../components/tag-groups-render';
@@ -24,6 +26,7 @@ import {
   getActiveGroupsOptions,
   optionsOrderby,
   optionsOrder,
+  optionsTagStyle,
   optionsTarget,
   renderTabs,
 } from '../modules/functions';
@@ -180,6 +183,7 @@ class tagGroupsTabbedCloudParameters extends Component {
       show_tag_count,
       show_tabs,
       smallest,
+      tag_style,
       tags_post_id,
       threshold,
       ul_class,
@@ -769,6 +773,15 @@ class tagGroupsTabbedCloudParameters extends Component {
           </PanelBody>
 
           <PanelBody title={__('Advanced Styling')} initialOpen={false}>
+            <label htmlFor='tg_input_tag_style'>{__('Tag style')}</label>
+            <Select
+              id='tg_input_tag_style'
+              onChange={(option) => {
+                if (option) setAttributes({ tag_style: option.value });
+              }}
+              value={typeof tag_style === 'string' ? tag_style : ''}
+              options={optionsTagStyle}
+            />
             <div>
               <TagGroupsHelp
                 url={helpUrl}
@@ -1139,6 +1152,11 @@ var cmTagGroupsTabsBlock = registerBlockType(
         // configurable in block
         type: 'integer',
         default: 12,
+      },
+      tag_style: {
+        // configurable in block
+        type: 'string',
+        default: '',
       },
       tags_post_id: {
         // configurable in block

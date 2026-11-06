@@ -166,6 +166,10 @@ if (!class_exists('TagGroups_Shortcode_Accordion')) {
             'type'    => 'integer',
             'default' => 12,
         ),
+            'tag_style'             => array(
+            'type'    => 'string',
+            'default' => '',
+        ),
             'tags_post_id'          => array(
             'type'    => 'integer',
             'default' => -1,
@@ -243,6 +247,7 @@ if (!class_exists('TagGroups_Shortcode_Accordion')) {
                 'show_tag_count'        => true,
                 'smallest'              => 12,
                 'source'                => 'shortcode',
+                'tag_style'             => '',
                 'tags_post_id'          => -1,
                 'taxonomy'              => implode(',', TagGroups_Taxonomy::get_enabled_taxonomies()),
                 'threshold'             => 0,
@@ -262,6 +267,7 @@ if (!class_exists('TagGroups_Shortcode_Accordion')) {
             if ($this->attributes->delay) {
                 $this->attributes->div_class .= ' tag-groups-cloud-hidden';
             }
+            $this->add_tag_style_class();
             $div_id_output = ( $this->attributes->html_id ? ' id="' . TagGroups_Shortcode_Statics::sanitize_html_classes($this->attributes->html_id) . '"' : '' );
             $div_class_output = ( $this->attributes->div_class ? ' class="' . TagGroups_Shortcode_Statics::sanitize_html_classes($this->attributes->div_class) . '"' : '' );
             if (is_array($atts)) {

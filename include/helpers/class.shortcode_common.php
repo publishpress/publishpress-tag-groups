@@ -824,6 +824,26 @@ if (!class_exists('TagGroups_Shortcode_Common')) {
         }
         
         /**
+         * Adds the CSS class of the selected tag style to the wrapper div
+         *
+         * Allowed values of the tag_style attribute: '' (theme default), 'label-maker'
+         *
+         * @return void
+         */
+        public function add_tag_style_class()
+        {
+            if (empty($this->attributes->tag_style)) {
+                return;
+            }
+
+            $tag_style = sanitize_key($this->attributes->tag_style);
+
+            if (in_array($tag_style, array( 'label-maker' ), true)) {
+                $this->attributes->div_class .= ' tag-groups-style-' . $tag_style;
+            }
+        }
+
+        /**
          * Performes some checks on the supplied attributes
          *
          * @return void
