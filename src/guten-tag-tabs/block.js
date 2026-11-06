@@ -11,6 +11,8 @@
 
 import '../editor.css';
 
+import '../../assets/scss/_icons.scss';
+
 import Select from '../components/tag-groups-select';
 
 import TagGroupsServerSideRender from '../components/tag-groups-render';
@@ -176,6 +178,7 @@ class tagGroupsTabbedCloudParameters extends Component {
       prepend,
       separator,
       separator_size,
+      show_icons,
       show_not_assigned,
       show_tag_count,
       show_tabs,
@@ -769,6 +772,12 @@ class tagGroupsTabbedCloudParameters extends Component {
           </PanelBody>
 
           <PanelBody title={__('Advanced Styling')} initialOpen={false}>
+            <ToggleControl
+              label={__('Show tag icons')}
+              help={__('Icons are chosen on the Edit Tag screen.')}
+              checked={!!show_icons}
+              onChange={(checked) => setAttributes({ show_icons: checked ? 1 : 0 })}
+            />
             <div>
               <TagGroupsHelp
                 url={helpUrl}
@@ -1114,6 +1123,11 @@ var cmTagGroupsTabsBlock = registerBlockType(
         // configurable in block
         type: 'string',
         default: '',
+      },
+      show_icons: {
+        // configurable in block
+        type: 'integer',
+        default: 0,
       },
       show_not_assigned: {
         // indirectly configurable in block

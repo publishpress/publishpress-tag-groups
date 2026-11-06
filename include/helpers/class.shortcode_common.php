@@ -824,6 +824,21 @@ if (!class_exists('TagGroups_Shortcode_Common')) {
         }
         
         /**
+         * Icon of a tag as inline SVG, if the show_icons attribute is on and the tag has an icon
+         *
+         * @param int $term_id
+         * @return string
+         */
+        public function get_tag_icon_html($term_id)
+        {
+            if (empty($this->attributes->show_icons)) {
+                return '';
+            }
+
+            return TagGroups_Icons::get_svg(TagGroups_Icons::get_term_icon($term_id));
+        }
+
+        /**
          * Performes some checks on the supplied attributes
          *
          * @return void

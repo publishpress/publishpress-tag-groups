@@ -281,6 +281,10 @@ if (!class_exists('TagGroups_Hooks')) {
             foreach ($enabled_taxonomies as $taxonomy) {
                 add_action("{$taxonomy}_edit_form_fields", array( 'TagGroups_Admin', 'render_edit_tag_menu' ));
                 add_action("{$taxonomy}_add_form_fields", array( 'TagGroups_Admin', 'render_new_tag_menu' ));
+                /**
+                 * Icon picker for tags
+                 */
+                TagGroups_Icon_Field::register($taxonomy);
                 add_filter(
                     "{$taxonomy}_row_actions",
                     array( 'TagGroups_Admin', 'expand_quick_edit_link' ),
