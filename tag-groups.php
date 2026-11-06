@@ -6,7 +6,7 @@
  * Description: PublishPress Tag Groups allows you to organize your WordPress taxonomy terms and show them in clouds, tabs, accordions, tables, lists and much more.
  * Author: PublishPress
  * Author URI: https://publishpress.com
- * Version: 3.0.0
+ * Version: 3.2.0-beta.1
  * License: GPL-3.0-or-later
  * License URI: https://www.gnu.org/licenses/gpl-3.0.html
  * Text Domain: tag-groups
@@ -26,7 +26,7 @@
 defined('ABSPATH') || exit;
 
 if (! defined('TAG_GROUPS_VERSION')) {
-    define('TAG_GROUPS_VERSION', '3.0.0');
+    define('TAG_GROUPS_VERSION', '3.2.0-beta.1');
 }
 
 $includeFileRelativePath = '/publishpress/instance-protection/include.php';
@@ -302,6 +302,10 @@ global  $tag_groups_loader ;
 require_once dirname(__FILE__) . '/include/class.loader.php';
 $tag_groups_loader = new TagGroups_Loader(TAG_GROUPS_PLUGIN_ABSOLUTE_PATH);
 $tag_groups_loader->require_classes();
+require_once __DIR__ . '/include/mcp/class.mcp.php';
+require_once __DIR__ . '/include/mcp/class.mcp_settings.php';
+require_once __DIR__ . '/include/mcp/class.mcp_actions.php';
+TagGroups_Mcp::boot();
 if (!function_exists('tag_groups_init')) {
 /**
      * Do all initial stuff: register hooks, check dependencies

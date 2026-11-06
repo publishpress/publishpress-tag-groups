@@ -13,6 +13,8 @@
  */
 
 // phpcs:disable PSR1.Classes.ClassDeclaration.MissingNamespace, Squiz.Classes.ValidClassName.NotCamelCaps, PSR1.Methods.CamelCapsMethodName.NotCamelCaps
+defined('ABSPATH') || exit;
+
 if (!class_exists('TagGroups_Groups')) {
     class TagGroups_Groups
     {
@@ -197,12 +199,19 @@ if (!class_exists('TagGroups_Groups')) {
          * @param  type   var    Description
          * @return return type
          */
+        /** Native configurable group-management permission. */
+        public function can_save()
+        {
+            $capability = TagGroups_Utilities::is_premium_plan()
+                ? TagGroups_Options::get_option('tag_group_role_edit_groups', 'edit_pages') : 'edit_pages';
+            return current_user_can($capability);
+        }
+
         public function save()
         {
+            $this->error = '';
 
-            $tag_group_role_edit_groups = 'edit_pages';
-
-            if (!current_user_can($tag_group_role_edit_groups)) {
+            if (!$this->can_save()) {
                 $this->error = TagGroups_Groups::PERMISSION;
                 return $this;
             }
@@ -228,13 +237,29 @@ if (!class_exists('TagGroups_Groups')) {
              * @return int[]
              */
             $positions = apply_filters('tag_groups_save_group_positions', $this->positions);
+            if (!$this->can_save()) {
+                $this->error = TagGroups_Groups::PERMISSION;
+                return $this;
+            }
             TagGroups_Options::update_option('term_groups', $group_ids, true);
+            if (!$this->can_save()) {
+                $this->error = TagGroups_Groups::PERMISSION;
+                return $this;
+            }
             TagGroups_Options::update_option('term_group_positions', $positions, true);
             if (TagGroups_Utilities::is_premium_plan()) {
                 $parents = apply_filters('tag_groups_save_group_parents', $this->parents);
+                if (!$this->can_save()) {
+                    $this->error = TagGroups_Groups::PERMISSION;
+                    return $this;
+                }
                 TagGroups_Options::update_option('term_group_parents', $parents, true);
             }
 
+            if (!$this->can_save()) {
+                $this->error = TagGroups_Groups::PERMISSION;
+                return $this;
+            }
             TagGroups_Options::update_option($this->get_tag_group_label_option_name(), $labels, true);
             /**
              * If we save translated groups, make sure we have untranslated ones. If not, give them the translations.
@@ -250,6 +275,10 @@ if (!class_exists('TagGroups_Groups')) {
                     }
                 }
                 if ($changed) {
+                    if (!$this->can_save()) {
+                        $this->error = TagGroups_Groups::PERMISSION;
+                        return $this;
+                    }
                     TagGroups_Options::update_option('term_group_labels', $default_language_labels);
                 }
             }
