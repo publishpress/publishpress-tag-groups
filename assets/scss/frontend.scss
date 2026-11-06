@@ -5,6 +5,10 @@
 * Author: Christoph Amthor
 * License: GNU GENERAL PUBLIC LICENSE, Version 3
 */
+
+/* Search panel. Also imported by the Tabs and Accordion blocks for the editor preview. */
+@use 'search-panel';
+
 .tag-groups-tag-list h3,
 .tag-groups-alphabetical-index h3 {
   margin: 0 !important;

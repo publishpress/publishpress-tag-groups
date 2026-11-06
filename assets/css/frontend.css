@@ -70,3 +70,99 @@
 .SumoSelect {
   width: auto;
 }
+
+/* Search panel (search_panel="1") */
+.tag-groups-search-panel {
+  --tg-search-accent: #5b3fa8;
+  --tg-search-accent-soft: #ece7fb;
+  --tg-search-border: #d9d6e3;
+  --tg-search-muted: #6b6680;
+  --tg-search-bg: transparent;
+  display: grid;
+  gap: 0.75em;
+  margin-block: 0 1.25em;
+  box-sizing: border-box;
+  padding: 1em;
+  border: 1px solid var(--tg-search-border);
+  border-radius: 10px;
+  background: var(--tg-search-bg);
+}
+
+.tag-groups-search-panel [hidden] {
+  display: none !important;
+}
+
+.tag-groups-search-label {
+  font-weight: 600;
+}
+
+.tag-groups-search-panel .tag-groups-search-input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.5em 0.75em;
+  border: 1px solid var(--tg-search-border);
+  border-radius: 6px;
+  font: inherit;
+}
+
+.tag-groups-search-panel .tag-groups-search-input:focus {
+  outline: 2px solid var(--tg-search-accent);
+  outline-offset: 1px;
+}
+
+.tag-groups-search-section {
+  display: grid;
+  gap: 0.4em;
+}
+
+.tag-groups-search-heading {
+  color: var(--tg-search-muted);
+  font-size: 0.75em;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.tag-groups-search-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4em;
+}
+
+.tag-groups-search-panel .tag-groups-search-chip {
+  display: inline-block;
+  padding: 0.2em 0.65em;
+  border-radius: 5px;
+  background: var(--tg-search-accent-soft);
+  color: var(--tg-search-accent);
+  font-size: 0.9em;
+  text-decoration: none;
+}
+
+.tag-groups-search-panel .tag-groups-search-chip:hover,
+.tag-groups-search-panel .tag-groups-search-chip:focus-visible {
+  background: var(--tg-search-accent);
+  color: #ffffff;
+}
+
+.tag-groups-search-panel .tag-groups-search-chip:focus-visible {
+  outline: 2px solid var(--tg-search-accent);
+  outline-offset: 2px;
+}
+
+.tag-groups-search-recent .tag-groups-search-chip {
+  border: 1px dashed var(--tg-search-border);
+  background: transparent;
+  color: var(--tg-search-muted);
+}
+
+.tag-groups-search-chip mark {
+  background: none;
+  color: inherit;
+  font-weight: 700;
+}
+
+.tag-groups-search-empty {
+  margin: 0;
+  color: var(--tg-search-muted);
+}

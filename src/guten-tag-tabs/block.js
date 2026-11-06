@@ -11,6 +11,8 @@
 
 import '../editor.css';
 
+import '../../assets/scss/_search-panel.scss';
+
 import Select from '../components/tag-groups-select';
 
 import TagGroupsServerSideRender from '../components/tag-groups-render';
@@ -174,6 +176,8 @@ class tagGroupsTabbedCloudParameters extends Component {
       order,
       orderby,
       prepend,
+      search_panel,
+      search_panel_popular,
       separator,
       separator_size,
       show_not_assigned,
@@ -768,6 +772,32 @@ class tagGroupsTabbedCloudParameters extends Component {
             />
           </PanelBody>
 
+          <PanelBody title={__('Search Panel')} initialOpen={false}>
+            <ToggleControl
+              label={__('Show a search panel above the tags')}
+              checked={!!search_panel}
+              onChange={(checked) => setAttributes({ search_panel: checked ? 1 : 0 })}
+            />
+            {!!search_panel && (
+              <RangeControl
+                label={
+                  __('Popular tags') +
+                  (search_panel_popular == 0 ? ': ' + __('hidden') : '')
+                }
+                value={
+                  search_panel_popular !== undefined
+                    ? Number(search_panel_popular)
+                    : 8
+                }
+                onChange={(search_panel_popular) =>
+                  setAttributes({ search_panel_popular })
+                }
+                min={0}
+                max={30}
+              />
+            )}
+          </PanelBody>
+
           <PanelBody title={__('Advanced Styling')} initialOpen={false}>
             <div>
               <TagGroupsHelp
@@ -1109,6 +1139,16 @@ var cmTagGroupsTabsBlock = registerBlockType(
         // configurable in block
         type: 'integer',
         default: 22,
+      },
+      search_panel: {
+        // configurable in block
+        type: 'integer',
+        default: 0,
+      },
+      search_panel_popular: {
+        // configurable in block
+        type: 'integer',
+        default: 8,
       },
       separator: {
         // configurable in block

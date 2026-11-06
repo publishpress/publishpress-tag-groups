@@ -162,6 +162,14 @@ if (!class_exists('TagGroups_Shortcode_Accordion')) {
             'type'    => 'integer',
             'default' => 1,
         ),
+            'search_panel'          => array(
+            'type'    => 'integer',
+            'default' => 0,
+        ),
+            'search_panel_popular'  => array(
+            'type'    => 'integer',
+            'default' => 8,
+        ),
             'smallest'              => array(
             'type'    => 'integer',
             'default' => 12,
@@ -235,6 +243,8 @@ if (!class_exists('TagGroups_Shortcode_Accordion')) {
                 'orderby'               => 'name',
                 'prepend'               => '',
                 'remove_filters'        => 1,
+                'search_panel'          => 0,
+                'search_panel_popular'  => 8,
                 'separator'             => '',
                 'separator_size'        => 12,
                 'show_accordion'        => 1,
@@ -426,7 +436,7 @@ if (!class_exists('TagGroups_Shortcode_Accordion')) {
                         $other_tag_classes .= ' ' . sanitize_html_class(' tg_tag_group_id_' . $this->tag_group_data[$i]['term_group']) . ' ' . sanitize_html_class('tg_tag_group_label_' . strtolower($this->tag_group_data[$i]['label']));
                     }
                     // assembling a tag
-                    $html_tags .= '<span class="tag-groups-tag' . $other_tag_classes . '" style="font-size:' . $font_size . 'px" data-group="' . $this->tag_group_data[$i]['term_group'] . '#"><a href="' . $tag_link . '" ' . $link_target_html . '' . $title_html . '  class="' . $tag->slug . '">';
+                    $html_tags .= '<span class="tag-groups-tag' . $other_tag_classes . '" style="font-size:' . $font_size . 'px"' . $this->get_search_panel_tag_data($post_count) . ' data-group="' . $this->tag_group_data[$i]['term_group'] . '#"><a href="' . $tag_link . '" ' . $link_target_html . '' . $title_html . '  class="' . $tag->slug . '">';
 
                     if ('' != $prepend_output) {
                         $prepend_html = '<span class="tag-groups-prepend" style="font-size:' . $font_size . 'px">' . htmlentities($prepend_output, ENT_QUOTES, "UTF-8") . '</span>';
@@ -527,7 +537,7 @@ if (!class_exists('TagGroups_Shortcode_Accordion')) {
             $div_class_output,
             $atts
         ) {
-            $html = '<div' . $div_id_output . $div_class_output . '>' . $html . '</div>';
+            $html = $this->get_search_panel_html() . '<div' . $div_id_output . $div_class_output . '>' . $html . '</div>';
             $html .= $this->custom_js_accordion();
             /**
              * Hook to filter final HTML

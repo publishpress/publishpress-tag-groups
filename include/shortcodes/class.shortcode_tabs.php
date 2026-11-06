@@ -158,6 +158,14 @@ if (!class_exists('TagGroups_Shortcode_Tabs')) {
             'type'    => 'integer',
             'default' => 1,
         ),
+            'search_panel'          => array(
+            'type'    => 'integer',
+            'default' => 0,
+        ),
+            'search_panel_popular'  => array(
+            'type'    => 'integer',
+            'default' => 8,
+        ),
             'smallest'              => array(
             'type'    => 'integer',
             'default' => 12,
@@ -227,6 +235,8 @@ if (!class_exists('TagGroups_Shortcode_Tabs')) {
                 'prepend'               => '',
                 'remove_filters'        => 1,
                 'separator_size'        => 12,
+                'search_panel'          => 0,
+                'search_panel_popular'  => 8,
                 'separator'             => '',
                 'show_not_assigned'     => false,
                 'show_all_groups'       => false,
@@ -525,7 +535,7 @@ if (!class_exists('TagGroups_Shortcode_Tabs')) {
                         $other_tag_classes .= ' ' . sanitize_html_class(' tg_tag_group_id_' . $this->tag_group_data[$i]['term_group']) . ' ' . sanitize_html_class('tg_tag_group_label_' . strtolower($this->tag_group_data[$i]['label']));
                     }
                     // assembling a tag
-                    $this->html_tags[$i] .= '<span class="tag-groups-tag' . $other_tag_classes . '" style="font-size:' . $font_size . 'px" data-group="' . $this->tag_group_data[$i]['term_group'] . '#"><a href="' . $tag_link . '" ' . $link_target_html . '' . $title_html . '  class="' . $tag->slug . '">';
+                    $this->html_tags[$i] .= '<span class="tag-groups-tag' . $other_tag_classes . '" style="font-size:' . $font_size . 'px"' . $this->get_search_panel_tag_data($post_count) . ' data-group="' . $this->tag_group_data[$i]['term_group'] . '#"><a href="' . $tag_link . '" ' . $link_target_html . '' . $title_html . '  class="' . $tag->slug . '">';
 
                     if ('' != $prepend_output) {
                         $prepend_html = '<span class="tag-groups-prepend" style="font-size:' . $font_size . 'px">' . htmlentities($prepend_output, ENT_QUOTES, "UTF-8") . '</span>';
@@ -632,7 +642,7 @@ if (!class_exists('TagGroups_Shortcode_Tabs')) {
             $div_class_output,
             $atts
         ) {
-            $html = '<div' . $div_id_output . $div_class_output . '>' . $html . '</div>';
+            $html = $this->get_search_panel_html() . '<div' . $div_id_output . $div_class_output . '>' . $html . '</div>';
             // entire wrapper
             $html .= $this->custom_js_tabs();
             /**

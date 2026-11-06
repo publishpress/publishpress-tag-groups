@@ -824,6 +824,60 @@ if (!class_exists('TagGroups_Shortcode_Common')) {
         }
         
         /**
+         * Markup of the search panel that is placed above the tag cloud (search_panel attribute)
+         *
+         * The panel is filled by TagGroupsSearchPanel in assets/js/frontend.js. It sits outside the
+         * cloud wrapper because jQuery UI Accordion treats every child of the wrapper as a header or panel.
+         *
+         * @return string
+         */
+        public function get_search_panel_html()
+        {
+            if (empty($this->attributes->search_panel) || empty($this->attributes->html_id)) {
+                return '';
+            }
+
+            $target_id = TagGroups_Shortcode_Statics::sanitize_html_classes($this->attributes->html_id);
+            $input_id = $target_id . '-search';
+            $popular = isset($this->attributes->search_panel_popular) ? max(0, (int) $this->attributes->search_panel_popular) : 8;
+
+            $html = '<div class="tag-groups-search-panel" data-target="' . esc_attr($target_id) . '" data-popular="' . $popular . '">';
+            $html .= '<label class="tag-groups-search-label" for="' . esc_attr($input_id) . '">' . esc_html__('Search tags', 'tag-groups') . '</label>';
+            $html .= '<input type="search" id="' . esc_attr($input_id) . '" class="tag-groups-search-input" autocomplete="off" placeholder="' . esc_attr__('Type to find a tag', 'tag-groups') . '">';
+            $html .= '<div class="tag-groups-search-section tag-groups-search-matches" aria-live="polite" hidden>';
+            $html .= '<span class="tag-groups-search-heading">' . esc_html__('Matches', 'tag-groups') . '</span>';
+            $html .= '<div class="tag-groups-search-list"></div>';
+            $html .= '<p class="tag-groups-search-empty" hidden>' . esc_html__('No tags found.', 'tag-groups') . '</p>';
+            $html .= '</div>';
+            $html .= '<div class="tag-groups-search-section tag-groups-search-recent" hidden>';
+            $html .= '<span class="tag-groups-search-heading">' . esc_html__('Recently viewed', 'tag-groups') . '</span>';
+            $html .= '<div class="tag-groups-search-list"></div>';
+            $html .= '</div>';
+            $html .= '<div class="tag-groups-search-section tag-groups-search-popular" hidden>';
+            $html .= '<span class="tag-groups-search-heading">' . esc_html__('Popular', 'tag-groups') . '</span>';
+            $html .= '<div class="tag-groups-search-list"></div>';
+            $html .= '</div>';
+            $html .= '</div>';
+
+            return $html;
+        }
+
+        /**
+         * Data attribute with the post count for a single tag, needed by the search panel to find popular tags
+         *
+         * @param int $count Post count of this tag
+         * @return string
+         */
+        public function get_search_panel_tag_data($count)
+        {
+            if (empty($this->attributes->search_panel)) {
+                return '';
+            }
+
+            return ' data-count="' . (int) $count . '"';
+        }
+
+        /**
          * Performes some checks on the supplied attributes
          *
          * @return void
