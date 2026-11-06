@@ -211,6 +211,7 @@ if (! class_exists('TagGroups_Shortcode_Alphabetical_Index')) {
             'source' => 'shortcode',
             'tags_div_class' => 'tag-groups-alphabetical-index-tags',
             'tags_post_id' => -1,
+            'target_size' => 0,
             'taxonomy' => implode(',', TagGroups_Taxonomy::get_enabled_taxonomies()),
             'threshold' => 0, // minimum number of posts, total (independent of groups)
             ), $atts));
@@ -220,6 +221,12 @@ if (! class_exists('TagGroups_Shortcode_Alphabetical_Index')) {
             if (empty($this->attributes->html_id)) {
                 $this->attributes->html_id = 'tag-groups-alphabetical-index-' . uniqid();
             }
+
+            // Hook for the narrow-screen single-column rule; no styles of its own otherwise.
+            if (! empty($this->attributes->column_count)) {
+                $this->attributes->div_class .= ' tag-groups-columns';
+            }
+            $this->attributes->div_class = TagGroups_Shortcode_Statics::maybe_add_target_size_class($this->attributes, $this->attributes->div_class);
 
             $div_id_output = $this->attributes->html_id ? ' id="' . TagGroups_Shortcode_Statics::sanitize_html_classes($this->attributes->html_id) . '"' : '';
             $div_class_output = $this->attributes->div_class ? ' class="' . TagGroups_Shortcode_Statics::sanitize_html_classes($this->attributes->div_class) . '"' : '';
@@ -242,6 +249,7 @@ if (! class_exists('TagGroups_Shortcode_Alphabetical_Index')) {
             }
 
             $this->check_attributes();
+            $this->attributes->h_level = TagGroups_Shortcode_Statics::clamp_heading_level($this->attributes->h_level);
             $this->get_taxonomies();
             $this->get_tags();
             $this->make_include_array();
@@ -396,6 +404,7 @@ if (! class_exists('TagGroups_Shortcode_Alphabetical_Index')) {
              * @return string
              */
                         $this->html_tags[ $i ] .= apply_filters('tag_groups_cloud_tag_append', $append_html, $tag->term_id, $font_size, $post_count, $this->shortcode_id);
+                        $this->html_tags[ $i ] .= TagGroups_Shortcode_Statics::sr_count_html($this->attributes, $post_count);
                         $this->html_tags[ $i ] .= '</a></span> ';
                         $count_amount++;
                     }

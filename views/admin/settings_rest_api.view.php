@@ -7,7 +7,7 @@
             ?> checked<?php 
                                                                                                                      endif; ?>/>&nbsp;
       <label for="group_public_api_access"><?php _e('Enable Tag Groups Public API Access', 'tag-groups') ?></label>
-      <span class="dashicons dashicons-editor-help chatty-mango-help-icon" title="<?php _e('Enable public access to tag groups endpoint /wp-json/tag-groups/v1/groups/.', 'tag-groups') ?>"></span>
+      <button type="button" class="button-link dashicons dashicons-editor-help chatty-mango-help-icon" data-topic="group-api" aria-expanded="false" aria-controls="tg-help-group-api"><span class="screen-reader-text"><?php /* translators: %s: name of the setting */ echo esc_html(sprintf(__('More information: %s', 'tag-groups'), __('Enable Tag Groups Public API Access', 'tag-groups'))); ?></span></button><span id="tg-help-group-api" class="chatty-mango-help-container chatty-mango-help-container-group-api" style="display:none;"><?php _e('Enable public access to tag groups endpoint /wp-json/tag-groups/v1/groups/.', 'tag-groups') ?></span>
     </p>
 
     <p>
@@ -15,7 +15,7 @@
             ?> checked<?php 
                                                                                                                      endif; ?>/>&nbsp;
       <label for="terms_public_api_access"><?php _e('Enable Terms Public API Access', 'tag-groups') ?></label>
-      <span class="dashicons dashicons-editor-help chatty-mango-help-icon" title="<?php _e('Enable public access to terms endpoint /wp-json/tag-groups/v1/terms/.', 'tag-groups') ?>"></span>
+      <button type="button" class="button-link dashicons dashicons-editor-help chatty-mango-help-icon" data-topic="terms-api" aria-expanded="false" aria-controls="tg-help-terms-api"><span class="screen-reader-text"><?php /* translators: %s: name of the setting */ echo esc_html(sprintf(__('More information: %s', 'tag-groups'), __('Enable Terms Public API Access', 'tag-groups'))); ?></span></button><span id="tg-help-terms-api" class="chatty-mango-help-container chatty-mango-help-container-terms-api" style="display:none;"><?php _e('Enable public access to terms endpoint /wp-json/tag-groups/v1/terms/.', 'tag-groups') ?></span>
     </p>
 
     <p>&nbsp;</p>

@@ -1,13 +1,15 @@
 
 <div class='wrap tag-groups-tooltips-enabled' id="tag_group_administration">
-  <h2><?php _e('Tag Group Administration', 'tag-groups') ?></h2>
+  <h1 class="tg-admin-page-title"><?php esc_html_e('Tag Group Administration', 'tag-groups') ?></h1>
 
-  <div id="tg_message_container">
+  <div id="tg_message_container" tabindex="-1">
   </div>
+  <div id="tg_a11y_status" class="screen-reader-text" role="status" aria-live="polite"></div>
 
   <p>
     <div style="float:left; margin: 10px 50px 10px 0;">
-      <input type="text" id="filter_label" placeholder="<?php _e('Filter by label', 'tag-groups') ?>"/>
+      <label for="filter_label" class="screen-reader-text"><?php esc_html_e('Filter by label', 'tag-groups') ?></label>
+      <input type="text" id="filter_label" placeholder="<?php esc_attr_e('Filter by label', 'tag-groups') ?>"/>
     </div>
 
     <div style="float: left; margin: 5px 0;">
@@ -46,7 +48,7 @@
     <tbody id="tg_groups_container">
       <tr>
         <td colspan="6" style="padding: 50px; text-align: center;">
-          <img src="<?php echo esc_url(admin_url('images/spinner.gif')) ?>" />
+          <img src="<?php echo esc_url(admin_url('images/spinner.gif')) ?>" alt="<?php esc_attr_e('Loading', 'tag-groups') ?>" />
         </td>
       </tr>
     </tbody>
@@ -59,22 +61,44 @@
   <input type="hidden" id="tg_start_position" value="1">
 
   <script>
-  var tagGroupsLabels = {};
-  tagGroupsLabels.edit = '<?php _e('Edit', 'tag-groups') ?>';
-  tagGroupsLabels.create = '<?php _e('Create', 'tag-groups') ?>';
-  tagGroupsLabels.newgroup = '<?php _e('new', 'tag-groups') ?>';
-  tagGroupsLabels.placeholder_new = '<?php _e('label', 'tag-groups') ?>';
-  tagGroupsLabels.tooltip_delete = '<?php _e('Delete this group.', 'tag-groups') ?>';
-  tagGroupsLabels.tooltip_newbelow = '<?php _e('Create a new group below.', 'tag-groups') ?>';
-  tagGroupsLabels.tooltip_addnew = '<?php _e('Add New Tag Group', 'tag-groups') ?>';
-  tagGroupsLabels.tooltip_move_up = '<?php _e('move up', 'tag-groups') ?>';
-  tagGroupsLabels.tooltip_move_down = '<?php _e('move down', 'tag-groups') ?>';
-  tagGroupsLabels.tooltip_reload = '<?php _e('reload', 'tag-groups') ?>';
-  tagGroupsLabels.tooltip_next = '<?php _e('next page', 'tag-groups') ?>';
-  tagGroupsLabels.tooltip_previous = '<?php _e('previous page', 'tag-groups') ?>';
-  tagGroupsLabels.tooltip_go_to_page = '<?php _e('go to page:', 'tag-groups') ?>';
-  tagGroupsLabels.tooltip_showposts = '<?php _e('Show posts', 'tag-groups') ?>';
-  tagGroupsLabels.tooltip_showtags = '<?php _e('Show tags', 'tag-groups') ?>';
+  var tagGroupsLabels = <?php echo wp_json_encode(array(
+      'edit'                => __('Edit', 'tag-groups'),
+      'create'              => __('Create', 'tag-groups'),
+      'newgroup'            => __('new', 'tag-groups'),
+      'placeholder_new'     => __('label', 'tag-groups'),
+      'tooltip_delete'      => __('Delete this group.', 'tag-groups'),
+      'tooltip_newbelow'    => __('Create a new group below.', 'tag-groups'),
+      'tooltip_addnew'      => __('Add New Tag Group', 'tag-groups'),
+      'tooltip_move_up'     => __('move up', 'tag-groups'),
+      'tooltip_move_down'   => __('move down', 'tag-groups'),
+      'tooltip_reload'      => __('reload', 'tag-groups'),
+      'tooltip_next'        => __('next page', 'tag-groups'),
+      'tooltip_previous'    => __('previous page', 'tag-groups'),
+      'tooltip_go_to_page'  => __('go to page:', 'tag-groups'),
+      'tooltip_showposts'   => __('Show posts', 'tag-groups'),
+      'tooltip_showtags'    => __('Show tags', 'tag-groups'),
+      /* translators: %s: tag group name */
+      'rename_group'        => __('Rename group %s', 'tag-groups'),
+      /* translators: %s: tag group name */
+      'delete_group'        => __('Delete group %s', 'tag-groups'),
+      /* translators: %s: tag group name */
+      'move_up_group'       => __('Move %s up', 'tag-groups'),
+      /* translators: %s: tag group name */
+      'move_down_group'     => __('Move %s down', 'tag-groups'),
+      /* translators: %s: tag group name */
+      'show_tags_group'     => __('Show tags in group %s', 'tag-groups'),
+      /* translators: %s: tag group name */
+      'show_posts_group'    => __('Show posts in group %s', 'tag-groups'),
+      'group_name'          => __('Group name', 'tag-groups'),
+      'new_group_name'      => __('New group name', 'tag-groups'),
+      'save_group_name'     => __('Save group name', 'tag-groups'),
+      'create_group'        => __('Create group', 'tag-groups'),
+      /* translators: %s: page number */
+      'current_page_reload' => __('Page %s, current page. Reload', 'tag-groups'),
+      /* translators: %s: number of groups */
+      'filter_results'      => __('Groups found: %s', 'tag-groups'),
+      'new_tab'             => __('(opens in a new tab)', 'tag-groups'),
+  )); ?>;
 
   var tagGroupsAjaxParameters = {"ajaxurl": "<?php echo esc_url($admin_url) ?>", "postsurl": "<?php echo esc_url($post_url) ?>", "tagsurl": "<?php echo esc_url($tags_url) ?>", "items_per_page": "<?php echo esc_attr($items_per_page) ?>", "show_parents": false, "isPremium": false};
   var tagGroupsData = {
@@ -85,8 +109,17 @@
     tagGroupsData.tag_groups_task = "refresh";
     tg_do_ajax(tagGroupsAjaxParameters, tagGroupsData, tagGroupsLabels);
 
-    jQuery('#filter_label').on('keyup', function(){
-      tg_do_ajax(tagGroupsAjaxParameters, tagGroupsData, tagGroupsLabels);
+    var tagGroupsFilterTimer;
+    jQuery('#filter_label').on('keyup', function(e){
+      // ignore keys that do not change the value
+      if (e.key === 'Tab' || e.key === 'Shift' || e.key === 'Escape') {
+        return;
+      }
+      clearTimeout(tagGroupsFilterTimer);
+      tagGroupsFilterTimer = setTimeout(function () {
+        tagGroupsData.tag_groups_task = "refresh";
+        tg_do_ajax(tagGroupsAjaxParameters, tagGroupsData, tagGroupsLabels);
+      }, 300);
     });
 
     jQuery('#tag_group_administration').on('click', '.tg_edit_label', function () {
@@ -94,12 +127,22 @@
       var element = jQuery(this);
       var position = element.attr("data-position");
       var label = escape_html(element.attr("data-label"));
-      element.replaceWith('<span class="tg_edit_label_active"><input data-position="' + position + '" data-label="' + label + '" value="' + label + '"> <span class="tg_edit_label_yes dashicons dashicons-yes tg_pointer" ></span> </span>');
-      jQuery('.tg_edit_label_yes').css('font-size', '30px');
+      var isChild = element.attr("data-is_child") ? ' data-is_child="1"' : '';
+      var active = jQuery('<span class="tg_edit_label_active"' + isChild + '><input data-position="' + position + '" data-label="' + label + '" value="' + label + '" aria-label="' + escape_html(tagGroupsLabels.group_name) + '"> <button type="button" class="button-link tg_edit_label_yes tg_icon_button tg_pointer" aria-label="' + escape_html(tagGroupsLabels.save_group_name) + '"><span class="dashicons dashicons-yes" aria-hidden="true" style="font-size: 30px; width: 30px; height: 30px; line-height: 1;"></span></button> </span>');
+      element.replaceWith(active);
+      active.children('input').trigger('focus').trigger('select');
+    });
+
+    // Escape cancels renaming and returns focus to the group name
+    jQuery('#tag_group_administration').on('keydown', '.tg_edit_label_active input', function (e) {
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        tg_close_textfield(jQuery(this).parent(), false, tagGroupsLabels).trigger('focus');
+      }
     });
 
     jQuery('#tag_group_administration').on('keypress', '.tg_edit_label_active', function (e) {
-      if (e.keyCode == 13) {
+      if (e.keyCode == 13 && jQuery(e.target).is('input')) {
         e.preventDefault();
         var input = jQuery(this).children(":first");
         var tagGroupsData = {
@@ -137,7 +180,7 @@
     });
 
     jQuery('#tag_group_administration').on('keypress', '[id^="tg_new_"]:visible', function (e) {
-      if (e.keyCode == 13) {
+      if (e.keyCode == 13 && jQuery(e.target).is('input')) {
         var input = jQuery(this).find("input");
         var tagGroupsData = {
           tag_groups_task: 'new',
@@ -164,9 +207,7 @@
       var position = jQuery(this).attr("data-position");
       jQuery('.tg_sort_tr[data-position='+position+'] td').addClass('tg_ask_delete');
       setTimeout(function () { // we need some time to effect the changes of the class
-        var answer = confirm('<?php
-        _e('Do you really want to delete this tag group?', 'tag-groups')
-        ?> ');
+        var answer = confirm(<?php echo wp_json_encode(__('Do you really want to delete this tag group?', 'tag-groups')); ?>);
         if (answer) {
           var tagGroupsData = {
             tag_groups_task: 'delete',
@@ -176,17 +217,10 @@
           tg_do_ajax(tagGroupsAjaxParameters, tagGroupsData, tagGroupsLabels);
 
         } else {
-          jQuery('.tg_sort_tr[data-position='+position+'] td').removeClass('tg_ask_delete')
+          jQuery('.tg_sort_tr[data-position='+position+'] td').removeClass('tg_ask_delete');
+          jQuery('.tg_delete[data-position="'+position+'"]').trigger('focus');
         }
       }, 500);
-    });
-
-    jQuery('#tag_group_administration').on('mouseenter', '.tg_edit_label', function () {
-      jQuery(this).children(".dashicons-edit").fadeIn();
-    });
-
-    jQuery('#tag_group_administration').on('mouseleave', '.tg_edit_label', function () {
-      jQuery(this).children(".dashicons-edit").fadeOut();
     });
 
     jQuery('#tag_group_administration').on('click', '.tg_pager_button' ,function () {
@@ -210,6 +244,8 @@
 
     var element, start_pos, end_pos;
     jQuery("#tg_groups_container").sortable({
+      // Let rows be dragged by the group name button; only the icon buttons and inputs cancel a drag.
+      cancel: "input,textarea,select,option,.tg_icon_button",
       start: function (event, ui) {
         element = Number(ui.item.attr("data-position"));
         start_pos = ui.item.index(".tg_sort_tr") + 1;

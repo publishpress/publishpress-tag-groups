@@ -9,3 +9,7 @@
   right: 50%;
   margin-right: -35px;
 }
+
+.tg_edit_label.button-link {
+  text-align: right;
+}

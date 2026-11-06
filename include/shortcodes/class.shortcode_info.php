@@ -122,6 +122,7 @@ if (!class_exists('TagGroups_Shortcode_Info')) {
         ) {
             
             $output = '<table' . $id_string . $class_string . '>';
+            $output .= $this->render_table_header($info);
             foreach ($term_groups as $term_group) {
                 $tg_group = new TagGroups_Group($term_group);
                 
@@ -171,6 +172,30 @@ if (!class_exists('TagGroups_Shortcode_Info')) {
             return $output;
         }
         
+        /**
+         * Renders a visually hidden caption and column header row for the table
+         *
+         * The header cells have no padding, border or in-flow content, so the row takes up no space.
+         *
+         * @param string $info
+         * @return string
+         */
+        function render_table_header($info)
+        {
+            $columns = array( __('Tag group', 'tag-groups') );
+            if (!in_array($info, array( 'label', 'link' ), true)) {
+                $columns[] = __('Number of tags', 'tag-groups');
+            }
+
+            $output = '<caption class="tag-groups-sr" style="' . TagGroups_Shortcode_Statics::SR_ONLY_STYLE . '">' . esc_html__('Tag groups', 'tag-groups') . '</caption>';
+            $output .= '<thead><tr style="height:0;border:0;padding:0;margin:0;">';
+            foreach ($columns as $column) {
+                $output .= '<th scope="col" style="height:0;padding:0;margin:0;border:0;">' . TagGroups_Shortcode_Statics::sr_only_html(esc_html($column)) . '</th>';
+            }
+            $output .= '</tr></thead>';
+            return $output;
+        }
+
         /**
          * Renders the information of one group
          *

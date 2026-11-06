@@ -4,6 +4,8 @@
 
   <p><?php _e("Please stay on this page until all processes have finished.", 'tag-groups') ?></p>
 
+  <div id="tag_groups_tasks_status" class="screen-reader-text" role="status" aria-live="polite"></div>
+
   <?php echo $task_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Generated from internal task view with escaped values. ?>
 
   <div id="tag_groups_tasks_final_words_error" style="display: none;">
@@ -49,12 +51,18 @@ var tagGroupsProcessChunkOffset = 0;
 var tagGroupsProcessChunkLength = <?php echo intval($chunk_length) ?>;
 var tagGroupsInterval = 0;
 var tagGroupsAffected = 0;
+var tagGroupsLastAnnounced = -1;
+
+function tagGroupsAnnounce(text) {
+  jQuery("#tag_groups_tasks_status").text(text);
+}
 
 jQuery(document).ready(function(){
   // do the first task
   tagGroupsProcessChunkOffset = 0;
   tagGroupsTaskError = false;
   jQuery("#tag_groups_task_"+tagGroupsTasks[0]).show();
+  tagGroupsAnnounce(jQuery("#tag_groups_task_title_"+tagGroupsTasks[0]).text());
 
   tagGroupsTaskStartTime = Date.now();
   tagGroupsChunkStartTime = Date.now();
@@ -79,6 +87,8 @@ function tagGroupsTasksAjax() {
       tagGroupsAffected = 0;
       // show the task
       jQuery("#tag_groups_task_"+tagGroupsTasks[tagGroupsRunningTaskIndex]).show();
+      tagGroupsLastAnnounced = -1;
+      tagGroupsAnnounce(jQuery("#tag_groups_task_title_"+tagGroupsTasks[tagGroupsRunningTaskIndex]).text());
       tagGroupsTaskStartTime = Date.now();
       tagGroupsChunkStartTime = Date.now();
     } else {
@@ -88,8 +98,10 @@ function tagGroupsTasksAjax() {
       tagGroupsWriteResult();
       if (tagGroupsProcessErrors) {
         jQuery("#tag_groups_tasks_final_words_error").show();
+        tagGroupsAnnounce(<?php echo wp_json_encode(__('There have been errors.', 'tag-groups')); ?>);
       } else {
         jQuery("#tag_groups_tasks_final_words_success").show();
+        tagGroupsAnnounce(<?php echo wp_json_encode(__('Finished!', 'tag-groups')); ?>);
       }
       return;
     }
@@ -110,7 +122,7 @@ function tagGroupsTasksAjax() {
   if (tagGroupsTaskError){
     tagGroupsProcessErrors = true;
     tagGroupsTaskCompleted = true;
-    ("[Tag Groups] Error: "+tagGroupsTasks[tagGroupsRunningTaskIndex]);
+    console.log("[Tag Groups] Error: "+tagGroupsTasks[tagGroupsRunningTaskIndex]);
   }
 
   if (!tagGroupsChunkWaiting && !tagGroupsTaskError) {
@@ -184,6 +196,16 @@ function tagGroupsTaskAjax(task,offset,length) {
 
       jQuery("#tag_groups_task_bar_"+tagGroupsTasks[tagGroupsRunningTaskIndex]).width(percentage+"%");
       jQuery("#tag_groups_task_progress_"+tagGroupsTasks[tagGroupsRunningTaskIndex]).html(percentage);
+      jQuery("#tag_groups_task_bar_wrapper_"+tagGroupsTasks[tagGroupsRunningTaskIndex]).attr("aria-valuenow", percentage);
+
+      // announce progress in steps of 25 %
+      var milestone = Math.floor(percentage / 25) * 25;
+      if (milestone > tagGroupsLastAnnounced) {
+        tagGroupsLastAnnounced = milestone;
+        if (milestone > 0) {
+          tagGroupsAnnounce(jQuery("#tag_groups_task_title_"+tagGroupsTasks[tagGroupsRunningTaskIndex]).text() + ": " + milestone + "%");
+        }
+      }
 
       //  unblock at the end
       tagGroupsChunkWaiting = false;

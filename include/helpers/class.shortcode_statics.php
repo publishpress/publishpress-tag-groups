@@ -199,6 +199,177 @@ if (! class_exists('TagGroups_Shortcode_Statics')) {
 
             return $target;
         }
+
+        /**
+         * Per-request instance counters, keyed by ID pattern
+         *
+         * @var array
+         */
+        private static $instance_counters = array();
+
+        /**
+         * Inline fallback for the screen-reader-only class, in case the frontend CSS is disabled.
+         */
+        const SR_ONLY_STYLE = 'position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);clip-path:inset(50%);white-space:nowrap;border:0;';
+
+        /**
+         * Returns the next instance number (1-based) for a given ID pattern within this request.
+         *
+         * @param  string $group
+         * @return int
+         */
+        public static function next_instance($group)
+        {
+            if (! isset(self::$instance_counters[ $group ])) {
+                self::$instance_counters[ $group ] = 0;
+            }
+
+            return ++self::$instance_counters[ $group ];
+        }
+
+        /**
+         * Makes the tab panel IDs ("tabs-1{$i}") unique per instance.
+         *
+         * The first instance on a page keeps its original IDs so that existing deep links keep working.
+         * Applied on the final HTML so that cached output gets the same treatment.
+         *
+         * @param  string $html
+         * @param  int    $instance
+         * @return string
+         */
+        public static function prefix_tab_panel_ids($html, $instance)
+        {
+            if ($instance <= 1) {
+                return $html;
+            }
+
+            $prefix = 'tg' . (int) $instance . '-';
+
+            return preg_replace('/(\shref="#|\sid=")tabs-1(\d+)"/', '${1}' . $prefix . 'tabs-1${2}"', $html);
+        }
+
+        /**
+         * Wraps text in a visually hidden span
+         *
+         * @param  string $text Already escaped text
+         * @return string
+         */
+        public static function sr_only_html($text)
+        {
+            return '<span class="tag-groups-sr" style="' . self::SR_ONLY_STYLE . '">' . $text . '</span>';
+        }
+
+        /**
+         * Returns a visually hidden post count for a tag link, if the count is otherwise only available in the title attribute.
+         *
+         * @param  object $attributes Shortcode attributes
+         * @param  int    $post_count
+         * @return string
+         */
+        public static function sr_count_html($attributes, $post_count)
+        {
+            $post_count = (int) $post_count;
+
+            // The count is already visible in the link text.
+            foreach (array( 'prepend', 'append' ) as $key) {
+                if (! empty($attributes->{$key}) && false !== strpos((string) $attributes->{$key}, '{count}')) {
+                    return '';
+                }
+            }
+
+            $show_tag_count = ! empty($attributes->show_tag_count);
+            $count_in_title = $show_tag_count;
+
+            $custom_title_zero   = isset($attributes->custom_title_zero) ? $attributes->custom_title_zero : null;
+            $custom_title_plural = isset($attributes->custom_title_plural) ? $attributes->custom_title_plural : null;
+            $custom_title        = isset($attributes->custom_title) ? $attributes->custom_title : null;
+
+            if (! is_null($custom_title) || ! is_null($custom_title_zero) || ! is_null($custom_title_plural)) {
+                // Mirrors the template selection in TagGroups_Shortcode_Common::get_title()
+                if (0 == $post_count && ! is_null($custom_title_zero)) {
+                    $template = $custom_title_zero;
+                } elseif ($post_count > 1 && ! is_null($custom_title_plural)) {
+                    $template = $custom_title_plural;
+                } else {
+                    $template = $custom_title;
+                }
+                $template = (string) $template;
+
+                if ('' === trim($template)) {
+                    $count_in_title = $show_tag_count;
+                } else {
+                    $count_in_title = false !== strpos($template, '{count}');
+                }
+            }
+
+            if (! $count_in_title) {
+                return '';
+            }
+
+            /* translators: %s: number of posts */
+            $text = sprintf(_n('(%s post)', '(%s posts)', $post_count, 'tag-groups'), number_format_i18n($post_count));
+
+            return self::sr_only_html(' ' . esc_html($text));
+        }
+
+        /**
+         * Returns the decorative separator, hidden from assistive technology
+         *
+         * @param  string     $separator
+         * @param  int|string $font_size
+         * @return string
+         */
+        public static function separator_html($separator, $font_size)
+        {
+            return '<span aria-hidden="true" style="font-size:' . $font_size . 'px">' . $separator . '</span> ';
+        }
+
+        /**
+         * Clamps a heading level to 1-6
+         *
+         * @param  mixed $level
+         * @return int
+         */
+        public static function clamp_heading_level($level)
+        {
+            $level = (int) $level;
+
+            if ($level < 1) {
+                return 1;
+            }
+
+            if ($level > 6) {
+                return 6;
+            }
+
+            return $level;
+        }
+
+        /**
+         * Keeps a delayed (initially transparent) widget visible when JavaScript is disabled
+         *
+         * @return string
+         */
+        public static function noscript_unhide_html()
+        {
+            return '<noscript><style>.tag-groups-cloud-hidden{opacity:1 !important}</style></noscript>';
+        }
+
+        /**
+         * Adds the opt-in target size class to the wrapper classes
+         *
+         * @param  object $attributes Shortcode attributes
+         * @param  string $classes
+         * @return string
+         */
+        public static function maybe_add_target_size_class($attributes, $classes)
+        {
+            if (! empty($attributes->target_size)) {
+                $classes .= ' tag-groups-target-size';
+            }
+
+            return $classes;
+        }
     }
 
 

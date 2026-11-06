@@ -17,7 +17,7 @@ jQuery(document).ready(function () {
   } else {
     container = jQuery("<div>").attr("id", "filter_container").css({float: "right",marginLeft: "10px",}).insertAfter("select[name='action']");
   }
-  sel_filter = jQuery("<select>").attr("id", "tag_filter").attr("name", "term-filter").css("margin-right", "5px").appendTo(container);
+  sel_filter = jQuery("<select>").attr("id", "tag_filter").attr("name", "term-filter").attr("aria-label", <?php echo wp_json_encode(__('Filter by tag group', 'tag-groups')); ?>).css("margin-right", "5px").appendTo(container);
 
   sel_filter.append(jQuery("<option>").attr("value", "-1").html("<?php
        _e('Filter off', 'tag-groups'); ?>")
@@ -32,7 +32,7 @@ jQuery(document).ready(function () {
         <?php 
   endforeach; ?>
 
-  var filterButton = jQuery("<button>").attr("id", "apply_filter_button").attr("class", "button button-primary").html("Filter").appendTo(container);
+  var filterButton = jQuery("<button>").attr("id", "apply_filter_button").attr("class", "button button-primary").text(<?php echo wp_json_encode(__('Filter', 'tag-groups')); ?>).appendTo(container);
 
   jQuery("#tag_filter option[value=<?php echo esc_attr($tag_filter); ?>]").prop("selected", true);
 
