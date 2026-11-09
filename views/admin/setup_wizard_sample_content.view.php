@@ -1,3 +1,5 @@
+<?php defined('ABSPATH') || exit;
+?>
 <div style="margin: 50px 0 0;">
 
   <p><?php _e('Now you are ready to create your own tag groups. If you prefer to start out from a sample, we will create for you three groups and three tags. You can play around with them, rename or delete them.', 'tag-groups') ?></p>

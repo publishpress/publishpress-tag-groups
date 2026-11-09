@@ -1,3 +1,5 @@
+<?php defined('ABSPATH') || exit;
+?>
 <!-- begin Tag Groups plugin -->
 <script>
   (function tagGroupsInitTabs(retries) {
