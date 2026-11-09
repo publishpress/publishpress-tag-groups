@@ -1,4 +1,6 @@
-<?php $rating_stars = str_repeat('<span class="dashicons dashicons-star-filled"></span>', 5); ?>
+<?php defined('ABSPATH') || exit;
+
+$rating_stars = str_repeat('<span class="dashicons dashicons-star-filled"></span>', 5); ?>
 <div class="pressshack-admin-wrapper tag-groups-admin-footer">
     <footer>
         <div class="tag-groups-rating">

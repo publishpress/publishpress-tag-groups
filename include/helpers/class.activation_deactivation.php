@@ -8,6 +8,8 @@
 */
 
 // phpcs:disable PSR1.Classes.ClassDeclaration.MissingNamespace, Squiz.Classes.ValidClassName.NotCamelCaps, PSR1.Methods.CamelCapsMethodName.NotCamelCaps, WordPressVIPMinimum.Functions.RestrictedFunctions
+defined('ABSPATH') || exit;
+
 if (! class_exists('TagGroups_Activation_Deactivation')) {
 /**
   *

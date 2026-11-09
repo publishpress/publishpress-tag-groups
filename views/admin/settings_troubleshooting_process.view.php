@@ -1,3 +1,5 @@
+<?php defined('ABSPATH') || exit;
+?>
 <div class="tg_settings_tabs_content">
   
   <h2><?php echo esc_html($task_set_name) ?></h2>

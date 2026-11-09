@@ -13,6 +13,8 @@
  */
 
 // phpcs:disable PSR1.Classes.ClassDeclaration.MissingNamespace, Squiz.Classes.ValidClassName.NotCamelCaps, PSR1.Methods.CamelCapsMethodName.NotCamelCaps
+defined('ABSPATH') || exit;
+
 if (!class_exists('TagGroups_Groups')) {
     class TagGroups_Groups
     {

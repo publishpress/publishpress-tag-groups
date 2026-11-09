@@ -9,10 +9,7 @@
 * @package Tag Groups
 */
 
-// Exit if accessed directly.
-if (! defined('ABSPATH')) {
-    exit;
-}
+defined('ABSPATH') || exit;
 
 /**
 * Enqueue Gutenberg block assets for both frontend + backend.

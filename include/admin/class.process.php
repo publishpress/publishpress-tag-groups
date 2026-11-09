@@ -19,6 +19,8 @@
  * @since      1.24.0
  */
 
+defined('ABSPATH') || exit;
+
 if (! class_exists('TagGroups_Process')) {
 /**
    * Background workers for the progress bar

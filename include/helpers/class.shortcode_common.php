@@ -8,6 +8,8 @@
 */
 
 // phpcs:disable PSR1.Classes.ClassDeclaration.MissingNamespace, Squiz.Classes.ValidClassName.NotCamelCaps, PSR1.Methods.CamelCapsMethodName.NotCamelCaps
+defined('ABSPATH') || exit;
+
 if (!class_exists('TagGroups_Shortcode_Common')) {
     #[\AllowDynamicProperties]
     class TagGroups_Shortcode_Common
@@ -837,6 +839,10 @@ if (!class_exists('TagGroups_Shortcode_Common')) {
                 if (property_exists($this->attributes, 'separator')) {
                     $this->attributes->separator = html_entity_decode($this->attributes->separator);
                 }
+            }
+            
+            if (property_exists($this->attributes, 'separator')) {
+                $this->attributes->separator = esc_html($this->attributes->separator);
             }
             
             
