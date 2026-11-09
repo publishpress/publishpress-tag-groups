@@ -126,7 +126,7 @@ Please use one of the shortcodes or Gutenberg blocks that come with the PublishP
 
 == Changelog ==
 
-[3.0.1] - 05 November, 2026
+[3.0.1] - 09 November, 2026
 
 - Fixed: escape column gap shortcode attributes, #370
 - Fixed: escape shortcode separators centrally after decoding to prevent stored XSS, #369
