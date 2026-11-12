@@ -103,7 +103,7 @@ Before releasing the Free plugin, ensure every step in this checklist is complet
 
 ### Post-Release Validation
 
-- [ ] Monitor [GitHub Actions](https://github.com/taxopress/tag-groups/actions) and confirm all release and deployment workflows complete successfully
+- [ ] Monitor [GitHub Actions](https://github.com/publishpress/publishpress-tag-groups/actions) and confirm all release and deployment workflows complete successfully
 - [ ] Verify the [WordPress.org plugin page](https://wordpress.org/plugins/tag-groups/) shows the new version and updated release information
 - [ ] Test updating to the new version on a staging site and run a basic smoke test of core functionality
 - [ ] Close the GitHub milestone for `<version>`

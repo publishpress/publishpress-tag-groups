@@ -103,7 +103,7 @@ if (! class_exists('TagGroups_Import')) {
                 die("File missing");
             }
 
-            // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized, WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.InputNotValidated -- File upload
+            // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized, WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.InputNotValidated, WordPressVIPMinimum.Performance.FetchingRemoteData.FileGetContentsUnknown -- Reads PHP's local upload temporary file, not a remote URL.
             $this->contents = @file_get_contents($_FILES['settings_file']['tmp_name']);
             if (false === $this->contents) {
                   $this->error = true;

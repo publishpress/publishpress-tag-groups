@@ -53,7 +53,7 @@ if (!class_exists('TagGroups_Settings')) {
             // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only tab selection
             if (isset($_GET['active-tab'])) {
                 // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only tab selection
-                return sanitize_title($_GET['active-tab']);
+                return sanitize_title(wp_unslash($_GET['active-tab']));
             } else {
                 $keys = array_keys($tabs);
                 return reset($keys);
@@ -339,7 +339,7 @@ if (!class_exists('TagGroups_Settings')) {
                             if (
                                 !empty($_POST['process-tasks']) &&
                                 !empty($_POST['nonce']) && 
-                                wp_verify_nonce(sanitize_key($_POST['nonce']), 'tag-groups-first-aid-nonce')
+                                wp_verify_nonce(sanitize_key(wp_unslash($_POST['nonce'])), 'tag-groups-first-aid-nonce')
                             ) {
                                 self::add_html_process();
                             } else {
@@ -455,7 +455,7 @@ if (!class_exists('TagGroups_Settings')) {
                             $view->render();
                             break;
                         case 'debug':
-                            $help_url = 'https://taxopress.com/docs/how-to-use-the-debug-log/';
+                            $help_url = 'https://publishpress.com/tag-groups/';
                             $view = new TagGroups_View('admin/settings_troubleshooting_debug');
                             $verbose_is_on_hardcoded = defined('CM_DEBUG') && strtolower(CM_DEBUG) == 'verbose';
                             $verbose_is_on_option = (bool) TagGroups_Options::get_option('tag_group_verbose_debug', 0);
@@ -507,7 +507,7 @@ if (!class_exists('TagGroups_Settings')) {
             // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Nonce verified in switch cases
             if (!empty($_REQUEST['tg_action'])) {
                 // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized, WordPress.Security.NonceVerification.Recommended -- Sanitized in switch statement
-                $tg_action = $_REQUEST['tg_action'];
+                $tg_action = sanitize_key(wp_unslash($_REQUEST['tg_action']));
             } else {
                 return;
             }
@@ -520,7 +520,7 @@ if (!class_exists('TagGroups_Settings')) {
             // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Nonce verified in switch cases
             if (isset($_POST['ok'])) {
                 // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized, WordPress.Security.NonceVerification.Missing -- Sanitized below
-                $ok = $_POST['ok'];
+                $ok = sanitize_key(wp_unslash($_POST['ok']));
             } else {
                 $ok = '';
             }
@@ -528,7 +528,7 @@ if (!class_exists('TagGroups_Settings')) {
             switch ($tg_action) {
                 case 'shortcode':
                     // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Nonce verification
-                    if (!isset($_POST['tag-groups-shortcode-nonce']) || !wp_verify_nonce($_POST['tag-groups-shortcode-nonce'], 'tag-groups-shortcode')) {
+                    if (!isset($_POST['tag-groups-shortcode-nonce']) || !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['tag-groups-shortcode-nonce'])), 'tag-groups-shortcode')) {
                         die("Security check");
                     }
                     // Make sure that only administrators can save settings
@@ -553,7 +553,7 @@ if (!class_exists('TagGroups_Settings')) {
                     break;
                 case 'rest_api':
                     // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Nonce verification
-                    if (!isset($_POST['tag-groups-rest-api-nonce']) || !wp_verify_nonce($_POST['tag-groups-rest-api-nonce'], 'tag-groups-rest-api')) {
+                    if (!isset($_POST['tag-groups-rest-api-nonce']) || !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['tag-groups-rest-api-nonce'])), 'tag-groups-rest-api')) {
                         die("Security check");
                     }
                     // Make sure that only administrators can save settings
@@ -571,7 +571,7 @@ if (!class_exists('TagGroups_Settings')) {
                     break;
                 case 'reset':
                     // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Nonce verification
-                    if (!isset($_POST['tag-groups-reset-nonce']) || !wp_verify_nonce($_POST['tag-groups-reset-nonce'], 'tag-groups-reset')) {
+                    if (!isset($_POST['tag-groups-reset-nonce']) || !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['tag-groups-reset-nonce'])), 'tag-groups-reset')) {
                         die("Security check");
                     }
                     // Make sure that only administrators can save settings
@@ -591,7 +591,7 @@ if (!class_exists('TagGroups_Settings')) {
                     break;
                 case 'uninstall':
                     // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Nonce verification
-                    if (!isset($_POST['tag-groups-uninstall-nonce']) || !wp_verify_nonce($_POST['tag-groups-uninstall-nonce'], 'tag-groups-uninstall')) {
+                    if (!isset($_POST['tag-groups-uninstall-nonce']) || !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['tag-groups-uninstall-nonce'])), 'tag-groups-uninstall')) {
                         die("Security check");
                     }
                     // Make sure that only administrators can save settings
@@ -609,7 +609,7 @@ if (!class_exists('TagGroups_Settings')) {
                     break;
                 case 'theme':
                     // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Nonce verification
-                    if (!isset($_POST['tag-groups-settings-nonce']) || !wp_verify_nonce($_POST['tag-groups-settings-nonce'], 'tag-groups-settings')) {
+                    if (!isset($_POST['tag-groups-settings-nonce']) || !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['tag-groups-settings-nonce'])), 'tag-groups-settings')) {
                         die("Security check");
                     }
                     // Make sure that only administrators can save settings
@@ -618,17 +618,17 @@ if (!class_exists('TagGroups_Settings')) {
                     }
                     $theme = '';
                     if (isset($_POST['theme'])) {
-                        switch ($_POST['theme']) {
+                        switch (sanitize_key(wp_unslash($_POST['theme']))) {
                             case 'own':
                                 if (isset($_POST['theme-name'])) {
-                                    $theme = stripslashes(sanitize_text_field($_POST['theme-name']));
+                                    $theme = sanitize_text_field(wp_unslash($_POST['theme-name']));
                                 }
                                 break;
                             case 'none':
                                 $theme = '';
                                 break;
                             default:
-                                $theme = stripslashes(sanitize_text_field($_POST['theme']));
+                                $theme = sanitize_text_field(wp_unslash($_POST['theme']));
                                 break;
                         }
                     }
@@ -648,7 +648,7 @@ if (!class_exists('TagGroups_Settings')) {
                     break;
                 case 'taxonomy':
                     // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Nonce verification
-                    if (!isset($_POST['tag-groups-taxonomy-nonce']) || !wp_verify_nonce($_POST['tag-groups-taxonomy-nonce'], 'tag-groups-taxonomy')) {
+                    if (!isset($_POST['tag-groups-taxonomy-nonce']) || !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['tag-groups-taxonomy-nonce'])), 'tag-groups-taxonomy')) {
                         die("Security check");
                     }
                     // Make sure that only administrators can save settings
@@ -658,11 +658,10 @@ if (!class_exists('TagGroups_Settings')) {
 
                     if (isset($_POST['taxonomies'])) {
                         // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Sanitized below
-                        $taxonomies = $_POST['taxonomies'];
+                        $taxonomies = wp_unslash($_POST['taxonomies']);
 
                         if (is_array($taxonomies)) {
                             $taxonomies = array_map('sanitize_text_field', $taxonomies);
-                            $taxonomies = array_map('stripslashes', $taxonomies);
                         } else {
                             $taxonomies = array( 'post_tag' );
                         }
@@ -683,7 +682,7 @@ if (!class_exists('TagGroups_Settings')) {
                     break;
                 case 'backend':
                     // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Nonce verification
-                    if (!isset($_POST['tag-groups-backend-nonce']) || !wp_verify_nonce($_POST['tag-groups-backend-nonce'], 'tag-groups-backend')) {
+                    if (!isset($_POST['tag-groups-backend-nonce']) || !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['tag-groups-backend-nonce'])), 'tag-groups-backend')) {
                         die("Security check");
                     }
                     // Make sure that only administrators can save settings
@@ -698,7 +697,7 @@ if (!class_exists('TagGroups_Settings')) {
                     break;
                 case 'gutenberg':
                     // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Nonce verification
-                    if (!isset($_POST['tag-groups-gutenberg-nonce']) || !wp_verify_nonce($_POST['tag-groups-gutenberg-nonce'], 'tag-groups-gutenberg')) {
+                    if (!isset($_POST['tag-groups-gutenberg-nonce']) || !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['tag-groups-gutenberg-nonce'])), 'tag-groups-gutenberg')) {
                         die("Security check");
                     }
                     // Make sure that only administrators can save settings
@@ -711,7 +710,7 @@ if (!class_exists('TagGroups_Settings')) {
                     break;
                 case 'multilingual':
                     // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Nonce verification
-                    if (!isset($_POST['tag-groups-multilingual-nonce']) || !wp_verify_nonce($_POST['tag-groups-multilingual-nonce'], 'tag-groups-multilingual')) {
+                    if (!isset($_POST['tag-groups-multilingual-nonce']) || !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['tag-groups-multilingual-nonce'])), 'tag-groups-multilingual')) {
                         die("Security check");
                     }
                     // Make sure that only administrators can save settings
@@ -725,7 +724,7 @@ if (!class_exists('TagGroups_Settings')) {
                 case 'reset-tag-filter':
                     // check nonce
                     // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Nonce verification
-                    if (!isset($_POST['tag-groups-reset-tag-filter-nonce']) || !wp_verify_nonce($_POST['tag-groups-reset-tag-filter-nonce'], 'tag-groups-reset-tag-filter')) {
+                    if (!isset($_POST['tag-groups-reset-tag-filter-nonce']) || !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['tag-groups-reset-tag-filter-nonce'])), 'tag-groups-reset-tag-filter')) {
                         die("Security check");
                     }
                     // Make sure that only administrators can save settings
@@ -740,7 +739,7 @@ if (!class_exists('TagGroups_Settings')) {
                     break;
                 case 'export':
                     // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Nonce verification
-                    if (!isset($_POST['tag-groups-export-nonce']) || !wp_verify_nonce($_POST['tag-groups-export-nonce'], 'tag-groups-export')) {
+                    if (!isset($_POST['tag-groups-export-nonce']) || !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['tag-groups-export-nonce'])), 'tag-groups-export')) {
                         die("Security check");
                     }
                     // Make sure that only administrators can save settings
@@ -755,7 +754,7 @@ if (!class_exists('TagGroups_Settings')) {
                     break;
                 case 'import':
                     // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Nonce verification
-                    if (!isset($_POST['tag-groups-import-nonce']) || !wp_verify_nonce($_POST['tag-groups-import-nonce'], 'tag-groups-import')) {
+                    if (!isset($_POST['tag-groups-import-nonce']) || !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['tag-groups-import-nonce'])), 'tag-groups-import')) {
                         die("Security check");
                     }
                     // Make very sure that only administrators can upload stuff
@@ -772,7 +771,7 @@ if (!class_exists('TagGroups_Settings')) {
                     break;
                 case 'debug':
                     // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Nonce verification
-                    if (!isset($_POST['tag-groups-debug-nonce']) || !wp_verify_nonce($_POST['tag-groups-debug-nonce'], 'tag-groups-debug')) {
+                    if (!isset($_POST['tag-groups-debug-nonce']) || !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['tag-groups-debug-nonce'])), 'tag-groups-debug')) {
                         die("Security check");
                     }
                     // Make sure that only administrators can save settings
@@ -901,7 +900,7 @@ if (!class_exists('TagGroups_Settings')) {
                 ),
             ),
                 'premium'         => array(
-                'title'    => __('Tag Groups Pro', 'tag-groups'),
+                'title'    => __('PublishPress Tag Groups Pro', 'tag-groups'),
                 'page'     => 'tag-groups-settings-premium',
                 'keywords' => array(
                 __('upgrade', 'tag-groups'),
@@ -1010,14 +1009,14 @@ if (!class_exists('TagGroups_Settings')) {
             $totals = array();
             $languages = array();
             // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized, WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.InputNotValidated -- Sanitized below
-            $tasks = explode(',', $_POST['process-tasks']);
+            $tasks = explode(',', wp_unslash($_POST['process-tasks']));
             $tasks = array_map('sanitize_title', $tasks);
             $tasks = array_intersect($tasks, array_keys($tasks_whitelist));
 
             // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Admin context
             if (!empty($_POST['task-set-name'])) {
                 // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Admin context
-                $task_set_name = sanitize_text_field($_POST['task-set-name']);
+                $task_set_name = sanitize_text_field(wp_unslash($_POST['task-set-name']));
             } else {
                 $task_set_name = '';
             }

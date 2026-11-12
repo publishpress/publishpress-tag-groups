@@ -1,4 +1,4 @@
-# Copyright (C) 2026 TaxoPress
+# Copyright (C) 2026 PublishPress
 # This file is distributed under the GPL-3.0-or-later.
 msgid ""
 msgstr ""
@@ -10,23 +10,21 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-06-15T12:41:40+00:00\n"
-"PO-Revision-Date: 2026-06-22 16:18+0000\n"
+"PO-Revision-Date: 2026-09-30 10:10+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: tag-groups\n"
 "% 100 >= 3 && n % 100 <= 10 ? 3 : n % 100 >= 11 ? 4 : 5);\n"
+"% 100 >= 3 && n % 100 <= 10 ? 3: n % 100 >= 11 ? 4 : 5);\n"
 "&& n%100<=10 ? 3: n%100>=11 ? 4 : 5);\n"
 "Language: ar\n"
 "Plural-Forms: nplurals=6; plural=(n == 0 ? 0 : n == 1 ? 1 : n == 2 ? 2 : n % 100 >= 3 && n % 100 <= 10 ? 3 : n % 100 >= 11 ? 4 : 5);\n"
 
 #: tag-groups.php:4
-#: include/admin/class.admin.php:229
-#: views/admin/edit_tag_main.view.php:2
-#: views/admin/new_tag_from_list.view.php:2
 #. Plugin Name of the plugin
-msgid "Tag Groups"
-msgstr "مجموعات العلامات"
+msgid "PublishPress Tag Groups Free"
+msgstr "مجموعة علامات PublishPress مجانية"
 
-#: tag-groups.php:5, fuzzy
+#: tag-groups.php:5
 #. Plugin URI of the plugin
 msgid "https://wordpress.org/plugins/tag-groups/"
 msgstr "https://wordpress.org/plugins/tag-groups/"
@@ -34,28 +32,37 @@ msgstr "https://wordpress.org/plugins/tag-groups/"
 #: tag-groups.php:6
 #. Description of the plugin
 msgid ""
-"Tag Groups allows you to organize your WordPress taxonomy terms and show "
-"them in clouds, tabs, accordions, tables, lists and much more."
+"PublishPress Tag Groups allows you to organize your WordPress taxonomy "
+"terms and show them in clouds, tabs, accordions, tables, lists and much "
+"more."
 msgstr ""
-"تتيح لك مجموعات العلامات تنظيم مصطلحات التصنيف في WordPress وعرضها في سحب، "
-"علامات تبويب، أكورديون، جداول، قوائم والمزيد."
+"تسمح لك مجموعة علامات PublishPress بتنظيم مصطلحات التصنيف في WordPress "
+"وعرضها في سحب، علامات تبويب، أكورديون، جداول، قوائم وأكثر من ذلك بكثير."
 
 #: tag-groups.php:7
+#: views/partials/admin_footer_rating.view.php:26
 #. Author of the plugin
-msgid "TaxoPress"
-msgstr "TaxoPress"
+msgid "PublishPress"
+msgstr "PublishPress"
 
-#: tag-groups.php:8, fuzzy
+#: tag-groups.php:8
 #. Author URI of the plugin
-msgid "https://taxopress.com"
-msgstr "https://taxopress.com"
+msgid "https://publishpress.com"
+msgstr "https://publishpress.com"
 
 #: include/admin/class.admin.php:22
 msgid "Home"
 msgstr "الرئيسية"
 
+#: include/admin/class.admin.php:22
+#: include/admin/class.admin.php:229
+#: views/admin/edit_tag_main.view.php:2
+#: views/admin/new_tag_from_list.view.php:2
+msgid "Tag Groups"
+msgstr "مجموعات العلامات"
+
 #: include/admin/class.admin.php:26
-#: include/admin/class.settings.php:827
+#: include/admin/class.settings.php:826
 #: include/admin/class.setup_wizard.php:98
 msgid "Taxonomies"
 msgstr "الأنواع"
@@ -69,18 +76,18 @@ msgid "Back End"
 msgstr "الواجهة الخلفية"
 
 #: include/admin/class.admin.php:47
-#: include/admin/class.settings.php:935
+#: include/admin/class.settings.php:934
 #: views/admin/onboarding.view.php:1
 msgid "First Steps"
 msgstr "خطوات أولى"
 
 #: include/admin/class.admin.php:54
-#: include/admin/class.settings.php:940
+#: include/admin/class.settings.php:939
 msgid "Setup Wizard"
 msgstr "معالج الإعداد"
 
 #: include/admin/class.admin.php:61
-#: include/admin/class.admin.php:1013
+#: include/admin/class.admin.php:1008
 #: views/admin/settings_front_end_shortcodes.view.php:95
 msgid "Settings"
 msgstr "الإعدادات"
@@ -89,19 +96,19 @@ msgstr "الإعدادات"
 msgid "Tag Group Admin"
 msgstr "إدارة مجموعة العلامات"
 
-#: include/admin/class.admin.php:457
+#: include/admin/class.admin.php:456
 msgid "The term has been removed from all groups."
 msgstr "تمت إزالة المصطلح من جميع المجموعات."
 
-#: include/admin/class.admin.php:588
+#: include/admin/class.admin.php:587
 msgid "Edit this item inline"
 msgstr "تحرير هذا العنصر مباشرة"
 
-#: include/admin/class.admin.php:590
+#: include/admin/class.admin.php:589
 msgid "Quick&nbsp;Edit"
 msgstr "تحرير سريع&nbsp;"
 
-#: include/admin/class.admin.php:1067
+#: include/admin/class.admin.php:1062
 #. translators: %s is the href attribute with URL
 #, php-format
 msgid ""
@@ -278,30 +285,30 @@ msgstr[4] ""
 msgstr[5] ""
 
 #: include/admin/class.settings.php:151
-#: include/admin/class.settings.php:858
+#: include/admin/class.settings.php:857
 #: views/admin/tag_groups_admin.view.php:26
 #: views/admin/tag_groups_admin.view.php:39
 msgid "Filters"
 msgstr "مرشحات"
 
 #: include/admin/class.settings.php:153
-#: include/admin/class.settings.php:958
+#: include/admin/class.settings.php:957
 msgid "Gutenberg"
 msgstr "غوتنبرغ"
 
 #: include/admin/class.settings.php:156
-#: include/admin/class.settings.php:965
+#: include/admin/class.settings.php:964
 msgid "Multilingual"
 msgstr "متعدد اللغات"
 
 #: include/admin/class.settings.php:238
-#: include/admin/class.settings.php:832
+#: include/admin/class.settings.php:831
 #: views/admin/settings_front_end_shortcodes.view.php:9
 msgid "Shortcodes"
 msgstr "الرموز القصيرة"
 
 #: include/admin/class.settings.php:239
-#: include/admin/class.settings.php:846
+#: include/admin/class.settings.php:845
 msgid "Themes and Appearance"
 msgstr "الثيمات والمظهر"
 
@@ -322,7 +329,7 @@ msgid "use unfiltered_html filter"
 msgstr "استخدام فلتر unfiltered_html"
 
 #: include/admin/class.settings.php:317
-#: include/admin/class.settings.php:945
+#: include/admin/class.settings.php:944
 msgid "First Aid"
 msgstr "الإسعافات الأولية"
 
@@ -331,22 +338,22 @@ msgid "REST API"
 msgstr "واجهة برمجة التطبيقات REST"
 
 #: include/admin/class.settings.php:319
-#: include/admin/class.settings.php:873
+#: include/admin/class.settings.php:872
 msgid "System Information"
 msgstr "معلومات النظام"
 
 #: include/admin/class.settings.php:320
-#: include/admin/class.settings.php:887
+#: include/admin/class.settings.php:886
 msgid "Debugging"
 msgstr "تصحيح الأخطاء"
 
 #: include/admin/class.settings.php:321
-#: include/admin/class.settings.php:863
+#: include/admin/class.settings.php:862
 msgid "Export/Import"
 msgstr "تصدير/استيراد"
 
 #: include/admin/class.settings.php:322
-#: include/admin/class.settings.php:868
+#: include/admin/class.settings.php:867
 msgid "Reset"
 msgstr "إعادة تعيين"
 
@@ -355,33 +362,33 @@ msgid "Licences"
 msgstr "الرخص"
 
 #: include/admin/class.settings.php:422
-#: include/admin/class.settings_ajax.php:42
+#: include/admin/class.settings_ajax.php:69
 msgid "Transients"
 msgstr "المؤقتات"
 
 #: include/admin/class.settings.php:423
-#: include/admin/class.settings_ajax.php:43
+#: include/admin/class.settings_ajax.php:70
 msgid "Database"
 msgstr "قاعدة البيانات"
 
 #: include/admin/class.settings.php:424
-#: include/admin/class.settings_ajax.php:44
+#: include/admin/class.settings_ajax.php:71
 msgid "Filesystem"
 msgstr "نظام الملفات"
 
 #: include/admin/class.settings.php:425
-#: include/admin/class.settings_ajax.php:45
+#: include/admin/class.settings_ajax.php:72
 msgid "WP Object Cache"
 msgstr "ذاكرة تخزين كائنات WP"
 
 #: include/admin/class.settings.php:548
 #: include/admin/class.settings.php:604
 #: include/admin/class.settings.php:642
-#: include/admin/class.settings.php:676
-#: include/admin/class.settings.php:691
-#: include/admin/class.settings.php:704
-#: include/admin/class.settings.php:717
-#: include/admin/class.settings.php:786
+#: include/admin/class.settings.php:675
+#: include/admin/class.settings.php:690
+#: include/admin/class.settings.php:703
+#: include/admin/class.settings.php:716
+#: include/admin/class.settings.php:785
 msgid "Your settings have been saved."
 msgstr "تم حفظ إعداداتك."
 
@@ -393,249 +400,270 @@ msgstr "تم حفظ إعداداتك."
 msgid "All groups have been deleted and assignments reset."
 msgstr "تم حذف جميع المجموعات وإعادة تعيين التعيينات."
 
-#: include/admin/class.settings.php:733
+#: include/admin/class.settings.php:732
 msgid "The filter on the tags page has been reset to show all tags."
 msgstr "تم إعادة تعيين الفلتر في صفحة العلامات لعرض جميع العلامات."
 
-#: include/admin/class.settings.php:829
+#: include/admin/class.settings.php:828
 msgid "tag groups"
 msgstr "مجموعات العلامات"
 
-#: include/admin/class.settings.php:835
-#: include/admin/class.settings.php:849
-#: include/admin/class.settings.php:904
+#: include/admin/class.settings.php:834
+#: include/admin/class.settings.php:848
+#: include/admin/class.settings.php:903
 msgid "tag cloud"
 msgstr "سحابة العلامات"
 
-#: include/admin/class.settings.php:836
+#: include/admin/class.settings.php:835
 msgid "group info"
 msgstr "معلومات المجموعة"
 
-#: include/admin/class.settings.php:837
+#: include/admin/class.settings.php:836
 msgid "sidebar widget"
 msgstr "ودجت الشريط الجانبي"
 
-#: include/admin/class.settings.php:838
+#: include/admin/class.settings.php:837
 msgid "accordion"
 msgstr "الأكورديون"
 
-#: include/admin/class.settings.php:839
+#: include/admin/class.settings.php:838
 msgid "tabs"
 msgstr "علامات التبويب"
 
-#: include/admin/class.settings.php:840
+#: include/admin/class.settings.php:839
 msgid "alphabetical"
 msgstr "أبجدي"
 
-#: include/admin/class.settings.php:841
+#: include/admin/class.settings.php:840
 msgid "post list"
 msgstr "قائمة المشاركات"
 
-#: include/admin/class.settings.php:853
+#: include/admin/class.settings.php:852
 msgid "colors"
 msgstr "الألوان"
 
-#: include/admin/class.settings.php:854
+#: include/admin/class.settings.php:853
 msgid "tag description"
 msgstr "وصف العلامة"
 
-#: include/admin/class.settings.php:860
-#: include/admin/class.settings.php:952
+#: include/admin/class.settings.php:859
+#: include/admin/class.settings.php:951
 msgid "tag filter"
 msgstr "تصفية العلامة"
 
-#: include/admin/class.settings.php:860
+#: include/admin/class.settings.php:859
 msgid "post filter"
 msgstr "تصفية المشاركة"
 
-#: include/admin/class.settings.php:865
+#: include/admin/class.settings.php:864
 msgid "backup"
 msgstr "نسخة احتياطية"
 
-#: include/admin/class.settings.php:870
+#: include/admin/class.settings.php:869
 msgid "remove plugin"
 msgstr "إزالة الإضافة"
 
-#: include/admin/class.settings.php:870
+#: include/admin/class.settings.php:869
 msgid "remove data"
 msgstr "إزالة البيانات"
 
-#: include/admin/class.settings.php:870
+#: include/admin/class.settings.php:869
 msgid "delete groups"
 msgstr "حذف المجموعات"
 
-#: include/admin/class.settings.php:876
-#: include/admin/class.settings.php:890
+#: include/admin/class.settings.php:875
+#: include/admin/class.settings.php:889
 msgid "debugging"
 msgstr "تصحيح الأخطاء"
 
-#: include/admin/class.settings.php:877
+#: include/admin/class.settings.php:876
 msgid "PHP Version"
 msgstr "إصدار PHP"
 
-#: include/admin/class.settings.php:878
+#: include/admin/class.settings.php:877
 #: views/admin/settings_troubleshooting_system.view.php:21
 msgid "Ajax Test"
 msgstr "اختبار Ajax"
 
-#: include/admin/class.settings.php:879
-#: include/admin/class.settings.php:891
-#: include/admin/class.settings.php:948
+#: include/admin/class.settings.php:878
+#: include/admin/class.settings.php:890
+#: include/admin/class.settings.php:947
 msgid "troubleshooting"
 msgstr "استكشاف الأخطاء وإصلاحها"
 
-#: include/admin/class.settings.php:880
+#: include/admin/class.settings.php:879
 msgid "benchmarks"
 msgstr "مؤشرات الأداء"
 
-#: include/admin/class.settings.php:881
+#: include/admin/class.settings.php:880
 msgid "speed test"
 msgstr "اختبار السرعة"
 
-#: include/admin/class.settings.php:882
-#: include/admin/class.settings.php:892
+#: include/admin/class.settings.php:881
+#: include/admin/class.settings.php:891
 msgid "error"
 msgstr "خطأ"
 
-#: include/admin/class.settings.php:883
-#: include/admin/class.settings.php:893
+#: include/admin/class.settings.php:882
+#: include/admin/class.settings.php:892
 msgid "testing"
 msgstr "اختبار"
 
-#: include/admin/class.settings.php:894
-#: include/admin/class.settings.php:937
-#: include/admin/class.settings.php:950
+#: include/admin/class.settings.php:893
+#: include/admin/class.settings.php:936
+#: include/admin/class.settings.php:949
 msgid "help"
 msgstr "مساعدة"
 
-#: include/admin/class.settings.php:898
-msgid "Tag Groups Pro"
-msgstr "مجموعات العلامات المحترفة"
+#: include/admin/class.settings.php:897
+msgid "PublishPress Tag Groups Pro"
+msgstr "مجموعة علامات PublishPress برو"
 
-#: include/admin/class.settings.php:901
+#: include/admin/class.settings.php:900
 msgid "upgrade"
 msgstr "ترقية"
 
-#: include/admin/class.settings.php:902
+#: include/admin/class.settings.php:901
 msgid "more groups"
 msgstr "مزيد من المجموعات"
 
-#: include/admin/class.settings.php:903
+#: include/admin/class.settings.php:902
 msgid "posts"
 msgstr "المشاركات"
 
-#: include/admin/class.settings.php:905
+#: include/admin/class.settings.php:904
 msgid "filter"
 msgstr "تصفية"
 
-#: include/admin/class.settings.php:906
+#: include/admin/class.settings.php:905
 msgid "animated"
 msgstr "متحرك"
 
-#: include/admin/class.settings.php:907
+#: include/admin/class.settings.php:906
 msgid "searchable"
 msgstr "قابل للبحث"
 
-#: include/admin/class.settings.php:915
+#: include/admin/class.settings.php:914
 msgid "Info"
 msgstr "معلومات"
 
-#: include/admin/class.settings.php:918
+#: include/admin/class.settings.php:917
 msgid "author"
 msgstr "مؤلف"
 
-#: include/admin/class.settings.php:919
+#: include/admin/class.settings.php:918
 msgid "version"
 msgstr "إصدار"
 
-#: include/admin/class.settings.php:920
+#: include/admin/class.settings.php:919
 msgid "contact"
 msgstr "اتصال"
 
-#: include/admin/class.settings.php:921
+#: include/admin/class.settings.php:920
 msgid "about"
 msgstr "حول"
 
-#: include/admin/class.settings.php:925
+#: include/admin/class.settings.php:924
 msgid "Licenses"
 msgstr "التراخيص"
 
-#: include/admin/class.settings.php:927
+#: include/admin/class.settings.php:926
 msgid "Credits"
 msgstr "الاعتمادات"
 
-#: include/admin/class.settings.php:930
+#: include/admin/class.settings.php:929
 msgid "Development News"
 msgstr "أخبار التطوير"
 
-#: include/admin/class.settings.php:932
+#: include/admin/class.settings.php:931
 msgid "blog"
 msgstr "مدونة"
 
-#: include/admin/class.settings.php:932
+#: include/admin/class.settings.php:931
 msgid "updates"
 msgstr "تحديثات"
 
-#: include/admin/class.settings.php:937
-#: include/admin/class.settings.php:942
+#: include/admin/class.settings.php:936
+#: include/admin/class.settings.php:941
 msgid "getting started"
 msgstr "البدء"
 
-#: include/admin/class.settings.php:937
-#: include/admin/class.settings.php:942
+#: include/admin/class.settings.php:936
+#: include/admin/class.settings.php:941
 msgid "introduction"
 msgstr "مقدمة"
 
-#: include/admin/class.settings.php:942
+#: include/admin/class.settings.php:941
 msgid "sample"
 msgstr "عينة"
 
-#: include/admin/class.settings.php:949
+#: include/admin/class.settings.php:948
 msgid "migrate"
 msgstr "ترحيل"
 
-#: include/admin/class.settings.php:951
+#: include/admin/class.settings.php:950
 msgid "problem"
 msgstr "مشكلة"
 
-#: include/admin/class.settings.php:960
+#: include/admin/class.settings.php:959
 msgid "live block preview"
 msgstr "معاينة الكتلة الحية"
 
-#: include/admin/class.settings.php:967
+#: include/admin/class.settings.php:966
 msgid "translation"
 msgstr "ترجمة"
 
-#: include/admin/class.settings.php:998
+#: include/admin/class.settings.php:997
 msgid "Migrating the term meta"
 msgstr "ترحيل بيانات المصطلح"
 
-#: include/admin/class.settings.php:999
+#: include/admin/class.settings.php:998
 msgid "Fixing incorrect tag groups"
 msgstr "إصلاح مجموعات العلامات غير الصحيحة"
 
-#: include/admin/class.settings.php:1000
+#: include/admin/class.settings.php:999
 msgid "Fixing incorrect groups in term meta"
 msgstr "إصلاح المجموعات غير الصحيحة في بيانات المصطلح"
 
-#: include/admin/class.settings.php:1001
+#: include/admin/class.settings.php:1000
 msgid "Sorting groups in term meta"
 msgstr "فرز المجموعات في بيانات المصطلح"
 
-#: include/admin/class.settings.php:1002
+#: include/admin/class.settings.php:1001
 msgid "Checking the tag names"
 msgstr "التحقق من أسماء العلامات"
 
-#: include/admin/class.settings_ajax.php:48
-#: views/admin/settings_troubleshooting_system.view.php:126
+#: include/admin/class.settings_ajax.php:29
+msgid "You are not allowed to run cache benchmarks."
+msgstr "غير مسموح لك بتشغيل اختبارات أداء التخزين المؤقت."
+
+#: include/admin/class.settings_ajax.php:34
+msgid "Invalid request method."
+msgstr "طريقة الطلب غير صالحة."
+
+#: include/admin/class.settings_ajax.php:38
+msgid "The security check failed."
+msgstr "فشل التحقق الأمني."
+
+#: include/admin/class.settings_ajax.php:43
+msgid "Invalid benchmark task."
+msgstr "مهمة الاختبار غير صالحة."
+
+#: include/admin/class.settings_ajax.php:49
+#: include/admin/class.settings_ajax.php:57
+msgid "A cache benchmark is already running."
+msgstr "اختبار أداء التخزين المؤقت قيد التشغيل بالفعل."
+
+#: include/admin/class.settings_ajax.php:75
+#: views/admin/settings_troubleshooting_system.view.php:125
 msgid "Cache"
 msgstr "ذاكرة التخزين المؤقت"
 
-#: include/admin/class.settings_ajax.php:48
+#: include/admin/class.settings_ajax.php:75
 msgid "(1000x read, 100x write)"
 msgstr "(1000x قراءة، 100x كتابة)"
 
-#: include/admin/class.settings_ajax.php:63
+#: include/admin/class.settings_ajax.php:89
 msgid "ineffective"
 msgstr "غير فعّال"
 
@@ -702,11 +730,11 @@ msgstr "غير مخصص"
 #. translators: %1$s and %2$s are opening and closing anchor tags for the upgrade link
 #, php-format
 msgid ""
-"You're using Tag Groups Free. The Pro version has more features and "
-"support. %1$sUpgrade to Pro%2$s"
+"You're using PublishPress Tag Groups Free. The Pro version has more "
+"features and support. %1$sUpgrade to Pro%2$s"
 msgstr ""
-"أنت تستخدم مجموعات العلامات المجانية. النسخة الاحترافية تحتوي على ميزات "
-"ودعم أكثر. %1$sترقية إلى النسخة الاحترافية%2$s"
+"أنت تستخدم مجموعة علامات PublishPress مجانية. النسخة برو تحتوي على المزيد "
+"من الميزات والدعم. %1$sترقية إلى برو%2$s"
 
 #: includes-core/TagGroupsCoreAdmin.php:98
 #: includes-core/TagGroupsCoreAdmin.php:142
@@ -714,12 +742,12 @@ msgid "Upgrade to Pro"
 msgstr "ترقية إلى الاحترافية"
 
 #: includes-core/TagGroupsCoreAdmin.php:115
-msgid "Upgrade to Tag Groups Pro"
-msgstr "ترقية إلى مجموعة العلامات الاحترافية"
+msgid "Upgrade to PublishPress Tag Groups Pro"
+msgstr "ترقية إلى مجموعة علامات PublishPress برو"
 
 #: includes-core/TagGroupsCoreAdmin.php:120
-msgid "Enhance the power of Tag Groups with the Pro version:"
-msgstr "تعزيز قوة مجموعة العلامات مع النسخة الاحترافية:"
+msgid "Enhance the power of PublishPress Tag Groups with the Pro version:"
+msgstr "قم بتعزيز قوة مجموعة علامات PublishPress مع النسخة برو:"
 
 #: includes-core/TagGroupsCoreAdmin.php:123
 msgid "21 Shortcodes"
@@ -790,8 +818,8 @@ msgid "Parent Group Level"
 msgstr "مستوى المجموعة الرئيسية"
 
 #: includes-core/TagGroupsCoreAdmin.php:149
-msgid "Need Tag Groups Support?"
-msgstr "هل تحتاج إلى دعم مجموعات العلامات؟"
+msgid "Need PublishPress Tag Groups Support?"
+msgstr "هل تحتاج إلى دعم مجموعة علامات PublishPress؟"
 
 #: includes-core/TagGroupsCoreAdmin.php:154
 msgid "If you need help or have a new feature request, let us know."
@@ -809,11 +837,15 @@ msgstr "يتوفر أيضًا وثائق مفصلة على موقع الملحق
 msgid "View Knowledge Base"
 msgstr "عرض قاعدة المعرفة"
 
-#: tag-groups.php:177
-msgid "The free Tag Groups plugin cannot be active together with Tag Groups Pro."
-msgstr "لا يمكن تنشيط ملحق مجموعات العلامات المجاني مع ملحق مجموعات العلامات برو."
+#: tag-groups.php:196
+msgid ""
+"The free PublishPress Tag Groups plugin cannot be active together with "
+"PublishPress Tag Groups Pro."
+msgstr ""
+"لا يمكن تفعيل إضافة مجموعة علامات PublishPress المجانية مع مجموعة علامات "
+"PublishPress برو."
 
-#: tag-groups.php:177
+#: tag-groups.php:196
 msgid "more information"
 msgstr "مزيد من المعلومات"
 
@@ -887,12 +919,13 @@ msgstr "تصفية حسب مجموعة العلامات"
 #. translators: %s is the author display name
 #, php-format
 msgid ""
-"%s created this sample page in the Setup Wizard of the <b>Tag Groups</b> "
-"plugin. You can safely edit and delete it or keep it for future reference."
+"%s created this sample page in the Setup Wizard of the <b>PublishPress Tag "
+"Groups</b> plugin. You can safely edit and delete it or keep it for future "
+"reference."
 msgstr ""
-"%s أنشأ هذه الصفحة النموذجية في معالج الإعداد الخاص بـ <b>مجموعات "
-"العلامات</b> الإضافي. يمكنك تعديلها وحذفها بأمان أو الاحتفاظ بها للرجوع "
-"إليها لاحقًا."
+"%s أنشأ هذه الصفحة النموذجية في معالج الإعداد لإضافة <b>مجموعة علامات "
+"PublishPress</b>. يمكنك تعديلها وحذفها بأمان أو الاحتفاظ بها للرجوع إليها "
+"لاحقًا."
 
 #: views/admin/sample_page.view.php:6
 msgid ""
@@ -1591,15 +1624,15 @@ msgstr "عرض الاستجابة"
 msgid "passed"
 msgstr "نجح"
 
-#: views/admin/settings_troubleshooting_system.view.php:99
+#: views/admin/settings_troubleshooting_system.view.php:98
 msgid "failed"
 msgstr "فشل"
 
-#: views/admin/settings_troubleshooting_system.view.php:106
+#: views/admin/settings_troubleshooting_system.view.php:105
 msgid "Benchmarks"
 msgstr "معايير الأداء"
 
-#: views/admin/settings_troubleshooting_system.view.php:128
+#: views/admin/settings_troubleshooting_system.view.php:127
 msgid "Tag groups pro only"
 msgstr "مجموعات العلامات فقط للمحترفين"
 
@@ -1656,8 +1689,8 @@ msgid "Happy tagging!"
 msgstr "ت tagging سعيد!"
 
 #: views/admin/setup_wizard_header.view.php:1
-msgid "Tag Groups Setup Wizard"
-msgstr "معالج إعداد مجموعة العلامات"
+msgid "PublishPress Tag Groups Setup Wizard"
+msgstr "معالج إعداد مجموعة علامات PublishPress"
 
 #: views/admin/setup_wizard_sample_content.view.php:3
 msgid ""
@@ -1835,11 +1868,31 @@ msgstr "يرجى زيارة <a %1$s>%2$s</a>."
 msgid "Read more"
 msgstr "اقرأ المزيد"
 
-#: views/partials/admin_footer_rating.view.php:4
-#. translators: 1: Opening TaxoPress link tag, 2: Closing link tag, 3: Plugin version.
+#: views/partials/admin_footer_rating.view.php:9
+#. translators: %1$s: plugin name, %2$s: five-star rating icons.
 #, php-format
-msgid "Thanks for using Tag Groups | %1$sTaxoPress.com%2$s | Version %3$s"
-msgstr "شكراً لاستخدامك مجموعات العلامات | %1$sTaxoPress.com%2$s | النسخة %3$s"
+msgid "If you like %1$s please leave us a %2$s rating. Thank you!"
+msgstr "إذا كنت تحب %1$s، يرجى ترك لنا تقييمًا بـ %2$s. شكرًا لك!"
+
+#: views/partials/admin_footer_rating.view.php:10
+msgid "PublishPress Tag Groups"
+msgstr "مجموعة علامات PublishPress"
+
+#: views/partials/admin_footer_rating.view.php:17
+msgid "PublishPress Tag Groups resources"
+msgstr "موارد مجموعة علامات PublishPress"
+
+#: views/partials/admin_footer_rating.view.php:19
+msgid "About"
+msgstr "حول"
+
+#: views/partials/admin_footer_rating.view.php:20
+msgid "Documentation"
+msgstr "الوثائق"
+
+#: views/partials/admin_footer_rating.view.php:21
+msgid "Contact"
+msgstr "اتصل"
 
 #: views/partials/bulk_admin_footer.view.php:10
 #: views/partials/bulk_admin_footer.view.php:11

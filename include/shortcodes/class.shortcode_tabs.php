@@ -144,6 +144,10 @@ if (!class_exists('TagGroups_Shortcode_Tabs')) {
             'type'    => 'string',
             'default' => '',
         ),
+            'show_icons'            => array(
+            'type'    => 'integer',
+            'default' => 0,
+        ),
             'show_not_assigned'     => array(
             'type'    => 'integer',
             'default' => 0,
@@ -160,9 +164,21 @@ if (!class_exists('TagGroups_Shortcode_Tabs')) {
             'type'    => 'integer',
             'default' => 1,
         ),
+            'search_panel'          => array(
+            'type'    => 'integer',
+            'default' => 0,
+        ),
+            'search_panel_popular'  => array(
+            'type'    => 'integer',
+            'default' => 8,
+        ),
             'smallest'              => array(
             'type'    => 'integer',
             'default' => 12,
+        ),
+            'tag_style'             => array(
+            'type'    => 'string',
+            'default' => '',
         ),
             'tags_post_id'          => array(
             'type'    => 'integer',
@@ -229,13 +245,17 @@ if (!class_exists('TagGroups_Shortcode_Tabs')) {
                 'prepend'               => '',
                 'remove_filters'        => 1,
                 'separator_size'        => 12,
+                'search_panel'          => 0,
+                'search_panel_popular'  => 8,
                 'separator'             => '',
+                'show_icons'            => 0,
                 'show_not_assigned'     => false,
                 'show_all_groups'       => false,
                 'show_tabs'             => '1',
                 'show_tag_count'        => true,
                 'smallest'              => 12,
                 'source'                => 'shortcode',
+                'tag_style'             => '',
                 'tags_post_id'          => -1,
                 'taxonomy'              => implode(',', TagGroups_Taxonomy::get_enabled_taxonomies()),
                 'threshold'             => 0,
@@ -256,6 +276,7 @@ if (!class_exists('TagGroups_Shortcode_Tabs')) {
             if ($this->attributes->delay) {
                 $this->attributes->div_class .= ' tag-groups-cloud-hidden';
             }
+            $this->add_tag_style_class();
             $div_id_output = ( $this->attributes->html_id ? ' id="' . TagGroups_Shortcode_Statics::sanitize_html_classes($this->attributes->html_id) . '"' : '' );
             $div_class_output = ( $this->attributes->div_class ? ' class="' . TagGroups_Shortcode_Statics::sanitize_html_classes($this->attributes->div_class) . '"' : '' );
             if (is_array($atts)) {
@@ -508,6 +529,7 @@ if (!class_exists('TagGroups_Shortcode_Tabs')) {
                     }
                     $tag_link = $this->get_tag_link($tag, $i);
                     $font_size = $this->font_size($post_count, $this->min_max[$this->tag_group_data[$i]['term_group']]['min'], $this->min_max[$this->tag_group_data[$i]['term_group']]['max']);
+                    $tag_style_markup = $this->get_tag_style_markup($post_count, $this->min_max[$this->tag_group_data[$i]['term_group']]['min'], $this->min_max[$this->tag_group_data[$i]['term_group']]['max']);
                     $font_size_separator = ( $this->attributes->adjust_separator_size ? $font_size : $this->attributes->separator_size );
                     if ($count_amount > 0 && !empty($this->attributes->separator)) {
                         $this->html_tags[$i] .= '<span style="font-size:' . $font_size_separator . 'px">' . $this->attributes->separator . '</span> ';
@@ -527,7 +549,7 @@ if (!class_exists('TagGroups_Shortcode_Tabs')) {
                         $other_tag_classes .= ' ' . sanitize_html_class(' tg_tag_group_id_' . $this->tag_group_data[$i]['term_group']) . ' ' . sanitize_html_class('tg_tag_group_label_' . strtolower($this->tag_group_data[$i]['label']));
                     }
                     // assembling a tag
-                    $this->html_tags[$i] .= '<span class="tag-groups-tag' . $other_tag_classes . '" style="font-size:' . $font_size . 'px" data-group="' . $this->tag_group_data[$i]['term_group'] . '#"><a href="' . $tag_link . '" ' . $link_target_html . '' . $title_html . '  class="' . $tag->slug . '">';
+                    $this->html_tags[$i] .= '<span class="tag-groups-tag' . $other_tag_classes . $tag_style_markup['class'] . '" style="font-size:' . $font_size . 'px' . $tag_style_markup['style'] . '"' . $this->get_search_panel_tag_data($post_count) . ' data-group="' . $this->tag_group_data[$i]['term_group'] . '#"><a href="' . $tag_link . '" ' . $link_target_html . '' . $title_html . '  class="' . $tag->slug . '">';
 
                     if ('' != $prepend_output) {
                         $prepend_html = '<span class="tag-groups-prepend" style="font-size:' . $font_size . 'px">' . htmlentities($prepend_output, ENT_QUOTES, "UTF-8") . '</span>';
@@ -575,6 +597,7 @@ if (!class_exists('TagGroups_Shortcode_Tabs')) {
                      * @param string $this->shortcode_id
                      * @return string
                      */
+                    $this->html_tags[$i] .= $this->get_tag_icon_html($tag->term_id);
                     $this->html_tags[$i] .= apply_filters(
                         'tag_groups_cloud_tag_outer',
                         '<span class="tag-groups-label" style="font-size:' . $font_size . 'px">' . $inner_html . '</span>',
@@ -634,7 +657,7 @@ if (!class_exists('TagGroups_Shortcode_Tabs')) {
             $div_class_output,
             $atts
         ) {
-            $html = '<div' . $div_id_output . $div_class_output . '>' . $html . '</div>';
+            $html = $this->get_search_panel_html() . '<div' . $div_id_output . $div_class_output . '>' . $html . '</div>';
             // entire wrapper
             $html .= $this->custom_js_tabs();
             /**

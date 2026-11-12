@@ -38,7 +38,7 @@ if (!class_exists('TagGroups_Group_Admin')) {
             $tag_group_show_filter = TagGroups_Options::get_option('tag_group_show_filter', 0);
             // posts
             // phpcs:ignore WordPress.Security.NonceVerification.Recommended, WordPress.Security.ValidatedSanitizedInput.InputNotValidated -- Read-only admin page display
-            $this_post_type = preg_replace('/tag-groups_(.+)/', '$1', sanitize_title($_GET['page']));
+            $this_post_type = preg_replace('/tag-groups_(.+)/', '$1', sanitize_title(wp_unslash($_GET['page'])));
             $post_type_taxonomies = get_object_taxonomies($this_post_type);
             $first_enabled_taxonomy = '';
             $taxonomies = TagGroups_Taxonomy::get_enabled_taxonomies($post_type_taxonomies);
@@ -85,7 +85,7 @@ if (!class_exists('TagGroups_Group_Admin')) {
             // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only admin page display
             if (isset($_GET['lang'])) {
                 // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only admin page display
-                $admin_url = add_query_arg('lang', sanitize_key($_GET['lang']), $admin_url);
+                $admin_url = add_query_arg('lang', sanitize_key(wp_unslash($_GET['lang'])), $admin_url);
             }
             
             if ('all' == $current_language) {
@@ -146,9 +146,9 @@ if (!class_exists('TagGroups_Group_Admin')) {
             
             if (isset($_REQUEST['tag_groups_taxonomy'])) {
                 if (is_array($_REQUEST['tag_groups_taxonomy'])) {
-                    $taxonomy = array_map('sanitize_title', $_REQUEST['tag_groups_taxonomy']);
+                    $taxonomy = array_map('sanitize_title', wp_unslash($_REQUEST['tag_groups_taxonomy']));
                 } else {
-                    $taxonomy = sanitize_title($_REQUEST['tag_groups_taxonomy']);
+                    $taxonomy = sanitize_title(wp_unslash($_REQUEST['tag_groups_taxonomy']));
                 }
             } else {
                 $taxonomy = array( 'post_tag' );
@@ -158,7 +158,7 @@ if (!class_exists('TagGroups_Group_Admin')) {
             $tag_group_role_edit_groups = 'edit_pages';
             
             // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized, WordPress.Security.ValidatedSanitizedInput.InputNotValidated -- Nonce verification
-            if (!(current_user_can($tag_group_role_edit_groups) && wp_verify_nonce($_REQUEST['nonce'] ?? '', 'tg_groups_management'))) {
+            if (!(current_user_can($tag_group_role_edit_groups) && wp_verify_nonce(wp_unslash($_REQUEST['nonce'] ?? ''), 'tg_groups_management'))) {
                 self::ajax_send_error('Security check', $task);
                 exit;
             }
@@ -179,7 +179,7 @@ if (!class_exists('TagGroups_Group_Admin')) {
             
             
             if (isset($_REQUEST['tag_groups_filter_label'])) {
-                $tag_groups_filter_label = sanitize_text_field($_REQUEST['tag_groups_filter_label']);
+                $tag_groups_filter_label = sanitize_text_field(wp_unslash($_REQUEST['tag_groups_filter_label']));
             } else {
                 $tag_groups_filter_label = '';
             }
@@ -202,7 +202,7 @@ if (!class_exists('TagGroups_Group_Admin')) {
                     break;
                 case "new":
                     if (isset($_REQUEST['tag_groups_label'])) {
-                        $label = stripslashes(sanitize_text_field($_REQUEST['tag_groups_label']));
+                        $label = sanitize_text_field(wp_unslash($_REQUEST['tag_groups_label']));
                     }
                     
                     if (empty($label)) {
@@ -222,7 +222,7 @@ if (!class_exists('TagGroups_Group_Admin')) {
                 case "new-parent":
                     if (TagGroups_Utilities::is_premium_plan()) {
                         if (isset($_REQUEST['tag_groups_label'])) {
-                            $label = stripslashes(sanitize_text_field($_REQUEST['tag_groups_label']));
+                            $label = sanitize_text_field(wp_unslash($_REQUEST['tag_groups_label']));
                         }
 
                         if (empty($label)) {
@@ -242,7 +242,7 @@ if (!class_exists('TagGroups_Group_Admin')) {
                     break;
                 case "update":
                     if (isset($_REQUEST['tag_groups_label'])) {
-                        $label = stripslashes(sanitize_text_field($_REQUEST['tag_groups_label']));
+                        $label = sanitize_text_field(wp_unslash($_REQUEST['tag_groups_label']));
                     }
                     
                     if (empty($label)) {

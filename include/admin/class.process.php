@@ -46,7 +46,7 @@ if (! class_exists('TagGroups_Process')) {
             // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Nonce verified below
             if (isset($_REQUEST['nonce'])) {
                     // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized, WordPress.Security.NonceVerification.Recommended -- Nonce verified below
-                    $nonce = $_REQUEST['nonce'];
+                    $nonce = sanitize_text_field(wp_unslash($_REQUEST['nonce']));
             }
 
             if (! current_user_can('manage_options')) {
@@ -59,7 +59,7 @@ if (! class_exists('TagGroups_Process')) {
 
             if (isset($_REQUEST['task'])) {
                 // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Sanitized in switch statement
-                $task = $_REQUEST['task'];
+                $task = sanitize_key(wp_unslash($_REQUEST['task']));
             } else {
                   $error = true;
             }

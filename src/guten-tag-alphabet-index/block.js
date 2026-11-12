@@ -11,7 +11,7 @@
 
 import '../editor.css';
 
-import Select from 'react-select';
+import Select from '../components/tag-groups-select';
 import HeadingToolbar from '../components/heading-toolbar';
 import TagGroupsServerSideRender from '../components/tag-groups-render';
 
@@ -276,7 +276,7 @@ class editFunction extends Component {
               onChange={(option) => {
                 if (option) setAttributes({ orderby: option.value });
               }}
-              value={orderby && typeof orderby === 'string' ? orderby : 'name'}
+              value={typeof orderby === 'string' ? orderby : ''}
               options={optionsOrderby}
             />
             {orderby !== 'random' && (
@@ -295,9 +295,9 @@ class editFunction extends Component {
                     if (option) setAttributes({ order: option.value });
                   }}
                   value={
-                    order && typeof order === 'string'
+                    typeof order === 'string'
                       ? order.toUpperCase()
-                      : 'ASC'
+                      : ''
                   }
                   options={optionsOrder}
                 />
@@ -453,9 +453,9 @@ class editFunction extends Component {
                 if (option) setAttributes({ link_target: option.value });
               }}
               value={
-                link_target && typeof link_target === 'string'
+                typeof link_target === 'string'
                   ? link_target
-                  : '_self'
+                  : ''
               }
               options={optionsTarget}
             />
@@ -737,32 +737,6 @@ class editFunction extends Component {
               </div>
             )}
           </PanelBody>
-          <div className='chatty-mango-help-transform'>
-            <TagGroupsHelp
-              url={helpUrl}
-              product={this.helpProduct}
-              feature={this.helpFeature}
-              siteLang={siteLang}
-              topic='transform-your-block-for-more-options'
-            />
-            <div
-              className='dashicons-before dashicons-editor-code'
-              dangerouslySetInnerHTML={{
-                __html: __(
-                  'If you want to customize further options, you need to transform the block into a <b>shortcode block</b>.'
-                ),
-              }}
-            ></div>
-          </div>
-          <div
-            className='chatty-mango-inspector-help dashicons-before dashicons-admin-generic'
-            dangerouslySetInnerHTML={{
-              __html: __(
-                `The live preview of blocks can be turned on and off in the Tag Groups Settings under <a href="${gutenbergSettings}">Back End → Gutenberg</a>.`,
-                'tag-groups'
-              ),
-            }}
-          ></div>
         </div>
       </InspectorControls>,
       <div>
@@ -814,7 +788,7 @@ var cmTagGroupsAlphabetBlock = registerBlockType(
     icon: 'tag', // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
     category: 'chatty-mango',
     description: __('Show your tags in a list sorted by first letters.'),
-    keywords: [__('alphabet'), __('tag cloud'), 'Chatty Mango'],
+    keywords: [__('alphabet'), __('tag cloud'), 'PublishPress'],
     html: false,
     transforms: {
       to: [

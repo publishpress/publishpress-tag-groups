@@ -1,4 +1,6 @@
+.gitattributes text eol=lf
 .babelrc export-ignore
+*.php text eol=lf
 .cursor export-ignore
 .deploy-state.json export-ignore
 .distignore export-ignore
@@ -40,6 +42,7 @@ node_modules export-ignore
 package-lock.json export-ignore
 package.json export-ignore
 phpmd-ruleset.xml export-ignore
+phpmd.ruleset.xml export-ignore
 phpstan.neon export-ignore
 ray-dist.php export-ignore
 ray.php export-ignore

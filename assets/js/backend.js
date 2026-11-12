@@ -1,7 +1,7 @@
 /*!
  * Last modified: 2021/09/03 13:50:24
- * Part of the WordPress plugin Tag Groups
- * Plugin URI: https://chattymango.com/tag-groups/
+ * Part of the WordPress plugin PublishPress Tag Groups
+ * Plugin URI: https://publishpress.com/tag-groups/
  * Author: Christoph Amthor
  * License: GNU GENERAL PUBLIC LICENSE, Version 3
  */
@@ -378,10 +378,10 @@ function tg_display_error(message, isPremium) {
   let url;
   if (isPremium) {
     url =
-      'https://taxopress.com/docs/list-not-loading-tag-groups/';
+      'https://publishpress.com/tag-groups/';
   } else {
     url =
-      'https://taxopress.com/docs/list-not-loading-tag-groups/';
+      'https://publishpress.com/tag-groups/';
   }
 
   message = message.replace(/\n/g, '<br>');

@@ -1,4 +1,4 @@
-# Copyright (C) 2026 TaxoPress
+# Copyright (C) 2026 PublishPress
 # This file is distributed under the GPL-3.0-or-later.
 msgid ""
 msgstr ""
@@ -10,20 +10,17 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-06-15T12:41:40+00:00\n"
-"PO-Revision-Date: 2026-06-22 16:17+0000\n"
+"PO-Revision-Date: 2026-09-30 10:10+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: tag-groups\n"
 "Language: ja\n"
 
-#: tag-groups.php:4
-#: include/admin/class.admin.php:229
-#: views/admin/edit_tag_main.view.php:2
-#: views/admin/new_tag_from_list.view.php:2
+#: tag-groups.php:4, fuzzy
 #. Plugin Name of the plugin
-msgid "Tag Groups"
-msgstr "Tag-Groups"
+msgid "PublishPress Tag Groups Free"
+msgstr "PublishPress Tag Groups Free"
 
-#: tag-groups.php:5, fuzzy
+#: tag-groups.php:5
 #. Plugin URI of the plugin
 msgid "https://wordpress.org/plugins/tag-groups/"
 msgstr "https://wordpress.org/plugins/tag-groups/"
@@ -31,26 +28,37 @@ msgstr "https://wordpress.org/plugins/tag-groups/"
 #: tag-groups.php:6
 #. Description of the plugin
 msgid ""
-"Tag Groups allows you to organize your WordPress taxonomy terms and show "
-"them in clouds, tabs, accordions, tables, lists and much more."
-msgstr "Tag-Groupsを使用すると、WordPressのタクソノミー用語を整理し、クラウド、タブ、アコーディオン、テーブル、リストなどで表示できます。"
+"PublishPress Tag Groups allows you to organize your WordPress taxonomy "
+"terms and show them in clouds, tabs, accordions, tables, lists and much "
+"more."
+msgstr ""
+"PublishPress Tag "
+"Groupsは、WordPressのタクソノミー用語を整理し、クラウド、タブ、アコーディオン、テーブル、リストなどで表示することができます。"
 
 #: tag-groups.php:7
+#: views/partials/admin_footer_rating.view.php:26
 #. Author of the plugin
-msgid "TaxoPress"
-msgstr "TaxoPress"
+msgid "PublishPress"
+msgstr "PublishPress"
 
-#: tag-groups.php:8, fuzzy
+#: tag-groups.php:8
 #. Author URI of the plugin
-msgid "https://taxopress.com"
-msgstr "https://taxopress.com"
+msgid "https://publishpress.com"
+msgstr "https://publishpress.com"
 
 #: include/admin/class.admin.php:22
 msgid "Home"
 msgstr "ホーム"
 
+#: include/admin/class.admin.php:22
+#: include/admin/class.admin.php:229
+#: views/admin/edit_tag_main.view.php:2
+#: views/admin/new_tag_from_list.view.php:2
+msgid "Tag Groups"
+msgstr "Tag-Groups"
+
 #: include/admin/class.admin.php:26
-#: include/admin/class.settings.php:827
+#: include/admin/class.settings.php:826
 #: include/admin/class.setup_wizard.php:98
 msgid "Taxonomies"
 msgstr "タクソノミー"
@@ -64,18 +72,18 @@ msgid "Back End"
 msgstr "バックエンド"
 
 #: include/admin/class.admin.php:47
-#: include/admin/class.settings.php:935
+#: include/admin/class.settings.php:934
 #: views/admin/onboarding.view.php:1
 msgid "First Steps"
 msgstr "初めのステップ"
 
 #: include/admin/class.admin.php:54
-#: include/admin/class.settings.php:940
+#: include/admin/class.settings.php:939
 msgid "Setup Wizard"
 msgstr "セットアップウィザード"
 
 #: include/admin/class.admin.php:61
-#: include/admin/class.admin.php:1013
+#: include/admin/class.admin.php:1008
 #: views/admin/settings_front_end_shortcodes.view.php:95
 msgid "Settings"
 msgstr "設定"
@@ -84,19 +92,19 @@ msgstr "設定"
 msgid "Tag Group Admin"
 msgstr "タググループ管理"
 
-#: include/admin/class.admin.php:457
+#: include/admin/class.admin.php:456
 msgid "The term has been removed from all groups."
 msgstr "その用語はすべてのグループから削除されました。"
 
-#: include/admin/class.admin.php:588
+#: include/admin/class.admin.php:587
 msgid "Edit this item inline"
 msgstr "このアイテムをインラインで編集"
 
-#: include/admin/class.admin.php:590
+#: include/admin/class.admin.php:589
 msgid "Quick&nbsp;Edit"
 msgstr "クイック&nbsp;編集"
 
-#: include/admin/class.admin.php:1067
+#: include/admin/class.admin.php:1062
 #. translators: %s is the href attribute with URL
 #, php-format
 msgid ""
@@ -243,30 +251,30 @@ msgid_plural "The group info of %d terms was updated."
 msgstr[0] "%d 用語のグループ情報が更新されました。"
 
 #: include/admin/class.settings.php:151
-#: include/admin/class.settings.php:858
+#: include/admin/class.settings.php:857
 #: views/admin/tag_groups_admin.view.php:26
 #: views/admin/tag_groups_admin.view.php:39
 msgid "Filters"
 msgstr "フィルター"
 
 #: include/admin/class.settings.php:153
-#: include/admin/class.settings.php:958
+#: include/admin/class.settings.php:957
 msgid "Gutenberg"
 msgstr "グーテンベルク"
 
 #: include/admin/class.settings.php:156
-#: include/admin/class.settings.php:965
+#: include/admin/class.settings.php:964
 msgid "Multilingual"
 msgstr "多言語"
 
 #: include/admin/class.settings.php:238
-#: include/admin/class.settings.php:832
+#: include/admin/class.settings.php:831
 #: views/admin/settings_front_end_shortcodes.view.php:9
 msgid "Shortcodes"
 msgstr "ショートコード"
 
 #: include/admin/class.settings.php:239
-#: include/admin/class.settings.php:846
+#: include/admin/class.settings.php:845
 msgid "Themes and Appearance"
 msgstr "テーマと外観"
 
@@ -287,7 +295,7 @@ msgid "use unfiltered_html filter"
 msgstr "unfiltered_html フィルターを使用"
 
 #: include/admin/class.settings.php:317
-#: include/admin/class.settings.php:945
+#: include/admin/class.settings.php:944
 msgid "First Aid"
 msgstr "応急処置"
 
@@ -296,22 +304,22 @@ msgid "REST API"
 msgstr "REST API"
 
 #: include/admin/class.settings.php:319
-#: include/admin/class.settings.php:873
+#: include/admin/class.settings.php:872
 msgid "System Information"
 msgstr "システム情報"
 
 #: include/admin/class.settings.php:320
-#: include/admin/class.settings.php:887
+#: include/admin/class.settings.php:886
 msgid "Debugging"
 msgstr "デバッグ"
 
 #: include/admin/class.settings.php:321
-#: include/admin/class.settings.php:863
+#: include/admin/class.settings.php:862
 msgid "Export/Import"
 msgstr "エクスポート/インポート"
 
 #: include/admin/class.settings.php:322
-#: include/admin/class.settings.php:868
+#: include/admin/class.settings.php:867
 msgid "Reset"
 msgstr "リセット"
 
@@ -320,33 +328,33 @@ msgid "Licences"
 msgstr "ライセンス"
 
 #: include/admin/class.settings.php:422
-#: include/admin/class.settings_ajax.php:42
+#: include/admin/class.settings_ajax.php:69
 msgid "Transients"
 msgstr "一時的データ"
 
 #: include/admin/class.settings.php:423
-#: include/admin/class.settings_ajax.php:43
+#: include/admin/class.settings_ajax.php:70
 msgid "Database"
 msgstr "データベース"
 
 #: include/admin/class.settings.php:424
-#: include/admin/class.settings_ajax.php:44
+#: include/admin/class.settings_ajax.php:71
 msgid "Filesystem"
 msgstr "ファイルシステム"
 
 #: include/admin/class.settings.php:425
-#: include/admin/class.settings_ajax.php:45
+#: include/admin/class.settings_ajax.php:72
 msgid "WP Object Cache"
 msgstr "WP オブジェクトキャッシュ"
 
 #: include/admin/class.settings.php:548
 #: include/admin/class.settings.php:604
 #: include/admin/class.settings.php:642
-#: include/admin/class.settings.php:676
-#: include/admin/class.settings.php:691
-#: include/admin/class.settings.php:704
-#: include/admin/class.settings.php:717
-#: include/admin/class.settings.php:786
+#: include/admin/class.settings.php:675
+#: include/admin/class.settings.php:690
+#: include/admin/class.settings.php:703
+#: include/admin/class.settings.php:716
+#: include/admin/class.settings.php:785
 msgid "Your settings have been saved."
 msgstr "設定が保存されました。"
 
@@ -358,249 +366,270 @@ msgstr "設定が保存されました。"
 msgid "All groups have been deleted and assignments reset."
 msgstr "すべてのグループが削除され、割り当てがリセットされました。"
 
-#: include/admin/class.settings.php:733
+#: include/admin/class.settings.php:732
 msgid "The filter on the tags page has been reset to show all tags."
 msgstr "タグページのフィルターがリセットされ、すべてのタグが表示されるようになりました。"
 
-#: include/admin/class.settings.php:829, fuzzy
+#: include/admin/class.settings.php:828, fuzzy
 msgid "tag groups"
 msgstr "tag groups"
 
-#: include/admin/class.settings.php:835
-#: include/admin/class.settings.php:849
-#: include/admin/class.settings.php:904, fuzzy
+#: include/admin/class.settings.php:834
+#: include/admin/class.settings.php:848
+#: include/admin/class.settings.php:903, fuzzy
 msgid "tag cloud"
 msgstr "tag cloud"
 
-#: include/admin/class.settings.php:836, fuzzy
+#: include/admin/class.settings.php:835, fuzzy
 msgid "group info"
 msgstr "group info"
 
-#: include/admin/class.settings.php:837, fuzzy
+#: include/admin/class.settings.php:836, fuzzy
 msgid "sidebar widget"
 msgstr "sidebar widget"
 
-#: include/admin/class.settings.php:838, fuzzy
+#: include/admin/class.settings.php:837, fuzzy
 msgid "accordion"
 msgstr "accordion"
 
-#: include/admin/class.settings.php:839, fuzzy
+#: include/admin/class.settings.php:838, fuzzy
 msgid "tabs"
 msgstr "tabs"
 
-#: include/admin/class.settings.php:840, fuzzy
+#: include/admin/class.settings.php:839, fuzzy
 msgid "alphabetical"
 msgstr "alphabetical"
 
-#: include/admin/class.settings.php:841, fuzzy
+#: include/admin/class.settings.php:840, fuzzy
 msgid "post list"
 msgstr "post list"
 
-#: include/admin/class.settings.php:853, fuzzy
+#: include/admin/class.settings.php:852, fuzzy
 msgid "colors"
 msgstr "colors"
 
-#: include/admin/class.settings.php:854, fuzzy
+#: include/admin/class.settings.php:853, fuzzy
 msgid "tag description"
 msgstr "tag description"
 
-#: include/admin/class.settings.php:860
-#: include/admin/class.settings.php:952, fuzzy
+#: include/admin/class.settings.php:859
+#: include/admin/class.settings.php:951, fuzzy
 msgid "tag filter"
 msgstr "tag filter"
 
-#: include/admin/class.settings.php:860, fuzzy
+#: include/admin/class.settings.php:859, fuzzy
 msgid "post filter"
 msgstr "post filter"
 
-#: include/admin/class.settings.php:865, fuzzy
+#: include/admin/class.settings.php:864, fuzzy
 msgid "backup"
 msgstr "backup"
 
-#: include/admin/class.settings.php:870, fuzzy
+#: include/admin/class.settings.php:869, fuzzy
 msgid "remove plugin"
 msgstr "remove plugin"
 
-#: include/admin/class.settings.php:870, fuzzy
+#: include/admin/class.settings.php:869, fuzzy
 msgid "remove data"
 msgstr "remove data"
 
-#: include/admin/class.settings.php:870, fuzzy
+#: include/admin/class.settings.php:869, fuzzy
 msgid "delete groups"
 msgstr "delete groups"
 
-#: include/admin/class.settings.php:876
-#: include/admin/class.settings.php:890, fuzzy
+#: include/admin/class.settings.php:875
+#: include/admin/class.settings.php:889, fuzzy
 msgid "debugging"
 msgstr "debugging"
 
-#: include/admin/class.settings.php:877, fuzzy
+#: include/admin/class.settings.php:876, fuzzy
 msgid "PHP Version"
 msgstr "PHP Version"
 
-#: include/admin/class.settings.php:878
+#: include/admin/class.settings.php:877
 #: views/admin/settings_troubleshooting_system.view.php:21, fuzzy
 msgid "Ajax Test"
 msgstr "Ajax Test"
 
-#: include/admin/class.settings.php:879
-#: include/admin/class.settings.php:891
-#: include/admin/class.settings.php:948, fuzzy
+#: include/admin/class.settings.php:878
+#: include/admin/class.settings.php:890
+#: include/admin/class.settings.php:947, fuzzy
 msgid "troubleshooting"
 msgstr "troubleshooting"
 
-#: include/admin/class.settings.php:880
+#: include/admin/class.settings.php:879
 msgid "benchmarks"
 msgstr "ベンチマーク"
 
-#: include/admin/class.settings.php:881
+#: include/admin/class.settings.php:880
 msgid "speed test"
 msgstr "スピードテスト"
 
-#: include/admin/class.settings.php:882
-#: include/admin/class.settings.php:892
+#: include/admin/class.settings.php:881
+#: include/admin/class.settings.php:891
 msgid "error"
 msgstr "エラー"
 
-#: include/admin/class.settings.php:883
-#: include/admin/class.settings.php:893
+#: include/admin/class.settings.php:882
+#: include/admin/class.settings.php:892
 msgid "testing"
 msgstr "テスト中"
 
-#: include/admin/class.settings.php:894
-#: include/admin/class.settings.php:937
-#: include/admin/class.settings.php:950
+#: include/admin/class.settings.php:893
+#: include/admin/class.settings.php:936
+#: include/admin/class.settings.php:949
 msgid "help"
 msgstr "ヘルプ"
 
-#: include/admin/class.settings.php:898
-msgid "Tag Groups Pro"
-msgstr "タググループプロ"
+#: include/admin/class.settings.php:897, fuzzy
+msgid "PublishPress Tag Groups Pro"
+msgstr "PublishPress Tag Groups Pro"
 
-#: include/admin/class.settings.php:901
+#: include/admin/class.settings.php:900
 msgid "upgrade"
 msgstr "アップグレード"
 
-#: include/admin/class.settings.php:902
+#: include/admin/class.settings.php:901
 msgid "more groups"
 msgstr "もっとグループ"
 
-#: include/admin/class.settings.php:903
+#: include/admin/class.settings.php:902
 msgid "posts"
 msgstr "投稿"
 
-#: include/admin/class.settings.php:905
+#: include/admin/class.settings.php:904
 msgid "filter"
 msgstr "フィルター"
 
-#: include/admin/class.settings.php:906
+#: include/admin/class.settings.php:905
 msgid "animated"
 msgstr "アニメーション"
 
-#: include/admin/class.settings.php:907
+#: include/admin/class.settings.php:906
 msgid "searchable"
 msgstr "検索可能"
 
-#: include/admin/class.settings.php:915
+#: include/admin/class.settings.php:914
 msgid "Info"
 msgstr "情報"
 
-#: include/admin/class.settings.php:918
+#: include/admin/class.settings.php:917
 msgid "author"
 msgstr "著者"
 
-#: include/admin/class.settings.php:919
+#: include/admin/class.settings.php:918
 msgid "version"
 msgstr "バージョン"
 
-#: include/admin/class.settings.php:920
+#: include/admin/class.settings.php:919
 msgid "contact"
 msgstr "連絡先"
 
-#: include/admin/class.settings.php:921
+#: include/admin/class.settings.php:920
 msgid "about"
 msgstr "について"
 
-#: include/admin/class.settings.php:925
+#: include/admin/class.settings.php:924
 msgid "Licenses"
 msgstr "ライセンス"
 
-#: include/admin/class.settings.php:927
+#: include/admin/class.settings.php:926
 msgid "Credits"
 msgstr "クレジット"
 
-#: include/admin/class.settings.php:930
+#: include/admin/class.settings.php:929
 msgid "Development News"
 msgstr "開発ニュース"
 
-#: include/admin/class.settings.php:932
+#: include/admin/class.settings.php:931
 msgid "blog"
 msgstr "ブログ"
 
-#: include/admin/class.settings.php:932
+#: include/admin/class.settings.php:931
 msgid "updates"
 msgstr "更新"
 
-#: include/admin/class.settings.php:937
-#: include/admin/class.settings.php:942
+#: include/admin/class.settings.php:936
+#: include/admin/class.settings.php:941
 msgid "getting started"
 msgstr "はじめに"
 
-#: include/admin/class.settings.php:937
-#: include/admin/class.settings.php:942
+#: include/admin/class.settings.php:936
+#: include/admin/class.settings.php:941
 msgid "introduction"
 msgstr "紹介"
 
-#: include/admin/class.settings.php:942
+#: include/admin/class.settings.php:941
 msgid "sample"
 msgstr "サンプル"
 
-#: include/admin/class.settings.php:949
+#: include/admin/class.settings.php:948
 msgid "migrate"
 msgstr "移行"
 
-#: include/admin/class.settings.php:951
+#: include/admin/class.settings.php:950
 msgid "problem"
 msgstr "問題"
 
-#: include/admin/class.settings.php:960
+#: include/admin/class.settings.php:959
 msgid "live block preview"
 msgstr "ライブブロックプレビュー"
 
-#: include/admin/class.settings.php:967
+#: include/admin/class.settings.php:966
 msgid "translation"
 msgstr "翻訳"
 
-#: include/admin/class.settings.php:998
+#: include/admin/class.settings.php:997
 msgid "Migrating the term meta"
 msgstr "用語メタの移行"
 
-#: include/admin/class.settings.php:999
+#: include/admin/class.settings.php:998
 msgid "Fixing incorrect tag groups"
 msgstr "不正なタググループの修正"
 
-#: include/admin/class.settings.php:1000
+#: include/admin/class.settings.php:999
 msgid "Fixing incorrect groups in term meta"
 msgstr "用語メタの不正なグループの修正"
 
-#: include/admin/class.settings.php:1001
+#: include/admin/class.settings.php:1000
 msgid "Sorting groups in term meta"
 msgstr "用語メタのグループの並べ替え"
 
-#: include/admin/class.settings.php:1002
+#: include/admin/class.settings.php:1001
 msgid "Checking the tag names"
 msgstr "タグ名の確認"
 
-#: include/admin/class.settings_ajax.php:48
-#: views/admin/settings_troubleshooting_system.view.php:126
+#: include/admin/class.settings_ajax.php:29
+msgid "You are not allowed to run cache benchmarks."
+msgstr "キャッシュベンチマークを実行することは許可されていません。"
+
+#: include/admin/class.settings_ajax.php:34
+msgid "Invalid request method."
+msgstr "無効なリクエストメソッドです。"
+
+#: include/admin/class.settings_ajax.php:38
+msgid "The security check failed."
+msgstr "セキュリティチェックに失敗しました。"
+
+#: include/admin/class.settings_ajax.php:43
+msgid "Invalid benchmark task."
+msgstr "無効なベンチマークタスクです。"
+
+#: include/admin/class.settings_ajax.php:49
+#: include/admin/class.settings_ajax.php:57
+msgid "A cache benchmark is already running."
+msgstr "キャッシュベンチマークはすでに実行中です。"
+
+#: include/admin/class.settings_ajax.php:75
+#: views/admin/settings_troubleshooting_system.view.php:125
 msgid "Cache"
 msgstr "キャッシュ"
 
-#: include/admin/class.settings_ajax.php:48
+#: include/admin/class.settings_ajax.php:75
 msgid "(1000x read, 100x write)"
 msgstr "(1000回読み取り, 100回書き込み)"
 
-#: include/admin/class.settings_ajax.php:63
+#: include/admin/class.settings_ajax.php:89
 msgid "ineffective"
 msgstr "無効"
 
@@ -667,9 +696,11 @@ msgstr "未割り当て"
 #. translators: %1$s and %2$s are opening and closing anchor tags for the upgrade link
 #, php-format
 msgid ""
-"You're using Tag Groups Free. The Pro version has more features and "
-"support. %1$sUpgrade to Pro%2$s"
-msgstr "Tag Groups Freeをご利用中です。Proバージョンにはより多くの機能とサポートがあります。 %1$sProにアップグレード%2$s"
+"You're using PublishPress Tag Groups Free. The Pro version has more "
+"features and support. %1$sUpgrade to Pro%2$s"
+msgstr ""
+"あなたはPublishPress Tag Groups "
+"Freeを使用しています。Proバージョンには、より多くの機能とサポートがあります。%1$sProにアップグレード%2$s"
 
 #: includes-core/TagGroupsCoreAdmin.php:98
 #: includes-core/TagGroupsCoreAdmin.php:142
@@ -677,12 +708,12 @@ msgid "Upgrade to Pro"
 msgstr "Pro にアップグレード"
 
 #: includes-core/TagGroupsCoreAdmin.php:115
-msgid "Upgrade to Tag Groups Pro"
-msgstr "Tag Groups Pro にアップグレード"
+msgid "Upgrade to PublishPress Tag Groups Pro"
+msgstr "PublishPress Tag Groups Proにアップグレード"
 
 #: includes-core/TagGroupsCoreAdmin.php:120
-msgid "Enhance the power of Tag Groups with the Pro version:"
-msgstr "Pro バージョンで Tag Groups の機能を強化します："
+msgid "Enhance the power of PublishPress Tag Groups with the Pro version:"
+msgstr "ProバージョンでPublishPress Tag Groupsの機能を強化しましょう："
 
 #: includes-core/TagGroupsCoreAdmin.php:123
 msgid "21 Shortcodes"
@@ -753,8 +784,8 @@ msgid "Parent Group Level"
 msgstr "親グループレベル"
 
 #: includes-core/TagGroupsCoreAdmin.php:149
-msgid "Need Tag Groups Support?"
-msgstr "タググループのサポートが必要ですか？"
+msgid "Need PublishPress Tag Groups Support?"
+msgstr "PublishPress Tag Groupsのサポートが必要ですか？"
 
 #: includes-core/TagGroupsCoreAdmin.php:154
 msgid "If you need help or have a new feature request, let us know."
@@ -772,11 +803,15 @@ msgstr "詳細なドキュメントはプラグインのウェブサイトでも
 msgid "View Knowledge Base"
 msgstr "ナレッジベースを表示"
 
-#: tag-groups.php:177
-msgid "The free Tag Groups plugin cannot be active together with Tag Groups Pro."
-msgstr "無料のタググループプラグインは、Tag Groups Proと同時にアクティブにすることはできません。"
+#: tag-groups.php:196
+msgid ""
+"The free PublishPress Tag Groups plugin cannot be active together with "
+"PublishPress Tag Groups Pro."
+msgstr ""
+"無料のPublishPress Tag Groupsプラグインは、PublishPress Tag Groups "
+"Proと同時にアクティブにすることはできません。"
 
-#: tag-groups.php:177
+#: tag-groups.php:196
 msgid "more information"
 msgstr "詳細情報"
 
@@ -846,12 +881,13 @@ msgstr "タググループでフィルタリング"
 #. translators: %s is the author display name
 #, php-format
 msgid ""
-"%s created this sample page in the Setup Wizard of the <b>Tag Groups</b> "
-"plugin. You can safely edit and delete it or keep it for future reference."
+"%s created this sample page in the Setup Wizard of the <b>PublishPress Tag "
+"Groups</b> plugin. You can safely edit and delete it or keep it for future "
+"reference."
 msgstr ""
-"%sが<b>タググループ</"
-"b>プラグインのセットアップウィザードでこのサンプルページを作成しました。安全に編集および削除することができますし、将来の参考のために保持することもでき"
-"ます。"
+"%sは、<b>PublishPress Tag "
+"Groups</"
+"b>プラグインのセットアップウィザードでこのサンプルページを作成しました。安全に編集・削除することができ、将来の参考のために保持することもできます。"
 
 #: views/admin/sample_page.view.php:6
 msgid ""
@@ -1504,15 +1540,15 @@ msgstr "応答を表示"
 msgid "passed"
 msgstr "合格"
 
-#: views/admin/settings_troubleshooting_system.view.php:99
+#: views/admin/settings_troubleshooting_system.view.php:98
 msgid "failed"
 msgstr "失敗"
 
-#: views/admin/settings_troubleshooting_system.view.php:106
+#: views/admin/settings_troubleshooting_system.view.php:105
 msgid "Benchmarks"
 msgstr "ベンチマーク"
 
-#: views/admin/settings_troubleshooting_system.view.php:128
+#: views/admin/settings_troubleshooting_system.view.php:127
 msgid "Tag groups pro only"
 msgstr "タググループプロのみ"
 
@@ -1563,8 +1599,8 @@ msgid "Happy tagging!"
 msgstr "楽しいタグ付けを！"
 
 #: views/admin/setup_wizard_header.view.php:1
-msgid "Tag Groups Setup Wizard"
-msgstr "タググループセットアップウィザード"
+msgid "PublishPress Tag Groups Setup Wizard"
+msgstr "PublishPress Tag Groupsセットアップウィザード"
 
 #: views/admin/setup_wizard_sample_content.view.php:3
 msgid ""
@@ -1737,11 +1773,31 @@ msgstr "リンクを訪れてください <a %1$s>%2$s</a>。"
 msgid "Read more"
 msgstr "詳しく読む"
 
-#: views/partials/admin_footer_rating.view.php:4
-#. translators: 1: Opening TaxoPress link tag, 2: Closing link tag, 3: Plugin version.
+#: views/partials/admin_footer_rating.view.php:9
+#. translators: %1$s: plugin name, %2$s: five-star rating icons.
 #, php-format
-msgid "Thanks for using Tag Groups | %1$sTaxoPress.com%2$s | Version %3$s"
-msgstr "Tag Groupsをご利用いただきありがとうございます | %1$sTaxoPress.com%2$s | バージョン %3$s"
+msgid "If you like %1$s please leave us a %2$s rating. Thank you!"
+msgstr "%1$sが気に入ったら、%2$s評価を残してください。ありがとうございます！"
+
+#: views/partials/admin_footer_rating.view.php:10, fuzzy
+msgid "PublishPress Tag Groups"
+msgstr "PublishPress Tag Groups"
+
+#: views/partials/admin_footer_rating.view.php:17
+msgid "PublishPress Tag Groups resources"
+msgstr "PublishPress Tag Groupsリソース"
+
+#: views/partials/admin_footer_rating.view.php:19
+msgid "About"
+msgstr "概要"
+
+#: views/partials/admin_footer_rating.view.php:20
+msgid "Documentation"
+msgstr "ドキュメント"
+
+#: views/partials/admin_footer_rating.view.php:21
+msgid "Contact"
+msgstr "連絡先"
 
 #: views/partials/bulk_admin_footer.view.php:10
 #: views/partials/bulk_admin_footer.view.php:11

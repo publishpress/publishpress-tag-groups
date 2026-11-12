@@ -288,7 +288,7 @@ if (! class_exists('TagGroups_Feed')) {
                     $title = str_replace(' & ', ' &amp; ', $this->feed[$x]['title']);
                     $link = $this->feed[$x]['link'];
                     $description = $this->truncate_string_at_word($this->feed[$x]['desc'], $this->limit);
-                    $date = date($date_format, strtotime($this->feed[$x]['date']));
+                    $date = gmdate($date_format, strtotime($this->feed[$x]['date']));
                     $view->set(array(
                     'date'        => $date,
                     'link'        => esc_url($link),

@@ -1,4 +1,4 @@
-# Copyright (C) 2026 TaxoPress
+# Copyright (C) 2026 PublishPress
 # This file is distributed under the GPL-3.0-or-later.
 msgid ""
 msgstr ""
@@ -10,21 +10,18 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-06-15T12:41:40+00:00\n"
-"PO-Revision-Date: 2026-06-22 16:18+0000\n"
+"PO-Revision-Date: 2026-09-30 10:10+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: tag-groups\n"
 "Language: vi\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: tag-groups.php:4
-#: include/admin/class.admin.php:229
-#: views/admin/edit_tag_main.view.php:2
-#: views/admin/new_tag_from_list.view.php:2
+#: tag-groups.php:4, fuzzy
 #. Plugin Name of the plugin
-msgid "Tag Groups"
-msgstr "Nhóm Thẻ"
+msgid "PublishPress Tag Groups Free"
+msgstr "PublishPress Tag Groups Free"
 
-#: tag-groups.php:5, fuzzy
+#: tag-groups.php:5
 #. Plugin URI of the plugin
 msgid "https://wordpress.org/plugins/tag-groups/"
 msgstr "https://wordpress.org/plugins/tag-groups/"
@@ -32,29 +29,38 @@ msgstr "https://wordpress.org/plugins/tag-groups/"
 #: tag-groups.php:6
 #. Description of the plugin
 msgid ""
-"Tag Groups allows you to organize your WordPress taxonomy terms and show "
-"them in clouds, tabs, accordions, tables, lists and much more."
+"PublishPress Tag Groups allows you to organize your WordPress taxonomy "
+"terms and show them in clouds, tabs, accordions, tables, lists and much "
+"more."
 msgstr ""
-"Nhóm Thẻ cho phép bạn tổ chức các thuật ngữ taxonomy WordPress của mình và "
-"hiển thị chúng trong các đám mây, tab, accordion, bảng, danh sách và nhiều "
-"hơn nữa."
+"PublishPress Tag Groups cho phép bạn tổ chức các thuật ngữ taxonomy "
+"WordPress của mình và hiển thị chúng dưới dạng đám mây, tab, accordion, "
+"bảng, danh sách và nhiều hơn nữa."
 
 #: tag-groups.php:7
+#: views/partials/admin_footer_rating.view.php:26
 #. Author of the plugin
-msgid "TaxoPress"
-msgstr "TaxoPress"
+msgid "PublishPress"
+msgstr "PublishPress"
 
-#: tag-groups.php:8, fuzzy
+#: tag-groups.php:8
 #. Author URI of the plugin
-msgid "https://taxopress.com"
-msgstr "https://taxopress.com"
+msgid "https://publishpress.com"
+msgstr "https://publishpress.com"
 
 #: include/admin/class.admin.php:22
 msgid "Home"
 msgstr "Trang Chủ"
 
+#: include/admin/class.admin.php:22
+#: include/admin/class.admin.php:229
+#: views/admin/edit_tag_main.view.php:2
+#: views/admin/new_tag_from_list.view.php:2
+msgid "Tag Groups"
+msgstr "Nhóm Thẻ"
+
 #: include/admin/class.admin.php:26
-#: include/admin/class.settings.php:827
+#: include/admin/class.settings.php:826
 #: include/admin/class.setup_wizard.php:98
 msgid "Taxonomies"
 msgstr "Taxonomies"
@@ -68,18 +74,18 @@ msgid "Back End"
 msgstr "Quản Trị"
 
 #: include/admin/class.admin.php:47
-#: include/admin/class.settings.php:935
+#: include/admin/class.settings.php:934
 #: views/admin/onboarding.view.php:1
 msgid "First Steps"
 msgstr "Bước Đầu Tiên"
 
 #: include/admin/class.admin.php:54
-#: include/admin/class.settings.php:940
+#: include/admin/class.settings.php:939
 msgid "Setup Wizard"
 msgstr "Trình Hướng Dẫn Thiết Lập"
 
 #: include/admin/class.admin.php:61
-#: include/admin/class.admin.php:1013
+#: include/admin/class.admin.php:1008
 #: views/admin/settings_front_end_shortcodes.view.php:95
 msgid "Settings"
 msgstr "Cài Đặt"
@@ -88,19 +94,19 @@ msgstr "Cài Đặt"
 msgid "Tag Group Admin"
 msgstr "Quản Trị Nhóm Thẻ"
 
-#: include/admin/class.admin.php:457
+#: include/admin/class.admin.php:456
 msgid "The term has been removed from all groups."
 msgstr "Thuật ngữ đã bị xóa khỏi tất cả các nhóm."
 
-#: include/admin/class.admin.php:588
+#: include/admin/class.admin.php:587
 msgid "Edit this item inline"
 msgstr "Chỉnh sửa mục này trực tiếp"
 
-#: include/admin/class.admin.php:590
+#: include/admin/class.admin.php:589
 msgid "Quick&nbsp;Edit"
 msgstr "Chỉnh sửa Nhanh"
 
-#: include/admin/class.admin.php:1067
+#: include/admin/class.admin.php:1062
 #. translators: %s is the href attribute with URL
 #, php-format
 msgid ""
@@ -259,30 +265,30 @@ msgid_plural "The group info of %d terms was updated."
 msgstr[0] "Thông tin nhóm của %d thuật ngữ đã được cập nhật."
 
 #: include/admin/class.settings.php:151
-#: include/admin/class.settings.php:858
+#: include/admin/class.settings.php:857
 #: views/admin/tag_groups_admin.view.php:26
 #: views/admin/tag_groups_admin.view.php:39
 msgid "Filters"
 msgstr "Bộ lọc"
 
 #: include/admin/class.settings.php:153
-#: include/admin/class.settings.php:958, fuzzy
+#: include/admin/class.settings.php:957, fuzzy
 msgid "Gutenberg"
 msgstr "Gutenberg"
 
 #: include/admin/class.settings.php:156
-#: include/admin/class.settings.php:965
+#: include/admin/class.settings.php:964
 msgid "Multilingual"
 msgstr "Đa ngôn ngữ"
 
 #: include/admin/class.settings.php:238
-#: include/admin/class.settings.php:832
+#: include/admin/class.settings.php:831
 #: views/admin/settings_front_end_shortcodes.view.php:9
 msgid "Shortcodes"
 msgstr "Mã ngắn"
 
 #: include/admin/class.settings.php:239
-#: include/admin/class.settings.php:846
+#: include/admin/class.settings.php:845
 msgid "Themes and Appearance"
 msgstr "Chủ đề và Giao diện"
 
@@ -303,7 +309,7 @@ msgid "use unfiltered_html filter"
 msgstr "sử dụng bộ lọc unfiltered_html"
 
 #: include/admin/class.settings.php:317
-#: include/admin/class.settings.php:945
+#: include/admin/class.settings.php:944
 msgid "First Aid"
 msgstr "Cấp cứu"
 
@@ -312,22 +318,22 @@ msgid "REST API"
 msgstr "REST API"
 
 #: include/admin/class.settings.php:319
-#: include/admin/class.settings.php:873
+#: include/admin/class.settings.php:872
 msgid "System Information"
 msgstr "Thông tin Hệ thống"
 
 #: include/admin/class.settings.php:320
-#: include/admin/class.settings.php:887
+#: include/admin/class.settings.php:886
 msgid "Debugging"
 msgstr "Gỡ lỗi"
 
 #: include/admin/class.settings.php:321
-#: include/admin/class.settings.php:863
+#: include/admin/class.settings.php:862
 msgid "Export/Import"
 msgstr "Xuất/Nhập"
 
 #: include/admin/class.settings.php:322
-#: include/admin/class.settings.php:868
+#: include/admin/class.settings.php:867
 msgid "Reset"
 msgstr "Đặt lại"
 
@@ -336,33 +342,33 @@ msgid "Licences"
 msgstr "Giấy phép"
 
 #: include/admin/class.settings.php:422
-#: include/admin/class.settings_ajax.php:42
+#: include/admin/class.settings_ajax.php:69
 msgid "Transients"
 msgstr "Tạm thời"
 
 #: include/admin/class.settings.php:423
-#: include/admin/class.settings_ajax.php:43
+#: include/admin/class.settings_ajax.php:70
 msgid "Database"
 msgstr "Cơ sở dữ liệu"
 
 #: include/admin/class.settings.php:424
-#: include/admin/class.settings_ajax.php:44
+#: include/admin/class.settings_ajax.php:71
 msgid "Filesystem"
 msgstr "Hệ thống tệp"
 
 #: include/admin/class.settings.php:425
-#: include/admin/class.settings_ajax.php:45
+#: include/admin/class.settings_ajax.php:72
 msgid "WP Object Cache"
 msgstr "Bộ nhớ WP Object Cache"
 
 #: include/admin/class.settings.php:548
 #: include/admin/class.settings.php:604
 #: include/admin/class.settings.php:642
-#: include/admin/class.settings.php:676
-#: include/admin/class.settings.php:691
-#: include/admin/class.settings.php:704
-#: include/admin/class.settings.php:717
-#: include/admin/class.settings.php:786
+#: include/admin/class.settings.php:675
+#: include/admin/class.settings.php:690
+#: include/admin/class.settings.php:703
+#: include/admin/class.settings.php:716
+#: include/admin/class.settings.php:785
 msgid "Your settings have been saved."
 msgstr "Cài đặt của bạn đã được lưu."
 
@@ -374,249 +380,270 @@ msgstr "Cài đặt của bạn đã được lưu."
 msgid "All groups have been deleted and assignments reset."
 msgstr "Tất cả các nhóm đã bị xóa và phân công đã được đặt lại."
 
-#: include/admin/class.settings.php:733
+#: include/admin/class.settings.php:732
 msgid "The filter on the tags page has been reset to show all tags."
 msgstr "Bộ lọc trên trang thẻ đã được đặt lại để hiển thị tất cả các thẻ."
 
-#: include/admin/class.settings.php:829
+#: include/admin/class.settings.php:828
 msgid "tag groups"
 msgstr "nhóm thẻ"
 
-#: include/admin/class.settings.php:835
-#: include/admin/class.settings.php:849
-#: include/admin/class.settings.php:904
+#: include/admin/class.settings.php:834
+#: include/admin/class.settings.php:848
+#: include/admin/class.settings.php:903
 msgid "tag cloud"
 msgstr "đám mây thẻ"
 
-#: include/admin/class.settings.php:836
+#: include/admin/class.settings.php:835
 msgid "group info"
 msgstr "thông tin nhóm"
 
-#: include/admin/class.settings.php:837
+#: include/admin/class.settings.php:836
 msgid "sidebar widget"
 msgstr "widget thanh bên"
 
-#: include/admin/class.settings.php:838, fuzzy
+#: include/admin/class.settings.php:837, fuzzy
 msgid "accordion"
 msgstr "accordion"
 
-#: include/admin/class.settings.php:839
+#: include/admin/class.settings.php:838
 msgid "tabs"
 msgstr "tab"
 
-#: include/admin/class.settings.php:840
+#: include/admin/class.settings.php:839
 msgid "alphabetical"
 msgstr "theo thứ tự chữ cái"
 
-#: include/admin/class.settings.php:841
+#: include/admin/class.settings.php:840
 msgid "post list"
 msgstr "danh sách bài viết"
 
-#: include/admin/class.settings.php:853
+#: include/admin/class.settings.php:852
 msgid "colors"
 msgstr "màu sắc"
 
-#: include/admin/class.settings.php:854
+#: include/admin/class.settings.php:853
 msgid "tag description"
 msgstr "mô tả thẻ"
 
-#: include/admin/class.settings.php:860
-#: include/admin/class.settings.php:952
+#: include/admin/class.settings.php:859
+#: include/admin/class.settings.php:951
 msgid "tag filter"
 msgstr "bộ lọc thẻ"
 
-#: include/admin/class.settings.php:860
+#: include/admin/class.settings.php:859
 msgid "post filter"
 msgstr "bộ lọc bài viết"
 
-#: include/admin/class.settings.php:865
+#: include/admin/class.settings.php:864
 msgid "backup"
 msgstr "sao lưu"
 
-#: include/admin/class.settings.php:870
+#: include/admin/class.settings.php:869
 msgid "remove plugin"
 msgstr "xóa plugin"
 
-#: include/admin/class.settings.php:870
+#: include/admin/class.settings.php:869
 msgid "remove data"
 msgstr "xóa dữ liệu"
 
-#: include/admin/class.settings.php:870
+#: include/admin/class.settings.php:869
 msgid "delete groups"
 msgstr "xóa nhóm"
 
-#: include/admin/class.settings.php:876
-#: include/admin/class.settings.php:890
+#: include/admin/class.settings.php:875
+#: include/admin/class.settings.php:889
 msgid "debugging"
 msgstr "gỡ lỗi"
 
-#: include/admin/class.settings.php:877
+#: include/admin/class.settings.php:876
 msgid "PHP Version"
 msgstr "Phiên bản PHP"
 
-#: include/admin/class.settings.php:878
+#: include/admin/class.settings.php:877
 #: views/admin/settings_troubleshooting_system.view.php:21
 msgid "Ajax Test"
 msgstr "Kiểm tra Ajax"
 
-#: include/admin/class.settings.php:879
-#: include/admin/class.settings.php:891
-#: include/admin/class.settings.php:948
+#: include/admin/class.settings.php:878
+#: include/admin/class.settings.php:890
+#: include/admin/class.settings.php:947
 msgid "troubleshooting"
 msgstr "khắc phục sự cố"
 
-#: include/admin/class.settings.php:880
+#: include/admin/class.settings.php:879
 msgid "benchmarks"
 msgstr "bảng điểm"
 
-#: include/admin/class.settings.php:881
+#: include/admin/class.settings.php:880
 msgid "speed test"
 msgstr "kiểm tra tốc độ"
 
-#: include/admin/class.settings.php:882
-#: include/admin/class.settings.php:892
+#: include/admin/class.settings.php:881
+#: include/admin/class.settings.php:891
 msgid "error"
 msgstr "lỗi"
 
-#: include/admin/class.settings.php:883
-#: include/admin/class.settings.php:893
+#: include/admin/class.settings.php:882
+#: include/admin/class.settings.php:892
 msgid "testing"
 msgstr "kiểm tra"
 
-#: include/admin/class.settings.php:894
-#: include/admin/class.settings.php:937
-#: include/admin/class.settings.php:950
+#: include/admin/class.settings.php:893
+#: include/admin/class.settings.php:936
+#: include/admin/class.settings.php:949
 msgid "help"
 msgstr "trợ giúp"
 
-#: include/admin/class.settings.php:898
-msgid "Tag Groups Pro"
-msgstr "Nhóm Thẻ Chuyên Nghiệp"
+#: include/admin/class.settings.php:897, fuzzy
+msgid "PublishPress Tag Groups Pro"
+msgstr "PublishPress Tag Groups Pro"
 
-#: include/admin/class.settings.php:901
+#: include/admin/class.settings.php:900
 msgid "upgrade"
 msgstr "nâng cấp"
 
-#: include/admin/class.settings.php:902
+#: include/admin/class.settings.php:901
 msgid "more groups"
 msgstr "nhiều nhóm hơn"
 
-#: include/admin/class.settings.php:903
+#: include/admin/class.settings.php:902
 msgid "posts"
 msgstr "bài viết"
 
-#: include/admin/class.settings.php:905
+#: include/admin/class.settings.php:904
 msgid "filter"
 msgstr "lọc"
 
-#: include/admin/class.settings.php:906
+#: include/admin/class.settings.php:905
 msgid "animated"
 msgstr "hoạt hình"
 
-#: include/admin/class.settings.php:907
+#: include/admin/class.settings.php:906
 msgid "searchable"
 msgstr "có thể tìm kiếm"
 
-#: include/admin/class.settings.php:915
+#: include/admin/class.settings.php:914
 msgid "Info"
 msgstr "Thông tin"
 
-#: include/admin/class.settings.php:918
+#: include/admin/class.settings.php:917
 msgid "author"
 msgstr "tác giả"
 
-#: include/admin/class.settings.php:919
+#: include/admin/class.settings.php:918
 msgid "version"
 msgstr "phiên bản"
 
-#: include/admin/class.settings.php:920
+#: include/admin/class.settings.php:919
 msgid "contact"
 msgstr "liên hệ"
 
-#: include/admin/class.settings.php:921
+#: include/admin/class.settings.php:920
 msgid "about"
 msgstr "giới thiệu"
 
-#: include/admin/class.settings.php:925
+#: include/admin/class.settings.php:924
 msgid "Licenses"
 msgstr "Giấy phép"
 
-#: include/admin/class.settings.php:927
+#: include/admin/class.settings.php:926
 msgid "Credits"
 msgstr "Tín dụng"
 
-#: include/admin/class.settings.php:930
+#: include/admin/class.settings.php:929
 msgid "Development News"
 msgstr "Tin tức Phát triển"
 
-#: include/admin/class.settings.php:932, fuzzy
+#: include/admin/class.settings.php:931, fuzzy
 msgid "blog"
 msgstr "blog"
 
-#: include/admin/class.settings.php:932
+#: include/admin/class.settings.php:931
 msgid "updates"
 msgstr "cập nhật"
 
-#: include/admin/class.settings.php:937
-#: include/admin/class.settings.php:942
+#: include/admin/class.settings.php:936
+#: include/admin/class.settings.php:941
 msgid "getting started"
 msgstr "bắt đầu"
 
-#: include/admin/class.settings.php:937
-#: include/admin/class.settings.php:942
+#: include/admin/class.settings.php:936
+#: include/admin/class.settings.php:941
 msgid "introduction"
 msgstr "giới thiệu"
 
-#: include/admin/class.settings.php:942
+#: include/admin/class.settings.php:941
 msgid "sample"
 msgstr "mẫu"
 
-#: include/admin/class.settings.php:949
+#: include/admin/class.settings.php:948
 msgid "migrate"
 msgstr "di chuyển"
 
-#: include/admin/class.settings.php:951
+#: include/admin/class.settings.php:950
 msgid "problem"
 msgstr "vấn đề"
 
-#: include/admin/class.settings.php:960
+#: include/admin/class.settings.php:959
 msgid "live block preview"
 msgstr "xem trước khối trực tiếp"
 
-#: include/admin/class.settings.php:967
+#: include/admin/class.settings.php:966
 msgid "translation"
 msgstr "dịch thuật"
 
-#: include/admin/class.settings.php:998
+#: include/admin/class.settings.php:997
 msgid "Migrating the term meta"
 msgstr "Di chuyển các meta thuật ngữ"
 
-#: include/admin/class.settings.php:999
+#: include/admin/class.settings.php:998
 msgid "Fixing incorrect tag groups"
 msgstr "Sửa các nhóm thẻ không chính xác"
 
-#: include/admin/class.settings.php:1000
+#: include/admin/class.settings.php:999
 msgid "Fixing incorrect groups in term meta"
 msgstr "Sửa các nhóm không chính xác trong meta thuật ngữ"
 
-#: include/admin/class.settings.php:1001
+#: include/admin/class.settings.php:1000
 msgid "Sorting groups in term meta"
 msgstr "Sắp xếp các nhóm trong meta thuật ngữ"
 
-#: include/admin/class.settings.php:1002
+#: include/admin/class.settings.php:1001
 msgid "Checking the tag names"
 msgstr "Kiểm tra tên thẻ"
 
-#: include/admin/class.settings_ajax.php:48
-#: views/admin/settings_troubleshooting_system.view.php:126
+#: include/admin/class.settings_ajax.php:29
+msgid "You are not allowed to run cache benchmarks."
+msgstr "Bạn không được phép chạy các bài kiểm tra cache."
+
+#: include/admin/class.settings_ajax.php:34
+msgid "Invalid request method."
+msgstr "Phương thức yêu cầu không hợp lệ."
+
+#: include/admin/class.settings_ajax.php:38
+msgid "The security check failed."
+msgstr "Kiểm tra bảo mật không thành công."
+
+#: include/admin/class.settings_ajax.php:43
+msgid "Invalid benchmark task."
+msgstr "Nhiệm vụ kiểm tra không hợp lệ."
+
+#: include/admin/class.settings_ajax.php:49
+#: include/admin/class.settings_ajax.php:57
+msgid "A cache benchmark is already running."
+msgstr "Một bài kiểm tra cache đã đang chạy."
+
+#: include/admin/class.settings_ajax.php:75
+#: views/admin/settings_troubleshooting_system.view.php:125
 msgid "Cache"
 msgstr "Bộ nhớ đệm"
 
-#: include/admin/class.settings_ajax.php:48
+#: include/admin/class.settings_ajax.php:75
 msgid "(1000x read, 100x write)"
 msgstr "(1000 lần đọc, 100 lần ghi)"
 
-#: include/admin/class.settings_ajax.php:63
+#: include/admin/class.settings_ajax.php:89
 msgid "ineffective"
 msgstr "không hiệu quả"
 
@@ -683,11 +710,11 @@ msgstr "chưa được chỉ định"
 #. translators: %1$s and %2$s are opening and closing anchor tags for the upgrade link
 #, php-format
 msgid ""
-"You're using Tag Groups Free. The Pro version has more features and "
-"support. %1$sUpgrade to Pro%2$s"
+"You're using PublishPress Tag Groups Free. The Pro version has more "
+"features and support. %1$sUpgrade to Pro%2$s"
 msgstr ""
-"Bạn đang sử dụng Tag Groups miễn phí. Phiên bản Pro có nhiều tính năng và "
-"hỗ trợ hơn. %1$sNâng cấp lên Pro%2$s"
+"Bạn đang sử dụng PublishPress Tag Groups Free. Phiên bản Pro có nhiều tính "
+"năng và hỗ trợ hơn. %1$sNâng cấp lên Pro%2$s"
 
 #: includes-core/TagGroupsCoreAdmin.php:98
 #: includes-core/TagGroupsCoreAdmin.php:142
@@ -695,12 +722,12 @@ msgid "Upgrade to Pro"
 msgstr "Nâng cấp lên Pro"
 
 #: includes-core/TagGroupsCoreAdmin.php:115
-msgid "Upgrade to Tag Groups Pro"
-msgstr "Nâng cấp lên Tag Groups Pro"
+msgid "Upgrade to PublishPress Tag Groups Pro"
+msgstr "Nâng cấp lên PublishPress Tag Groups Pro"
 
 #: includes-core/TagGroupsCoreAdmin.php:120
-msgid "Enhance the power of Tag Groups with the Pro version:"
-msgstr "Tăng cường sức mạnh của Tag Groups với phiên bản Pro:"
+msgid "Enhance the power of PublishPress Tag Groups with the Pro version:"
+msgstr "Tăng cường sức mạnh của PublishPress Tag Groups với phiên bản Pro:"
 
 #: includes-core/TagGroupsCoreAdmin.php:123
 msgid "21 Shortcodes"
@@ -771,8 +798,8 @@ msgid "Parent Group Level"
 msgstr "Cấp độ nhóm cha"
 
 #: includes-core/TagGroupsCoreAdmin.php:149
-msgid "Need Tag Groups Support?"
-msgstr "Cần hỗ trợ nhóm thẻ không?"
+msgid "Need PublishPress Tag Groups Support?"
+msgstr "Cần hỗ trợ PublishPress Tag Groups?"
 
 #: includes-core/TagGroupsCoreAdmin.php:154
 msgid "If you need help or have a new feature request, let us know."
@@ -790,11 +817,15 @@ msgstr "Tài liệu chi tiết cũng có sẵn trên trang web của plugin."
 msgid "View Knowledge Base"
 msgstr "Xem Cơ sở Kiến thức"
 
-#: tag-groups.php:177
-msgid "The free Tag Groups plugin cannot be active together with Tag Groups Pro."
-msgstr "Plugin nhóm thẻ miễn phí không thể hoạt động cùng với Tag Groups Pro."
+#: tag-groups.php:196
+msgid ""
+"The free PublishPress Tag Groups plugin cannot be active together with "
+"PublishPress Tag Groups Pro."
+msgstr ""
+"Plugin PublishPress Tag Groups miễn phí không thể hoạt động cùng với "
+"PublishPress Tag Groups Pro."
 
-#: tag-groups.php:177
+#: tag-groups.php:196
 msgid "more information"
 msgstr "thêm thông tin"
 
@@ -868,12 +899,13 @@ msgstr "Lọc theo nhóm thẻ"
 #. translators: %s is the author display name
 #, php-format
 msgid ""
-"%s created this sample page in the Setup Wizard of the <b>Tag Groups</b> "
-"plugin. You can safely edit and delete it or keep it for future reference."
+"%s created this sample page in the Setup Wizard of the <b>PublishPress Tag "
+"Groups</b> plugin. You can safely edit and delete it or keep it for future "
+"reference."
 msgstr ""
-"%s đã tạo trang mẫu này trong Trình hướng dẫn thiết lập của <b>Nhóm Thẻ</b> "
-"plugin. Bạn có thể an toàn chỉnh sửa và xóa nó hoặc giữ lại để tham khảo "
-"trong tương lai."
+"%s đã tạo trang mẫu này trong Wizard Cài đặt của plugin <b>PublishPress Tag "
+"Groups</b>. Bạn có thể an toàn chỉnh sửa và xóa nó hoặc giữ lại để tham "
+"khảo trong tương lai."
 
 #: views/admin/sample_page.view.php:6
 msgid ""
@@ -1588,15 +1620,15 @@ msgstr "Hiển thị phản hồi"
 msgid "passed"
 msgstr "đã qua"
 
-#: views/admin/settings_troubleshooting_system.view.php:99
+#: views/admin/settings_troubleshooting_system.view.php:98
 msgid "failed"
 msgstr "thất bại"
 
-#: views/admin/settings_troubleshooting_system.view.php:106
+#: views/admin/settings_troubleshooting_system.view.php:105
 msgid "Benchmarks"
 msgstr "Thang điểm"
 
-#: views/admin/settings_troubleshooting_system.view.php:128
+#: views/admin/settings_troubleshooting_system.view.php:127
 msgid "Tag groups pro only"
 msgstr "Nhóm thẻ chỉ dành cho pro"
 
@@ -1651,8 +1683,8 @@ msgid "Happy tagging!"
 msgstr "Chúc bạn gán thẻ vui vẻ!"
 
 #: views/admin/setup_wizard_header.view.php:1
-msgid "Tag Groups Setup Wizard"
-msgstr "Trình hướng dẫn Cài đặt Nhóm Thẻ"
+msgid "PublishPress Tag Groups Setup Wizard"
+msgstr "Wizard Cài đặt PublishPress Tag Groups"
 
 #: views/admin/setup_wizard_sample_content.view.php:3
 msgid ""
@@ -1837,11 +1869,31 @@ msgstr "Vui lòng truy cập <a %1$s>%2$s</a>."
 msgid "Read more"
 msgstr "Đọc thêm"
 
-#: views/partials/admin_footer_rating.view.php:4
-#. translators: 1: Opening TaxoPress link tag, 2: Closing link tag, 3: Plugin version.
+#: views/partials/admin_footer_rating.view.php:9
+#. translators: %1$s: plugin name, %2$s: five-star rating icons.
 #, php-format
-msgid "Thanks for using Tag Groups | %1$sTaxoPress.com%2$s | Version %3$s"
-msgstr "Cảm ơn bạn đã sử dụng Tag Groups | %1$sTaxoPress.com%2$s | Phiên bản %3$s"
+msgid "If you like %1$s please leave us a %2$s rating. Thank you!"
+msgstr "Nếu bạn thích %1$s, hãy để lại cho chúng tôi một đánh giá %2$s. Cảm ơn bạn!"
+
+#: views/partials/admin_footer_rating.view.php:10, fuzzy
+msgid "PublishPress Tag Groups"
+msgstr "PublishPress Tag Groups"
+
+#: views/partials/admin_footer_rating.view.php:17
+msgid "PublishPress Tag Groups resources"
+msgstr "Tài nguyên PublishPress Tag Groups"
+
+#: views/partials/admin_footer_rating.view.php:19
+msgid "About"
+msgstr "Giới thiệu"
+
+#: views/partials/admin_footer_rating.view.php:20
+msgid "Documentation"
+msgstr "Tài liệu"
+
+#: views/partials/admin_footer_rating.view.php:21
+msgid "Contact"
+msgstr "Liên hệ"
 
 #: views/partials/bulk_admin_footer.view.php:10
 #: views/partials/bulk_admin_footer.view.php:11

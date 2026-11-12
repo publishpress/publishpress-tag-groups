@@ -17,6 +17,9 @@
 .chatty-mango-inspector-control .Select-menu-outer {
   z-index: 99999;
 }
+.chatty-mango-inspector-control .tag-groups-select {
+  margin-bottom: 16px;
+}
 .chatty-mango-inspector-control .tg_space_below {
   margin-bottom: 10px;
 }
@@ -54,6 +57,16 @@
 }
 .chatty-mango-inspector-control label {
   padding-bottom: 10px;
+}
+.chatty-mango-inspector-control
+  .components-range-control
+  .components-base-control__label {
+  margin-bottom: 4px;
+  padding-bottom: 0;
+  text-transform: none;
+}
+.chatty-mango-inspector-control .components-range-control {
+  margin-bottom: 12px;
 }
 .chatty-mango-not-active-all,
 .chatty-mango-not-active .ui-tabs-panel,

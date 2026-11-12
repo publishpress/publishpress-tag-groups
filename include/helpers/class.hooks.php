@@ -86,6 +86,7 @@ if (!class_exists('TagGroups_Hooks')) {
         public function is_admin()
         {
             add_action('admin_init', array( $this, 'admin_init' ));
+            add_action('wp_ajax_tg_ajax_benchmark', array( 'TagGroups_Settings_Ajax', 'ajax_benchmark' ));
             add_action('admin_menu', array( 'TagGroups_Admin', 'register_menus' ));
             add_action('admin_menu', array( 'TagGroups_Admin', 'remove_submenus' ), 1000000000);
             add_action('admin_enqueue_scripts', array( $this->enqueue, 'admin_enqueue_scripts' ));
@@ -258,10 +259,10 @@ if (!class_exists('TagGroups_Hooks')) {
             add_filter('admin_footer_text', array( 'TagGroups_Admin', 'add_admin_footer_text' ), 100);
 
             /**
-             * Add the request to rate the plugin
+             * Add the PublishPress footer to Tag Groups admin pages.
              */
-            add_filter('admin_footer_text', array( 'TagGroups_Admin', 'add_admin_footer_rating_text' ), 101);
-
+            add_filter('admin_body_class', array( 'TagGroups_Admin', 'add_admin_page_body_class' ));
+            add_action('in_admin_footer', array( 'TagGroups_Admin', 'render_admin_footer' ));
             /**
              * Add the script for the jQuery tooltip plugin
              */
@@ -282,6 +283,10 @@ if (!class_exists('TagGroups_Hooks')) {
             foreach ($enabled_taxonomies as $taxonomy) {
                 add_action("{$taxonomy}_edit_form_fields", array( 'TagGroups_Admin', 'render_edit_tag_menu' ));
                 add_action("{$taxonomy}_add_form_fields", array( 'TagGroups_Admin', 'render_new_tag_menu' ));
+                /**
+                 * Icon picker for tags
+                 */
+                TagGroups_Icon_Field::register($taxonomy);
                 add_filter(
                     "{$taxonomy}_row_actions",
                     array( 'TagGroups_Admin', 'expand_quick_edit_link' ),
@@ -332,7 +337,6 @@ if (!class_exists('TagGroups_Hooks')) {
              * Registers Ajax handlers to manage groups on Tag Group Admin page
              */
             add_action('wp_ajax_tg_ajax_manage_groups', array( 'TagGroups_Group_Admin', 'ajax_manage_groups' ));
-            add_action('wp_ajax_tg_ajax_benchmark', array( 'TagGroups_Settings_Ajax', 'ajax_benchmark' ));
         }
 
         /**

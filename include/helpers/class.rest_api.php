@@ -206,6 +206,22 @@ if (!class_exists('TagGroups_REST_API')) {
                     array(
                         'methods'             => WP_REST_Server::READABLE,
                         'callback'            => array('TagGroups_REST_API', 'get_posts'),
+                        'args'                => array(
+                            'page'     => array(
+                                'default'           => 1,
+                                'sanitize_callback' => 'absint',
+                                'validate_callback' => function ($param) {
+                                    return is_numeric($param) && (int) $param > 0;
+                                },
+                            ),
+                            'per_page' => array(
+                                'default'           => 100,
+                                'sanitize_callback' => 'absint',
+                                'validate_callback' => function ($param) {
+                                    return is_numeric($param) && (int) $param > 0 && (int) $param <= 100;
+                                },
+                            ),
+                        ),
                         'schema'              => array('TagGroups_REST_API', 'get_post_schema'),
                         'permission_callback' => '__return_true',
                     )
@@ -618,6 +634,8 @@ if (!class_exists('TagGroups_REST_API')) {
          *
          * Arguments:
          *      post_type
+         *      page      default: 1
+         *      per_page  default: 100; maximum: 100
          *
          * @param WP_REST_Request $request
          * @return array|object
@@ -661,11 +679,15 @@ if (!class_exists('TagGroups_REST_API')) {
                 );
             } else {
                 $return_data = array();
+                $page = max(1, absint($request->get_param('page')));
+                $per_page = absint($request->get_param('per_page'));
+                $per_page = $per_page ? min($per_page, 100) : 100;
                 $args = array(
-                    'numberposts' => -1,
-                    'fields'      => 'ids',
-                    'post_type'   => $post_type,
-                    'post_status' => array(
+                    'posts_per_page' => $per_page,
+                    'paged'          => $page,
+                    'fields'         => 'ids',
+                    'post_type'      => $post_type,
+                    'post_status'    => array(
                     'publish',
                     'pending',
                     'draft',

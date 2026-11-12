@@ -11,7 +11,9 @@
 
 import '../editor.css';
 
-import Select from 'react-select';
+import '../../assets/scss/_letter-strip.scss';
+
+import Select from '../components/tag-groups-select';
 import TagGroupsServerSideRender from '../components/tag-groups-render';
 
 import TagGroupsHelp from '../components/tag-groups-help';
@@ -159,6 +161,8 @@ class tagGroupsAlphabeticalCloudParameters extends Component {
       exclude_letters,
       include_letters,
       largest,
+      letter_strip,
+      letter_strip_letters,
       link_append,
       link_target,
       mouseover,
@@ -286,7 +290,7 @@ class tagGroupsAlphabeticalCloudParameters extends Component {
               onChange={(option) => {
                 if (option) setAttributes({ orderby: option.value });
               }}
-              value={orderby && typeof orderby === 'string' ? orderby : 'name'}
+              value={typeof orderby === 'string' ? orderby : ''}
               options={optionsOrderby}
             />
             {orderby !== 'random' && (
@@ -305,9 +309,9 @@ class tagGroupsAlphabeticalCloudParameters extends Component {
                     if (option) setAttributes({ order: option.value });
                   }}
                   value={
-                    order && typeof order === 'string'
+                    typeof order === 'string'
                       ? order.toUpperCase()
-                      : 'ASC'
+                      : ''
                   }
                   options={optionsOrder}
                 />
@@ -520,9 +524,9 @@ class tagGroupsAlphabeticalCloudParameters extends Component {
                 if (option) setAttributes({ link_target: option.value });
               }}
               value={
-                link_target && typeof link_target === 'string'
+                typeof link_target === 'string'
                   ? link_target
-                  : '_self'
+                  : ''
               }
               options={optionsTarget}
             />
@@ -574,6 +578,27 @@ class tagGroupsAlphabeticalCloudParameters extends Component {
               checked={delay}
               onChange={() => toggleOptionDelay(this)}
             />
+            <ToggleControl
+              label={__('Letter strip: compact A–Z bar that also shows letters without tags')}
+              checked={!!letter_strip}
+              onChange={(checked) => setAttributes({ letter_strip: checked ? 1 : 0 })}
+            />
+            {!!letter_strip && (
+              <div>
+                <label htmlFor='tg_input_letter_strip_letters'>
+                  {__('Letters in the strip')}
+                </label>
+                <PlainText
+                  id='tg_input_letter_strip_letters'
+                  className='input-control'
+                  value={letter_strip_letters ? letter_strip_letters : ''}
+                  placeholder='abcdefghijklmnopqrstuvwxyz'
+                  onChange={(letter_strip_letters) =>
+                    setAttributes({ letter_strip_letters })
+                  }
+                />
+              </div>
+            )}
             <div>
               <TagGroupsHelp
                 url={helpUrl}
@@ -800,32 +825,6 @@ class tagGroupsAlphabeticalCloudParameters extends Component {
               </div>
             )}
           </PanelBody>
-          <div className='chatty-mango-help-transform'>
-            <TagGroupsHelp
-              url={helpUrl}
-              product={this.helpProduct}
-              feature={this.helpFeature}
-              siteLang={siteLang}
-              topic='transform-your-block-for-more-options'
-            />
-            <div
-              className='dashicons-before dashicons-editor-code'
-              dangerouslySetInnerHTML={{
-                __html: __(
-                  'If you want to customize further options, you need to transform the block into a <b>shortcode block</b>.'
-                ),
-              }}
-            ></div>
-          </div>
-          <div
-            className='chatty-mango-inspector-help dashicons-before dashicons-admin-generic'
-            dangerouslySetInnerHTML={{
-              __html: __(
-                `The live preview of blocks can be turned on and off in the Tag Groups Settings under <a href="${gutenbergSettings}">Back End → Gutenberg</a>.`,
-                'tag-groups'
-              ),
-            }}
-          ></div>
         </div>
       </InspectorControls>,
       <div>
@@ -878,7 +877,7 @@ var cmTagGroupsAlphabetBlock = registerBlockType(
     icon: 'tagcloud', // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
     category: 'chatty-mango',
     description: __('Show your tags under tabs sorted by first letters.'),
-    keywords: [__('alphabet'), __('tag cloud'), 'Chatty Mango'],
+    keywords: [__('alphabet'), __('tag cloud'), 'PublishPress'],
     html: false,
     transforms: {
       to: [
@@ -1040,6 +1039,16 @@ var cmTagGroupsAlphabetBlock = registerBlockType(
         // only in shortcode
         type: 'string',
         default: '',
+      },
+      letter_strip: {
+        // configurable in block
+        type: 'integer',
+        default: 0,
+      },
+      letter_strip_letters: {
+        // configurable in block
+        type: 'string',
+        default: 'abcdefghijklmnopqrstuvwxyz',
       },
       largest: {
         // configurable in block

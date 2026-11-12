@@ -36,12 +36,12 @@ if (!class_exists('TagGroups_Setup_Wizard')) {
             $settings_setup_wizard_link = admin_url('admin.php?page=tag-groups-settings-setup-wizard');
 
             if (defined('TAG_GROUPS_PLUGIN_IS_FREE') && TAG_GROUPS_PLUGIN_IS_FREE) {
-                $title = 'Tag Groups';
-                $documentation_link = 'https://taxopress.com/docs/tag-groups/';
+                $title = 'PublishPress Tag Groups';
+                $documentation_link = 'https://publishpress.com/tag-groups/';
                 $logo = '';
             } else {
-                $title = 'Tag Groups Pro';
-                $documentation_link = 'https://taxopress.com/docs/tag-groups/';
+                $title = 'PublishPress Tag Groups Pro';
+                $documentation_link = 'https://publishpress.com/tag-groups/';
                 $logo = '';
             }
 
@@ -78,13 +78,13 @@ if (!class_exists('TagGroups_Setup_Wizard')) {
             $setup_wizard_next_link = add_query_arg('step', $step + 1, admin_url('admin.php?page=tag-groups-settings-setup-wizard'));
 
             if (defined('TAG_GROUPS_PLUGIN_IS_FREE') && TAG_GROUPS_PLUGIN_IS_FREE) {
-                $title = 'Tag Groups';
+                $title = 'PublishPress Tag Groups';
                 $is_premium = false;
-                $documentation_link = 'https://taxopress.com/docs/tag-groups/';
+                $documentation_link = 'https://publishpress.com/tag-groups/';
             } else {
-                $title = 'Tag Groups Pro';
+                $title = 'PublishPress Tag Groups Pro';
                 $is_premium = true;
-                $documentation_link = 'https://taxopress.com/docs/tag-groups/';
+                $documentation_link = 'https://publishpress.com/tag-groups/';
             }
 
 
@@ -187,7 +187,7 @@ if (!class_exists('TagGroups_Setup_Wizard')) {
                     break;
                 case 'finished':
                     $view = new TagGroups_View('admin/setup_wizard_finished');
-                    $documentation_link = ( $is_premium ? 'https://taxopress.com/docs/tag-groups/' : 'https://taxopress.com/docs/how-do-i-change-the-styling-of-the-post-tags-under-the-posts/' );
+                    $documentation_link = 'https://publishpress.com/tag-groups/';
                     $enabled_taxonomies = TagGroups_Taxonomy::get_enabled_taxonomies();
                     $taxonomy = array_shift($enabled_taxonomies);
                     $view->set(array(
@@ -230,21 +230,20 @@ if (!class_exists('TagGroups_Setup_Wizard')) {
                 wp_die("Capability check failed");
             }
             // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Nonce verification
-            if (!isset($_POST['tag-groups-setup-wizard-nonce']) || !wp_verify_nonce($_POST['tag-groups-setup-wizard-nonce'], 'tag-groups-setup-wizard-nonce')) {
+            if (!isset($_POST['tag-groups-setup-wizard-nonce']) || !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['tag-groups-setup-wizard-nonce'])), 'tag-groups-setup-wizard-nonce')) {
                 die("Security check failed");
             }
             $enabled_taxonomies = TagGroups_Taxonomy::get_enabled_taxonomies();
             $taxonomy = array_shift($enabled_taxonomies);
             // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Sanitized in switch statement
-            switch ($_REQUEST['tg_action_wizard']) {
+            switch (sanitize_key(wp_unslash($_REQUEST['tg_action_wizard']))) {
                 case 'taxonomy':
                     if (isset($_POST['taxonomies'])) {
                         // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Sanitized below
-                        $taxonomies = $_POST['taxonomies'];
+                        $taxonomies = wp_unslash($_POST['taxonomies']);
 
                         if (is_array($taxonomies)) {
                             $taxonomies = array_map('sanitize_text_field', $taxonomies);
-                            $taxonomies = array_map('stripslashes', $taxonomies);
                         } else {
                             $taxonomies = array( 'post_tag' );
                         }
@@ -266,9 +265,9 @@ if (!class_exists('TagGroups_Setup_Wizard')) {
                      * Create groups
                      */
                     // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Sanitized below
-                    if (isset($_POST['tag-groups-create-sample-groups']) && $_POST['tag-groups-create-sample-groups']) {
+                    if (isset($_POST['tag-groups-create-sample-groups']) && wp_unslash($_POST['tag-groups-create-sample-groups'])) {
                         // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized, WordPress.Security.ValidatedSanitizedInput.InputNotValidated -- Sanitized below
-                        foreach ($_POST['tag_groups_group_names'] as $group_name) {
+                        foreach (wp_unslash($_POST['tag_groups_group_names']) as $group_name) {
                             $tg_group = new TagGroups_Group();
                             $tg_group->create(sanitize_text_field($group_name));
                             $created_groups[] = $tg_group->get_group_id();
@@ -278,9 +277,9 @@ if (!class_exists('TagGroups_Setup_Wizard')) {
                      * Create tags
                      */
                     // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Sanitized below
-                    if (isset($_POST['tag-groups-create-sample-tags']) && $_POST['tag-groups-create-sample-tags']) {
+                    if (isset($_POST['tag-groups-create-sample-tags']) && wp_unslash($_POST['tag-groups-create-sample-tags'])) {
                         // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized, WordPress.Security.ValidatedSanitizedInput.InputNotValidated -- Sanitized below
-                        foreach ($_POST['tag_groups_tag_names'] as $tag_name) {
+                        foreach (wp_unslash($_POST['tag_groups_tag_names']) as $tag_name) {
                             $tag_name = sanitize_text_field($tag_name);
 
                             if (!term_exists($tag_name, $taxonomy)) {
@@ -311,13 +310,13 @@ if (!class_exists('TagGroups_Setup_Wizard')) {
                     unset($tpf_include[0]);
 
                     // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Checkbox validation
-                    if (isset($_POST['tag-groups-create-sample-page']) && $_POST['tag-groups-create-sample-page']) {
+                    if (isset($_POST['tag-groups-create-sample-page']) && wp_unslash($_POST['tag-groups-create-sample-page'])) {
                         if (TagGroups_Gutenberg::is_gutenberg_active()) {
                             $view = new TagGroups_View('admin/sample_page_gutenberg');
-                            $sample_page_title = 'Tag Groups (Free) Sample Page - Gutenberg Editor';
+                            $sample_page_title = 'PublishPress Tag Groups (Free) Sample Page - Gutenberg Editor';
                         } else {
                             $view = new TagGroups_View('admin/sample_page');
-                            $sample_page_title = 'Tag Groups (Free) Sample Page - Classic Editor';
+                            $sample_page_title = 'PublishPress Tag Groups (Free) Sample Page - Classic Editor';
                         }
 
                         $tag_groups_settings_link = admin_url('admin.php?page=tag-groups-settings');

@@ -1,4 +1,4 @@
-# Copyright (C) 2026 TaxoPress
+# Copyright (C) 2026 PublishPress
 # This file is distributed under the GPL-3.0-or-later.
 msgid ""
 msgstr ""
@@ -10,22 +10,20 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-06-15T12:41:40+00:00\n"
-"PO-Revision-Date: 2026-06-22 16:17+0000\n"
+"PO-Revision-Date: 2026-09-30 10:10+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: tag-groups\n"
 "|| n % 10 == 6 || n % 10 == 9);\n"
+"|| n % 10 == 6 || n % 10 == 9);: \n"
 "Language: fil\n"
 "Plural-Forms: nplurals=2; plural=n != 1 && n != 2 && n != 3 && (n % 10 == 4 || n % 10 == 6 || n % 10 == 9);\n"
 
 #: tag-groups.php:4
-#: include/admin/class.admin.php:229
-#: views/admin/edit_tag_main.view.php:2
-#: views/admin/new_tag_from_list.view.php:2
 #. Plugin Name of the plugin
-msgid "Tag Groups"
-msgstr "Tag-Groups"
+msgid "PublishPress Tag Groups Free"
+msgstr "PublishPress Tag Groups Libre"
 
-#: tag-groups.php:5, fuzzy
+#: tag-groups.php:5
 #. Plugin URI of the plugin
 msgid "https://wordpress.org/plugins/tag-groups/"
 msgstr "https://wordpress.org/plugins/tag-groups/"
@@ -33,29 +31,38 @@ msgstr "https://wordpress.org/plugins/tag-groups/"
 #: tag-groups.php:6
 #. Description of the plugin
 msgid ""
-"Tag Groups allows you to organize your WordPress taxonomy terms and show "
-"them in clouds, tabs, accordions, tables, lists and much more."
+"PublishPress Tag Groups allows you to organize your WordPress taxonomy "
+"terms and show them in clouds, tabs, accordions, tables, lists and much "
+"more."
 msgstr ""
-"Ang Tag-Groups ay nagbibigay-daan sa iyo na ayusin ang iyong mga termino sa "
-"taxonomy ng WordPress at ipakita ang mga ito sa mga ulap, tab, accordion, "
-"talahanayan, listahan at marami pang iba."
+"Ang PublishPress Tag Groups ay nagbibigay-daan sa iyo upang ayusin ang "
+"iyong mga termino sa taxonomy ng WordPress at ipakita ang mga ito sa mga "
+"ulap, tab, accordion, talahanayan, listahan at marami pang iba."
 
 #: tag-groups.php:7
+#: views/partials/admin_footer_rating.view.php:26
 #. Author of the plugin
-msgid "TaxoPress"
-msgstr "TaxoPress"
+msgid "PublishPress"
+msgstr "PublishPress"
 
-#: tag-groups.php:8, fuzzy
+#: tag-groups.php:8
 #. Author URI of the plugin
-msgid "https://taxopress.com"
-msgstr "https://taxopress.com"
+msgid "https://publishpress.com"
+msgstr "https://publishpress.com"
 
 #: include/admin/class.admin.php:22
 msgid "Home"
 msgstr "Bahay"
 
+#: include/admin/class.admin.php:22
+#: include/admin/class.admin.php:229
+#: views/admin/edit_tag_main.view.php:2
+#: views/admin/new_tag_from_list.view.php:2
+msgid "Tag Groups"
+msgstr "Tag-Groups"
+
 #: include/admin/class.admin.php:26
-#: include/admin/class.settings.php:827
+#: include/admin/class.settings.php:826
 #: include/admin/class.setup_wizard.php:98
 msgid "Taxonomies"
 msgstr "Taxonomies"
@@ -69,18 +76,18 @@ msgid "Back End"
 msgstr "Back End"
 
 #: include/admin/class.admin.php:47
-#: include/admin/class.settings.php:935
+#: include/admin/class.settings.php:934
 #: views/admin/onboarding.view.php:1
 msgid "First Steps"
 msgstr "Unang Hakbang"
 
 #: include/admin/class.admin.php:54
-#: include/admin/class.settings.php:940, fuzzy
+#: include/admin/class.settings.php:939, fuzzy
 msgid "Setup Wizard"
 msgstr "Setup Wizard"
 
 #: include/admin/class.admin.php:61
-#: include/admin/class.admin.php:1013
+#: include/admin/class.admin.php:1008
 #: views/admin/settings_front_end_shortcodes.view.php:95
 msgid "Settings"
 msgstr "Mga Setting"
@@ -89,19 +96,19 @@ msgstr "Mga Setting"
 msgid "Tag Group Admin"
 msgstr "Tag Group Admin"
 
-#: include/admin/class.admin.php:457
+#: include/admin/class.admin.php:456
 msgid "The term has been removed from all groups."
 msgstr "Ang termino ay tinanggal mula sa lahat ng grupo."
 
-#: include/admin/class.admin.php:588
+#: include/admin/class.admin.php:587
 msgid "Edit this item inline"
 msgstr "I-edit ang item na ito nang inline"
 
-#: include/admin/class.admin.php:590
+#: include/admin/class.admin.php:589
 msgid "Quick&nbsp;Edit"
 msgstr "Mabilis&nbsp;I-edit"
 
-#: include/admin/class.admin.php:1067
+#: include/admin/class.admin.php:1062
 #. translators: %s is the href attribute with URL
 #, php-format
 msgid ""
@@ -267,30 +274,30 @@ msgstr[0] "Na-update ang info ng grupo ng %d termino."
 msgstr[1] "Na-update ang info ng grupo ng %d mga termino."
 
 #: include/admin/class.settings.php:151
-#: include/admin/class.settings.php:858
+#: include/admin/class.settings.php:857
 #: views/admin/tag_groups_admin.view.php:26
 #: views/admin/tag_groups_admin.view.php:39
 msgid "Filters"
 msgstr "Mga filter"
 
 #: include/admin/class.settings.php:153
-#: include/admin/class.settings.php:958, fuzzy
+#: include/admin/class.settings.php:957, fuzzy
 msgid "Gutenberg"
 msgstr "Gutenberg"
 
 #: include/admin/class.settings.php:156
-#: include/admin/class.settings.php:965
+#: include/admin/class.settings.php:964
 msgid "Multilingual"
 msgstr "Maraming wika"
 
 #: include/admin/class.settings.php:238
-#: include/admin/class.settings.php:832
+#: include/admin/class.settings.php:831
 #: views/admin/settings_front_end_shortcodes.view.php:9
 msgid "Shortcodes"
 msgstr "Mga shortcode"
 
 #: include/admin/class.settings.php:239
-#: include/admin/class.settings.php:846
+#: include/admin/class.settings.php:845
 msgid "Themes and Appearance"
 msgstr "Mga Tema at Hitsura"
 
@@ -311,7 +318,7 @@ msgid "use unfiltered_html filter"
 msgstr "gamitin ang unfiltered_html na filter"
 
 #: include/admin/class.settings.php:317
-#: include/admin/class.settings.php:945
+#: include/admin/class.settings.php:944
 msgid "First Aid"
 msgstr "Unang Tulong"
 
@@ -320,22 +327,22 @@ msgid "REST API"
 msgstr "REST API"
 
 #: include/admin/class.settings.php:319
-#: include/admin/class.settings.php:873
+#: include/admin/class.settings.php:872
 msgid "System Information"
 msgstr "Impormasyon ng Sistema"
 
 #: include/admin/class.settings.php:320
-#: include/admin/class.settings.php:887
+#: include/admin/class.settings.php:886
 msgid "Debugging"
 msgstr "Pag-debug"
 
 #: include/admin/class.settings.php:321
-#: include/admin/class.settings.php:863
+#: include/admin/class.settings.php:862
 msgid "Export/Import"
 msgstr "I-export/I-import"
 
 #: include/admin/class.settings.php:322
-#: include/admin/class.settings.php:868
+#: include/admin/class.settings.php:867
 msgid "Reset"
 msgstr "I-reset"
 
@@ -344,33 +351,33 @@ msgid "Licences"
 msgstr "Mga Lisensya"
 
 #: include/admin/class.settings.php:422
-#: include/admin/class.settings_ajax.php:42
+#: include/admin/class.settings_ajax.php:69
 msgid "Transients"
 msgstr "Mga Transient"
 
 #: include/admin/class.settings.php:423
-#: include/admin/class.settings_ajax.php:43, fuzzy
+#: include/admin/class.settings_ajax.php:70, fuzzy
 msgid "Database"
 msgstr "Database"
 
 #: include/admin/class.settings.php:424
-#: include/admin/class.settings_ajax.php:44, fuzzy
+#: include/admin/class.settings_ajax.php:71, fuzzy
 msgid "Filesystem"
 msgstr "Filesystem"
 
 #: include/admin/class.settings.php:425
-#: include/admin/class.settings_ajax.php:45, fuzzy
+#: include/admin/class.settings_ajax.php:72, fuzzy
 msgid "WP Object Cache"
 msgstr "WP Object Cache"
 
 #: include/admin/class.settings.php:548
 #: include/admin/class.settings.php:604
 #: include/admin/class.settings.php:642
-#: include/admin/class.settings.php:676
-#: include/admin/class.settings.php:691
-#: include/admin/class.settings.php:704
-#: include/admin/class.settings.php:717
-#: include/admin/class.settings.php:786
+#: include/admin/class.settings.php:675
+#: include/admin/class.settings.php:690
+#: include/admin/class.settings.php:703
+#: include/admin/class.settings.php:716
+#: include/admin/class.settings.php:785
 msgid "Your settings have been saved."
 msgstr "Ang iyong mga setting ay nai-save na."
 
@@ -382,249 +389,270 @@ msgstr "Ang iyong mga setting ay nai-save na."
 msgid "All groups have been deleted and assignments reset."
 msgstr "Lahat ng grupo ay natanggal at ang mga assignment ay na-reset."
 
-#: include/admin/class.settings.php:733
+#: include/admin/class.settings.php:732
 msgid "The filter on the tags page has been reset to show all tags."
 msgstr "Ang filter sa pahina ng mga tag ay na-reset upang ipakita ang lahat ng tag."
 
-#: include/admin/class.settings.php:829, fuzzy
+#: include/admin/class.settings.php:828, fuzzy
 msgid "tag groups"
 msgstr "tag groups"
 
-#: include/admin/class.settings.php:835
-#: include/admin/class.settings.php:849
-#: include/admin/class.settings.php:904, fuzzy
+#: include/admin/class.settings.php:834
+#: include/admin/class.settings.php:848
+#: include/admin/class.settings.php:903, fuzzy
 msgid "tag cloud"
 msgstr "tag cloud"
 
-#: include/admin/class.settings.php:836, fuzzy
+#: include/admin/class.settings.php:835, fuzzy
 msgid "group info"
 msgstr "group info"
 
-#: include/admin/class.settings.php:837, fuzzy
+#: include/admin/class.settings.php:836, fuzzy
 msgid "sidebar widget"
 msgstr "sidebar widget"
 
-#: include/admin/class.settings.php:838, fuzzy
+#: include/admin/class.settings.php:837, fuzzy
 msgid "accordion"
 msgstr "accordion"
 
-#: include/admin/class.settings.php:839, fuzzy
+#: include/admin/class.settings.php:838, fuzzy
 msgid "tabs"
 msgstr "tabs"
 
-#: include/admin/class.settings.php:840, fuzzy
+#: include/admin/class.settings.php:839, fuzzy
 msgid "alphabetical"
 msgstr "alphabetical"
 
-#: include/admin/class.settings.php:841, fuzzy
+#: include/admin/class.settings.php:840, fuzzy
 msgid "post list"
 msgstr "post list"
 
-#: include/admin/class.settings.php:853, fuzzy
+#: include/admin/class.settings.php:852, fuzzy
 msgid "colors"
 msgstr "colors"
 
-#: include/admin/class.settings.php:854, fuzzy
+#: include/admin/class.settings.php:853, fuzzy
 msgid "tag description"
 msgstr "tag description"
 
-#: include/admin/class.settings.php:860
-#: include/admin/class.settings.php:952, fuzzy
+#: include/admin/class.settings.php:859
+#: include/admin/class.settings.php:951, fuzzy
 msgid "tag filter"
 msgstr "tag filter"
 
-#: include/admin/class.settings.php:860, fuzzy
+#: include/admin/class.settings.php:859, fuzzy
 msgid "post filter"
 msgstr "post filter"
 
-#: include/admin/class.settings.php:865, fuzzy
+#: include/admin/class.settings.php:864, fuzzy
 msgid "backup"
 msgstr "backup"
 
-#: include/admin/class.settings.php:870, fuzzy
+#: include/admin/class.settings.php:869, fuzzy
 msgid "remove plugin"
 msgstr "remove plugin"
 
-#: include/admin/class.settings.php:870, fuzzy
+#: include/admin/class.settings.php:869, fuzzy
 msgid "remove data"
 msgstr "remove data"
 
-#: include/admin/class.settings.php:870, fuzzy
+#: include/admin/class.settings.php:869, fuzzy
 msgid "delete groups"
 msgstr "delete groups"
 
-#: include/admin/class.settings.php:876
-#: include/admin/class.settings.php:890, fuzzy
+#: include/admin/class.settings.php:875
+#: include/admin/class.settings.php:889, fuzzy
 msgid "debugging"
 msgstr "debugging"
 
-#: include/admin/class.settings.php:877, fuzzy
+#: include/admin/class.settings.php:876, fuzzy
 msgid "PHP Version"
 msgstr "PHP Version"
 
-#: include/admin/class.settings.php:878
+#: include/admin/class.settings.php:877
 #: views/admin/settings_troubleshooting_system.view.php:21, fuzzy
 msgid "Ajax Test"
 msgstr "Ajax Test"
 
-#: include/admin/class.settings.php:879
-#: include/admin/class.settings.php:891
-#: include/admin/class.settings.php:948, fuzzy
+#: include/admin/class.settings.php:878
+#: include/admin/class.settings.php:890
+#: include/admin/class.settings.php:947, fuzzy
 msgid "troubleshooting"
 msgstr "troubleshooting"
 
-#: include/admin/class.settings.php:880
+#: include/admin/class.settings.php:879
 msgid "benchmarks"
 msgstr "mga benchmark"
 
-#: include/admin/class.settings.php:881
+#: include/admin/class.settings.php:880
 msgid "speed test"
 msgstr "pagsubok sa bilis"
 
-#: include/admin/class.settings.php:882
-#: include/admin/class.settings.php:892, fuzzy
+#: include/admin/class.settings.php:881
+#: include/admin/class.settings.php:891, fuzzy
 msgid "error"
 msgstr "error"
 
-#: include/admin/class.settings.php:883
-#: include/admin/class.settings.php:893
+#: include/admin/class.settings.php:882
+#: include/admin/class.settings.php:892
 msgid "testing"
 msgstr "pagsubok"
 
-#: include/admin/class.settings.php:894
-#: include/admin/class.settings.php:937
-#: include/admin/class.settings.php:950
+#: include/admin/class.settings.php:893
+#: include/admin/class.settings.php:936
+#: include/admin/class.settings.php:949
 msgid "help"
 msgstr "tulong"
 
-#: include/admin/class.settings.php:898, fuzzy
-msgid "Tag Groups Pro"
-msgstr "Tag Groups Pro"
+#: include/admin/class.settings.php:897, fuzzy
+msgid "PublishPress Tag Groups Pro"
+msgstr "PublishPress Tag Groups Pro"
 
-#: include/admin/class.settings.php:901
+#: include/admin/class.settings.php:900
 msgid "upgrade"
 msgstr "pag-upgrade"
 
-#: include/admin/class.settings.php:902
+#: include/admin/class.settings.php:901
 msgid "more groups"
 msgstr "mas maraming grupo"
 
-#: include/admin/class.settings.php:903
+#: include/admin/class.settings.php:902
 msgid "posts"
 msgstr "mga post"
 
-#: include/admin/class.settings.php:905, fuzzy
+#: include/admin/class.settings.php:904, fuzzy
 msgid "filter"
 msgstr "filter"
 
-#: include/admin/class.settings.php:906, fuzzy
+#: include/admin/class.settings.php:905, fuzzy
 msgid "animated"
 msgstr "animated"
 
-#: include/admin/class.settings.php:907
+#: include/admin/class.settings.php:906
 msgid "searchable"
 msgstr "mahanap"
 
-#: include/admin/class.settings.php:915
+#: include/admin/class.settings.php:914
 msgid "Info"
 msgstr "Impormasyon"
 
-#: include/admin/class.settings.php:918
+#: include/admin/class.settings.php:917
 msgid "author"
 msgstr "may-akda"
 
-#: include/admin/class.settings.php:919
+#: include/admin/class.settings.php:918
 msgid "version"
 msgstr "bersyon"
 
-#: include/admin/class.settings.php:920
+#: include/admin/class.settings.php:919
 msgid "contact"
 msgstr "kontak"
 
-#: include/admin/class.settings.php:921
+#: include/admin/class.settings.php:920
 msgid "about"
 msgstr "tungkol"
 
-#: include/admin/class.settings.php:925
+#: include/admin/class.settings.php:924
 msgid "Licenses"
 msgstr "Mga Lisensya"
 
-#: include/admin/class.settings.php:927
+#: include/admin/class.settings.php:926
 msgid "Credits"
 msgstr "Mga Kredito"
 
-#: include/admin/class.settings.php:930
+#: include/admin/class.settings.php:929
 msgid "Development News"
 msgstr "Balita sa Pag-unlad"
 
-#: include/admin/class.settings.php:932, fuzzy
+#: include/admin/class.settings.php:931, fuzzy
 msgid "blog"
 msgstr "blog"
 
-#: include/admin/class.settings.php:932
+#: include/admin/class.settings.php:931
 msgid "updates"
 msgstr "mga update"
 
-#: include/admin/class.settings.php:937
-#: include/admin/class.settings.php:942
+#: include/admin/class.settings.php:936
+#: include/admin/class.settings.php:941
 msgid "getting started"
 msgstr "pagsisimula"
 
-#: include/admin/class.settings.php:937
-#: include/admin/class.settings.php:942
+#: include/admin/class.settings.php:936
+#: include/admin/class.settings.php:941
 msgid "introduction"
 msgstr "panimula"
 
-#: include/admin/class.settings.php:942
+#: include/admin/class.settings.php:941
 msgid "sample"
 msgstr "halimbawa"
 
-#: include/admin/class.settings.php:949
+#: include/admin/class.settings.php:948
 msgid "migrate"
 msgstr "ililipat"
 
-#: include/admin/class.settings.php:951
+#: include/admin/class.settings.php:950
 msgid "problem"
 msgstr "problema"
 
-#: include/admin/class.settings.php:960, fuzzy
+#: include/admin/class.settings.php:959, fuzzy
 msgid "live block preview"
 msgstr "live block preview"
 
-#: include/admin/class.settings.php:967
+#: include/admin/class.settings.php:966
 msgid "translation"
 msgstr "pagsasalin"
 
-#: include/admin/class.settings.php:998
+#: include/admin/class.settings.php:997
 msgid "Migrating the term meta"
 msgstr "Paglipat ng term meta"
 
-#: include/admin/class.settings.php:999
+#: include/admin/class.settings.php:998
 msgid "Fixing incorrect tag groups"
 msgstr "Pag-aayos ng maling grupo ng tag"
 
-#: include/admin/class.settings.php:1000
+#: include/admin/class.settings.php:999
 msgid "Fixing incorrect groups in term meta"
 msgstr "Pag-aayos ng maling grupo sa term meta"
 
-#: include/admin/class.settings.php:1001
+#: include/admin/class.settings.php:1000
 msgid "Sorting groups in term meta"
 msgstr "Pag-uri-uri ng mga grupo sa term meta"
 
-#: include/admin/class.settings.php:1002
+#: include/admin/class.settings.php:1001
 msgid "Checking the tag names"
 msgstr "Suriin ang mga pangalan ng tag"
 
-#: include/admin/class.settings_ajax.php:48
-#: views/admin/settings_troubleshooting_system.view.php:126, fuzzy
+#: include/admin/class.settings_ajax.php:29
+msgid "You are not allowed to run cache benchmarks."
+msgstr "Hindi ka pinapayagang magpatakbo ng mga benchmark ng cache."
+
+#: include/admin/class.settings_ajax.php:34
+msgid "Invalid request method."
+msgstr "Di-wastong paraan ng kahilingan."
+
+#: include/admin/class.settings_ajax.php:38
+msgid "The security check failed."
+msgstr "Nabigo ang pagsusuri sa seguridad."
+
+#: include/admin/class.settings_ajax.php:43
+msgid "Invalid benchmark task."
+msgstr "Di-wastong gawain ng benchmark."
+
+#: include/admin/class.settings_ajax.php:49
+#: include/admin/class.settings_ajax.php:57
+msgid "A cache benchmark is already running."
+msgstr "Mayroon nang tumatakbong benchmark ng cache."
+
+#: include/admin/class.settings_ajax.php:75
+#: views/admin/settings_troubleshooting_system.view.php:125, fuzzy
 msgid "Cache"
 msgstr "Cache"
 
-#: include/admin/class.settings_ajax.php:48
+#: include/admin/class.settings_ajax.php:75
 msgid "(1000x read, 100x write)"
 msgstr "(1000x nabasa, 100x nasulat)"
 
-#: include/admin/class.settings_ajax.php:63
+#: include/admin/class.settings_ajax.php:89
 msgid "ineffective"
 msgstr "hindi epektibo"
 
@@ -691,11 +719,11 @@ msgstr "hindi nakatalaga"
 #. translators: %1$s and %2$s are opening and closing anchor tags for the upgrade link
 #, php-format
 msgid ""
-"You're using Tag Groups Free. The Pro version has more features and "
-"support. %1$sUpgrade to Pro%2$s"
+"You're using PublishPress Tag Groups Free. The Pro version has more "
+"features and support. %1$sUpgrade to Pro%2$s"
 msgstr ""
-"Gumagamit ka ng Tag Groups Free. Ang Pro na bersyon ay may higit pang mga "
-"tampok at suporta. %1$sMag-upgrade sa Pro%2$s"
+"Gumagamit ka ng PublishPress Tag Groups Libre. Ang Pro bersyon ay may higit "
+"pang mga tampok at suporta. %1$sMag-upgrade sa Pro%2$s"
 
 #: includes-core/TagGroupsCoreAdmin.php:98
 #: includes-core/TagGroupsCoreAdmin.php:142
@@ -703,12 +731,12 @@ msgid "Upgrade to Pro"
 msgstr "I-upgrade sa Pro"
 
 #: includes-core/TagGroupsCoreAdmin.php:115
-msgid "Upgrade to Tag Groups Pro"
-msgstr "I-upgrade sa Tag Groups Pro"
+msgid "Upgrade to PublishPress Tag Groups Pro"
+msgstr "Mag-upgrade sa PublishPress Tag Groups Pro"
 
 #: includes-core/TagGroupsCoreAdmin.php:120
-msgid "Enhance the power of Tag Groups with the Pro version:"
-msgstr "Palakasin ang kapangyarihan ng Tag Groups gamit ang Pro version:"
+msgid "Enhance the power of PublishPress Tag Groups with the Pro version:"
+msgstr "Palakasin ang kapangyarihan ng PublishPress Tag Groups sa Pro bersyon:"
 
 #: includes-core/TagGroupsCoreAdmin.php:123, fuzzy
 msgid "21 Shortcodes"
@@ -779,8 +807,8 @@ msgid "Parent Group Level"
 msgstr "Antas ng Parent Group"
 
 #: includes-core/TagGroupsCoreAdmin.php:149
-msgid "Need Tag Groups Support?"
-msgstr "Kailangan ng Suporta para sa Tag Groups?"
+msgid "Need PublishPress Tag Groups Support?"
+msgstr "Kailangan ng Suporta para sa PublishPress Tag Groups?"
 
 #: includes-core/TagGroupsCoreAdmin.php:154
 msgid "If you need help or have a new feature request, let us know."
@@ -800,13 +828,15 @@ msgstr "Detalyadong dokumentasyon ay available din sa website ng plugin."
 msgid "View Knowledge Base"
 msgstr "Tingnan ang Knowledge Base"
 
-#: tag-groups.php:177
-msgid "The free Tag Groups plugin cannot be active together with Tag Groups Pro."
+#: tag-groups.php:196
+msgid ""
+"The free PublishPress Tag Groups plugin cannot be active together with "
+"PublishPress Tag Groups Pro."
 msgstr ""
-"Ang libreng Tag Groups plugin ay hindi maaaring aktibo kasabay ng Tag "
-"Groups Pro."
+"Ang libreng plugin ng PublishPress Tag Groups ay hindi maaaring aktibo "
+"kasabay ng PublishPress Tag Groups Pro."
 
-#: tag-groups.php:177
+#: tag-groups.php:196
 msgid "more information"
 msgstr "karagdagang impormasyon"
 
@@ -885,12 +915,13 @@ msgstr "I-filter ayon sa grupo ng tag"
 #. translators: %s is the author display name
 #, php-format
 msgid ""
-"%s created this sample page in the Setup Wizard of the <b>Tag Groups</b> "
-"plugin. You can safely edit and delete it or keep it for future reference."
+"%s created this sample page in the Setup Wizard of the <b>PublishPress Tag "
+"Groups</b> plugin. You can safely edit and delete it or keep it for future "
+"reference."
 msgstr ""
-"%s ang lumikha ng sample na pahinang ito sa Setup Wizard ng <b>Tag "
-"Groups</b> plugin. Maaari mo itong ligtas na i-edit at i-delete o itago ito "
-"para sa hinaharap na sanggunian."
+"%s ginawa ang sample na pahinang ito sa Setup Wizard ng <b>PublishPress Tag "
+"Groups</b> plugin. Maaari mo itong ligtas na i-edit at tanggalin o "
+"panatilihin ito para sa hinaharap na sanggunian."
 
 #: views/admin/sample_page.view.php:6
 msgid ""
@@ -1627,15 +1658,15 @@ msgstr "Ipakita ang Tugon"
 msgid "passed"
 msgstr "nagawa"
 
-#: views/admin/settings_troubleshooting_system.view.php:99
+#: views/admin/settings_troubleshooting_system.view.php:98
 msgid "failed"
 msgstr "nabigo"
 
-#: views/admin/settings_troubleshooting_system.view.php:106
+#: views/admin/settings_troubleshooting_system.view.php:105
 msgid "Benchmarks"
 msgstr "Mga Benchmark"
 
-#: views/admin/settings_troubleshooting_system.view.php:128
+#: views/admin/settings_troubleshooting_system.view.php:127
 msgid "Tag groups pro only"
 msgstr "Tag groups pro lamang"
 
@@ -1691,9 +1722,9 @@ msgstr ""
 msgid "Happy tagging!"
 msgstr "Masaya sa pag-tag!"
 
-#: views/admin/setup_wizard_header.view.php:1, fuzzy
-msgid "Tag Groups Setup Wizard"
-msgstr "Tag Groups Setup Wizard"
+#: views/admin/setup_wizard_header.view.php:1
+msgid "PublishPress Tag Groups Setup Wizard"
+msgstr "Setup Wizard ng PublishPress Tag Groups"
 
 #: views/admin/setup_wizard_sample_content.view.php:3
 msgid ""
@@ -1879,11 +1910,31 @@ msgstr "Pakisuyin ang <a %1$s>%2$s</a>."
 msgid "Read more"
 msgstr "Magbasa pa"
 
-#: views/partials/admin_footer_rating.view.php:4
-#. translators: 1: Opening TaxoPress link tag, 2: Closing link tag, 3: Plugin version.
+#: views/partials/admin_footer_rating.view.php:9
+#. translators: %1$s: plugin name, %2$s: five-star rating icons.
 #, php-format
-msgid "Thanks for using Tag Groups | %1$sTaxoPress.com%2$s | Version %3$s"
-msgstr "Salamat sa paggamit ng Tag Groups | %1$sTaxoPress.com%2$s | Bersyon %3$s"
+msgid "If you like %1$s please leave us a %2$s rating. Thank you!"
+msgstr "Kung gusto mo ang %1$s mangyaring iwanan kami ng %2$s rating. Salamat!"
+
+#: views/partials/admin_footer_rating.view.php:10, fuzzy
+msgid "PublishPress Tag Groups"
+msgstr "PublishPress Tag Groups"
+
+#: views/partials/admin_footer_rating.view.php:17
+msgid "PublishPress Tag Groups resources"
+msgstr "mga mapagkukunan ng PublishPress Tag Groups"
+
+#: views/partials/admin_footer_rating.view.php:19
+msgid "About"
+msgstr "Tungkol"
+
+#: views/partials/admin_footer_rating.view.php:20
+msgid "Documentation"
+msgstr "Dokumentasyon"
+
+#: views/partials/admin_footer_rating.view.php:21
+msgid "Contact"
+msgstr "Makipag-ugnayan"
 
 #: views/partials/bulk_admin_footer.view.php:10
 #: views/partials/bulk_admin_footer.view.php:11

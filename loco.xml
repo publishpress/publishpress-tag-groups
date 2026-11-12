@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<bundle name="Tag Groups">
+<bundle name="PublishPress Tag Groups">
   <domain name="tag-groups">
-    <project name="Tag Groups">
+    <project name="PublishPress Tag Groups">
       <source>
         <directory>include</directory>
         <directory>includes-core</directory>

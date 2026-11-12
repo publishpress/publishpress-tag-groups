@@ -1,10 +1,20 @@
 /*!
 * Last modified: 2022/05/17 15:21:37
-* Part of the WordPress plugin Tag Groups
-* Plugin URI: https://chattymango.com/tag-groups/
+* Part of the WordPress plugin PublishPress Tag Groups
+* Plugin URI: https://publishpress.com/tag-groups/
 * Author: Christoph Amthor
 * License: GNU GENERAL PUBLIC LICENSE, Version 3
 */
+
+/* Tag icons. Also imported by the Tabs and Accordion blocks for the editor preview. */
+@use 'icons';
+/* Letter strip. Also imported by the Alphabetical Tabs block for the editor preview. */
+@use 'letter-strip';
+/* Search panel. Also imported by the Tabs and Accordion blocks for the editor preview. */
+@use 'search-panel';
+/* Tag styles (tag_style attribute). Also imported by the Tabs and Accordion blocks for the editor preview. */
+@use 'tag-styles';
+
 .tag-groups-tag-list h3,
 .tag-groups-alphabetical-index h3 {
   margin: 0 !important;
@@ -60,3 +70,4 @@
 .SumoSelect {
 	width: auto;
 }
+

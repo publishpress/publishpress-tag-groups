@@ -157,14 +157,13 @@ if (! class_exists('TagGroups_Object_Cache')) {
             $path .= ( substr($path, -1) == '/' ? '' : '/' );
             if (! is_dir($path)) {
             // try to create the path
-                // permissions: all for owner, read + write for group, nothing for everybody else
-                if (mkdir($path, 0760, true)) {
+                if (wp_mkdir_p($path)) {
                     $this->path = $path;
                 } else {
                     $this->error = 2;
                     $this->type = 0;
                 }
-            } elseif (! is_writable($path)) {
+            } elseif (! wp_is_writable($path)) {
                 $this->error = 3;
                 $this->type = 0;
             } else {
@@ -575,11 +574,12 @@ if (! class_exists('TagGroups_Object_Cache')) {
                         $this->expired = true;
                         if (! $this->serve_old_cache) {
                         // delete from cache
-                                          @unlink($this->path . $this->key . '.php');
+                                          wp_delete_file($this->path . $this->key . '.php');
                             return false;
                         }
                     }
 
+                          // phpcs:ignore WordPressVIPMinimum.Performance.FetchingRemoteData.FileGetContentsUnknown -- Reads a file from the validated local cache directory.
                           $file_contents = @file_get_contents($this->path . $this->key . '.php');
                     if ($file_contents === false) {
                         $this->error = 5;
@@ -591,7 +591,7 @@ if (! class_exists('TagGroups_Object_Cache')) {
                     $cache = json_decode($file_contents, true);
                     if ($this->expired && $this->serve_old_cache) {
           // delete from cache
-                        @unlink($this->path . $this->key . '.php');
+                        wp_delete_file($this->path . $this->key . '.php');
                     }
 
                     return $cache;
@@ -633,7 +633,7 @@ if (! class_exists('TagGroups_Object_Cache')) {
 
             if (! empty($this->path)) {
                 if (file_exists($this->path . $this->key . '.php')) {
-                      @unlink($this->path . $this->key . '.php');
+                      wp_delete_file($this->path . $this->key . '.php');
                 }
             }
         }
@@ -655,9 +655,9 @@ if (! class_exists('TagGroups_Object_Cache')) {
                         continue;
                     }
 
-                          $filename = $file->getBasename();
+                          $filename = $file->getPathname();
                     if (time() > filemtime($filename) + $this->lifetime) {
-                        @unlink($filename);
+                        wp_delete_file($filename);
                     }
                 }
             }
@@ -685,7 +685,7 @@ if (! class_exists('TagGroups_Object_Cache')) {
                           // phpcs:ignore Squiz.PHP.CommentedOutCode.Found
                           // $filename = $file->getBasename();
 
-                          @unlink($file->getPathname());
+                          wp_delete_file($file->getPathname());
                 }
             }
 
