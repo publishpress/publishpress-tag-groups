@@ -96,6 +96,7 @@ if (!class_exists('TagGroups_Settings')) {
             }
             $enabled_taxonomies = TagGroups_Taxonomy::get_enabled_taxonomies();
             $public_taxonomies = TagGroups_Taxonomy::get_public_taxonomies();
+            $tag_group_enable_groups = TagGroups_Options::get_option('tag_group_enable_groups', 1);
             self::add_header();
             $html = '';
             self::add_settings_help();
@@ -114,6 +115,7 @@ if (!class_exists('TagGroups_Settings')) {
                             $view->set(array(
                                 'public_taxonomies'  => $public_taxonomies,
                                 'enabled_taxonomies' => $enabled_taxonomies,
+                                'tag_group_enable_groups' => $tag_group_enable_groups,
                             ));
                             $view->render();
                             break;
@@ -674,6 +676,8 @@ if (!class_exists('TagGroups_Settings')) {
                         }
                     }
                     TagGroups_Taxonomy::update_enabled($taxonomies);
+                    $tag_group_enable_groups = ( isset($_POST['tag_group_enable_groups']) ? 1 : 0 );
+                    TagGroups_Options::update_option('tag_group_enable_groups', $tag_group_enable_groups);
                     TagGroups_Admin_Notice::add('success', __('Your settings have been saved.', 'tag-groups'));
                     break;
                 case 'backend':
