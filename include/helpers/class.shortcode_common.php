@@ -840,9 +840,42 @@ if (!class_exists('TagGroups_Shortcode_Common')) {
 
             $tag_style = sanitize_key($this->attributes->tag_style);
 
-            if (in_array($tag_style, array( 'label-maker' ), true)) {
+            if (in_array($tag_style, array( 'label-maker', 'heat' ), true)) {
                 $this->attributes->div_class .= ' tag-groups-style-' . $tag_style;
             }
+        }
+
+        /**
+         * Extra class and inline style for a single tag, required by some tag styles
+         *
+         * The heat style shows popularity as color intensity: --tg-heat is 0 (least posts) to 100 (most posts)
+         *
+         * @param int $count Post count of this tag
+         * @param int $min Smallest post count
+         * @param int $max Largest post count
+         * @return array 'class' and 'style', both prefixed for direct concatenation, or empty
+         */
+        public function get_tag_style_markup($count, $min, $max)
+        {
+            $markup = array(
+                'class' => '',
+                'style' => '',
+            );
+
+            if (empty($this->attributes->tag_style) || 'heat' !== $this->attributes->tag_style) {
+                return $markup;
+            }
+
+            // like font_size(): with no range (single tag, equal counts) every tag gets the coldest value
+            $heat = ( $max > $min ) ? (int) round(($count - $min) * 100 / ($max - $min)) : 0;
+            $heat = max(0, min(100, $heat));
+
+            $markup['style'] = ';--tg-heat:' . $heat;
+            if ($heat >= 60) {
+                $markup['class'] = ' tg-heat-hot';
+            }
+
+            return $markup;
         }
 
         /**

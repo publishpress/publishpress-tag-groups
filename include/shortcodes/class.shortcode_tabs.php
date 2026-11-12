@@ -514,6 +514,7 @@ if (!class_exists('TagGroups_Shortcode_Tabs')) {
                     }
                     $tag_link = $this->get_tag_link($tag, $i);
                     $font_size = $this->font_size($post_count, $this->min_max[$this->tag_group_data[$i]['term_group']]['min'], $this->min_max[$this->tag_group_data[$i]['term_group']]['max']);
+                    $tag_style_markup = $this->get_tag_style_markup($post_count, $this->min_max[$this->tag_group_data[$i]['term_group']]['min'], $this->min_max[$this->tag_group_data[$i]['term_group']]['max']);
                     $font_size_separator = ( $this->attributes->adjust_separator_size ? $font_size : $this->attributes->separator_size );
                     if ($count_amount > 0 && !empty($this->attributes->separator)) {
                         $this->html_tags[$i] .= '<span style="font-size:' . $font_size_separator . 'px">' . $this->attributes->separator . '</span> ';
@@ -533,7 +534,7 @@ if (!class_exists('TagGroups_Shortcode_Tabs')) {
                         $other_tag_classes .= ' ' . sanitize_html_class(' tg_tag_group_id_' . $this->tag_group_data[$i]['term_group']) . ' ' . sanitize_html_class('tg_tag_group_label_' . strtolower($this->tag_group_data[$i]['label']));
                     }
                     // assembling a tag
-                    $this->html_tags[$i] .= '<span class="tag-groups-tag' . $other_tag_classes . '" style="font-size:' . $font_size . 'px" data-group="' . $this->tag_group_data[$i]['term_group'] . '#"><a href="' . $tag_link . '" ' . $link_target_html . '' . $title_html . '  class="' . $tag->slug . '">';
+                    $this->html_tags[$i] .= '<span class="tag-groups-tag' . $other_tag_classes . $tag_style_markup['class'] . '" style="font-size:' . $font_size . 'px' . $tag_style_markup['style'] . '" data-group="' . $this->tag_group_data[$i]['term_group'] . '#"><a href="' . $tag_link . '" ' . $link_target_html . '' . $title_html . '  class="' . $tag->slug . '">';
 
                     if ('' != $prepend_output) {
                         $prepend_html = '<span class="tag-groups-prepend" style="font-size:' . $font_size . 'px">' . htmlentities($prepend_output, ENT_QUOTES, "UTF-8") . '</span>';

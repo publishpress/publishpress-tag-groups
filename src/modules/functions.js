@@ -14,6 +14,7 @@ export const optionsOrderby = [
 export const optionsTagStyle = [
   { value: '', label: __('Theme default') },
   { value: 'label-maker', label: __('Label Maker') },
+  { value: 'heat', label: __('Heat Cloud') },
 ];
 
 export const optionsOrder = [
