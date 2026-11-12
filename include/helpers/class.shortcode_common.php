@@ -896,7 +896,7 @@ if (!class_exists('TagGroups_Shortcode_Common')) {
         /**
          * Adds the CSS class of the selected tag style to the wrapper div
          *
-         * Allowed values of the tag_style attribute: '' (theme default), 'label-maker'
+         * Allowed values of the tag_style attribute: '' (theme default), 'label-maker', 'heat', 'count-pills'
          *
          * @return void
          */
@@ -908,29 +908,41 @@ if (!class_exists('TagGroups_Shortcode_Common')) {
 
             $tag_style = sanitize_key($this->attributes->tag_style);
 
-            if (in_array($tag_style, array( 'label-maker', 'heat' ), true)) {
+            if (in_array($tag_style, array( 'label-maker', 'heat', 'count-pills' ), true)) {
                 $this->attributes->div_class .= ' tag-groups-style-' . $tag_style;
             }
         }
 
         /**
-         * Extra class and inline style for a single tag, required by some tag styles
+         * Extra class, inline style and inner HTML for a single tag, required by some tag styles
          *
-         * The heat style shows popularity as color intensity: --tg-heat is 0 (least posts) to 100 (most posts)
+         * The heat style shows popularity as color intensity: --tg-heat is 0 (least posts) to 100 (most posts).
+         * The count-pills style adds the post count as a badge after the tag name.
          *
          * @param int $count Post count of this tag
          * @param int $min Smallest post count
          * @param int $max Largest post count
-         * @return array 'class' and 'style', both prefixed for direct concatenation, or empty
+         * @return array 'class', 'style' and 'after' (HTML after the tag name), ready for concatenation, or empty
          */
         public function get_tag_style_markup($count, $min, $max)
         {
             $markup = array(
                 'class' => '',
                 'style' => '',
+                'after' => '',
             );
 
-            if (empty($this->attributes->tag_style) || 'heat' !== $this->attributes->tag_style) {
+            if (empty($this->attributes->tag_style)) {
+                return $markup;
+            }
+
+            if ('count-pills' === $this->attributes->tag_style) {
+                $markup['after'] = '<span class="tag-groups-count">' . (int) $count . '</span>';
+
+                return $markup;
+            }
+
+            if ('heat' !== $this->attributes->tag_style) {
                 return $markup;
             }
 

@@ -629,7 +629,7 @@ if (!class_exists('TagGroups_Shortcode_Tabs')) {
                         $post_count,
                         $this->shortcode_id
                     );
-                    $this->html_tags[$i] .= '</a></span> ';
+                    $this->html_tags[$i] .= $tag_style_markup['after'] . '</a></span> ';
                     $count_amount++;
                 }
 

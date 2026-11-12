@@ -530,7 +530,7 @@ if (!class_exists('TagGroups_Shortcode_Accordion')) {
                         $post_count,
                         $this->shortcode_id
                     );
-                    $html_tags .= '</a></span> ';
+                    $html_tags .= $tag_style_markup['after'] . '</a></span> ';
                     $this->count_amount++;
                 }
             }
