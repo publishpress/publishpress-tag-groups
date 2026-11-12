@@ -232,6 +232,7 @@ if (! class_exists('TagGroups_Shortcode_Alphabet_Tabs')) {
             'smallest' => 12,
             'source' => 'shortcode',
             'tags_post_id' => -1,
+            'target_size' => 0,
             'taxonomy' => implode(',', TagGroups_Taxonomy::get_enabled_taxonomies()),
             'threshold' => 0, // minimum number of posts, total (independent of groups)
             'ul_class' => ''
@@ -253,6 +254,7 @@ if (! class_exists('TagGroups_Shortcode_Alphabet_Tabs')) {
             if ($this->attributes->delay) {
                 $this->attributes->div_class .= ' tag-groups-cloud-hidden';
             }
+            $this->attributes->div_class = TagGroups_Shortcode_Statics::maybe_add_target_size_class($this->attributes, $this->attributes->div_class);
 
             if (! empty($this->attributes->letter_strip)) {
                 $this->attributes->div_class .= ' tag-groups-letter-strip';
@@ -381,7 +383,7 @@ if (! class_exists('TagGroups_Shortcode_Alphabet_Tabs')) {
                             $font_size = $this->font_size($post_count, $this->min_max[ $letter ]['min'], $this->min_max[ $letter ]['max']);
                             $font_size_separator = $this->attributes->adjust_separator_size ? $font_size : $this->attributes->separator_size;
                         if ($count_amount > 0 && ! empty($this->attributes->separator)) {
-                            $this->html_tags[ $i ] .= '<span style="font-size:' . $font_size_separator . 'px">' . $this->attributes->separator . '</span> ';
+                            $this->html_tags[ $i ] .= TagGroups_Shortcode_Statics::separator_html($this->attributes->separator, $font_size_separator);
                         }
 
                         $other_tag_classes = $this->get_assigned_tag_class($tag->term_id);
@@ -449,6 +451,7 @@ if (! class_exists('TagGroups_Shortcode_Alphabet_Tabs')) {
              * @return string
              */
                         $this->html_tags[ $i ] .= apply_filters('tag_groups_cloud_tag_append', $append_html, $tag->term_id, $font_size, $post_count, $this->shortcode_id);
+                        $this->html_tags[ $i ] .= TagGroups_Shortcode_Statics::sr_count_html($this->attributes, $post_count);
                         if (! empty($this->attributes->letter_strip)) {
                             $this->html_tags[ $i ] .= '<span class="tag-groups-count">' . (int) $post_count . '</span>';
                         }
@@ -512,9 +515,14 @@ if (! class_exists('TagGroups_Shortcode_Alphabet_Tabs')) {
         function finalize_html($html, $div_id_output, $div_class_output, $atts)
         {
 
+            // Panel IDs must be unique when there are several tab clouds on a page; the first one keeps its IDs.
+            $html = TagGroups_Shortcode_Statics::prefix_tab_panel_ids($html, TagGroups_Shortcode_Statics::next_instance('tabs'));
             $html = '<div' . $div_id_output . $div_class_output . '>' . $html . '</div>';
     // entire wrapper
-  
+            if ($this->attributes->delay) {
+                $html .= TagGroups_Shortcode_Statics::noscript_unhide_html();
+            }
+
             $html .= $this->custom_js_tabs();
     /**
              * Hook to filter final HTML

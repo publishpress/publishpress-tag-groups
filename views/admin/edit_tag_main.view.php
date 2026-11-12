@@ -1,7 +1,7 @@
 <?php defined('ABSPATH') || exit;
 ?>
 <tr class="form-field">
-  <th scope="row" valign="top"><label for="tag_widget"><?php _e('Tag Groups', 'tag-groups') ?></label></th>
+  <th scope="row" valign="top"><label for="term-group"><?php _e('Tag Groups', 'tag-groups') ?></label></th>
   <td>
     <select id="term-group" name="term-group" autocomplete="off">
         <option value="0"
