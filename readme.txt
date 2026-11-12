@@ -3,8 +3,8 @@ Contributors: stevejburge, andergmartins, olatechpro, ojopaul
 Tags: tags, tag cloud, tabs, accordion, taxonomy, tag, woocommerce tags, Woocommerce categories, Tabbed Tag Cloud, Tag List, Accordion Tag Cloud, Alphabetical Tags, Alphabetical Tag Cloud, Alphabetical Tag Index, Post List, Post Filter
 Requires at least: 4.9
 Tested up to: 7.1
-Stable tag: 3.0.1
-Requires PHP: 7.2
+Stable tag: 3.0.2
+Requires PHP: 8.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
 
@@ -125,6 +125,21 @@ Please use one of the shortcodes or Gutenberg blocks that come with the PublishP
 
 
 == Changelog ==
+
+[3.0.2] - 12 November, 2026
+
+- Added: Private AI actions for Tag Groups settings, group management and permission-checked memberships.
+- Added: Add Image Cards tag style with a tag image field, #359⁠
+- Added: Add Count Pills tag style for Tabbed Tag Cloud and Accordion, #358⁠
+- Added: Add tag icons (Font Awesome Free, inline SVG), #357⁠
+- Added: Add Letter Strip option for Alphabetical Tabs, #356⁠
+- Added: Add Search Panel option for Tabbed Tag Cloud and Accordion, #355⁠
+- Added: Add Heat Cloud tag style for Tabbed Tag Cloud and Accordion, #354⁠
+- Added: Add Label Maker tag style for Tabbed Tag Cloud and Accordion, #353⁠
+- Added: Add optional Groups feature toggle, #310⁠
+- Update: Join the CHANGELOG.md introduction onto one line, #361
+- Update: Require PHP 8.2, #391
+- Fixed: Accessibility fixes for VPAT 2.5 (WCAG 2.2 AA), #365⁠
 
 [3.0.1] - 09 November, 2026
 

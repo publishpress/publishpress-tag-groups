@@ -11,6 +11,14 @@ export const optionsOrderby = [
   { value: 'term_order', label: __('Term Order') },
 ];
 
+export const optionsTagStyle = [
+  { value: '', label: __('Theme default') },
+  { value: 'label-maker', label: __('Label Maker') },
+  { value: 'heat', label: __('Heat Cloud') },
+  { value: 'count-pills', label: __('Count Pills') },
+  { value: 'image-cards', label: __('Image Cards') },
+];
+
 export const optionsOrder = [
   { value: 'ASC', label: __('Ascending') },
   { value: 'DESC', label: __('Descending') },

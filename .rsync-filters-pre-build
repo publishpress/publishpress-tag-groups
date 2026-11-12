@@ -48,4 +48,6 @@
 - .cursor
 - metrics
 - phpmd-ruleset.xml
+- /.agents
+- /docs
 - phpmd.ruleset.xml

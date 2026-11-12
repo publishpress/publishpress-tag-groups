@@ -5,6 +5,16 @@
 * Author: Christoph Amthor
 * License: GNU GENERAL PUBLIC LICENSE, Version 3
 */
+
+/* Tag icons. Also imported by the Tabs and Accordion blocks for the editor preview. */
+@use 'icons';
+/* Letter strip. Also imported by the Alphabetical Tabs block for the editor preview. */
+@use 'letter-strip';
+/* Search panel. Also imported by the Tabs and Accordion blocks for the editor preview. */
+@use 'search-panel';
+/* Tag styles (tag_style attribute). Also imported by the Tabs and Accordion blocks for the editor preview. */
+@use 'tag-styles';
+
 .tag-groups-tag-list h3,
 .tag-groups-alphabetical-index h3 {
   margin: 0 !important;
@@ -59,4 +69,54 @@
 }
 .SumoSelect {
 	width: auto;
+}
+
+/* Accessibility */
+
+/* screen reader only text (inline styles in the markup are the fallback) */
+.tag-groups-sr {
+	position: absolute !important;
+	width: 1px !important;
+	height: 1px !important;
+	padding: 0 !important;
+	margin: -1px !important;
+	overflow: hidden !important;
+	clip: rect(0, 0, 0, 0) !important;
+	clip-path: inset(50%) !important;
+	white-space: nowrap !important;
+	border: 0 !important;
+}
+
+/* visible keyboard focus; overrides outline:0 of some jQuery UI themes */
+.tag-groups-cloud {
+	[role=tab]:focus-visible,
+	.ui-accordion-header:focus-visible,
+	.tag-groups-accordion-toggle:focus-visible {
+		outline: 2px solid currentColor;
+		outline-offset: 2px;
+	}
+}
+
+/* opt-in: shortcode attribute target_size="1" */
+.tag-groups-target-size .tag-groups-tag a {
+	display: inline-block;
+	min-width: 24px;
+	min-height: 24px;
+	padding: 2px 0;
+	box-sizing: border-box;
+}
+
+/* reflow on narrow screens */
+@media (max-width: 480px) {
+	.tag-groups-columns {
+		column-count: 1 !important;
+	}
+	.tag-groups-tag a,
+	.tag-groups-cloud .ui-tabs-nav .ui-tabs-anchor {
+		overflow-wrap: anywhere;
+	}
+	.tag-groups-cloud .ui-tabs-nav li {
+		white-space: normal;
+		max-width: 100%;
+	}
 }

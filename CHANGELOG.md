@@ -1,5 +1,19 @@
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+[3.0.2] - 11 November, 2026
+
+- Added: Private AI actions for Tag Groups settings, group management and permission-checked memberships.
+- Added: Add Image Cards tag style with a tag image field, #359⁠
+- Added: Add Count Pills tag style for Tabbed Tag Cloud and Accordion, #358⁠
+- Added: Add tag icons (Font Awesome Free, inline SVG), #357⁠
+- Added: Add Letter Strip option for Alphabetical Tabs, #356⁠
+- Added: Add Search Panel option for Tabbed Tag Cloud and Accordion, #355⁠
+- Added: Add Heat Cloud tag style for Tabbed Tag Cloud and Accordion, #354⁠
+- Added: Add Label Maker tag style for Tabbed Tag Cloud and Accordion, #353⁠
+- Added: Add optional Groups feature toggle, #310⁠
+- Update: Join the CHANGELOG.md introduction onto one line, #361
+- Update: Require PHP 8.2, #391
+- Fixed: Accessibility fixes for VPAT 2.5 (WCAG 2.2 AA), #365⁠
 
 [3.0.1] - 09 November, 2026
 

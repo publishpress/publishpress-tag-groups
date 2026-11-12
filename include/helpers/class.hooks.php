@@ -55,6 +55,7 @@ if (!class_exists('TagGroups_Hooks')) {
          */
         public function root_all()
         {
+            add_action('tag_groups_groups_of_term_saved', array( 'TagGroups_Group_Save_Handlers', 'schedule_clear_tag_groups_group_terms' ), 11);
             global  $tag_group_terms ;
             /**
              * enable internationalization
@@ -109,7 +110,7 @@ if (!class_exists('TagGroups_Hooks')) {
             /**
              * After a term has changed its groups, we must update the array of terms per group.
              */
-            add_action('tag_groups_groups_of_term_saved', array( 'TagGroups_Group_Save_Handlers', 'schedule_clear_tag_groups_group_terms' ), 11);
+
             /**
              * After a term has been deleted, we might have to update the object cache
              */
@@ -283,6 +284,16 @@ if (!class_exists('TagGroups_Hooks')) {
             foreach ($enabled_taxonomies as $taxonomy) {
                 add_action("{$taxonomy}_edit_form_fields", array( 'TagGroups_Admin', 'render_edit_tag_menu' ));
                 add_action("{$taxonomy}_add_form_fields", array( 'TagGroups_Admin', 'render_new_tag_menu' ));
+              
+                /**
+                 * Image picker for tags (Image Cards tag style)
+                 */
+                TagGroups_Image_Field::register($taxonomy);
+              
+                /**
+                 * Icon picker for tags
+                 */
+                TagGroups_Icon_Field::register($taxonomy);
                 add_filter(
                     "{$taxonomy}_row_actions",
                     array( 'TagGroups_Admin', 'expand_quick_edit_link' ),
