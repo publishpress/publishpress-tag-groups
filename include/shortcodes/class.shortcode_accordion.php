@@ -148,6 +148,10 @@ if (!class_exists('TagGroups_Shortcode_Accordion')) {
             'type'    => 'string',
             'default' => '',
         ),
+            'show_icons'            => array(
+            'type'    => 'integer',
+            'default' => 0,
+        ),
             'show_not_assigned'     => array(
             'type'    => 'integer',
             'default' => 0,
@@ -252,6 +256,7 @@ if (!class_exists('TagGroups_Shortcode_Accordion')) {
                 'search_panel'          => 0,
                 'search_panel_popular'  => 8,
                 'separator'             => '',
+                'show_icons'            => 0,
                 'separator_size'        => 12,
                 'show_accordion'        => 1,
                 'show_all_groups'       => false,
@@ -493,6 +498,7 @@ if (!class_exists('TagGroups_Shortcode_Accordion')) {
                      * @param string $this->shortcode_id
                      * @return string
                      */
+                    $html_tags .= $this->get_tag_icon_html($tag->term_id);
                     $html_tags .= apply_filters(
                         'tag_groups_cloud_tag_outer',
                         '<span class="tag-groups-label" style="font-size:' . $font_size . 'px">' . $inner_html . '</span>',

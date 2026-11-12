@@ -11,6 +11,7 @@
 
 import '../editor.css';
 
+import '../../assets/scss/_icons.scss';
 import '../../assets/scss/_search-panel.scss';
 import '../../assets/scss/_tag-styles.scss';
 
@@ -182,6 +183,7 @@ class tagGroupsTabbedCloudParameters extends Component {
       search_panel_popular,
       separator,
       separator_size,
+      show_icons,
       show_not_assigned,
       show_tag_count,
       show_tabs,
@@ -802,6 +804,13 @@ class tagGroupsTabbedCloudParameters extends Component {
           </PanelBody>
 
           <PanelBody title={__('Advanced Styling')} initialOpen={false}>
+            <ToggleControl
+              label={__('Show tag icons')}
+              help={__('Icons are chosen on the Edit Tag screen.')}
+              checked={!!show_icons}
+              onChange={(checked) => setAttributes({ show_icons: checked ? 1 : 0 })}
+              />
+
             <label htmlFor='tg_input_tag_style'>{__('Tag style')}</label>
             <Select
               id='tg_input_tag_style'
@@ -1166,6 +1175,11 @@ var cmTagGroupsTabsBlock = registerBlockType(
         // configurable in block
         type: 'string',
         default: '',
+      },
+      show_icons: {
+        // configurable in block
+        type: 'integer',
+        default: 0,
       },
       show_not_assigned: {
         // indirectly configurable in block

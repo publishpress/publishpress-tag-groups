@@ -144,6 +144,10 @@ if (!class_exists('TagGroups_Shortcode_Tabs')) {
             'type'    => 'string',
             'default' => '',
         ),
+            'show_icons'            => array(
+            'type'    => 'integer',
+            'default' => 0,
+        ),
             'show_not_assigned'     => array(
             'type'    => 'integer',
             'default' => 0,
@@ -244,6 +248,7 @@ if (!class_exists('TagGroups_Shortcode_Tabs')) {
                 'search_panel'          => 0,
                 'search_panel_popular'  => 8,
                 'separator'             => '',
+                'show_icons'            => 0,
                 'show_not_assigned'     => false,
                 'show_all_groups'       => false,
                 'show_tabs'             => '1',
@@ -592,6 +597,7 @@ if (!class_exists('TagGroups_Shortcode_Tabs')) {
                      * @param string $this->shortcode_id
                      * @return string
                      */
+                    $this->html_tags[$i] .= $this->get_tag_icon_html($tag->term_id);
                     $this->html_tags[$i] .= apply_filters(
                         'tag_groups_cloud_tag_outer',
                         '<span class="tag-groups-label" style="font-size:' . $font_size . 'px">' . $inner_html . '</span>',

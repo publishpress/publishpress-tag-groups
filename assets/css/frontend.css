@@ -71,6 +71,17 @@
   width: auto;
 }
 
+/* Tag icons (show_icons="1"); inline SVG from Font Awesome Free, sized to the tag text */
+.tag-groups-tag .tag-groups-icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  margin-right: 0.3em;
+  fill: currentColor;
+  vertical-align: -0.125em;
+  overflow: visible;
+}
+
 /* Letter strip for Alphabetical Tabs (letter_strip="1") */
 .tag-groups-letter-strip {
   --tg-strip-ink: #1f1d24;
