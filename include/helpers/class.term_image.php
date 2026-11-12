@@ -5,6 +5,8 @@
  * @license     GPL-3.0+
  */
 
+defined('ABSPATH') || exit;
+
 // phpcs:disable PSR1.Classes.ClassDeclaration.MissingNamespace, Squiz.Classes.ValidClassName.NotCamelCaps, PSR1.Methods.CamelCapsMethodName.NotCamelCaps
 if (!class_exists('TagGroups_Term_Image')) {
     /**
@@ -71,7 +73,6 @@ if (!class_exists('TagGroups_Term_Image')) {
                 'posts_per_page'         => count($attachment_ids),
                 'no_found_rows'          => true,
                 'update_post_term_cache' => false,
-                'suppress_filters'       => true,
             ));
         }
 

@@ -5,6 +5,8 @@
  * @license     GPL-3.0+
  */
 
+defined('ABSPATH') || exit;
+
 // phpcs:disable PSR1.Classes.ClassDeclaration.MissingNamespace, Squiz.Classes.ValidClassName.NotCamelCaps, PSR1.Methods.CamelCapsMethodName.NotCamelCaps
 if (!class_exists('TagGroups_Image_Field')) {
     /**
@@ -164,7 +166,7 @@ if (!class_exists('TagGroups_Image_Field')) {
         'title'  => __('Choose tag image', 'tag-groups'),
         'button' => __('Use this image', 'tag-groups'),
     ));
-    ?>;
+                ?>;
 
   function setup(picker) {
     var value = picker.querySelector('.tag-groups-image-value');
