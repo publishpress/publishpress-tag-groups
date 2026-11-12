@@ -12,6 +12,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Added: Add Label Maker tag style for Tabbed Tag Cloud and Accordion, #353⁠
 - Added: Add optional Groups feature toggle, #310⁠
 - Update: Join the CHANGELOG.md introduction onto one line, #361
+- Update: Require PHP 8.2, #391
 - Fixed: Accessibility fixes for VPAT 2.5 (WCAG 2.2 AA), #365⁠
 
 [3.0.1] - 09 November, 2026
