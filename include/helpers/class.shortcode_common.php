@@ -877,6 +877,9 @@ if (!class_exists('TagGroups_Shortcode_Common')) {
             }
 
             return ' data-count="' . (int) $count . '"';
+        }
+
+        /**
          * Adds the CSS class of the selected tag style to the wrapper div
          *
          * Allowed values of the tag_style attribute: '' (theme default), 'label-maker'
