@@ -7,6 +7,8 @@
 * @license     GPL-3.0+
 */
 
+defined('ABSPATH') || exit;
+
 if (!class_exists('TagGroups_Group_Admin')) {
     // phpcs:ignore PSR1.Classes.ClassDeclaration.MissingNamespace, Squiz.Classes.ValidClassName.NotCamelCaps -- Legacy class structure
     class TagGroups_Group_Admin
@@ -21,6 +23,16 @@ if (!class_exists('TagGroups_Group_Admin')) {
         static function render_group_administration()
         {
             global  $tag_group_groups ;
+            if (!TagGroups_Options::get_option('tag_group_enable_groups', 1)) {
+                wp_die(
+                    esc_html__('The Groups feature is disabled.', 'tag-groups'),
+                    esc_html__('Tag Groups', 'tag-groups'),
+                    array(
+                        'response'  => 403,
+                        'back_link' => true,
+                    )
+                );
+            }
             $tag_group_show_filter_tags = TagGroups_Options::get_option('tag_group_show_filter_tags', 0);
             //tags
             $tag_group_show_filter = TagGroups_Options::get_option('tag_group_show_filter', 0);

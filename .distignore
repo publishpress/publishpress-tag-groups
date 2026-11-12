@@ -36,6 +36,7 @@ node_modules
 package-lock.json
 package.json
 phpmd-ruleset.xml
+phpmd.ruleset.xml
 phpstan.neon
 ray-dist.php
 ray.php

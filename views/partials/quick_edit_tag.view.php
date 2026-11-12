@@ -1,3 +1,5 @@
+<?php defined('ABSPATH') || exit;
+?>
 <fieldset>
   <div class="inline-edit-col">
     <label><span class="title"><?php _e('Groups', 'tag-groups') ?></span>
@@ -13,7 +15,7 @@
 
         <?php // id must be "tag-groups-option-nonce" because otherwise identical with "Add New Tag" form on the left side. ?>
         <input type="hidden" name="tag-groups-nonce" id="tag-groups-option-nonce" value="" />
-        <input type="hidden" name="tag-groups-taxonomy" id="tag-groups-taxonomy" value="<?php echo esc_attr($screen->taxonomy); ?>" />
+        <input type="hidden" name="tag-groups-taxonomy" id="tag-groups-option-taxonomy" value="<?php echo esc_attr($screen->taxonomy); ?>" />
       </span>
     </label>
   </div>

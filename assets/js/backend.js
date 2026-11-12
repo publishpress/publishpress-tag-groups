@@ -7,6 +7,125 @@
  */
 
 /*
+ * Returns a translated label, falling back to English if the page did not provide it.
+ * "%s" in the label is replaced by value.
+ */
+function tg_label(labels, key, fallback, value) {
+  var text = labels && labels[key] ? String(labels[key]) : fallback;
+  if (typeof value !== 'undefined') {
+    text = text.replace('%s', value);
+  }
+  return text;
+}
+
+/*
+ * Announces a message to screen reader users (wp.a11y.speak or our own live region)
+ */
+function tg_speak(message, politeness) {
+  var text = jQuery('<div>').html(String(message || '')).text().replace(/\s+/g, ' ').trim();
+  if (text === '') {
+    return;
+  }
+  if (window.wp && wp.a11y && typeof wp.a11y.speak === 'function') {
+    wp.a11y.speak(text, politeness || 'polite');
+    return;
+  }
+  var region = jQuery('#tg_a11y_status');
+  if (!region.length) {
+    region = jQuery('<div id="tg_a11y_status" class="screen-reader-text" role="status" aria-live="polite"></div>').appendTo('body');
+  }
+  region.text('');
+  setTimeout(function () {
+    region.text(text);
+  }, 100);
+}
+
+/*
+ * Works out which control should receive focus after the table has been rebuilt
+ */
+function tg_get_focus_request(send_data) {
+  var active = document.activeElement ? jQuery(document.activeElement) : jQuery();
+  var position = Number(send_data.tag_groups_position);
+  switch (send_data.tag_groups_task) {
+    case 'up':
+      return { selectors: ['.tg_up[data-position="' + (position - 1) + '"]', '.tg_down[data-position="' + (position - 1) + '"]', '.tg_edit_label[data-position="' + (position - 1) + '"]'] };
+    case 'down':
+      return { selectors: ['.tg_down[data-position="' + (position + 1) + '"]', '.tg_up[data-position="' + (position + 1) + '"]', '.tg_edit_label[data-position="' + (position + 1) + '"]'] };
+    case 'update':
+      return { selectors: ['.tg_edit_label[data-position="' + position + '"]'], message: true };
+    case 'delete':
+      return { selectors: ['.tg_delete[data-position="' + position + '"]', '.tg_delete[data-position="' + (position - 1) + '"]', '.new_group_pointer.button'], message: false };
+    case 'new':
+      return { selectors: [], message: true };
+    case 'refresh':
+      if (active.is('.tg_pager_button, #tg_groups_reload')) {
+        return { pager: true };
+      }
+      if (active.is('#filter_label')) {
+        return { filter: true };
+      }
+      return null;
+    default:
+      return null;
+  }
+}
+
+function tg_focus_first(selectors) {
+  for (var i = 0; i < selectors.length; i++) {
+    var target = jQuery(selectors[i]).filter(':visible').first();
+    if (target.length) {
+      target.trigger('focus');
+      return true;
+    }
+  }
+  return false;
+}
+
+/*
+ * Focus the message container (used when there is no matching control)
+ */
+function tg_focus_message() {
+  var container = jQuery('#tg_message_container');
+  if (container.length && jQuery.trim(container.text()) !== '') {
+    container.attr('tabindex', '-1').trigger('focus');
+    return true;
+  }
+  return false;
+}
+
+/*
+ * HTML of the button that turns a group label into an input field
+ */
+function tg_html_label_button(labels, position, label, isChild, extraClasses) {
+  return (
+    '<button type="button" class="button-link tg_edit_label tg_text ' + (extraClasses || '') + (isChild ? ' tg_child_label' : '') +
+    '" data-position="' + position +
+    '" data-label="' + escape_html(label) + '"' +
+    (isChild ? ' data-is_child="1"' : '') +
+    ' aria-label="' + escape_html(tg_label(labels, 'rename_group', 'Rename group %s', label)) + '">' +
+    escape_html(label) +
+    ' <span class="dashicons dashicons-edit tg_pointer" aria-hidden="true"></span></button>'
+  );
+}
+
+/*
+ * HTML of the (single) hidden row for adding a new group
+ */
+function tg_html_new_group_row(labels) {
+  return (
+    '<tr class="tg_new_group_row" style="display:none;" id="tg_new_group">\n' +
+    '<td style="display:none;">' + labels.newgroup + '</td>\n' +
+    '<td colspan="5"><input placeholder="' + escape_html(tg_label(labels, 'placeholder_new', 'label')) +
+    '" aria-label="' + escape_html(tg_label(labels, 'new_group_name', 'New group name')) + '">' +
+    '<button type="button" class="button-link tg_new_yes tg_icon_button tg_pointer" aria-label="' +
+    escape_html(tg_label(labels, 'create_group', 'Create group')) +
+    '"><span class="dashicons dashicons-yes" aria-hidden="true" style="font-size: 30px; width: 30px; height: 30px; line-height: 1;"></span></button>' +
+    '</td>\n' +
+    '</tr>\n'
+  );
+}
+
+/*
  * Makes the actual Ajax request and populates the table, the pager and the message box
  */
 function tg_do_ajax(tg_params, send_data, labels) {
@@ -23,7 +142,9 @@ function tg_do_ajax(tg_params, send_data, labels) {
 
   var message_output = '';
 
-  jQuery('#tg_groups_container').fadeTo(200, 0.7);
+  var focusRequest = tg_get_focus_request(send_data);
+
+  jQuery('#tg_groups_container').fadeTo(200, 0.7).attr('aria-busy', 'true');
 
   /*
    * Send request and parse response
@@ -46,7 +167,8 @@ function tg_do_ajax(tg_params, send_data, labels) {
       } catch (e) {
         tg_display_error(
           e.message + '\n\n' + data.toString(),
-          tg_params.isPremium
+          tg_params.isPremium,
+          labels
         );
         return false;
       }
@@ -71,13 +193,8 @@ function tg_do_ajax(tg_params, send_data, labels) {
         var max_number = dataParsed.supplemental.max_number;
         var output = '';
 
-        var newGroupRow =
-        '<tr class="tg_new_group_row" style="display:none;" id="tg_new_group">\n' +
-        '<td style="display:none;">' + labels.newgroup + '</td>\n' +
-        '<td colspan="5"><input placeholder="' + labels.placeholder_new + '">' +
-        '<span class="tg_new_yes dashicons dashicons-yes tg_pointer" style="font-size: 30px; line-height: 1;"></span>' +
-        '</td>\n' +
-        '</tr>\n';
+        // one hidden row for adding a new group (unique id)
+        var newGroupRow = tg_html_new_group_row(labels);
 
         output += newGroupRow;
 
@@ -92,6 +209,8 @@ function tg_do_ajax(tg_params, send_data, labels) {
           .sortable('enable');
         }
 
+        var groupCount = 0;
+
         if (max_number > 0 || dataParsed.supplemental.is_filtered) {
           if (dataParsed.supplemental.parents_available) {
             jQuery('.tg_group_admin_parent').css('display', 'block');
@@ -105,6 +224,7 @@ function tg_do_ajax(tg_params, send_data, labels) {
           for (var key in groups) {
             var data_set = groups[key];
             if (data_set.id != null) {
+              groupCount++;
               if (showParents && data_set.is_parent) {
                 output +=
                   '<tr class="tg_sort_tr tg_is_parent" data-position="' +
@@ -112,29 +232,17 @@ function tg_do_ajax(tg_params, send_data, labels) {
                   '">\n';
                 output +=
                   '<td class="tg_label_column">';
-                output += '<span class="dashicons dashicons-networking" title="' + labels.tooltip_parent + '"></span> ';
-                output += '<div style="display:inline-block" class="tg_edit_label tg_text tg_truncate" data-position="' +
-                  data_set.position +
-                  '" data-label="' +
-                  escape_html(data_set.label) +
-                  '">';
-                output +=
-                  escape_html(data_set.label) +
-                  '<span class="dashicons dashicons-edit tg_pointer" style="display:none;"></span></div></td>\n';
+                output += '<span class="dashicons dashicons-networking" title="' + labels.tooltip_parent + '" aria-hidden="true"></span> ';
+                output += tg_html_label_button(labels, data_set.position, data_set.label, false, 'tg_truncate');
+                output += '</td>\n';
                 output += '<td colspan="2"></td>';
               } else {
                 output +=
                   '<tr class="tg_sort_tr" data-position="' + data_set.position + '">\n';
 
-                output +=
-                  '<td class="tg_label_column"><div class="tg_edit_label tg_text tg_truncate tg_child_label" data-position="' +
-                  data_set.position +
-                  '" data-label="' +
-                  escape_html(data_set.label) +
-                  '" data-is_child="1">';
-                output +=
-                  escape_html(data_set.label) +
-                  '<span class="dashicons dashicons-edit tg_pointer" style="display:none;"></span></div></td>\n';
+                output += '<td class="tg_label_column">';
+                output += tg_html_label_button(labels, data_set.position, data_set.label, true, 'tg_truncate');
+                output += '</td>\n';
                 if (dataParsed.supplemental.parents_available) {
                   output +=
                     '<td class="tg_hide_when_drag"><div class="tg_truncate">' +
@@ -153,7 +261,7 @@ function tg_do_ajax(tg_params, send_data, labels) {
                     data_set.amount +
                     '</a>';
                 } else {
-                  output += data_set.amount + '</span>';
+                  output += data_set.amount;
                 }
                 output += '</div>';
                 output += '</td>\n';
@@ -161,68 +269,64 @@ function tg_do_ajax(tg_params, send_data, labels) {
               let outputFilters = '';
               if (tg_params.tagsurl !== '') {
                 outputFilters +=
-                  '<a href="' +
+                  '<a class="tg_icon_link" href="' +
                   tg_params.tagsurl +
                   '&term-filter=' +
                   data_set.id +
-                  '"><span class="tg_pointer dashicons dashicons-tag"></span></a> ';
+                  '" aria-label="' +
+                  escape_html(tg_label(labels, 'show_tags_group', 'Show tags in group %s', data_set.label)) +
+                  '"><span class="tg_pointer dashicons dashicons-tag" aria-hidden="true"></span></a> ';
               }
               if (tg_params.postsurl !== '') {
                 outputFilters +=
-                  '<a href="' +
+                  '<a class="tg_icon_link" href="' +
                   tg_params.postsurl +
                   '&post_status=all&tg_filter_posts_value=' +
                   data_set.id +
                   '" title="' +
                   labels.tooltip_showposts +
-                  '"><span class="tg_pointer dashicons dashicons-admin-page"></span></a>';
+                  '" aria-label="' +
+                  escape_html(tg_label(labels, 'show_posts_group', 'Show posts in group %s', data_set.label)) +
+                  '"><span class="tg_pointer dashicons dashicons-admin-page" aria-hidden="true"></span></a>';
               }
               output += outputFilters
                 ? '<td class="tg_hide_when_drag">' + outputFilters + '</td>\n'
                 : '';
               output += '<td class="tg_hide_when_drag">';
               output +=
-                '<span class="tg_delete tg_pointer dashicons dashicons-trash" data-position="' +
+                '<button type="button" class="button-link tg_delete tg_icon_button tg_pointer" data-position="' +
                 data_set.position +
-                '"></span>';
+                '" aria-label="' +
+                escape_html(tg_label(labels, 'delete_group', 'Delete group %s', data_set.label)) +
+                '"><span class="dashicons dashicons-trash" aria-hidden="true"></span></button>';
               output += '</td>\n';
               output += '<td class="tg_hide_when_drag">';
 
-              output +=
-                '<div style="overflow:hidden; position:relative; height:20px; clear:both;">';
+              output += '<div class="tg_move_wrapper">';
               if (!dataParsed.supplemental.is_filtered && data_set.position > 1) {
                 output +=
-                  '<span class="tg_up tg_pointer dashicons dashicons-arrow-up" data-position="' +
+                  '<button type="button" class="button-link tg_up tg_icon_button tg_pointer" data-position="' +
                   data_set.position +
-                  '"></span>';
+                  '" aria-label="' +
+                  escape_html(tg_label(labels, 'move_up_group', 'Move %s up', data_set.label)) +
+                  '"><span class="dashicons dashicons-arrow-up" aria-hidden="true"></span></button>';
               }
               output += '</div>';
 
-              output +=
-                '<div style="overflow:hidden; position:relative; height:20px; clear:both;">';
+              output += '<div class="tg_move_wrapper">';
               if (!dataParsed.supplemental.is_filtered && data_set.position < max_number) {
                 output +=
-                  '<span class="tg_down tg_pointer dashicons dashicons-arrow-down" data-position="' +
+                  '<button type="button" class="button-link tg_down tg_icon_button tg_pointer" data-position="' +
                   data_set.position +
-                  '"></span>';
+                  '" aria-label="' +
+                  escape_html(tg_label(labels, 'move_down_group', 'Move %s down', data_set.label)) +
+                  '"><span class="dashicons dashicons-arrow-down" aria-hidden="true"></span></button>';
               }
               output += '</div>';
+              output += '</td>\n';
               output += '<td>' + data_set.id + '</td>\n';
 
-              output += '</td>\n';
               output += '</tr>\n';
-
-              // hidden row for adding a new group
-              var newGroupRow =
-              '<tr class="tg_new_group_row" style="display:none;" id="tg_new_group">\n' +
-              '<td style="display:none;">' + labels.newgroup + '</td>\n' +
-              '<td colspan="5"><input placeholder="' + labels.placeholder_new + '">' +
-              '<span class="tg_new_yes dashicons dashicons-yes tg_pointer" style="font-size: 30px; line-height: 1;"></span>' +
-              '</td>\n' +
-              '</tr>\n';
-
-              // Prepend new group row before existing groups
-              output = newGroupRow + output;
             }
           }
         } else {
@@ -237,25 +341,22 @@ function tg_do_ajax(tg_params, send_data, labels) {
           const $tagExistingButton = $tagGroupContainer.find('.new_group_pointer.button');
 
           if (!$tagExistingButton.length){
-            const $addTagGroupButton = jQuery('<span>', {
+            const $addTagGroupButton = jQuery('<button>', {
+              type: 'button',
               class: 'new_group_pointer button',
               text: labels.tooltip_addnew,
             });
 
             $addTagGroupButton.on('click', function () {
               var $row = jQuery('#tg_new_group');
-                    
-                // Ensure the row is fully removed and re-added
-                if (!$row.length) {
-                  jQuery('#tg_groups_container table').prepend(newGroupRow);
-                  $row = jQuery('#tg_new_group'); // Re-select the newly added row
-                }
-              
-                // Append a fresh new row
-                jQuery('#tg_new_group').fadeIn();
-                
-                jQuery('#tg_groups_container table').prepend(newGroupRow);
-                jQuery('#tg_new_group input').val('').show().trigger('focus');
+
+              if (!$row.length) {
+                jQuery('#tg_groups_container').prepend(tg_html_new_group_row(labels));
+                $row = jQuery('#tg_new_group');
+              }
+
+              $row.fadeIn();
+              $row.find('input').val('').show().trigger('focus');
             });
 
             $tagGroupContainer.append($addTagGroupButton);
@@ -263,7 +364,7 @@ function tg_do_ajax(tg_params, send_data, labels) {
         }
 
         // write table of groups
-        jQuery('#tg_groups_container').html(output);
+        jQuery('#tg_groups_container').html(output).removeAttr('aria-busy');
 
         // pager
         var pager_output = '';
@@ -275,29 +376,38 @@ function tg_do_ajax(tg_params, send_data, labels) {
         current_page = Math.floor(start_position / items_per_page) + 1;
         max_page = Math.floor((max_number - 1) / items_per_page) + 1;
 
+        var previousLabel = escape_html(tg_label(labels, 'tooltip_previous', 'previous page'));
+        var nextLabel = escape_html(tg_label(labels, 'tooltip_next', 'next page'));
+
         if (current_page > 1) {
           pager_output +=
-            '<button class="button-secondary tg_pager_button" data-page="' +
+            '<button type="button" class="button-secondary tg_pager_button" data-page="' +
             (current_page - 1) +
-            '" title="' +
-            labels.tooltip_previous +
-            '"><span class="dashicons dashicons-arrow-left-alt2"></span></button>';
+            '" title="' + previousLabel + '" aria-label="' + previousLabel +
+            '"><span class="dashicons dashicons-arrow-left-alt2" aria-hidden="true"></span></button>';
         } else {
           pager_output +=
-            '<button class="button-secondary tg_pager_button" disabled><span class="dashicons dashicons-arrow-left-alt2"></span></button>';
+            '<button type="button" class="button-secondary tg_pager_button" disabled aria-label="' + previousLabel +
+            '"><span class="dashicons dashicons-arrow-left-alt2" aria-hidden="true"></span></button>';
         }
 
         for (i = 1; i <= max_number; i += items_per_page) {
           page = Math.floor(i / items_per_page) + 1;
           if (page == current_page) {
             pager_output +=
-              '<button class="tg_reload_button tg_pointer button-secondary" id="tg_groups_reload"><span class="dashicons dashicons-update"></span></button>';
+              '<button type="button" class="tg_reload_button tg_pointer button-secondary" id="tg_groups_reload" aria-current="page" title="' +
+              escape_html(tg_label(labels, 'tooltip_reload', 'reload')) +
+              '" aria-label="' +
+              escape_html(tg_label(labels, 'current_page_reload', 'Page %s, current page. Reload', page)) +
+              '"><span class="dashicons dashicons-update" aria-hidden="true"></span> <span>' + page + '</span></button>';
           } else {
             pager_output +=
-              '<button class="button-secondary tg_pager_button" data-page="' +
+              '<button type="button" class="button-secondary tg_pager_button" data-page="' +
               page +
               '" title="' +
               labels.tooltip_go_to_page + ' ' + page +
+              '" aria-label="' +
+              escape_html(tg_label(labels, 'tooltip_go_to_page', 'go to page:') + ' ' + page) +
               '"><span>' +
               page +
               '</span></button>';
@@ -306,14 +416,14 @@ function tg_do_ajax(tg_params, send_data, labels) {
 
         if (current_page < max_page) {
           pager_output +=
-            '<button class="button-secondary tg_pager_button" data-page="' +
+            '<button type="button" class="button-secondary tg_pager_button" data-page="' +
             (current_page + 1) +
-            '" title="' +
-            labels.tooltip_next +
-            '"><span class="dashicons dashicons-arrow-right-alt2"></span></button>';
+            '" title="' + nextLabel + '" aria-label="' + nextLabel +
+            '"><span class="dashicons dashicons-arrow-right-alt2" aria-hidden="true"></span></button>';
         } else {
           pager_output +=
-            '<button class="button-secondary tg_pager_button" disabled><span class="dashicons dashicons-arrow-right-alt2"></span></button>';
+            '<button type="button" class="button-secondary tg_pager_button" disabled aria-label="' + nextLabel +
+            '"><span class="dashicons dashicons-arrow-right-alt2" aria-hidden="true"></span></button>';
         }
 
         jQuery('#tg_pager_container').fadeOut(200, function () {
@@ -324,6 +434,9 @@ function tg_do_ajax(tg_params, send_data, labels) {
                 height: Number(jQuery('#tg_pager_container').height()) + 10,
               });
             });
+          if (focusRequest && focusRequest.pager) {
+            jQuery('#tg_groups_reload').trigger('focus');
+          }
         });
 
         if (message != '') {
@@ -336,7 +449,24 @@ function tg_do_ajax(tg_params, send_data, labels) {
         }
         jQuery('#tg_message_container').fadeTo(200, 0, function () {
           jQuery(this).html(message_output).fadeTo(400, 1);
+          if (focusRequest && focusRequest.message && !(focusRequest.selectors && focusRequest.selectors.length && tg_focus_first(focusRequest.selectors))) {
+            tg_focus_message();
+          }
         });
+
+        if (message != '') {
+          tg_speak(message);
+        }
+
+        if (focusRequest && focusRequest.filter) {
+          tg_speak(tg_label(labels, 'filter_results', 'Groups found: %s', groupCount));
+        }
+
+        // return focus to the matching control
+        if (focusRequest && focusRequest.selectors && focusRequest.selectors.length && !focusRequest.message) {
+          tg_focus_first(focusRequest.selectors);
+        }
+
         jQuery('#new_parent').val('');
       } else {
         if (message == '') {
@@ -350,12 +480,17 @@ function tg_do_ajax(tg_params, send_data, labels) {
 
         jQuery('#tg_message_container').fadeTo(200, 0, function () {
           jQuery(this).html(message_output).fadeTo(400, 1);
+          if (focusRequest) {
+            tg_focus_message();
+          }
         });
+        tg_speak(message, 'assertive');
+        jQuery('#tg_groups_container').removeAttr('aria-busy');
       }
       jQuery('#tg_groups_container').fadeTo(200, 1);
     },
     error: function (xhr, textStatus, errorThrown) {
-      tg_display_error(xhr.responseText, tg_params.isPremium);
+      tg_display_error(xhr.responseText, tg_params.isPremium, labels);
     },
   });
 }
@@ -363,17 +498,20 @@ function tg_do_ajax(tg_params, send_data, labels) {
 function tg_html_first_group(labels) {
   let output = '<tr id="tg_new_1">\n';
   output +=
-    '<td colspan="2" style="text-align: left;">' + 
-    '<span style="display: flex; align-items: center; gap: 10px;">' + 
-    '<input data-position="0" placeholder="' + labels.newgroup + '">' +
-    '<span class="tg_new_yes dashicons dashicons-yes tg_pointer" data-id="1" style="font-size: 30px; line-height: 1;"></span>' +
+    '<td colspan="2" style="text-align: left;">' +
+    '<span style="display: flex; align-items: center; gap: 10px;">' +
+    '<input data-position="0" placeholder="' + labels.newgroup + '" aria-label="' +
+    escape_html(tg_label(labels, 'new_group_name', 'New group name')) + '">' +
+    '<button type="button" class="button-link tg_new_yes tg_icon_button tg_pointer" data-id="1" aria-label="' +
+    escape_html(tg_label(labels, 'create_group', 'Create group')) +
+    '"><span class="dashicons dashicons-yes" aria-hidden="true" style="font-size: 30px; width: 30px; height: 30px; line-height: 1;"></span></button>' +
     '</span>' +
     '</td>\n';
   output += '</tr>\n';
   return output;
 }
 
-function tg_display_error(message, isPremium) {
+function tg_display_error(message, isPremium, labels) {
   console.log('[Tag Groups] ' + message);
   let url;
   if (isPremium) {
@@ -384,55 +522,43 @@ function tg_display_error(message, isPremium) {
       'https://publishpress.com/tag-groups/';
   }
 
-  message = message.replace(/\n/g, '<br>');
+  message = String(message).replace(/\n/g, '<br>');
   message_output =
     '<tr><td colspan="6"><div class="notice notice-error"><p>Error loading groups. Please check the error description below and read the <a href="' +
     url +
-    '" target="_blank">troublshooting page</a>.<br><br>' +
+    '" target="_blank" rel="noopener noreferrer">troubleshooting page<span class="screen-reader-text"> ' +
+    escape_html(tg_label(labels, 'new_tab', '(opens in a new tab)')) +
+    '</span></a>.<br><br>' +
     message +
     '</p><div clear="both"></div></div></td></tr>';
 
   jQuery('#tg_groups_container')
+    .removeAttr('aria-busy')
     .fadeTo(200, 0, function () {
       jQuery(this).html(message_output).fadeTo(400, 1);
     })
     .removeClass('ui-sortable')
     .sortable('disable');
+
+  tg_speak('Error loading groups.', 'assertive');
 }
 
 /*
  * Turn an editable label field back into normal text
  */
-function tg_close_textfield(element, saved) {
+function tg_close_textfield(element, saved, labels) {
   const position = element.children(':first').attr('data-position');
   var label;
   const isChild = element.attr('data-is_child');
   if (saved) {
-    label = escape_html(element.children(':first').attr('value'));
+    label = element.children(':first').attr('value');
   } else {
-    label = escape_html(element.children(':first').attr('data-label'));
+    label = element.children(':first').attr('data-label');
   }
-  if (isChild) {
-    element.replaceWith(
-      '<span class="tg_edit_label tg_text tg_child_label" data-position="' +
-        position +
-        '" data-label="' +
-        label +
-        '" data-is_child=1>' +
-        label +
-        ' <span class="dashicons dashicons-edit tg_pointer" style="display:none;"></span></span>'
-    );
-  } else {
-    element.replaceWith(
-      '<span class="tg_edit_label tg_text" data-position="' +
-        position +
-        '" data-label="' +
-        label +
-        '">' +
-        label +
-        ' <span class="dashicons dashicons-edit tg_pointer" style="display:none;"></span></span>'
-    );
-  }
+  labels = labels || (typeof tagGroupsLabels !== 'undefined' ? tagGroupsLabels : {});
+  var button = jQuery(tg_html_label_button(labels, position, label, !!isChild, ''));
+  element.replaceWith(button);
+  return button;
 }
 
 /*
@@ -471,7 +597,7 @@ function tg_close_all_textfields() {
  * Prevent HTML from breaking
  */
 function escape_html(text) {
-  return text
+  return String(text)
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')

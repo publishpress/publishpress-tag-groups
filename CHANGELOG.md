@@ -5,6 +5,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Added: Private AI actions for Tag Groups settings, group management and permission-checked memberships.
 
+[3.0.1] - 09 November, 2026
+
+- Fixed: escape column gap shortcode attributes, #370
+- Fixed: escape shortcode separators centrally after decoding to prevent stored XSS, #369
+
 [3.0.0] - 05 October, 2026
 
 - Rebrand: Move Tag Groups to PublishPress

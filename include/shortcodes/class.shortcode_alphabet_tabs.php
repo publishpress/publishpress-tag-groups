@@ -8,6 +8,8 @@
 */
 
 // phpcs:disable PSR1.Classes.ClassDeclaration.MissingNamespace, Squiz.Classes.ValidClassName.NotCamelCaps, Squiz.Scope.MethodScope.Missing, PSR1.Methods.CamelCapsMethodName.NotCamelCaps
+defined('ABSPATH') || exit;
+
 if (! class_exists('TagGroups_Shortcode_Alphabet_Tabs')) {
     class TagGroups_Shortcode_Alphabet_Tabs extends TagGroups_Shortcode_Common
     {
@@ -110,6 +112,14 @@ if (! class_exists('TagGroups_Shortcode_Alphabet_Tabs')) {
         'type' => 'string',
         'default' => '_self',
         ),
+        'letter_strip' => array(
+        'type' => 'integer',
+        'default' => 0,
+        ),
+        'letter_strip_letters' => array(
+        'type' => 'string',
+        'default' => 'abcdefghijklmnopqrstuvwxyz',
+        ),
         'locale' => array(
         'type' => 'string',
         'default' => '',
@@ -205,6 +215,8 @@ if (! class_exists('TagGroups_Shortcode_Alphabet_Tabs')) {
             'include_letters' => '',
             'include_terms' => '',
             'largest' => 22,
+            'letter_strip' => 0,
+            'letter_strip_letters' => 'abcdefghijklmnopqrstuvwxyz',
             'link_append' => '',
             'link_target' => '',
             'locale'  => '',
@@ -220,6 +232,7 @@ if (! class_exists('TagGroups_Shortcode_Alphabet_Tabs')) {
             'smallest' => 12,
             'source' => 'shortcode',
             'tags_post_id' => -1,
+            'target_size' => 0,
             'taxonomy' => implode(',', TagGroups_Taxonomy::get_enabled_taxonomies()),
             'threshold' => 0, // minimum number of posts, total (independent of groups)
             'ul_class' => ''
@@ -240,6 +253,11 @@ if (! class_exists('TagGroups_Shortcode_Alphabet_Tabs')) {
 
             if ($this->attributes->delay) {
                 $this->attributes->div_class .= ' tag-groups-cloud-hidden';
+            }
+            $this->attributes->div_class = TagGroups_Shortcode_Statics::maybe_add_target_size_class($this->attributes, $this->attributes->div_class);
+
+            if (! empty($this->attributes->letter_strip)) {
+                $this->attributes->div_class .= ' tag-groups-letter-strip';
             }
 
             $div_id_output = $this->attributes->html_id ? ' id="' . TagGroups_Shortcode_Statics::sanitize_html_classes($this->attributes->html_id) . '"' : '';
@@ -279,6 +297,7 @@ if (! class_exists('TagGroups_Shortcode_Alphabet_Tabs')) {
       * Extract the alphabet
       */
             $this->extract_alphabet();
+            $this->add_letter_strip_letters();
             $this->include_exclude_letters();
             $this->sort_alphabet();
             $html = '';
@@ -364,7 +383,7 @@ if (! class_exists('TagGroups_Shortcode_Alphabet_Tabs')) {
                             $font_size = $this->font_size($post_count, $this->min_max[ $letter ]['min'], $this->min_max[ $letter ]['max']);
                             $font_size_separator = $this->attributes->adjust_separator_size ? $font_size : $this->attributes->separator_size;
                         if ($count_amount > 0 && ! empty($this->attributes->separator)) {
-                            $this->html_tags[ $i ] .= '<span style="font-size:' . $font_size_separator . 'px">' . $this->attributes->separator . '</span> ';
+                            $this->html_tags[ $i ] .= TagGroups_Shortcode_Statics::separator_html($this->attributes->separator, $font_size_separator);
                         }
 
                         $other_tag_classes = $this->get_assigned_tag_class($tag->term_id);
@@ -432,6 +451,10 @@ if (! class_exists('TagGroups_Shortcode_Alphabet_Tabs')) {
              * @return string
              */
                         $this->html_tags[ $i ] .= apply_filters('tag_groups_cloud_tag_append', $append_html, $tag->term_id, $font_size, $post_count, $this->shortcode_id);
+                        $this->html_tags[ $i ] .= TagGroups_Shortcode_Statics::sr_count_html($this->attributes, $post_count);
+                        if (! empty($this->attributes->letter_strip)) {
+                            $this->html_tags[ $i ] .= '<span class="tag-groups-count">' . (int) $post_count . '</span>';
+                        }
                         $this->html_tags[ $i ] .= '</a></span> ';
                         $count_amount++;
                     }
@@ -441,13 +464,41 @@ if (! class_exists('TagGroups_Shortcode_Alphabet_Tabs')) {
                 }
 
                 if (! $count_amount) {
-                    unset($this->html_tabs[ $i ]);
                     unset($this->html_tags[ $i ]);
+                    if (! empty($this->attributes->letter_strip)) {
+                        // keep the letter visible but without a link, so jQuery UI does not turn it into a tab
+                        $this->html_tabs[ $i ] = '<li class="tag-groups-letter-empty" role="presentation"><span aria-hidden="true">' . htmlentities(mb_strtolower($letter), ENT_QUOTES, "UTF-8") . '</span></li>';
+                    } else {
+                        unset($this->html_tabs[ $i ]);
+                    }
                 } elseif (isset($this->html_tags[ $i ])) {
                     $this->html_tags[ $i ] = '<div id="tabs-1' . $i . '">' .  $this->html_tags[ $i ] . '</div>';
                 }
 
                 $i++;
+            }
+        }
+
+
+      /**
+       * Letter strip: show the whole alphabet, including letters without tags
+       *
+       * @return void
+       */
+        function add_letter_strip_letters()
+        {
+
+            if (empty($this->attributes->letter_strip)) {
+                return;
+            }
+
+            $letters = mb_strtolower(str_replace(' ', '', (string) $this->attributes->letter_strip_letters));
+
+            for ($i = 0; $i < mb_strlen($letters); $i++) {
+                $letter = mb_substr($letters, $i, 1);
+                if (! in_array($letter, $this->attributes->alphabet)) {
+                    $this->attributes->alphabet[] = $letter;
+                }
             }
         }
 
@@ -464,9 +515,14 @@ if (! class_exists('TagGroups_Shortcode_Alphabet_Tabs')) {
         function finalize_html($html, $div_id_output, $div_class_output, $atts)
         {
 
+            // Panel IDs must be unique when there are several tab clouds on a page; the first one keeps its IDs.
+            $html = TagGroups_Shortcode_Statics::prefix_tab_panel_ids($html, TagGroups_Shortcode_Statics::next_instance('tabs'));
             $html = '<div' . $div_id_output . $div_class_output . '>' . $html . '</div>';
     // entire wrapper
-  
+            if ($this->attributes->delay) {
+                $html .= TagGroups_Shortcode_Statics::noscript_unhide_html();
+            }
+
             $html .= $this->custom_js_tabs();
     /**
              * Hook to filter final HTML

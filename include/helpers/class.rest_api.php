@@ -11,6 +11,8 @@
  */
 
 // phpcs:disable PSR1.Classes.ClassDeclaration.MissingNamespace, Squiz.Classes.ValidClassName.NotCamelCaps, PSR1.Methods.CamelCapsMethodName.NotCamelCaps
+defined('ABSPATH') || exit;
+
 if (!class_exists('TagGroups_REST_API')) {
     /**
      *   Adds endpoints to the WordPress REST API

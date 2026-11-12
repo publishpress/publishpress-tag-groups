@@ -1,3 +1,5 @@
+<?php defined('ABSPATH') || exit;
+?>
 <div class="tg_settings_tabs_content">
   <div class="tg_admin_accordion" >
     <h3>WordPress</h3>
@@ -22,7 +24,7 @@ echo esc_html($active_theme->get('Version'));
         <span id="ajax_test_field"><?php
         _e('Checking...', 'tag-groups');
         ?></span>
-        <input type="button" id="chatty-mango-help-button-ajax" class="button button-primary chatty-mango-help-icon" style="display: none; float: right;" value="<?php
+        <input type="button" id="chatty-mango-help-button-ajax" class="button button-primary chatty-mango-help-icon" style="display: none; float: right;" aria-expanded="false" aria-controls="ajax_error_field" value="<?php
         _e('Show the Response', 'tag-groups');
         ?>" data-topic="ajax">
         <div id="ajax_error_field" class="chatty-mango-help-container chatty-mango-help-container-ajax" style="display: none;"></div>

@@ -1,0 +1,258 @@
+/* Tag style: Label Maker (tag_style="label-maker") */
+.tag-groups-style-label-maker {
+	--tg-label-bg: #1f1d24;
+	--tg-label-color: #f4f2f7;
+	--tg-label-bg-alt-1: #b4492f;
+	--tg-label-bg-alt-2: #0f7c74;
+	--tg-label-font: "Courier New", Courier, ui-monospace, monospace;
+}
+.tag-groups-style-label-maker .tag-groups-tag {
+	display: inline-block;
+	margin: 0 0.35em 0.55em 0;
+	line-height: 1.2;
+}
+.tag-groups-style-label-maker .tag-groups-tag a,
+.tag-groups-style-label-maker .ui-widget-content .tag-groups-tag a {
+	display: inline-block;
+	padding: 0.2em 0.65em;
+	border-radius: 2px;
+	background: var(--tg-label-bg);
+	color: var(--tg-label-color);
+	font-family: var(--tg-label-font);
+	font-weight: 700;
+	letter-spacing: 0.08em;
+	text-transform: lowercase;
+	text-decoration: none;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.55), 0 1px 0 rgba(255, 255, 255, 0.18);
+	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), inset 0 -2px 0 rgba(0, 0, 0, 0.3), 0 1px 2px rgba(0, 0, 0, 0.25);
+	transition: transform 0.15s ease;
+}
+.tag-groups-style-label-maker .tag-groups-tag a span {
+	font-family: inherit;
+}
+.tag-groups-style-label-maker .tag-groups-tag:nth-child(3n) a {
+	background: var(--tg-label-bg-alt-1);
+	transform: rotate(-2deg);
+}
+.tag-groups-style-label-maker .tag-groups-tag:nth-child(4n) a {
+	background: var(--tg-label-bg-alt-2);
+	transform: rotate(1.5deg);
+}
+.tag-groups-style-label-maker .tag-groups-tag:nth-child(5n) a {
+	transform: rotate(-1deg);
+}
+.tag-groups-style-label-maker .tag-groups-tag a:hover,
+.tag-groups-style-label-maker .tag-groups-tag a:focus-visible {
+	color: var(--tg-label-color);
+	transform: rotate(0) translateY(-1px);
+}
+.tag-groups-style-label-maker .tag-groups-tag a:focus-visible {
+	outline: 2px solid currentColor;
+	outline-offset: 2px;
+}
+@media (prefers-reduced-motion: reduce) {
+	.tag-groups-style-label-maker .tag-groups-tag a {
+		transition: none;
+	}
+}
+
+/* Tag style: Heat Cloud (tag_style="heat") */
+/* All tags share one size; popularity is shown by color strength. --tg-heat (0-100) is set per tag. */
+.tag-groups-style-heat {
+	--tg-heat-hue: 258;
+	--tg-heat-saturation: 48%;
+	--tg-heat-size: 15px;
+	--tg-heat-color: #1f1d24;
+	--tg-heat-color-hot: #ffffff;
+}
+.tag-groups-style-heat .tag-groups-tag {
+	display: inline-block;
+	margin: 0 0.3em 0.45em 0;
+	font-size: var(--tg-heat-size) !important;
+	line-height: 1.3;
+}
+.tag-groups-style-heat .tag-groups-tag .tag-groups-label,
+.tag-groups-style-heat .tag-groups-tag .tag-groups-prepend,
+.tag-groups-style-heat .tag-groups-tag .tag-groups-append {
+	font-size: var(--tg-heat-size) !important;
+}
+.tag-groups-style-heat .tag-groups-tag a,
+.tag-groups-style-heat .ui-widget-content .tag-groups-tag a {
+	display: inline-block;
+	padding: 0.3em 0.7em;
+	border-radius: 6px;
+	background: hsl(var(--tg-heat-hue), var(--tg-heat-saturation), calc(94% - var(--tg-heat, 0) * 0.66%));
+	color: var(--tg-heat-color);
+	font-weight: 600;
+	text-decoration: none;
+	transition: filter 0.15s ease;
+}
+.tag-groups-style-heat .tag-groups-tag.tg-heat-hot a,
+.tag-groups-style-heat .ui-widget-content .tag-groups-tag.tg-heat-hot a {
+	color: var(--tg-heat-color-hot);
+}
+.tag-groups-style-heat .tag-groups-tag a:hover,
+.tag-groups-style-heat .tag-groups-tag a:focus-visible {
+	filter: brightness(0.92);
+}
+.tag-groups-style-heat .tag-groups-tag a:focus-visible {
+	outline: 2px solid hsl(var(--tg-heat-hue), var(--tg-heat-saturation), 35%);
+	outline-offset: 2px;
+}
+@media (prefers-reduced-motion: reduce) {
+	.tag-groups-style-heat .tag-groups-tag a {
+		transition: none;
+	}
+}
+
+/* Tag style: Count Pills (tag_style="count-pills") */
+/* Same-size rounded chips with the post count in a badge */
+.tag-groups-style-count-pills {
+	--tg-pill-size: 14px;
+	--tg-pill-bg: #ffffff;
+	--tg-pill-color: #1f1d24;
+	--tg-pill-border: #d9d6e3;
+	--tg-pill-accent: #5b3fa8;
+	--tg-pill-badge-bg: #ece7fb;
+}
+.tag-groups-style-count-pills .tag-groups-tag {
+	display: inline-block;
+	margin: 0 0.3em 0.45em 0;
+	font-size: var(--tg-pill-size) !important;
+	line-height: 1.3;
+}
+.tag-groups-style-count-pills .tag-groups-tag .tag-groups-label,
+.tag-groups-style-count-pills .tag-groups-tag .tag-groups-prepend,
+.tag-groups-style-count-pills .tag-groups-tag .tag-groups-append {
+	font-size: var(--tg-pill-size) !important;
+}
+.tag-groups-style-count-pills .tag-groups-tag a,
+.tag-groups-style-count-pills .ui-widget-content .tag-groups-tag a {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.45em;
+	padding: 0.2em 0.25em 0.2em 0.8em;
+	border: 1px solid var(--tg-pill-border);
+	border-radius: 999px;
+	background: var(--tg-pill-bg);
+	color: var(--tg-pill-color);
+	font-weight: 500;
+	text-decoration: none;
+	transition: border-color 0.15s ease;
+}
+.tag-groups-style-count-pills .tag-groups-count {
+	min-width: 1.6em;
+	padding: 0.1em 0.5em;
+	border-radius: 999px;
+	background: var(--tg-pill-badge-bg);
+	color: var(--tg-pill-accent);
+	font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+	font-size: 0.8em;
+	font-variant-numeric: tabular-nums lining-nums;
+	text-align: center;
+}
+.tag-groups-style-count-pills .tag-groups-tag a:hover,
+.tag-groups-style-count-pills .tag-groups-tag a:focus-visible {
+	border-color: var(--tg-pill-accent);
+	color: var(--tg-pill-color);
+}
+.tag-groups-style-count-pills .tag-groups-tag a:focus-visible {
+	outline: 2px solid var(--tg-pill-accent);
+	outline-offset: 2px;
+}
+@media (prefers-reduced-motion: reduce) {
+	.tag-groups-style-count-pills .tag-groups-tag a {
+		transition: none;
+	}
+}
+
+/* Tag style: Image Cards (tag_style="image-cards") */
+/* Each tag is a portrait card with its image (Edit Tag screen) behind the name and post count */
+.tag-groups-style-image-cards {
+	--tg-card-width: 9.5em;
+	--tg-card-radius: 10px;
+	--tg-card-text: #ffffff;
+	--tg-card-placeholder-1: #5b3fa8;
+	--tg-card-placeholder-2: #0f7c74;
+	--tg-card-placeholder-3: #b4492f;
+	--tg-card-focus: #5b3fa8;
+}
+.tag-groups-style-image-cards .tag-groups-tag {
+	display: inline-block;
+	width: var(--tg-card-width);
+	max-width: 100%;
+	margin: 0 0.5em 0.6em 0;
+	font-size: 15px !important;
+	line-height: 1.25;
+	vertical-align: top;
+}
+.tag-groups-style-image-cards .tag-groups-tag .tag-groups-label,
+.tag-groups-style-image-cards .tag-groups-tag .tag-groups-prepend,
+.tag-groups-style-image-cards .tag-groups-tag .tag-groups-append {
+	font-size: 1em !important;
+}
+.tag-groups-style-image-cards .tag-groups-tag a,
+.tag-groups-style-image-cards .ui-widget-content .tag-groups-tag a {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	aspect-ratio: 3 / 4;
+	padding: 0.7em;
+	overflow: hidden;
+	border-radius: var(--tg-card-radius);
+	color: var(--tg-card-text);
+	text-decoration: none;
+}
+.tag-groups-style-image-cards .tag-groups-card-image {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	max-width: none;
+	height: 100%;
+	margin: 0;
+	object-fit: cover;
+	transition: transform 0.3s ease;
+}
+.tag-groups-style-image-cards .tag-groups-card-placeholder {
+	background: linear-gradient(150deg, var(--tg-card-placeholder-1), #1f1d24);
+}
+.tag-groups-style-image-cards .tag-groups-tag:nth-child(3n+2) .tag-groups-card-placeholder {
+	background: linear-gradient(150deg, var(--tg-card-placeholder-2), #1f1d24);
+}
+.tag-groups-style-image-cards .tag-groups-tag:nth-child(3n) .tag-groups-card-placeholder {
+	background: linear-gradient(150deg, var(--tg-card-placeholder-3), #1f1d24);
+}
+.tag-groups-style-image-cards .tag-groups-tag a::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(transparent 40%, rgba(0, 0, 0, 0.62));
+}
+.tag-groups-style-image-cards .tag-groups-tag a > span:not(.tag-groups-card-placeholder) {
+	position: relative;
+	z-index: 1;
+}
+.tag-groups-style-image-cards .tag-groups-label {
+	font-weight: 700;
+}
+.tag-groups-style-image-cards .tag-groups-count {
+	font-size: 0.75em;
+	opacity: 0.9;
+}
+.tag-groups-style-image-cards .tag-groups-tag a:hover .tag-groups-card-image {
+	transform: scale(1.04);
+}
+.tag-groups-style-image-cards .tag-groups-tag a:hover,
+.tag-groups-style-image-cards .tag-groups-tag a:focus-visible {
+	color: var(--tg-card-text);
+}
+.tag-groups-style-image-cards .tag-groups-tag a:focus-visible {
+	outline: 3px solid var(--tg-card-focus);
+	outline-offset: 2px;
+}
+@media (prefers-reduced-motion: reduce) {
+	.tag-groups-style-image-cards .tag-groups-card-image {
+		transition: none;
+	}
+}

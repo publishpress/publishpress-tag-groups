@@ -8,6 +8,8 @@
 */
 
 // phpcs:disable PSR1.Classes.ClassDeclaration.MissingNamespace, Squiz.Classes.ValidClassName.NotCamelCaps, Squiz.Scope.MethodScope.Missing, PSR1.Methods.CamelCapsMethodName.NotCamelCaps
+defined('ABSPATH') || exit;
+
 if (!class_exists('TagGroups_Shortcode_Accordion')) {
     class TagGroups_Shortcode_Accordion extends TagGroups_Shortcode_Common
     {
@@ -146,6 +148,10 @@ if (!class_exists('TagGroups_Shortcode_Accordion')) {
             'type'    => 'string',
             'default' => '',
         ),
+            'show_icons'            => array(
+            'type'    => 'integer',
+            'default' => 0,
+        ),
             'show_not_assigned'     => array(
             'type'    => 'integer',
             'default' => 0,
@@ -162,9 +168,21 @@ if (!class_exists('TagGroups_Shortcode_Accordion')) {
             'type'    => 'integer',
             'default' => 1,
         ),
+            'search_panel'          => array(
+            'type'    => 'integer',
+            'default' => 0,
+        ),
+            'search_panel_popular'  => array(
+            'type'    => 'integer',
+            'default' => 8,
+        ),
             'smallest'              => array(
             'type'    => 'integer',
             'default' => 12,
+        ),
+            'tag_style'             => array(
+            'type'    => 'string',
+            'default' => '',
         ),
             'tags_post_id'          => array(
             'type'    => 'integer',
@@ -235,7 +253,10 @@ if (!class_exists('TagGroups_Shortcode_Accordion')) {
                 'orderby'               => 'name',
                 'prepend'               => '',
                 'remove_filters'        => 1,
+                'search_panel'          => 0,
+                'search_panel_popular'  => 8,
                 'separator'             => '',
+                'show_icons'            => 0,
                 'separator_size'        => 12,
                 'show_accordion'        => 1,
                 'show_all_groups'       => false,
@@ -243,7 +264,9 @@ if (!class_exists('TagGroups_Shortcode_Accordion')) {
                 'show_tag_count'        => true,
                 'smallest'              => 12,
                 'source'                => 'shortcode',
+                'tag_style'             => '',
                 'tags_post_id'          => -1,
+                'target_size'           => 0,
                 'taxonomy'              => implode(',', TagGroups_Taxonomy::get_enabled_taxonomies()),
                 'threshold'             => 0,
             ), $atts));
@@ -262,6 +285,8 @@ if (!class_exists('TagGroups_Shortcode_Accordion')) {
             if ($this->attributes->delay) {
                 $this->attributes->div_class .= ' tag-groups-cloud-hidden';
             }
+            $this->attributes->div_class = TagGroups_Shortcode_Statics::maybe_add_target_size_class($this->attributes, $this->attributes->div_class);
+            $this->add_tag_style_class();
             $div_id_output = ( $this->attributes->html_id ? ' id="' . TagGroups_Shortcode_Statics::sanitize_html_classes($this->attributes->html_id) . '"' : '' );
             $div_class_output = ( $this->attributes->div_class ? ' class="' . TagGroups_Shortcode_Statics::sanitize_html_classes($this->attributes->div_class) . '"' : '' );
             if (is_array($atts)) {
@@ -305,6 +330,7 @@ if (!class_exists('TagGroups_Shortcode_Accordion')) {
             }
 
             $this->determine_min_max();
+            $this->prime_tag_style_caches();
             $html = '';
             for ($i = $this->start_group; $i <= $tag_group_groups->get_max_position(); $i++) {
                 if (!isset($this->tag_group_data[$i])) {
@@ -407,9 +433,10 @@ if (!class_exists('TagGroups_Shortcode_Accordion')) {
                     }
                     $tag_link = $this->get_tag_link($tag, $i);
                     $font_size = $this->font_size($post_count, $this->min_max[$this->tag_group_data[$i]['term_group']]['min'], $this->min_max[$this->tag_group_data[$i]['term_group']]['max']);
+                    $tag_style_markup = $this->get_tag_style_markup($post_count, $this->min_max[$this->tag_group_data[$i]['term_group']]['min'], $this->min_max[$this->tag_group_data[$i]['term_group']]['max'], $tag->term_id);
                     $font_size_separator = ( $this->attributes->adjust_separator_size ? $font_size : $this->attributes->separator_size );
                     if ($this->count_amount > 0 && !empty($this->attributes->separator)) {
-                        $html_tags .= '<span style="font-size:' . $font_size_separator . 'px">' . $this->attributes->separator . '</span> ';
+                        $html_tags .= TagGroups_Shortcode_Statics::separator_html($this->attributes->separator, $font_size_separator);
                     }
                     $other_tag_classes = $this->get_assigned_tag_class($tag->term_id);
                     $title = $this->get_title($tag, $post_count);
@@ -426,7 +453,7 @@ if (!class_exists('TagGroups_Shortcode_Accordion')) {
                         $other_tag_classes .= ' ' . sanitize_html_class(' tg_tag_group_id_' . $this->tag_group_data[$i]['term_group']) . ' ' . sanitize_html_class('tg_tag_group_label_' . strtolower($this->tag_group_data[$i]['label']));
                     }
                     // assembling a tag
-                    $html_tags .= '<span class="tag-groups-tag' . $other_tag_classes . '" style="font-size:' . $font_size . 'px" data-group="' . $this->tag_group_data[$i]['term_group'] . '#"><a href="' . $tag_link . '" ' . $link_target_html . '' . $title_html . '  class="' . $tag->slug . '">';
+                    $html_tags .= '<span class="tag-groups-tag' . $other_tag_classes . $tag_style_markup['class'] . '" style="font-size:' . $font_size . 'px' . $tag_style_markup['style'] . '"' . $this->get_search_panel_tag_data($post_count) . ' data-group="' . $this->tag_group_data[$i]['term_group'] . '#"><a href="' . $tag_link . '" ' . $link_target_html . '' . $title_html . '  class="' . $tag->slug . '">';
 
                     if ('' != $prepend_output) {
                         $prepend_html = '<span class="tag-groups-prepend" style="font-size:' . $font_size . 'px">' . htmlentities($prepend_output, ENT_QUOTES, "UTF-8") . '</span>';
@@ -474,6 +501,8 @@ if (!class_exists('TagGroups_Shortcode_Accordion')) {
                      * @param string $this->shortcode_id
                      * @return string
                      */
+                    $html_tags .= $tag_style_markup['before'];
+                    $html_tags .= $this->get_tag_icon_html($tag->term_id);
                     $html_tags .= apply_filters(
                         'tag_groups_cloud_tag_outer',
                         '<span class="tag-groups-label" style="font-size:' . $font_size . 'px">' . $inner_html . '</span>',
@@ -505,7 +534,9 @@ if (!class_exists('TagGroups_Shortcode_Accordion')) {
                         $post_count,
                         $this->shortcode_id
                     );
+                    $html_tags .= TagGroups_Shortcode_Statics::sr_count_html($this->attributes, $post_count);
                     $html_tags .= '</a></span> ';
+                    $html_tags .= $tag_style_markup['after'] . '</a></span> ';
                     $this->count_amount++;
                 }
             }
@@ -528,6 +559,10 @@ if (!class_exists('TagGroups_Shortcode_Accordion')) {
             $atts
         ) {
             $html = '<div' . $div_id_output . $div_class_output . '>' . $html . '</div>';
+            if ($this->attributes->delay) {
+                $html .= TagGroups_Shortcode_Statics::noscript_unhide_html();
+            }
+            $html = $this->get_search_panel_html() . '<div' . $div_id_output . $div_class_output . '>' . $html . '</div>';
             $html .= $this->custom_js_accordion();
             /**
              * Hook to filter final HTML

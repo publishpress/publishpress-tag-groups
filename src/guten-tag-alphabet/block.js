@@ -11,6 +11,8 @@
 
 import '../editor.css';
 
+import '../../assets/scss/_letter-strip.scss';
+
 import Select from '../components/tag-groups-select';
 import TagGroupsServerSideRender from '../components/tag-groups-render';
 
@@ -159,6 +161,8 @@ class tagGroupsAlphabeticalCloudParameters extends Component {
       exclude_letters,
       include_letters,
       largest,
+      letter_strip,
+      letter_strip_letters,
       link_append,
       link_target,
       mouseover,
@@ -231,6 +235,7 @@ class tagGroupsAlphabeticalCloudParameters extends Component {
             />
             <RangeControl
               label={__('Smallest font size')}
+              help={__('Between 6 and 72. It cannot be larger than the largest font size.')}
               value={smallest !== undefined ? Number(smallest) : 12}
               onChange={(smallest) => {
                 if (smallest <= largest && smallest < 73)
@@ -248,6 +253,7 @@ class tagGroupsAlphabeticalCloudParameters extends Component {
             />
             <RangeControl
               label={__('Largest font size')}
+              help={__('Between 6 and 72. It cannot be smaller than the smallest font size.')}
               value={largest !== undefined ? Number(largest) : 22}
               onChange={(largest) => {
                 if (smallest <= largest && largest > 5)
@@ -574,6 +580,27 @@ class tagGroupsAlphabeticalCloudParameters extends Component {
               checked={delay}
               onChange={() => toggleOptionDelay(this)}
             />
+            <ToggleControl
+              label={__('Letter strip: compact A–Z bar that also shows letters without tags')}
+              checked={!!letter_strip}
+              onChange={(checked) => setAttributes({ letter_strip: checked ? 1 : 0 })}
+            />
+            {!!letter_strip && (
+              <div>
+                <label htmlFor='tg_input_letter_strip_letters'>
+                  {__('Letters in the strip')}
+                </label>
+                <PlainText
+                  id='tg_input_letter_strip_letters'
+                  className='input-control'
+                  value={letter_strip_letters ? letter_strip_letters : ''}
+                  placeholder='abcdefghijklmnopqrstuvwxyz'
+                  onChange={(letter_strip_letters) =>
+                    setAttributes({ letter_strip_letters })
+                  }
+                />
+              </div>
+            )}
             <div>
               <TagGroupsHelp
                 url={helpUrl}
@@ -805,7 +832,7 @@ class tagGroupsAlphabeticalCloudParameters extends Component {
       <div>
         {!!cover && (
           <Fragment>
-            <img src={pluginUrl + '/assets/images/features/' + cover} />
+            <img src={pluginUrl + '/assets/images/features/' + cover} alt='' />
           </Fragment>
         )}
         {!cover && serverSideRender && (
@@ -1014,6 +1041,16 @@ var cmTagGroupsAlphabetBlock = registerBlockType(
         // only in shortcode
         type: 'string',
         default: '',
+      },
+      letter_strip: {
+        // configurable in block
+        type: 'integer',
+        default: 0,
+      },
+      letter_strip_letters: {
+        // configurable in block
+        type: 'string',
+        default: 'abcdefghijklmnopqrstuvwxyz',
       },
       largest: {
         // configurable in block
