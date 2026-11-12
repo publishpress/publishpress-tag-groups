@@ -55,6 +55,7 @@ if (!class_exists('TagGroups_Hooks')) {
          */
         public function root_all()
         {
+            add_action('tag_groups_groups_of_term_saved', array( 'TagGroups_Group_Save_Handlers', 'schedule_clear_tag_groups_group_terms' ), 11);
             global  $tag_group_terms ;
             /**
              * enable internationalization
@@ -109,7 +110,7 @@ if (!class_exists('TagGroups_Hooks')) {
             /**
              * After a term has changed its groups, we must update the array of terms per group.
              */
-            add_action('tag_groups_groups_of_term_saved', array( 'TagGroups_Group_Save_Handlers', 'schedule_clear_tag_groups_group_terms' ), 11);
+
             /**
              * After a term has been deleted, we might have to update the object cache
              */

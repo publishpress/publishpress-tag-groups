@@ -302,6 +302,10 @@ global  $tag_groups_loader ;
 require_once dirname(__FILE__) . '/include/class.loader.php';
 $tag_groups_loader = new TagGroups_Loader(TAG_GROUPS_PLUGIN_ABSOLUTE_PATH);
 $tag_groups_loader->require_classes();
+require_once __DIR__ . '/include/mcp/class.mcp.php';
+require_once __DIR__ . '/include/mcp/class.mcp_settings.php';
+require_once __DIR__ . '/include/mcp/class.mcp_actions.php';
+TagGroups_Mcp::boot();
 if (!function_exists('tag_groups_init')) {
 /**
      * Do all initial stuff: register hooks, check dependencies
