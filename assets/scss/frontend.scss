@@ -6,6 +6,12 @@
 * License: GNU GENERAL PUBLIC LICENSE, Version 3
 */
 
+/* Tag icons. Also imported by the Tabs and Accordion blocks for the editor preview. */
+@use 'icons';
+/* Letter strip. Also imported by the Alphabetical Tabs block for the editor preview. */
+@use 'letter-strip';
+/* Search panel. Also imported by the Tabs and Accordion blocks for the editor preview. */
+@use 'search-panel';
 /* Tag styles (tag_style attribute). Also imported by the Tabs and Accordion blocks for the editor preview. */
 @use 'tag-styles';
 

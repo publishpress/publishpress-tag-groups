@@ -8,6 +8,8 @@
  */
 
 // phpcs:disable PSR1.Classes.ClassDeclaration.MissingNamespace, Squiz.Classes.ValidClassName.NotCamelCaps, PSR1.Methods.CamelCapsMethodName.NotCamelCaps
+defined('ABSPATH') || exit;
+
 if (! class_exists('TagGroups_Options')) {
 
   /**
@@ -161,6 +163,11 @@ if (! class_exists('TagGroups_Options')) {
             'type'    => self::INTEGER
             );
             $available_options['tag_group_show_filter_tags'] = array(
+            'origin' => self::TAG_GROUPS_PLUGIN,
+            'export' => true,
+            'type'    => self::INTEGER
+            );
+            $available_options['tag_group_enable_groups'] = array(
             'origin' => self::TAG_GROUPS_PLUGIN,
             'export' => true,
             'type'    => self::INTEGER

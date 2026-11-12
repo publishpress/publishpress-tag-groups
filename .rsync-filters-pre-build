@@ -48,3 +48,4 @@
 - .cursor
 - metrics
 - phpmd-ruleset.xml
+- phpmd.ruleset.xml

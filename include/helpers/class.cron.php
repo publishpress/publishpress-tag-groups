@@ -20,6 +20,8 @@
  */
 
 // phpcs:disable PSR1.Classes.ClassDeclaration.MissingNamespace, Squiz.Classes.ValidClassName.NotCamelCaps, PSR1.Methods.CamelCapsMethodName.NotCamelCaps
+defined('ABSPATH') || exit;
+
 if (! class_exists('TagGroups_Cron')) {
 /**
    * The main purpose of this class is to keep all cron-related information in one place.

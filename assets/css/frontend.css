@@ -71,6 +71,237 @@
   width: auto;
 }
 
+/* Tag icons (show_icons="1"); inline SVG from Font Awesome Free, sized to the tag text */
+.tag-groups-tag .tag-groups-icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  margin-right: 0.3em;
+  fill: currentColor;
+  vertical-align: -0.125em;
+  overflow: visible;
+}
+
+/* Letter strip for Alphabetical Tabs (letter_strip="1") */
+.tag-groups-letter-strip {
+  --tg-strip-ink: #1f1d24;
+  --tg-strip-ink-text: #ffffff;
+  --tg-strip-border: #d9d6e3;
+  --tg-strip-muted: #6b6680;
+  --tg-strip-accent: #5b3fa8;
+  --tg-strip-size: 2em;
+}
+
+.tag-groups-letter-strip.ui-tabs {
+  padding: 0;
+  border: 0;
+  background: none;
+}
+
+.tag-groups-letter-strip.ui-tabs .ui-tabs-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+}
+
+.tag-groups-letter-strip.ui-tabs .ui-tabs-nav::before,
+.tag-groups-letter-strip.ui-tabs .ui-tabs-nav::after {
+  display: none;
+}
+
+.tag-groups-letter-strip.ui-tabs .ui-tabs-nav li {
+  float: none;
+  margin: 0 !important;
+  padding: 0;
+  border: 1px solid var(--tg-strip-border);
+  border-radius: 5px;
+  background: none;
+  list-style: none;
+}
+
+.tag-groups-letter-strip.ui-tabs .ui-tabs-nav li a,
+.tag-groups-letter-strip.ui-tabs .ui-tabs-nav li > span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  float: none;
+  width: var(--tg-strip-size);
+  height: var(--tg-strip-size);
+  padding: 0;
+  color: var(--tg-strip-ink);
+  font-family: ui-monospace, Menlo, Consolas, monospace;
+  font-size: 0.85em;
+  font-weight: 600;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.tag-groups-letter-strip.ui-tabs .ui-tabs-nav li.ui-tabs-active {
+  border-color: var(--tg-strip-ink);
+  background: var(--tg-strip-ink);
+}
+
+.tag-groups-letter-strip.ui-tabs .ui-tabs-nav li.ui-tabs-active a {
+  color: var(--tg-strip-ink-text);
+}
+
+.tag-groups-letter-strip.ui-tabs .ui-tabs-nav li:not(.ui-tabs-active):not(.tag-groups-letter-empty):hover {
+  border-color: var(--tg-strip-accent);
+}
+
+.tag-groups-letter-strip.ui-tabs .ui-tabs-nav li a:focus-visible {
+  outline: 2px solid var(--tg-strip-accent);
+  outline-offset: 2px;
+}
+
+.tag-groups-letter-strip.ui-tabs .ui-tabs-nav li.tag-groups-letter-empty {
+  border-color: transparent;
+}
+
+.tag-groups-letter-strip.ui-tabs .ui-tabs-nav li.tag-groups-letter-empty > span {
+  color: var(--tg-strip-muted);
+  opacity: 0.45;
+  cursor: default;
+}
+
+.tag-groups-letter-strip.ui-tabs .ui-tabs-panel {
+  display: grid;
+  gap: 0.3em;
+  max-width: 22em;
+  margin-top: 0.9em;
+  padding: 0.1em 0 0.1em 0.9em;
+  border: 0;
+  border-left: 2px solid var(--tg-strip-accent);
+  background: none;
+}
+
+.tag-groups-letter-strip .ui-tabs-panel[aria-hidden=true] {
+  display: none;
+}
+
+.tag-groups-letter-strip .tag-groups-tag,
+.tag-groups-letter-strip .tag-groups-tag .tag-groups-label {
+  font-size: 1em !important;
+}
+
+.tag-groups-letter-strip .tag-groups-tag a {
+  display: flex;
+  justify-content: space-between;
+  gap: 1em;
+  text-decoration: none;
+}
+
+.tag-groups-letter-strip .tag-groups-tag a:hover .tag-groups-label {
+  text-decoration: underline;
+}
+
+.tag-groups-letter-strip .tag-groups-count {
+  color: var(--tg-strip-muted);
+  font-family: ui-monospace, Menlo, Consolas, monospace;
+  font-size: 0.8em;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Search panel (search_panel="1") */
+.tag-groups-search-panel {
+  --tg-search-accent: #5b3fa8;
+  --tg-search-accent-soft: #ece7fb;
+  --tg-search-border: #d9d6e3;
+  --tg-search-muted: #6b6680;
+  --tg-search-bg: transparent;
+  display: grid;
+  gap: 0.75em;
+  margin-block: 0 1.25em;
+  box-sizing: border-box;
+  padding: 1em;
+  border: 1px solid var(--tg-search-border);
+  border-radius: 10px;
+  background: var(--tg-search-bg);
+}
+
+.tag-groups-search-panel [hidden] {
+  display: none !important;
+}
+
+.tag-groups-search-label {
+  font-weight: 600;
+}
+
+.tag-groups-search-panel .tag-groups-search-input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.5em 0.75em;
+  border: 1px solid var(--tg-search-border);
+  border-radius: 6px;
+  font: inherit;
+}
+
+.tag-groups-search-panel .tag-groups-search-input:focus {
+  outline: 2px solid var(--tg-search-accent);
+  outline-offset: 1px;
+}
+
+.tag-groups-search-section {
+  display: grid;
+  gap: 0.4em;
+}
+
+.tag-groups-search-heading {
+  color: var(--tg-search-muted);
+  font-size: 0.75em;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.tag-groups-search-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4em;
+}
+
+.tag-groups-search-panel .tag-groups-search-chip {
+  display: inline-block;
+  padding: 0.2em 0.65em;
+  border-radius: 5px;
+  background: var(--tg-search-accent-soft);
+  color: var(--tg-search-accent);
+  font-size: 0.9em;
+  text-decoration: none;
+}
+
+.tag-groups-search-panel .tag-groups-search-chip:hover,
+.tag-groups-search-panel .tag-groups-search-chip:focus-visible {
+  background: var(--tg-search-accent);
+  color: #ffffff;
+}
+
+.tag-groups-search-panel .tag-groups-search-chip:focus-visible {
+  outline: 2px solid var(--tg-search-accent);
+  outline-offset: 2px;
+}
+
+.tag-groups-search-recent .tag-groups-search-chip {
+  border: 1px dashed var(--tg-search-border);
+  background: transparent;
+  color: var(--tg-search-muted);
+}
+
+.tag-groups-search-chip mark {
+  background: none;
+  color: inherit;
+  font-weight: 700;
+}
+
+.tag-groups-search-empty {
+  margin: 0;
+  color: var(--tg-search-muted);
+}
+
 /* Tag style: Label Maker (tag_style="label-maker") */
 .tag-groups-style-label-maker {
 	--tg-label-bg: #1f1d24;

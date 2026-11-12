@@ -8,6 +8,8 @@
 */
 
 // phpcs:disable PSR1.Classes.ClassDeclaration.MissingNamespace, Squiz.Classes.ValidClassName.NotCamelCaps, Squiz.Scope.MethodScope.Missing, PSR1.Methods.CamelCapsMethodName.NotCamelCaps
+defined('ABSPATH') || exit;
+
 if (!class_exists('TagGroups_Shortcode_Accordion')) {
     class TagGroups_Shortcode_Accordion extends TagGroups_Shortcode_Common
     {
@@ -146,6 +148,10 @@ if (!class_exists('TagGroups_Shortcode_Accordion')) {
             'type'    => 'string',
             'default' => '',
         ),
+            'show_icons'            => array(
+            'type'    => 'integer',
+            'default' => 0,
+        ),
             'show_not_assigned'     => array(
             'type'    => 'integer',
             'default' => 0,
@@ -161,6 +167,14 @@ if (!class_exists('TagGroups_Shortcode_Accordion')) {
             'show_tag_count'        => array(
             'type'    => 'integer',
             'default' => 1,
+        ),
+            'search_panel'          => array(
+            'type'    => 'integer',
+            'default' => 0,
+        ),
+            'search_panel_popular'  => array(
+            'type'    => 'integer',
+            'default' => 8,
         ),
             'smallest'              => array(
             'type'    => 'integer',
@@ -239,7 +253,10 @@ if (!class_exists('TagGroups_Shortcode_Accordion')) {
                 'orderby'               => 'name',
                 'prepend'               => '',
                 'remove_filters'        => 1,
+                'search_panel'          => 0,
+                'search_panel_popular'  => 8,
                 'separator'             => '',
+                'show_icons'            => 0,
                 'separator_size'        => 12,
                 'show_accordion'        => 1,
                 'show_all_groups'       => false,
@@ -434,7 +451,7 @@ if (!class_exists('TagGroups_Shortcode_Accordion')) {
                         $other_tag_classes .= ' ' . sanitize_html_class(' tg_tag_group_id_' . $this->tag_group_data[$i]['term_group']) . ' ' . sanitize_html_class('tg_tag_group_label_' . strtolower($this->tag_group_data[$i]['label']));
                     }
                     // assembling a tag
-                    $html_tags .= '<span class="tag-groups-tag' . $other_tag_classes . $tag_style_markup['class'] . '" style="font-size:' . $font_size . 'px' . $tag_style_markup['style'] . '" data-group="' . $this->tag_group_data[$i]['term_group'] . '#"><a href="' . $tag_link . '" ' . $link_target_html . '' . $title_html . '  class="' . $tag->slug . '">';
+                    $html_tags .= '<span class="tag-groups-tag' . $other_tag_classes . $tag_style_markup['class'] . '" style="font-size:' . $font_size . 'px' . $tag_style_markup['style'] . '"' . $this->get_search_panel_tag_data($post_count) . ' data-group="' . $this->tag_group_data[$i]['term_group'] . '#"><a href="' . $tag_link . '" ' . $link_target_html . '' . $title_html . '  class="' . $tag->slug . '">';
 
                     if ('' != $prepend_output) {
                         $prepend_html = '<span class="tag-groups-prepend" style="font-size:' . $font_size . 'px">' . htmlentities($prepend_output, ENT_QUOTES, "UTF-8") . '</span>';
@@ -483,6 +500,7 @@ if (!class_exists('TagGroups_Shortcode_Accordion')) {
                      * @return string
                      */
                     $html_tags .= $tag_style_markup['before'];
+                    $html_tags .= $this->get_tag_icon_html($tag->term_id);
                     $html_tags .= apply_filters(
                         'tag_groups_cloud_tag_outer',
                         '<span class="tag-groups-label" style="font-size:' . $font_size . 'px">' . $inner_html . '</span>',
@@ -536,7 +554,7 @@ if (!class_exists('TagGroups_Shortcode_Accordion')) {
             $div_class_output,
             $atts
         ) {
-            $html = '<div' . $div_id_output . $div_class_output . '>' . $html . '</div>';
+            $html = $this->get_search_panel_html() . '<div' . $div_id_output . $div_class_output . '>' . $html . '</div>';
             $html .= $this->custom_js_accordion();
             /**
              * Hook to filter final HTML

@@ -6,9 +6,7 @@
  * @package PublishPress\TagGroups
  */
 
-if (!defined('ABSPATH')) {
-    exit;
-}
+defined('ABSPATH') || exit;
 
 /**
  * Initialize the PublishPress WordPress Reviews library for PublishPress Tag Groups
