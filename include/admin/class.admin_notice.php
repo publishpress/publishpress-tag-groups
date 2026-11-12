@@ -19,6 +19,8 @@
 *
 */
 
+defined('ABSPATH') || exit;
+
 if (! class_exists('TagGroups_Admin_Notice')) {
     // phpcs:ignore PSR1.Classes.ClassDeclaration.MissingNamespace, Squiz.Classes.ValidClassName.NotCamelCaps -- Legacy class structure
     class TagGroups_Admin_Notice

@@ -1,3 +1,5 @@
+<?php defined('ABSPATH') || exit;
+?>
 <div class="form-field">
   <label for="term-group"><?php _e('Tag Groups', 'tag-groups') ?></label>
 

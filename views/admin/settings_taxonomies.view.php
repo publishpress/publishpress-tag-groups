@@ -1,3 +1,5 @@
+<?php defined('ABSPATH') || exit;
+?>
 <div class="tg_settings_tabs_content">
   <p><?php _e('Choose the taxonomies for which you want to use Tag Groups:', 'tag-groups') ?></p>
 
@@ -36,9 +38,9 @@
              endif; ?>>
             <input type="checkbox" name="taxonomies[]" autocomplete="off" id="<?php echo esc_attr($taxonomy) ?>" value="<?php echo esc_attr($taxonomy) ?>" <?php if (in_array($taxonomy, $enabled_taxonomies)) :
                 ?> checked />
-              <?php if ($tag_group_enable_groups) : ?>
+                <?php if ($tag_group_enable_groups) : ?>
                 &nbsp;<a href="<?php echo esc_url(TagGroups_Taxonomy::get_tag_group_admin_url($taxonomy)) ?>" title="<?php _e('go to tag group administration', 'tag-groups') ?>"><span class="dashicons dashicons-index-card tg_no_underline"></span></a>
-              <?php endif; ?>
+                <?php endif; ?>
                                                                               <?php else : ?>
             />&nbsp;<span class="dashicons dashicons-index-card tg_no_underline tg_faded"></span>
                                                                               <?php endif; ?>

@@ -1,3 +1,7 @@
+<?php 
+
+defined('ABSPATH') || exit;
+?>
 <script>
   jQuery(document).ready(function(){
     if ( typeof jQuery.ui.tooltip === 'function' ) {

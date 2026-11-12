@@ -1,3 +1,5 @@
+<?php defined('ABSPATH') || exit;
+?>
 <p class="footer_st">
     <?php
     /* translators: 1: Opening TaxoPress link tag, 2: Closing link tag, 3: Plugin version. */

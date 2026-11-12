@@ -1,3 +1,5 @@
+<?php defined('ABSPATH') || exit;
+?>
 <div style="margin: 50px 0 0;">
 
   <h3><?php _e('Well done!', 'tag-groups') ?></h3>

@@ -1,3 +1,5 @@
+<?php defined('ABSPATH') || exit;
+?>
 <h1><span class="dashicons dashicons-lightbulb"></span>&nbsp;<?php _e('Tag Groups Setup Wizard', 'tag-groups') ?></h1>
 <div class="tag-groups-wizard-box">
 <ul class="tag-groups-steps">
