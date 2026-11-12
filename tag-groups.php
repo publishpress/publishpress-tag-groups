@@ -12,7 +12,7 @@
  * Text Domain: tag-groups
  * Domain Path: /languages
  * Requires at least: 5.5
- * Requires PHP: 7.2.5
+ * Requires PHP: 8.2
  *
  * @package     PublishPress\TagGroups
  * @author      PublishPress
@@ -24,6 +24,33 @@
 // define( "CM_TGP_KERNL_UUID", '' );
 
 defined('ABSPATH') || exit;
+
+$publishpress_tag_groups_minimum_php_version = '8.2';
+$publishpress_tag_groups_minimum_wp_version = '6.7';
+
+global $wp_version;
+
+if (version_compare(PHP_VERSION, $publishpress_tag_groups_minimum_php_version, '<')) {
+    $requirements_notice = function () {
+        echo '<div class="notice notice-error"><p>'
+            . esc_html__('PublishPress Tag Groups Free requires PHP 8.2 or newer. The plugin cannot run until PHP is updated.', 'tag-groups')
+            . '</p></div>';
+    };
+    add_action('admin_notices', $requirements_notice);
+    add_action('network_admin_notices', $requirements_notice);
+    return;
+}
+
+if (version_compare($wp_version, $publishpress_tag_groups_minimum_wp_version, '<')) {
+    $requirements_notice = function () {
+        echo '<div class="notice notice-error"><p>'
+            . esc_html__('PublishPress Tag Groups Free requires WordPress 6.7 or newer. The plugin cannot run until WordPress is updated.', 'tag-groups')
+            . '</p></div>';
+    };
+    add_action('admin_notices', $requirements_notice);
+    add_action('network_admin_notices', $requirements_notice);
+    return;
+}
 
 if (! defined('TAG_GROUPS_VERSION')) {
     define('TAG_GROUPS_VERSION', '3.0.2');
@@ -302,10 +329,12 @@ global  $tag_groups_loader ;
 require_once dirname(__FILE__) . '/include/class.loader.php';
 $tag_groups_loader = new TagGroups_Loader(TAG_GROUPS_PLUGIN_ABSOLUTE_PATH);
 $tag_groups_loader->require_classes();
-require_once __DIR__ . '/include/mcp/class.mcp.php';
-require_once __DIR__ . '/include/mcp/class.mcp_settings.php';
-require_once __DIR__ . '/include/mcp/class.mcp_actions.php';
-TagGroups_Mcp::boot();
+if (!class_exists('TagGroups_Mcp', false)) {
+    require_once __DIR__ . '/include/mcp/class.mcp.php';
+    require_once __DIR__ . '/include/mcp/class.mcp_settings.php';
+    require_once __DIR__ . '/include/mcp/class.mcp_actions.php';
+    TagGroups_Mcp::boot();
+}
 if (!function_exists('tag_groups_init')) {
 /**
      * Do all initial stuff: register hooks, check dependencies
