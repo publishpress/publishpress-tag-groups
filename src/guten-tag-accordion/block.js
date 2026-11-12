@@ -12,6 +12,8 @@
 import '../editor.css';
 
 import '../../assets/scss/_icons.scss';
+import '../../assets/scss/_search-panel.scss';
+import '../../assets/scss/_tag-styles.scss';
 
 import Select from '../components/tag-groups-select';
 import TagGroupsServerSideRender from '../components/tag-groups-render';
@@ -25,6 +27,7 @@ import {
   getActiveGroupsOptions,
   optionsOrderby,
   optionsOrder,
+  optionsTagStyle,
   optionsTarget,
   renderAccordion,
 } from '../modules/functions';
@@ -177,6 +180,8 @@ class tagGroupsAccordionCloudParameters extends Component {
       order,
       orderby,
       prepend,
+      search_panel,
+      search_panel_popular,
       separator,
       separator_size,
       show_icons,
@@ -184,6 +189,7 @@ class tagGroupsAccordionCloudParameters extends Component {
       show_tag_count,
       show_accordion,
       smallest,
+      tag_style,
       tags_post_id,
       threshold,
     } = attributes;
@@ -792,12 +798,48 @@ class tagGroupsAccordionCloudParameters extends Component {
             />
           </PanelBody>
 
+          <PanelBody title={__('Search Panel')} initialOpen={false}>
+            <ToggleControl
+              label={__('Show a search panel above the tags')}
+              checked={!!search_panel}
+              onChange={(checked) => setAttributes({ search_panel: checked ? 1 : 0 })}
+            />
+            {!!search_panel && (
+              <RangeControl
+                label={
+                  __('Popular tags') +
+                  (search_panel_popular == 0 ? ': ' + __('hidden') : '')
+                }
+                value={
+                  search_panel_popular !== undefined
+                    ? Number(search_panel_popular)
+                    : 8
+                }
+                onChange={(search_panel_popular) =>
+                  setAttributes({ search_panel_popular })
+                }
+                min={0}
+                max={30}
+              />
+            )}
+          </PanelBody>
+
           <PanelBody title={__('Advanced Styling')} initialOpen={false}>
             <ToggleControl
               label={__('Show tag icons')}
               help={__('Icons are chosen on the Edit Tag screen.')}
               checked={!!show_icons}
               onChange={(checked) => setAttributes({ show_icons: checked ? 1 : 0 })}
+              />
+
+            <label htmlFor='tg_input_tag_style'>{__('Tag style')}</label>
+            <Select
+              id='tg_input_tag_style'
+              onChange={(option) => {
+                if (option) setAttributes({ tag_style: option.value });
+              }}
+              value={typeof tag_style === 'string' ? tag_style : ''}
+              options={optionsTagStyle}
             />
             <div>
               <TagGroupsHelp
@@ -1165,6 +1207,16 @@ var cmTagGroupsAccordionBlock = registerBlockType(
         type: 'integer',
         default: 22,
       },
+      search_panel: {
+        // configurable in block
+        type: 'integer',
+        default: 0,
+      },
+      search_panel_popular: {
+        // configurable in block
+        type: 'integer',
+        default: 8,
+      },
       separator: {
         // configurable in block
         type: 'string',
@@ -1199,6 +1251,11 @@ var cmTagGroupsAccordionBlock = registerBlockType(
         // configurable in block
         type: 'integer',
         default: 12,
+      },
+      tag_style: {
+        // configurable in block
+        type: 'string',
+        default: '',
       },
       tags_post_id: {
         // configurable in block

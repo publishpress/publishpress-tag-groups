@@ -7,6 +7,8 @@
 * @license     GPL-3.0+
 */
 
+defined('ABSPATH') || exit;
+
 if (!class_exists('TagGroups_Group_Admin')) {
     // phpcs:ignore PSR1.Classes.ClassDeclaration.MissingNamespace, Squiz.Classes.ValidClassName.NotCamelCaps -- Legacy class structure
     class TagGroups_Group_Admin
