@@ -9,6 +9,8 @@
  */
 
 // phpcs:disable PSR1.Classes.ClassDeclaration.MissingNamespace, Squiz.Classes.ValidClassName.NotCamelCaps, PSR1.Methods.CamelCapsMethodName.NotCamelCaps, WordPress.Security.NonceVerification, WordPress.Security.ValidatedSanitizedInput
+defined('ABSPATH') || exit;
+
 if (! class_exists('TagGroups_Term_Save_Handlers')) {
 /**
    *

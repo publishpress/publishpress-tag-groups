@@ -1,3 +1,5 @@
+<?php defined('ABSPATH') || exit;
+?>
 <div style="margin: 50px 0 0;">
   <ul style="list-style:disc; margin-left:20px;">
   <li><?php _e('On the following pages we will guide you through the basic settings that you need for the most common features.', 'tag-groups') ?></li>

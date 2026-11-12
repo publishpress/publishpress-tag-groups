@@ -1,3 +1,5 @@
+<?php defined('ABSPATH') || exit;
+?>
 <div class="tg_settings_tabs_content">
   <div class="tg_admin_accordion" >
     <h3>WordPress</h3>

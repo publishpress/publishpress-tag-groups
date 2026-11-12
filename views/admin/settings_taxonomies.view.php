@@ -1,3 +1,5 @@
+<?php defined('ABSPATH') || exit;
+?>
 <div class="tg_settings_tabs_content">
   <p><?php _e('Choose the taxonomies for which you want to use Tag Groups:', 'tag-groups') ?></p>
 

@@ -8,6 +8,8 @@
 
 /* Search panel. Also imported by the Tabs and Accordion blocks for the editor preview. */
 @use 'search-panel';
+/* Tag styles (tag_style attribute). Also imported by the Tabs and Accordion blocks for the editor preview. */
+@use 'tag-styles';
 
 .tag-groups-tag-list h3,
 .tag-groups-alphabetical-index h3 {
@@ -64,3 +66,4 @@
 .SumoSelect {
 	width: auto;
 }
+
