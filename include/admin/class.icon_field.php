@@ -5,6 +5,8 @@
  * @license     GPL-3.0+
  */
 
+defined('ABSPATH') || exit;
+
 // phpcs:disable PSR1.Classes.ClassDeclaration.MissingNamespace, Squiz.Classes.ValidClassName.NotCamelCaps, PSR1.Methods.CamelCapsMethodName.NotCamelCaps
 if (!class_exists('TagGroups_Icon_Field')) {
     /**
