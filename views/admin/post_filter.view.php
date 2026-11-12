@@ -1,7 +1,11 @@
+<?php
+
+defined('ABSPATH') || exit;
+?>
 <label for="tg_filter_posts_value" class="screen-reader-text"><?php esc_html_e('Filter by tag group', 'tag-groups'); ?></label>
 <select name="tg_filter_posts_value" id="tg_filter_posts_value" onchange="tagGroupsGroupFilterChanged()">
   <option value=""><?php
-  _e('Filter by tag group', 'tag-groups'); ?></option>
+    _e('Filter by tag group', 'tag-groups'); ?></option>
   <?php
     foreach ($term_groups as $term_group => $label) {
         $style = in_array($term_group, $parents) ? 'style="background-color:#dfdfdf"' : '';

@@ -118,7 +118,6 @@
             .attr('style', O.E.attr('style'))
             .prepend(O.caption);
           O.select.append(O.CaptionCont);
-          O.setAccessibleName();
 
           // default turn off if no multiselect
           if (!O.is_multi) settings.okCancelInMulti = false;
@@ -141,6 +140,8 @@
             O.setNativeMobile();
             return;
           }
+
+          O.setAccessibleName();
 
           // if there is a name attr in select add a class to container div
           if (O.E.attr('name')) O.select.addClass(`sumo_${O.E.attr('name').replace(/\[\]/, '')}`);

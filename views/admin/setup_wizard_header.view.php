@@ -1,3 +1,7 @@
+<?php
+
+defined('ABSPATH') || exit;
+?>
 <h1><span class="dashicons dashicons-lightbulb" aria-hidden="true"></span>&nbsp;<?php _e('PublishPress Tag Groups Setup Wizard', 'tag-groups') ?></h1>
 <div class="tag-groups-wizard-box">
 <ul class="tag-groups-steps" aria-label="<?php esc_attr_e('Setup steps', 'tag-groups'); ?>">
@@ -37,7 +41,7 @@
             <?php if ($key < count($steps) - 1) : ?>
       <li aria-hidden="true"><span class="dashicons dashicons-arrow-right-alt" <?php if ($key + 1 > $step) :
             ?>style="color:#646970"<?php
-                                                            endif; ?>></span></li>
+                                                                               endif; ?>></span></li>
             <?php endif; ?>
         <?php endif; ?>
   <?php endforeach; ?>

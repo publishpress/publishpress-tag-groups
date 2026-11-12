@@ -8,6 +8,8 @@
  * @license     GPL-3.0+
  */
 
+defined('ABSPATH') || exit;
+
 // phpcs:disable PSR1.Classes.ClassDeclaration.MissingNamespace, Squiz.Classes.ValidClassName.NotCamelCaps, Squiz.Scope.MethodScope.Missing, PSR1.Methods.CamelCapsMethodName.NotCamelCaps
 if (! class_exists('TagGroups_Shortcode_Statics')) {
     class TagGroups_Shortcode_Statics
@@ -210,7 +212,7 @@ if (! class_exists('TagGroups_Shortcode_Statics')) {
         /**
          * Inline fallback for the screen-reader-only class, in case the frontend CSS is disabled.
          */
-        const SR_ONLY_STYLE = 'position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);clip-path:inset(50%);white-space:nowrap;border:0;';
+        public const SR_ONLY_STYLE = 'position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);clip-path:inset(50%);white-space:nowrap;border:0;';
 
         /**
          * Returns the next instance number (1-based) for a given ID pattern within this request.
