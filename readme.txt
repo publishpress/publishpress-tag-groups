@@ -3,7 +3,7 @@ Contributors: stevejburge, andergmartins, olatechpro, ojopaul
 Tags: tags, tag cloud, tabs, accordion, taxonomy, tag, woocommerce tags, Woocommerce categories, Tabbed Tag Cloud, Tag List, Accordion Tag Cloud, Alphabetical Tags, Alphabetical Tag Cloud, Alphabetical Tag Index, Post List, Post Filter
 Requires at least: 4.9
 Tested up to: 7.1
-Stable tag: 3.0.0
+Stable tag: 3.0.1
 Requires PHP: 7.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
@@ -125,6 +125,11 @@ Please use one of the shortcodes or Gutenberg blocks that come with the PublishP
 
 
 == Changelog ==
+
+[3.0.1] - 09 November, 2026
+
+- Fixed: escape column gap shortcode attributes, #370
+- Fixed: escape shortcode separators centrally after decoding to prevent stored XSS, #369
 
 [3.0.0] - 05 October, 2026
 

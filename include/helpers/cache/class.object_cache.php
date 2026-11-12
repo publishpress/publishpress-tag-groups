@@ -21,6 +21,8 @@
 */
 
 // phpcs:disable PSR1.Classes.ClassDeclaration.MissingNamespace, Squiz.Classes.ValidClassName.NotCamelCaps, PSR1.Methods.CamelCapsMethodName.NotCamelCaps, WordPress.PHP.DiscouragedPHPFunctions.serialize_serialize, WordPressVIPMinimum.Functions.RestrictedFunctions
+defined('ABSPATH') || exit;
+
 if (! class_exists('TagGroups_Object_Cache')) {
     class TagGroups_Object_Cache
     {

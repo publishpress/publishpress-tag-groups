@@ -1,3 +1,7 @@
+<?php
+
+defined('ABSPATH') || exit;
+?>
 <script>
 function set_inline_tag_group_selected(termGroupsSelectedJson, nonce) {
   var termGroupsSelected = JSON.parse(termGroupsSelectedJson);
