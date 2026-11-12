@@ -16,6 +16,7 @@ export const optionsTagStyle = [
   { value: 'label-maker', label: __('Label Maker') },
   { value: 'heat', label: __('Heat Cloud') },
   { value: 'count-pills', label: __('Count Pills') },
+  { value: 'image-cards', label: __('Image Cards') },
 ];
 
 export const optionsOrder = [

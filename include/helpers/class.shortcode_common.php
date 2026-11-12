@@ -896,7 +896,7 @@ if (!class_exists('TagGroups_Shortcode_Common')) {
         /**
          * Adds the CSS class of the selected tag style to the wrapper div
          *
-         * Allowed values of the tag_style attribute: '' (theme default), 'label-maker', 'heat', 'count-pills'
+         * Allowed values of the tag_style attribute: '' (theme default), 'label-maker', 'heat', 'count-pills', 'image-cards'
          *
          * @return void
          */
@@ -908,9 +908,23 @@ if (!class_exists('TagGroups_Shortcode_Common')) {
 
             $tag_style = sanitize_key($this->attributes->tag_style);
 
-            if (in_array($tag_style, array( 'label-maker', 'heat', 'count-pills' ), true)) {
+            if (in_array($tag_style, array( 'label-maker', 'heat', 'count-pills', 'image-cards' ), true)) {
                 $this->attributes->div_class .= ' tag-groups-style-' . $tag_style;
             }
+        }
+
+        /**
+         * Loads data that a tag style needs for all tags at once, before the tags are rendered
+         *
+         * @return void
+         */
+        public function prime_tag_style_caches()
+        {
+            if (empty($this->attributes->tag_style) || 'image-cards' !== $this->attributes->tag_style || empty($this->tags) || !is_array($this->tags)) {
+                return;
+            }
+
+            TagGroups_Term_Image::prime_caches(wp_list_pluck($this->tags, 'term_id'));
         }
 
         /**
@@ -918,21 +932,37 @@ if (!class_exists('TagGroups_Shortcode_Common')) {
          *
          * The heat style shows popularity as color intensity: --tg-heat is 0 (least posts) to 100 (most posts).
          * The count-pills style adds the post count as a badge after the tag name.
+         * The image-cards style adds the tag's image (or a placeholder) before the name and the post count after it.
          *
          * @param int $count Post count of this tag
          * @param int $min Smallest post count
          * @param int $max Largest post count
-         * @return array 'class', 'style' and 'after' (HTML after the tag name), ready for concatenation, or empty
+         * @param int $term_id Needed by the image-cards style
+         * @return array 'class', 'style', 'before' and 'after' (HTML around the tag name), ready for concatenation, or empty
          */
-        public function get_tag_style_markup($count, $min, $max)
+        public function get_tag_style_markup($count, $min, $max, $term_id = 0)
         {
             $markup = array(
-                'class' => '',
-                'style' => '',
-                'after' => '',
+                'class'  => '',
+                'style'  => '',
+                'before' => '',
+                'after'  => '',
             );
 
             if (empty($this->attributes->tag_style)) {
+                return $markup;
+            }
+
+            if ('image-cards' === $this->attributes->tag_style) {
+                $image = $term_id ? TagGroups_Term_Image::get_html($term_id) : '';
+                if ('' === $image) {
+                    $markup['class'] = ' tag-groups-card-no-image';
+                    $image = '<span class="tag-groups-card-image tag-groups-card-placeholder" aria-hidden="true"></span>';
+                }
+                $markup['before'] = $image;
+                /* translators: %s: number of posts */
+                $markup['after'] = '<span class="tag-groups-count">' . esc_html(sprintf(_n('%s post', '%s posts', (int) $count, 'tag-groups'), number_format_i18n((int) $count))) . '</span>';
+
                 return $markup;
             }
 
