@@ -6,6 +6,8 @@
 * License: GNU GENERAL PUBLIC LICENSE, Version 3
 */
 
+/* Search panel. Also imported by the Tabs and Accordion blocks for the editor preview. */
+@use 'search-panel';
 /* Tag styles (tag_style attribute). Also imported by the Tabs and Accordion blocks for the editor preview. */
 @use 'tag-styles';
 
