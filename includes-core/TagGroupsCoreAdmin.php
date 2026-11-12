@@ -1,13 +1,16 @@
 <?php
 
-namespace PublishPress\TagGroups;
-
 /**
  * Class TagGroupsCoreAdmin
  *
  * @package PublishPress\TagGroups
  */
+
+namespace PublishPress\TagGroups;
+
 // phpcs:disable PSR1.Methods.CamelCapsMethodName.NotCamelCaps -- WordPress naming conventions for hook callbacks
+\defined('ABSPATH') || exit;
+
 class TagGroupsCoreAdmin
 {
     public function __construct()

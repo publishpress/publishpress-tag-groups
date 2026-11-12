@@ -1,3 +1,5 @@
+<?php defined('ABSPATH') || exit;
+?>
 <div style="float:left;">
   <h2><?php _e('Active Taxonomies', 'tag-groups') ?></h2>
   <table class="widefat fixed striped">

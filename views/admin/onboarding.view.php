@@ -1,3 +1,5 @@
+<?php defined('ABSPATH') || exit;
+?>
 <h2><?php _e('First Steps', 'tag-groups') ?></h2>
 <div class="tg-onboarding-container">
   <h3><?php /* translators: %s is the plugin name */ printf(esc_html__('Welcome to %s!', 'tag-groups'), esc_html($title)) ?></h3>

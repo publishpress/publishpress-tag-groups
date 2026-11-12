@@ -11,6 +11,8 @@
 defined('ABSPATH') || exit;
 
 // phpcs:disable PSR1.Classes.ClassDeclaration.MissingNamespace, Squiz.Classes.ValidClassName.NotCamelCaps, Squiz.Scope.MethodScope.Missing, PSR1.Methods.CamelCapsMethodName.NotCamelCaps
+defined('ABSPATH') || exit;
+
 if (! class_exists('TagGroups_Shortcode_Statics')) {
     class TagGroups_Shortcode_Statics
     {

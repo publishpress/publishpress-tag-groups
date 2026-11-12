@@ -8,6 +8,8 @@
 */
 
 // phpcs:disable PSR1.Classes.ClassDeclaration.MissingNamespace, Squiz.Classes.ValidClassName.NotCamelCaps, PSR1.Methods.CamelCapsMethodName.NotCamelCaps
+defined('ABSPATH') || exit;
+
 if (!class_exists('TagGroups_Shortcode_Common')) {
     #[\AllowDynamicProperties]
     class TagGroups_Shortcode_Common
@@ -824,6 +826,169 @@ if (!class_exists('TagGroups_Shortcode_Common')) {
         }
         
         /**
+         * Icon of a tag as inline SVG, if the show_icons attribute is on and the tag has an icon
+         *
+         * @param int $term_id
+         * @return string
+         */
+        public function get_tag_icon_html($term_id)
+        {
+            if (empty($this->attributes->show_icons)) {
+                return '';
+            }
+
+            return TagGroups_Icons::get_svg(TagGroups_Icons::get_term_icon($term_id));
+        }
+        /**
+         * Markup of the search panel that is placed above the tag cloud (search_panel attribute)
+         *
+         * The panel is filled by TagGroupsSearchPanel in assets/js/frontend.js. It sits outside the
+         * cloud wrapper because jQuery UI Accordion treats every child of the wrapper as a header or panel.
+         *
+         * @return string
+         */
+        public function get_search_panel_html()
+        {
+            if (empty($this->attributes->search_panel) || empty($this->attributes->html_id)) {
+                return '';
+            }
+
+            $target_id = TagGroups_Shortcode_Statics::sanitize_html_classes($this->attributes->html_id);
+            $input_id = $target_id . '-search';
+            $popular = isset($this->attributes->search_panel_popular) ? max(0, (int) $this->attributes->search_panel_popular) : 8;
+
+            $html = '<div class="tag-groups-search-panel" data-target="' . esc_attr($target_id) . '" data-popular="' . $popular . '">';
+            $html .= '<label class="tag-groups-search-label" for="' . esc_attr($input_id) . '">' . esc_html__('Search tags', 'tag-groups') . '</label>';
+            $html .= '<input type="search" id="' . esc_attr($input_id) . '" class="tag-groups-search-input" autocomplete="off" placeholder="' . esc_attr__('Type to find a tag', 'tag-groups') . '">';
+            $html .= '<div class="tag-groups-search-section tag-groups-search-matches" aria-live="polite" hidden>';
+            $html .= '<span class="tag-groups-search-heading">' . esc_html__('Matches', 'tag-groups') . '</span>';
+            $html .= '<div class="tag-groups-search-list"></div>';
+            $html .= '<p class="tag-groups-search-empty" hidden>' . esc_html__('No tags found.', 'tag-groups') . '</p>';
+            $html .= '</div>';
+            $html .= '<div class="tag-groups-search-section tag-groups-search-recent" hidden>';
+            $html .= '<span class="tag-groups-search-heading">' . esc_html__('Recently viewed', 'tag-groups') . '</span>';
+            $html .= '<div class="tag-groups-search-list"></div>';
+            $html .= '</div>';
+            $html .= '<div class="tag-groups-search-section tag-groups-search-popular" hidden>';
+            $html .= '<span class="tag-groups-search-heading">' . esc_html__('Popular', 'tag-groups') . '</span>';
+            $html .= '<div class="tag-groups-search-list"></div>';
+            $html .= '</div>';
+            $html .= '</div>';
+
+            return $html;
+        }
+
+        /**
+         * Data attribute with the post count for a single tag, needed by the search panel to find popular tags
+         *
+         * @param int $count Post count of this tag
+         * @return string
+         */
+        public function get_search_panel_tag_data($count)
+        {
+            if (empty($this->attributes->search_panel)) {
+                return '';
+            }
+
+            return ' data-count="' . (int) $count . '"';
+        }
+
+        /**
+         * Adds the CSS class of the selected tag style to the wrapper div
+         *
+         * Allowed values of the tag_style attribute: '' (theme default), 'label-maker', 'heat', 'count-pills', 'image-cards'
+         *
+         * @return void
+         */
+        public function add_tag_style_class()
+        {
+            if (empty($this->attributes->tag_style)) {
+                return;
+            }
+
+            $tag_style = sanitize_key($this->attributes->tag_style);
+
+            if (in_array($tag_style, array( 'label-maker', 'heat', 'count-pills', 'image-cards' ), true)) {
+                $this->attributes->div_class .= ' tag-groups-style-' . $tag_style;
+            }
+        }
+
+        /**
+         * Loads data that a tag style needs for all tags at once, before the tags are rendered
+         *
+         * @return void
+         */
+        public function prime_tag_style_caches()
+        {
+            if (empty($this->attributes->tag_style) || 'image-cards' !== $this->attributes->tag_style || empty($this->tags) || !is_array($this->tags)) {
+                return;
+            }
+
+            TagGroups_Term_Image::prime_caches(wp_list_pluck($this->tags, 'term_id'));
+        }
+
+        /**
+         * Extra class, inline style and inner HTML for a single tag, required by some tag styles
+         *
+         * The heat style shows popularity as color intensity: --tg-heat is 0 (least posts) to 100 (most posts).
+         * The count-pills style adds the post count as a badge after the tag name.
+         * The image-cards style adds the tag's image (or a placeholder) before the name and the post count after it.
+         *
+         * @param int $count Post count of this tag
+         * @param int $min Smallest post count
+         * @param int $max Largest post count
+         * @param int $term_id Needed by the image-cards style
+         * @return array 'class', 'style', 'before' and 'after' (HTML around the tag name), ready for concatenation, or empty
+         */
+        public function get_tag_style_markup($count, $min, $max, $term_id = 0)
+        {
+            $markup = array(
+                'class'  => '',
+                'style'  => '',
+                'before' => '',
+                'after'  => '',
+            );
+
+            if (empty($this->attributes->tag_style)) {
+                return $markup;
+            }
+
+            if ('image-cards' === $this->attributes->tag_style) {
+                $image = $term_id ? TagGroups_Term_Image::get_html($term_id) : '';
+                if ('' === $image) {
+                    $markup['class'] = ' tag-groups-card-no-image';
+                    $image = '<span class="tag-groups-card-image tag-groups-card-placeholder" aria-hidden="true"></span>';
+                }
+                $markup['before'] = $image;
+                /* translators: %s: number of posts */
+                $markup['after'] = '<span class="tag-groups-count">' . esc_html(sprintf(_n('%s post', '%s posts', (int) $count, 'tag-groups'), number_format_i18n((int) $count))) . '</span>';
+
+                return $markup;
+            }
+
+            if ('count-pills' === $this->attributes->tag_style) {
+                $markup['after'] = '<span class="tag-groups-count">' . (int) $count . '</span>';
+
+                return $markup;
+            }
+
+            if ('heat' !== $this->attributes->tag_style) {
+                return $markup;
+            }
+
+            // like font_size(): with no range (single tag, equal counts) every tag gets the coldest value
+            $heat = ( $max > $min ) ? (int) round(($count - $min) * 100 / ($max - $min)) : 0;
+            $heat = max(0, min(100, $heat));
+
+            $markup['style'] = ';--tg-heat:' . $heat;
+            if ($heat >= 60) {
+                $markup['class'] = ' tg-heat-hot';
+            }
+
+            return $markup;
+        }
+
+        /**
          * Performes some checks on the supplied attributes
          *
          * @return void
@@ -837,6 +1002,10 @@ if (!class_exists('TagGroups_Shortcode_Common')) {
                 if (property_exists($this->attributes, 'separator')) {
                     $this->attributes->separator = html_entity_decode($this->attributes->separator);
                 }
+            }
+            
+            if (property_exists($this->attributes, 'separator')) {
+                $this->attributes->separator = esc_html($this->attributes->separator);
             }
             
             

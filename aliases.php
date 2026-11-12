@@ -23,6 +23,8 @@
  * Aliases for backwards compatibility and convenience
  *
  */
+defined('ABSPATH') || exit;
+
 if (!function_exists('tag_groups_cloud') && class_exists('TagGroups_Shortcode_Tabs')) {
     /**
      *

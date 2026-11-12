@@ -58,6 +58,7 @@
 - assets_wp
 - legacy-tests
 - phpmd-ruleset.xml
+- phpmd.ruleset.xml
 - vendor/bin
 - vendor/pimple/pimple/CHANGELOG
 - vendor/pimple/pimple/README.rst

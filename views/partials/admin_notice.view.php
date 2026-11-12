@@ -1,3 +1,5 @@
+<?php defined('ABSPATH') || exit;
+?>
 <div class="notice notice-<?php echo esc_attr($notice['type']) ?> is-dismissible" style="clear:both;">
   <?php echo wp_kses_post($notice['content']) ?>
   <?php if ('' != $ajax_link) : ?>

@@ -1,3 +1,5 @@
+<?php defined('ABSPATH') || exit;
+?>
 <div style="margin: 50px 0 0;">
   <p><?php _e('Choose the taxonomies for which you want to use tag groups.', 'tag-groups') ?> <?php _e("In most cases the default taxonomy <b>Tags (post_tag)</b> will do the job.", 'tag-groups') ?><button type="button" class="button-link dashicons dashicons-editor-help chatty-mango-help-icon" data-topic="taxonomies" aria-expanded="false" aria-controls="tg-help-taxonomies"><span class="screen-reader-text"><?php /* translators: %s: name of the setting */ echo esc_html(sprintf(__('More information: %s', 'tag-groups'), __('Taxonomies', 'tag-groups'))); ?></span></button></p>
 

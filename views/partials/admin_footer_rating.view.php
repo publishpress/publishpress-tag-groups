@@ -1,4 +1,7 @@
-<?php $rating_stars = '<span class="screen-reader-text">' . esc_html__('five-star', 'tag-groups') . '</span>' . str_repeat('<span class="dashicons dashicons-star-filled" aria-hidden="true"></span>', 5); ?>
+<?php 
+defined('ABSPATH') || exit;
+
+$rating_stars = '<span class="screen-reader-text">' . esc_html__('five-star', 'tag-groups') . '</span>' . str_repeat('<span class="dashicons dashicons-star-filled" aria-hidden="true"></span>', 5); ?>
 <div class="pressshack-admin-wrapper tag-groups-admin-footer">
     <footer>
         <div class="tag-groups-rating">

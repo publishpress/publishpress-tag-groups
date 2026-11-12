@@ -13,6 +13,8 @@
  */
 
 // phpcs:disable PSR1.Classes.ClassDeclaration.MissingNamespace, Squiz.Classes.ValidClassName.NotCamelCaps, PSR1.Methods.CamelCapsMethodName.NotCamelCaps, WordPress.PHP.DiscouragedPHPFunctions.serialize_serialize, WordPress.DB.SlowDBQuery
+defined('ABSPATH') || exit;
+
 if (!class_exists('TagGroups_Group')) {
     class TagGroups_Group
     {

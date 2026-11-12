@@ -4,6 +4,8 @@
 *
 *   Using .html() instead of .text() to avoid ampersands displaying
 */
+defined('ABSPATH') || exit;
+
 ?>
 <script>
 jQuery(document).ready(function () {

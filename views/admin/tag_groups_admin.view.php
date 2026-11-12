@@ -1,3 +1,5 @@
+<?php defined('ABSPATH') || exit;
+?>
 
 <div class='wrap tag-groups-tooltips-enabled' id="tag_group_administration">
   <h1 class="tg-admin-page-title"><?php esc_html_e('Tag Group Administration', 'tag-groups') ?></h1>

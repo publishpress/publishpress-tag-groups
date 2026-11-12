@@ -1,3 +1,5 @@
+<?php defined('ABSPATH') || exit;
+?>
 <fieldset>
   <div class="inline-edit-col">
     <label><span class="title"><?php _e('Groups', 'tag-groups') ?></span>

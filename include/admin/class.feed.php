@@ -11,6 +11,8 @@
 * Inspiration from: https://bavotasan.com/2010/display-rss-feed-with-php/
 */
 
+defined('ABSPATH') || exit;
+
 if (! class_exists('TagGroups_Feed')) {
     // phpcs:ignore PSR1.Classes.ClassDeclaration.MissingNamespace, Squiz.Classes.ValidClassName.NotCamelCaps -- Legacy class structure
     class TagGroups_Feed

@@ -1,0 +1,106 @@
+/* Letter strip for Alphabetical Tabs (letter_strip="1") */
+.tag-groups-letter-strip {
+	--tg-strip-ink: #1f1d24;
+	--tg-strip-ink-text: #ffffff;
+	--tg-strip-border: #d9d6e3;
+	--tg-strip-muted: #6b6680;
+	--tg-strip-accent: #5b3fa8;
+	--tg-strip-size: 2em;
+}
+.tag-groups-letter-strip.ui-tabs {
+	padding: 0;
+	border: 0;
+	background: none;
+}
+.tag-groups-letter-strip.ui-tabs .ui-tabs-nav {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 4px;
+	padding: 0;
+	border: 0;
+	border-radius: 0;
+	background: none;
+}
+.tag-groups-letter-strip.ui-tabs .ui-tabs-nav::before,
+.tag-groups-letter-strip.ui-tabs .ui-tabs-nav::after {
+	display: none;
+}
+.tag-groups-letter-strip.ui-tabs .ui-tabs-nav li {
+	float: none;
+	margin: 0 !important;
+	padding: 0;
+	border: 1px solid var(--tg-strip-border);
+	border-radius: 5px;
+	background: none;
+	list-style: none;
+}
+.tag-groups-letter-strip.ui-tabs .ui-tabs-nav li a,
+.tag-groups-letter-strip.ui-tabs .ui-tabs-nav li > span {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	float: none;
+	width: var(--tg-strip-size);
+	height: var(--tg-strip-size);
+	padding: 0;
+	color: var(--tg-strip-ink);
+	font-family: ui-monospace, Menlo, Consolas, monospace;
+	font-size: 0.85em;
+	font-weight: 600;
+	text-transform: uppercase;
+	text-decoration: none;
+}
+.tag-groups-letter-strip.ui-tabs .ui-tabs-nav li.ui-tabs-active {
+	border-color: var(--tg-strip-ink);
+	background: var(--tg-strip-ink);
+}
+.tag-groups-letter-strip.ui-tabs .ui-tabs-nav li.ui-tabs-active a {
+	color: var(--tg-strip-ink-text);
+}
+.tag-groups-letter-strip.ui-tabs .ui-tabs-nav li:not(.ui-tabs-active):not(.tag-groups-letter-empty):hover {
+	border-color: var(--tg-strip-accent);
+}
+.tag-groups-letter-strip.ui-tabs .ui-tabs-nav li a:focus-visible {
+	outline: 2px solid var(--tg-strip-accent);
+	outline-offset: 2px;
+}
+.tag-groups-letter-strip.ui-tabs .ui-tabs-nav li.tag-groups-letter-empty {
+	border-color: transparent;
+}
+.tag-groups-letter-strip.ui-tabs .ui-tabs-nav li.tag-groups-letter-empty > span {
+	color: var(--tg-strip-muted);
+	opacity: 0.45;
+	cursor: default;
+}
+.tag-groups-letter-strip.ui-tabs .ui-tabs-panel {
+	display: grid;
+	gap: 0.3em;
+	max-width: 22em;
+	margin-top: 0.9em;
+	padding: 0.1em 0 0.1em 0.9em;
+	border: 0;
+	border-left: 2px solid var(--tg-strip-accent);
+	background: none;
+}
+.tag-groups-letter-strip .ui-tabs-panel[aria-hidden="true"] {
+	display: none;
+}
+.tag-groups-letter-strip .tag-groups-tag,
+.tag-groups-letter-strip .tag-groups-tag .tag-groups-label {
+	font-size: 1em !important;
+}
+.tag-groups-letter-strip .tag-groups-tag a {
+	display: flex;
+	justify-content: space-between;
+	gap: 1em;
+	text-decoration: none;
+}
+.tag-groups-letter-strip .tag-groups-tag a:hover .tag-groups-label {
+	text-decoration: underline;
+}
+.tag-groups-letter-strip .tag-groups-count {
+	color: var(--tg-strip-muted);
+	font-family: ui-monospace, Menlo, Consolas, monospace;
+	font-size: 0.8em;
+	font-variant-numeric: tabular-nums;
+}

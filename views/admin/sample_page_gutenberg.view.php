@@ -1,3 +1,5 @@
+<?php defined('ABSPATH') || exit;
+?>
 <!-- wp:paragraph -->
 <p>
   <?php printf(esc_html__('%s created this sample page in the Setup Wizard of the <b>PublishPress Tag Groups</b> plugin. You can safely edit and delete it or keep it for future reference.', 'tag-groups'), esc_html($author_display_name)) ?>

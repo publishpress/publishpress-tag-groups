@@ -8,6 +8,8 @@
 */
 
 // phpcs:disable PSR1.Classes.ClassDeclaration.MissingNamespace, Squiz.Classes.ValidClassName.NotCamelCaps, Squiz.Scope.MethodScope.Missing, PSR1.Methods.CamelCapsMethodName.NotCamelCaps
+defined('ABSPATH') || exit;
+
 if (! class_exists('TagGroups_Shortcode_Alphabet_Tabs')) {
     class TagGroups_Shortcode_Alphabet_Tabs extends TagGroups_Shortcode_Common
     {
@@ -110,6 +112,14 @@ if (! class_exists('TagGroups_Shortcode_Alphabet_Tabs')) {
         'type' => 'string',
         'default' => '_self',
         ),
+        'letter_strip' => array(
+        'type' => 'integer',
+        'default' => 0,
+        ),
+        'letter_strip_letters' => array(
+        'type' => 'string',
+        'default' => 'abcdefghijklmnopqrstuvwxyz',
+        ),
         'locale' => array(
         'type' => 'string',
         'default' => '',
@@ -205,6 +215,8 @@ if (! class_exists('TagGroups_Shortcode_Alphabet_Tabs')) {
             'include_letters' => '',
             'include_terms' => '',
             'largest' => 22,
+            'letter_strip' => 0,
+            'letter_strip_letters' => 'abcdefghijklmnopqrstuvwxyz',
             'link_append' => '',
             'link_target' => '',
             'locale'  => '',
@@ -244,6 +256,10 @@ if (! class_exists('TagGroups_Shortcode_Alphabet_Tabs')) {
             }
             $this->attributes->div_class = TagGroups_Shortcode_Statics::maybe_add_target_size_class($this->attributes, $this->attributes->div_class);
 
+            if (! empty($this->attributes->letter_strip)) {
+                $this->attributes->div_class .= ' tag-groups-letter-strip';
+            }
+
             $div_id_output = $this->attributes->html_id ? ' id="' . TagGroups_Shortcode_Statics::sanitize_html_classes($this->attributes->html_id) . '"' : '';
             $div_class_output = $this->attributes->div_class ? ' class="' . TagGroups_Shortcode_Statics::sanitize_html_classes($this->attributes->div_class) . '"' : '';
             if (is_array($atts)) {
@@ -281,6 +297,7 @@ if (! class_exists('TagGroups_Shortcode_Alphabet_Tabs')) {
       * Extract the alphabet
       */
             $this->extract_alphabet();
+            $this->add_letter_strip_letters();
             $this->include_exclude_letters();
             $this->sort_alphabet();
             $html = '';
@@ -435,6 +452,9 @@ if (! class_exists('TagGroups_Shortcode_Alphabet_Tabs')) {
              */
                         $this->html_tags[ $i ] .= apply_filters('tag_groups_cloud_tag_append', $append_html, $tag->term_id, $font_size, $post_count, $this->shortcode_id);
                         $this->html_tags[ $i ] .= TagGroups_Shortcode_Statics::sr_count_html($this->attributes, $post_count);
+                        if (! empty($this->attributes->letter_strip)) {
+                            $this->html_tags[ $i ] .= '<span class="tag-groups-count">' . (int) $post_count . '</span>';
+                        }
                         $this->html_tags[ $i ] .= '</a></span> ';
                         $count_amount++;
                     }
@@ -444,13 +464,41 @@ if (! class_exists('TagGroups_Shortcode_Alphabet_Tabs')) {
                 }
 
                 if (! $count_amount) {
-                    unset($this->html_tabs[ $i ]);
                     unset($this->html_tags[ $i ]);
+                    if (! empty($this->attributes->letter_strip)) {
+                        // keep the letter visible but without a link, so jQuery UI does not turn it into a tab
+                        $this->html_tabs[ $i ] = '<li class="tag-groups-letter-empty" role="presentation"><span aria-hidden="true">' . htmlentities(mb_strtolower($letter), ENT_QUOTES, "UTF-8") . '</span></li>';
+                    } else {
+                        unset($this->html_tabs[ $i ]);
+                    }
                 } elseif (isset($this->html_tags[ $i ])) {
                     $this->html_tags[ $i ] = '<div id="tabs-1' . $i . '">' .  $this->html_tags[ $i ] . '</div>';
                 }
 
                 $i++;
+            }
+        }
+
+
+      /**
+       * Letter strip: show the whole alphabet, including letters without tags
+       *
+       * @return void
+       */
+        function add_letter_strip_letters()
+        {
+
+            if (empty($this->attributes->letter_strip)) {
+                return;
+            }
+
+            $letters = mb_strtolower(str_replace(' ', '', (string) $this->attributes->letter_strip_letters));
+
+            for ($i = 0; $i < mb_strlen($letters); $i++) {
+                $letter = mb_substr($letters, $i, 1);
+                if (! in_array($letter, $this->attributes->alphabet)) {
+                    $this->attributes->alphabet[] = $letter;
+                }
             }
         }
 
