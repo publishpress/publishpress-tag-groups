@@ -558,11 +558,10 @@ if (!class_exists('TagGroups_Shortcode_Accordion')) {
             $div_class_output,
             $atts
         ) {
-            $html = '<div' . $div_id_output . $div_class_output . '>' . $html . '</div>';
+            $html = $this->get_search_panel_html() . '<div' . $div_id_output . $div_class_output . '>' . $html . '</div>';
             if ($this->attributes->delay) {
                 $html .= TagGroups_Shortcode_Statics::noscript_unhide_html();
             }
-            $html = $this->get_search_panel_html() . '<div' . $div_id_output . $div_class_output . '>' . $html . '</div>';
             $html .= $this->custom_js_accordion();
             /**
              * Hook to filter final HTML
