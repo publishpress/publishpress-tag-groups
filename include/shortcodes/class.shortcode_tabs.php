@@ -665,7 +665,6 @@ if (!class_exists('TagGroups_Shortcode_Tabs')) {
         ) {
             // Panel IDs must be unique when there are several tab clouds on a page; the first one keeps its IDs.
             $html = TagGroups_Shortcode_Statics::prefix_tab_panel_ids($html, TagGroups_Shortcode_Statics::next_instance('tabs'));
-            $html = '<div' . $div_id_output . $div_class_output . '>' . $html . '</div>';
             $html = $this->get_search_panel_html() . '<div' . $div_id_output . $div_class_output . '>' . $html . '</div>';
             // entire wrapper
             if ($this->attributes->delay) {
