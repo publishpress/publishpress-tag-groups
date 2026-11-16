@@ -126,6 +126,10 @@ Please use one of the shortcodes or Gutenberg blocks that come with the PublishP
 
 == Changelog ==
 
+[3.0.3] - 16 November, 2026
+
+- Fixed: Tag group widget is invisible in 3.0.2, #393
+
 [3.0.2] - 12 November, 2026
 
 - Added: Private AI actions for Tag Groups settings, group management and permission-checked memberships.
