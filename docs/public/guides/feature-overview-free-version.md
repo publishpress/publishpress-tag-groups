@@ -8,7 +8,7 @@ doc_category: publishpress-tag-groups
 
 There is a Free and Pro version of the [Tag Groups](https://publishpress.com/links/tag-groups) plugin. This table gives an overview of the differences between the two versions.
 
-|  | Tag Groups Free [#](#0-toc-title) | Tag Groups Pro [#](#1-toc-title) |
+|  | Tag Groups Free | Tag Groups Pro |
 | --- | --- | --- |
 | 6 Shortcodes |  |  |
 | 5 Gutenberg Blocks |  |  |
@@ -20,7 +20,7 @@ There is a Free and Pro version of the [Tag Groups](https://publishpress.com/lin
 | Custom Taxonomies |  |  |
 | Backend Filters |  |  |
 | Compatible with WPML |  |  |
-|  | Tag Groups Free [#](#2-toc-title) | Tag Groups Pro [#](#3-toc-title) |
+|  | Tag Groups Free | Tag Groups Pro |
 | 21 Pro Shortcodes |  |  |
 | 18 Pro Gutenberg Blocks |  |  |
 | Tag Meta Box |  |  |
@@ -31,7 +31,7 @@ There is a Free and Pro version of the [Tag Groups](https://publishpress.com/lin
 | Post List |  |  |
 | Toggle Post Filter |  |  |
 | Dynamic Post Filter |  |  |
-|  | Tag Groups Free [#](#4-toc-title) | Tag Groups Pro [#](#5-toc-title) |
+|  | Tag Groups Free | Tag Groups Pro |
 | Multiple Groups Per Tag |  |  |
 | Caching |  |  |
 | User Permissions |  |  |

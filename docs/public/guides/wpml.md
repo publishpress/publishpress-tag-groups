@@ -6,10 +6,10 @@ doc_category: publishpress-tag-groups
 
 # Translating Tag Group Names With WPML
 
-Table of Contents
+**Table of Contents**
 
-- [Where The Translations Show Up](#0-toc-title)
-- [Some More Details](#1-toc-title)
+- [Where The Translations Show Up](#where-the-translations-show-up)
+- [Some More Details](#some-more-details)
 
 Translating tag group names in the [Tag Groups](https://publishpress.com/links/tag-groups) plugin is possible with the [WordPress Multilingual (WPML) plugin](https://wpml.org).
 
@@ -21,12 +21,12 @@ All you need to do is to switch to another language in the admin bar and edit th
 
 ![](https://docs-media.publishpress.com/publishpress-tag-groups/translating-tag-group-names-with-wpml-b9b3f6adfa.webp)
 
-## Where The Translations Show Up [#](#0-toc-title)
+## Where The Translations Show Up
 
 - On all **admin pages**, you see the group names that correspond to the language that you see in the admin bar.
 - On the **front end**, the group names match the language of the page.
 
-## Some More Details [#](#1-toc-title)
+## Some More Details
 
 - If you create a new group while you use a language that is not your default language, the default language will first receive its group name from that translated language so that it won’t remain empty.
 - The order of the groups is the same across all languages.

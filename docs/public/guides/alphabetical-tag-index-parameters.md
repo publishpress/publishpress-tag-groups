@@ -6,38 +6,70 @@ doc_category: publishpress-tag-groups
 
 # Alphabetical Tag Index – Shortcode Parameters
 
-Table of Contents
+**Table of Contents**
 
-- [Shortcode](#0-toc-title)
-- [Example](#1-toc-title)
+- [Shortcode](#shortcode)
+- [Example](#example)
 - [Data Types](#data-types)
-- [Parameters](#3-toc-title)[amount](#4-toc-title)[append](#5-toc-title)[column_count](#6-toc-title)[column_gap](#7-toc-title)[custom_title](#custom_title)[custom_title_zero](#custom_title_zero)[custom_title_plural](#custom_title_plural)[div_class](#11-toc-title)[div_id](#12-toc-title)[exclude_letters](#13-toc-title)[exclude_terms](#14-toc-title)[h_level](#15-toc-title)[/h3>, , ... of the headings with the group names Default Possible Values Example 3 integer h_level=2 header_class](#16-toc-title)[hide_empty](#17-toc-title)[threshold](#18-toc-title)[include](#19-toc-title)[exclude](#exclude)[include_letters](#21-toc-title)[include_terms](#22-toc-title)[keep_together](#23-toc-title)[largest](#24-toc-title)[link_target](#25-toc-title)[link_append](#26-toc-title)[locale](#locale)[ignore_accents](#ignore_accents)[order](#29-toc-title)[prepend](#30-toc-title)[show_tag_count](#31-toc-title)[smallest](#32-toc-title)[tags_div_class](#33-toc-title)[tags_post_id](#34-toc-title)[taxonomy](#35-toc-title)
+- [Parameters](#parameters)
+  - [amount](#amount)
+  - [append](#append)
+  - [column_count](#column_count)
+  - [column_gap](#column_gap)
+  - [custom_title](#custom_title)
+  - [custom_title_zero](#custom_title_zero)
+  - [custom_title_plural](#custom_title_plural)
+  - [div_class](#div_class)
+  - [div_id](#div_id)
+  - [exclude_letters](#exclude_letters)
+  - [exclude_terms](#exclude_terms)
+  - [h_level](#h_level)
+  - [/h3>, , ... of the headings with the group names Default Possible Values Example 3 integer h_level=2 header_class](#header_class)
+  - [hide_empty](#hide_empty)
+  - [threshold](#threshold)
+  - [include](#include)
+  - [exclude](#exclude)
+  - [include_letters](#include_letters)
+  - [include_terms](#include_terms)
+  - [keep_together](#keep_together)
+  - [largest](#largest)
+  - [link_target](#link_target)
+  - [link_append](#link_append)
+  - [locale](#locale)
+  - [ignore_accents](#ignore_accents)
+  - [order](#order)
+  - [prepend](#prepend)
+  - [show_tag_count](#show_tag_count)
+  - [smallest](#smallest)
+  - [tags_div_class](#tags_div_class)
+  - [tags_post_id](#tags_post_id)
+  - [taxonomy](#taxonomy)
 
 This guide shows you how to use and customize the shortcode for the Alphabetical Tag Index feature in the [Tag Groups](https://publishpress.com/links/tag-groups) plugin.
 
-## Shortcode [#](#0-toc-title)
+## Shortcode
 
 ```
 [tag_groups_alphabetical_index]
 ```
 
-## Example [#](#1-toc-title)
+## Example
 
 ```
 [tag_groups_alphabetical_index column_count=2]
 ```
 
-## Data Types [#](#data-types)
+## Data Types
 
 - **string:** A text. For identifiers that won’t be visible to visitors you often have to replace spaces with _ or -. If the string contains spaces, you need to wrap it in quotes.
 - **integer:** A number without decimal places.
 - **0 or 1**: 0 turns the feature off and 1 on.
 
-## Parameters [#](#3-toc-title)
+## Parameters
 
 This overview assumes that you know how to use shortcodes. Shortcodes are the traditional WordPress way how to add features into posts, pages and widgets.
 
-### amount [#](#4-toc-title)
+### amount
 
 the maximum number of tags per group to display
 
@@ -45,7 +77,7 @@ the maximum number of tags per group to display
 | --- | --- | --- |
 | 0 (no limit) | integer | `amount=10` |
 
-### append [#](#5-toc-title)
+### append
 
 adds something behind the tag name; placeholder: {count} for post count
 
@@ -53,7 +85,7 @@ adds something behind the tag name; placeholder: {count} for post count
 | --- | --- | --- |
 | empty | string | append`=`” ({count})” |
 
-### column_count [#](#6-toc-title)
+### column_count
 
 number of columns
 
@@ -61,7 +93,7 @@ number of columns
 | --- | --- | --- |
 | 2 | integer | `column_count=3` |
 
-### column_gap [#](#7-toc-title)
+### column_gap
 
 width of the gap between columns
 
@@ -69,7 +101,7 @@ width of the gap between columns
 | --- | --- | --- |
 | 10px | string | `column_gap=20px` |
 
-### custom_title [#](#custom_title)
+### custom_title
 
 tooltip when hovering the mouse over a tag; placeholders: {count} for post count, {description} for tag description, {name} for tag name
 
@@ -79,7 +111,7 @@ If you also use custom_title_plural then the text of custom_title will be used f
 | --- | --- | --- |
 | depends on show_tag_count | string | `custom_title="One post uses {name}"` |
 
-### custom_title_zero [#](#custom_title_zero)
+### custom_title_zero
 
 tooltip when hovering the mouse over a tag; placeholders: {count} for post count, {description} for tag description, {name} for tag name
 
@@ -89,7 +121,7 @@ This text will be used for tags that have a post count of 0 (i.e. they are not u
 | --- | --- | --- |
 | not used | string | `custom_title_zero="No post uses {name}"` |
 
-### custom_title_plural [#](#custom_title_plural)
+### custom_title_plural
 
 tooltip when hovering the mouse over a tag; placeholders: {count} for post count, {description} for tag description, {name} for tag name
 
@@ -99,7 +131,7 @@ This text will be used for tags that have a post count of >1. You can use here p
 | --- | --- | --- |
 | not used | string | `custom_title_plural="{count} posts use {name}"` |
 
-### div_class [#](#11-toc-title)
+### div_class
 
 class of the enclosing div for own styling
 
@@ -107,7 +139,7 @@ class of the enclosing div for own styling
 | --- | --- | --- |
 | tag-groups-tag-list | string | `div_class="my-class"` |
 
-### div_id [#](#12-toc-title)
+### div_id
 
 ID of the enclosing div
 
@@ -115,7 +147,7 @@ ID of the enclosing div
 | --- | --- | --- |
 | random | string (must be unique on the page) | `div_id="my-id"` |
 
-### exclude_letters [#](#13-toc-title)
+### exclude_letters
 
 letters/characters that should not appear in the list
 
@@ -123,7 +155,7 @@ letters/characters that should not appear in the list
 | --- | --- | --- |
 | empty | string | `exclude_letters=0123456789` |
 
-### exclude_terms [#](#14-toc-title)
+### exclude_terms
 
 a list of tags that should not appear
 
@@ -131,15 +163,15 @@ a list of tags that should not appear
 | --- | --- | --- |
 | empty | comma-separated list of tag IDs | `exclude_terms=` |
 
-### h_level [#](#15-toc-title)
+### h_level
 
-<h3>/h3>, <h4></h4>, … of the headings with the group names
+`<h3>``</h3>`, `<h4>``</h4>`, … of the headings with the group names
 
 | **Default** | **Possible Values** | **Example** |
 | --- | --- | --- |
 | 3 | integer | `h_level=2` |
 
-### header_class [#](#16-toc-title)
+### header_class
 
 class for the headers
 
@@ -147,7 +179,7 @@ class for the headers
 | --- | --- | --- |
 | empty | string | `header_class="my-class"` |
 
-### hide_empty [#](#17-toc-title)
+### hide_empty
 
 hide tags with post count zero
 
@@ -155,7 +187,7 @@ hide tags with post count zero
 | --- | --- | --- |
 | 1 | 0 or 1 | `hide_empty=0` |
 
-### threshold [#](#18-toc-title)
+### threshold
 
 Set a minimum count of published posts that use a tag for this tag to appear. Posts are counted across all groups. Please also pay attention to the value of hide_empty.
 
@@ -163,7 +195,7 @@ Set a minimum count of published posts that use a tag for this tag to appear. Po
 | --- | --- | --- |
 | 0 | integer | `threshold=2` |
 
-### include [#](#19-toc-title)
+### include
 
 groups to include
 
@@ -171,7 +203,7 @@ groups to include
 | --- | --- | --- |
 | all | comma-separated list of group IDs | `include=2,3,5` |
 
-### exclude [#](#exclude)
+### exclude
 
 groups to exclude
 
@@ -179,7 +211,7 @@ groups to exclude
 | --- | --- | --- |
 | none | comma-separated list of group IDs | `exclude=2,3,5` |
 
-### include_letters [#](#21-toc-title)
+### include_letters
 
 which first letters to use
 
@@ -187,7 +219,7 @@ which first letters to use
 | --- | --- | --- |
 | all initials of the displayed tags | string | `include_letters=abcdz` |
 
-### include_terms [#](#22-toc-title)
+### include_terms
 
 tags to include (see also “hide_empty”)
 
@@ -195,7 +227,7 @@ tags to include (see also “hide_empty”)
 | --- | --- | --- |
 | all | comma-separated list of tag IDs | `include_terms=12,34,255` |
 
-### keep_together [#](#23-toc-title)
+### keep_together
 
 whether to keep headings and tag block together; otherwise tags lists may continue in a new column
 
@@ -203,7 +235,7 @@ whether to keep headings and tag block together; otherwise tags lists may contin
 | --- | --- | --- |
 | 1 (on) | 0 or 1 | `keep_together=1` |
 
-### largest [#](#24-toc-title)
+### largest
 
 max. font size in pt
 
@@ -211,7 +243,7 @@ max. font size in pt
 | --- | --- | --- |
 | 12 | integer | `largest=32` |
 
-### link_target [#](#25-toc-title)
+### link_target
 
 target attribute of the tag link (_blank, _top, _self, …)
 
@@ -219,7 +251,7 @@ target attribute of the tag link (_blank, _top, _self, …)
 | --- | --- | --- |
 | empty | string | `link_target="_top"` |
 
-### link_append [#](#26-toc-title)
+### link_append
 
 append query to the link
 
@@ -227,7 +259,7 @@ append query to the link
 | --- | --- | --- |
 | empty | string | `link_append=`“source=cloud” |
 
-### locale [#](#locale)
+### locale
 
 Customize the locale (language-specific setting) that is used for sorting the first letters (initials). By default we use the language setting of your site. This sort order affects only the *order of the first letters*, not the*tag order* (see “orderby” and “order”).
 
@@ -237,7 +269,7 @@ Accepted values depend on which locales PHP can use on your server. They can hav
 | --- | --- | --- |
 | string | empty (site locale) | `locale="fr_FR.UTF8"` |
 
-### ignore_accents [#](#ignore_accents)
+### ignore_accents
 
 If you turn this on, then accented (or umlaut) letters will be treated like normal letters. For a list of changes see [remove_accents](https://developer.wordpress.org/reference/functions/remove_accents/).
 
@@ -245,7 +277,7 @@ If you turn this on, then accented (or umlaut) letters will be treated like norm
 | --- | --- | --- |
 | 0 or 1 | 0 | `ignore_accents=1` |
 
-### order [#](#29-toc-title)
+### order
 
 ascending or descending order; use with orderby
 
@@ -272,7 +304,7 @@ use together with order
 | --- | --- | --- |
 | name | string | `orderby=natural` |
 
-### prepend [#](#30-toc-title)
+### prepend
 
 prepend to the tag; placeholder: {count} for post count
 
@@ -280,7 +312,7 @@ prepend to the tag; placeholder: {count} for post count
 | --- | --- | --- |
 | empty | string | `prepend="#"` |
 
-### show_tag_count [#](#31-toc-title)
+### show_tag_count
 
 show the post count in the title (deprecated option, better use custom_title
 
@@ -288,7 +320,7 @@ show the post count in the title (deprecated option, better use custom_title
 | --- | --- | --- |
 | 1 (on) | 0 or 1 | `show_tag_count=0` |
 
-### smallest [#](#32-toc-title)
+### smallest
 
 min. font size in pt
 
@@ -296,7 +328,7 @@ min. font size in pt
 | --- | --- | --- |
 | 12 | integer | `smallest=14` |
 
-### tags_div_class [#](#33-toc-title)
+### tags_div_class
 
 class name for the divs around tags
 
@@ -304,7 +336,7 @@ class name for the divs around tags
 | --- | --- | --- |
 | empty | string | `tags_div_class="my-class"` |
 
-### tags_post_id [#](#34-toc-title)
+### tags_post_id
 
 Use post ID or zero for current post.
 
@@ -312,7 +344,7 @@ Use post ID or zero for current post.
 | --- | --- | --- |
 | -1 (not used) | integer | `tags_post_id=0` |
 
-### taxonomy [#](#35-toc-title)
+### taxonomy
 
 taxonomies (tag types) to use
 

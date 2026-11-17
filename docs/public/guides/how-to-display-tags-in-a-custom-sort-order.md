@@ -6,11 +6,11 @@ doc_category: publishpress-tag-groups
 
 # How to Display Tags in a Custom Sort Order?
 
-Table of Contents
+**Table of Contents**
 
-- [Step #1. Sort tags with a 3rd-party plugin](#0-toc-title)
-- [Step #2. Use "term order"](#1-toc-title)
-- [Other notes](#2-toc-title)
+- [Step #1. Sort tags with a 3rd-party plugin](#step-1-sort-tags-with-a-3rd-party-plugin)
+- [Step #2. Use "term order"](#step-2-use-term-order)
+- [Other notes](#other-notes)
 
 Most front end features of the [Tag Groups](https://publishpress.com/links/tag-groups) plugin allow you to set the sort order of tags with the parameters **orderby** (the property used for sorting) and **order** (up or down). The tags in the menu of the Toggle Post Filter use **term_orderby** and **term_order**.
 
@@ -26,7 +26,7 @@ The default sort options won’t let you sort these tag names in chronological o
 
 This process requires two steps that we explain below:
 
-## Step #1. Sort tags with a 3rd-party plugin [#](#0-toc-title)
+## Step #1. Sort tags with a 3rd-party plugin
 
 First you need to install a 3rd-party plugin that lets you drag and drop the tags into the desired order. We tested:
 
@@ -37,7 +37,7 @@ Other plugins might work as well.((They must save the order as integer in the *t
 
 **Note:** If the plugin lets you sort the tags directly in the tag list and you notice that the tag order is not consistent across groups, you may have to disable the filtering by tag group while sorting.
 
-## Step #2. Use “term order” [#](#1-toc-title)
+## Step #2. Use “term order”
 
 Then you only need to use **orderby=term_order** (or **term_orderby**=term_order****) in the shortcode.
 
@@ -51,7 +51,7 @@ In the Gutenberg block go to “Order tags by” and select “Term Order”:
 
 ![](https://docs-media.publishpress.com/publishpress-tag-groups/tags-custom-order-gutenberg-block-wordpress-726ae62351.webp)
 
-## Other notes [#](#2-toc-title)
+## Other notes
 
 - [Tag Groups](https://publishpress.com/links/tag-groups) can use the *term_order* even after the 3rd-party plugin has been deactivated. Just make sure it doesn’t remove its data when you uninstall it. It depends on the particular plugin how they handle that.
 - If for some reason you cannot use a 3rd-party plugin or it cannot extend the database tables, there is a fallback solution: Write the custom order as numbers into the description field of the tags. Then order them by description. Don’t forget to use custom_title=”” in the tag clouds to hide the description, which by default is displayed as “tooltip”.

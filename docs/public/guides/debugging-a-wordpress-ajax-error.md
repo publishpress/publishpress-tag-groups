@@ -6,16 +6,19 @@ doc_category: publishpress-tag-groups
 
 # Debugging a WordPress Ajax Error
 
-Table of Contents
+**Table of Contents**
 
-- [Find Out The Cause](#0-toc-title)[Check the browser console](#1-toc-title)[Search for the breaking point](#2-toc-title)[Enable debugging](#3-toc-title)
-- [Fix The Problem](#4-toc-title)
+- [Find Out The Cause](#find-out-the-cause)
+  - [Check the browser console](#check-the-browser-console)
+  - [Search for the breaking point](#search-for-the-breaking-point)
+  - [Enable debugging](#enable-debugging)
+- [Fix The Problem](#fix-the-problem)
 
 You probably arrived here because you came across an error message in the diagnostic tool.
 
 Ajax is required for several functions in the [Tag Groups](https://publishpress.com/links/tag-groups) plugin, including the group administration page. In contrast to normal web pages, the communication via Ajax can break when your WordPress site displays a harmless notice that would otherwise disappear in the HTML code.
 
-## Find Out The Cause [#](#0-toc-title)
+## Find Out The Cause
 
 Any plugin or theme installed on your web site can cause Ajax to break.
 
@@ -31,15 +34,15 @@ If you click on the button “Show the response”m you may see some text that c
 Warning: Illegal string offset 'ms_dos' in /homepages/1/abc1234/htdocs/mystore/wp-content/plugins/hello-bully/class-admin.php on line 111
 ```
 
-### Check the browser console [#](#1-toc-title)
+### Check the browser console
 
 [Open the JavaScript Console in your browser](https://webmasters.stackexchange.com/a/77337), reload that page that doesn’t work and check the error messages below for anything that gives a hint about the cause. If you see an error mentioning JSON, XML, Ajax etc., you could try to click there to see the response that came from the server. Often it contains some lines that shouldn’t be there.
 
-### Search for the breaking point [#](#2-toc-title)
+### Search for the breaking point
 
 Deactivate all other plugins and switch to a default theme. Then run the test again (or reload the page where you encountered the problem). If now all seems OK, re-activate them one by one to identify the one where things break.
 
-### Enable debugging [#](#3-toc-title)
+### Enable debugging
 
 Add to your wp-config.php file the following lines:  
 ` define( 'WP_DEBUG', true ); define( 'WP_DEBUG_LOG', true ); `  
@@ -47,7 +50,7 @@ Then run the test again (or reload the page where you encountered the problem) a
 
 When you’re done, don’t forget to set the *true* values back to *false*, or just delete the lines. It is also recommended to delete the file *debug.log* since it might reveal information about your server.
 
-## Fix The Problem [#](#4-toc-title)
+## Fix The Problem
 
 The issue can often be solved only by the author of the plugin or theme that has caused these messages. Alternatively you can hire a developer.
 

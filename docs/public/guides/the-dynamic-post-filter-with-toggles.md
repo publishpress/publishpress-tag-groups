@@ -6,15 +6,16 @@ doc_category: publishpress-tag-groups
 
 # Toggle Post Filter – Overview
 
-Table of Contents
+**Table of Contents**
 
-- [Instructions](#0-toc-title)
-- [Settings and Parameters](#1-toc-title)[Common Settings](#2-toc-title)
-- [Further Notes](#3-toc-title)
-- [Performance](#4-toc-title)
-- [Preset Tags](#5-toc-title)
-- [Alternatives](#6-toc-title)
-- [Common Issues and Solutions](#7-toc-title)
+- [Instructions](#instructions)
+- [Settings and Parameters](#settings-and-parameters)
+  - [Common Settings](#common-settings)
+- [Further Notes](#further-notes)
+- [Performance](#performance)
+- [Preset Tags](#preset-tags)
+- [Alternatives](#alternatives)
+- [Common Issues and Solutions](#common-issues-and-solutions)
 
 The Toggle Post Filter is a frontend feature in the [Tag Groups](https://publishpress.com/links/tag-groups) plugin. Visitors can select tags and see a list of posts that match their search criteria. You can use either shortcodes or Gutenberg blocks for this feature.
 
@@ -26,7 +27,7 @@ Here’s a screenshot of the Toggle Post Filter feature from [our demo site](htt
 
 ![Toggle Post Filter](https://docs-media.publishpress.com/publishpress-tag-groups/toggle-post-filter-0ee6d56459.webp)
 
-## Instructions [#](#0-toc-title)
+## Instructions
 
 To insert the Toggle Post Filter into a page, you can use either shortcodes or Gutenberg blocks. If you don’t feel comfortable with searching and configuring shortcode parameters, Gutenberg is the recommended path to follow.
 
@@ -38,14 +39,14 @@ If groups become too long or have a different height in wide layout, try if the 
 
 Please make sure that you have **published posts** that use the tags that you see in the menu. If you still don’t see the posts, you may need to use the First Aid buttons in the Troubleshooting menu.
 
-## Settings and Parameters [#](#1-toc-title)
+## Settings and Parameters
 
 For all available options, see
 
 - the settings of the Gutenberg block
 - the list of shortcode parameters
 
-### Common Settings [#](#2-toc-title)
+### Common Settings
 
 - **included taxonomies:** Most sites show default WordPress posts. If you want to show products or gallery items or other post types, you will need to select the corresponding taxonomy here: product_tag, xyz_tag
 - **logic operator:** Select here how matching posts should be determined from the tags. A more fine-grained configuration per group is available in the shortcode.
@@ -61,7 +62,7 @@ For all available options, see
 - **post template:** Here you can configure what every post should element look like. You can also edit the HTML for the posts in the Tag Groups settings (go to Front End, Post Filter).
 - **hide toggles in an accordion:** If you use many tags in a group, the list of toggles might become very long. The accordion option lets you show only group labels and hide all toggles in “drawers”.
 
-## Further Notes [#](#3-toc-title)
+## Further Notes
 
 - Toggles (tags) can be sorted by name, slug, ID, description or post count.
 - Use include tags (terms) and exclude tags (terms) to fine-tune the available tags.
@@ -69,7 +70,7 @@ For all available options, see
 - This post filter can only be used *once* on each page (including widgets), and it cannot be used together with the shortcode or block of the Dynamic Post Filter.
 - If you sort posts randomly, you should disable the pager since for each page the order of all posts across all pages is randomized again.
 
-## Performance [#](#4-toc-title)
+## Performance
 
 Please note that it is unavoidable that complex queries take some time to process in the database. That is particularly the case if many tags are selected in multiple groups. The search, including tags and text, makes use of default WordPress post queries, which are already optimized for use on busy websites.
 
@@ -80,7 +81,7 @@ There are several ways how to improve performance:
 3. **Reduce redundant queries:** Visitors often want to search for a combination of tags and text and we don’t need to kick off that search until they are done making their selection. We achieved this through a timeout (by default one second) of inactivity before we send the query to the server. We dynamically increase this timeout if we notice that a visitor selects many tags or doesn’t seem to be sure which options to choose.((since version 1.40.1)) If you still see too many premature server queries you can increase the value for the timeout (in the block under *Caching and Performance*, in the shortcode use timeout).((since version 1.40.1)) Try to find a good balance between a responsive search for a good user experience and a reduction of redundant requests to the server.
 4. **Optimize images:** When posts are rendered, the browser also retrieves the images from the web. In the post templates try to use only image formats as large as it makes sense. Furthermore it is recommended to optimize image files for smaller size without compromising on quality.((There are free plugins that let you do that.))
 
-## Preset Tags [#](#5-toc-title)
+## Preset Tags
 
 Sometimes it comes in handy to preset tags for new visitors arriving at that page. Visitors will see the corresponding posts and can then change the filter.
 
@@ -108,7 +109,7 @@ In the case that you also use the persistent filter (which is by default on – 
 
 If you preset a tag, this tag is effective for *all* groups where it appears. It is not possible to turn on the toggle only in one group while the same tag would be off in another group.
 
-## Alternatives [#](#6-toc-title)
+## Alternatives
 
 If you don’t want your visitors to select tags with a toggle (on-off) switch but to enter them into a tag field, you could take a look at the Dynamic Post Filter.
 
@@ -116,7 +117,7 @@ If you don’t need the interactivity of a filter where posts respond live to se
 
 You can also use one of the tag clouds. They are highly customizable so that you can, for example, display all tags in the same size or prepend to each the same character. With the tag clouds, however, visitors don’t see immediately the list of matching posts. Instead, a click on the tag takes them to another page, where all posts are listed that use this tag.
 
-## Common Issues and Solutions [#](#7-toc-title)
+## Common Issues and Solutions
 
 If no tags or no posts appear, please make sure that
 

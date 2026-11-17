@@ -6,14 +6,14 @@ doc_category: publishpress-tag-groups
 
 # Create a Custom Color Scheme for Shuffle Box
 
-Table of Contents
+**Table of Contents**
 
-- [The Default Themes for Shuffle Boxes](#0-toc-title)
-- [Custom Themes for Shuffle Boxes](#1-toc-title)
+- [The Default Themes for Shuffle Boxes](#the-default-themes-for-shuffle-boxes)
+- [Custom Themes for Shuffle Boxes](#custom-themes-for-shuffle-boxes)
 
 This guide will show you how to create your own color scheme for the Shuffle Box feature in the [Tag Groups](https://publishpress.com/links/tag-groups) plugin. First, we’ll introduce the default options, and then we’ll see how to create your own custom themes.
 
-## The Default Themes for Shuffle Boxes [#](#0-toc-title)
+## The Default Themes for Shuffle Boxes
 
 This screenshot below shows the default design for the shuffle box.
 
@@ -26,7 +26,7 @@ cm-shuffle-box-theme-default
 cm-shuffle-box-theme-blue
 ```
 
-## Custom Themes for Shuffle Boxes [#](#1-toc-title)
+## Custom Themes for Shuffle Boxes
 
 - In your WordPress admin area, go to “[Tag Groups](https://publishpress.com/links/tag-groups)” then “Tag Colors”.
 - Enter the CSS class name. The default is “my-own-class”.

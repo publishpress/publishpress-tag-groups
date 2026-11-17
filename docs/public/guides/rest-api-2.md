@@ -6,14 +6,50 @@ doc_category: publishpress-tag-groups
 
 # Tag Groups and the REST API
 
-Table of Contents
+**Table of Contents**
 
-- [Authentication](#0-toc-title)
-- [Enabling POST/PUT/DELETE](#1-toc-title)
-- [Groups](#groups)[Retrieve one or more groups](#3-toc-title)[Routes](#routes)[Methods](#methods)[Arguments](#arguments)[Create or update a group](#7-toc-title)[Routes](#routes)[Methods](#methods)[Arguments](#arguments)[Delete a group](#11-toc-title)[Routes](#routes)[Methods](#methods)[Arguments](#arguments)
-- [Terms (Tags)](#terms_tags)[Retrieve one or more terms (tags)](#16-toc-title)[Routes](#routes1)[Methods](#methods1)[Arguments](#arguments1)[Update the groups of a term (tag)](#20-toc-title)[Routes](#routes1)[Methods](#methods1)[Arguments](#arguments1)
-- [Taxonomies](#taxonomies)[Retrieve enabled taxonomies](#25-toc-title)[Routes](#routes2)[Methods](#methods2)[Arguments](#arguments2)[Update enabled taxonomies](#29-toc-title)[Routes](#routes2)[Methods](#methods2)[Arguments](#arguments2)
-- [Post Tags](#33-toc-title)[Retrieve post tags](#34-toc-title)[Routes](#routes2)[Methods](#methods2)[Arguments](#arguments2)[Update post tags](#38-toc-title)[Routes](#routes2)[Methods](#methods2)[Arguments](#arguments2)
+- [Authentication](#authentication)
+- [Enabling POST/PUT/DELETE](#enabling-postputdelete)
+- [Groups](#groups)
+  - [Retrieve one or more groups](#retrieve-one-or-more-groups)
+  - [Routes](#routes-2)
+  - [Methods](#methods-2)
+  - [Arguments](#arguments-2)
+  - [Create or update a group](#create-or-update-a-group)
+  - [Routes](#routes-2)
+  - [Methods](#methods-2)
+  - [Arguments](#arguments-2)
+  - [Delete a group](#delete-a-group)
+  - [Routes](#routes-2)
+  - [Methods](#methods-2)
+  - [Arguments](#arguments-2)
+- [Terms (Tags)](#terms-tags)
+  - [Retrieve one or more terms (tags)](#retrieve-one-or-more-terms-tags)
+  - [Routes](#routes-4)
+  - [Methods](#methods-4)
+  - [Arguments](#arguments-4)
+  - [Update the groups of a term (tag)](#update-the-groups-of-a-term-tag)
+  - [Routes](#routes-4)
+  - [Methods](#methods-4)
+  - [Arguments](#arguments-4)
+- [Taxonomies](#taxonomies)
+  - [Retrieve enabled taxonomies](#retrieve-enabled-taxonomies)
+  - [Routes](#routes-8)
+  - [Methods](#methods-8)
+  - [Arguments](#arguments-8)
+  - [Update enabled taxonomies](#update-enabled-taxonomies)
+  - [Routes](#routes-8)
+  - [Methods](#methods-8)
+  - [Arguments](#arguments-8)
+- [Post Tags](#post-tags)
+  - [Retrieve post tags](#retrieve-post-tags)
+  - [Routes](#routes-8)
+  - [Methods](#methods-8)
+  - [Arguments](#arguments-8)
+  - [Update post tags](#update-post-tags)
+  - [Routes](#routes-8)
+  - [Methods](#methods-8)
+  - [Arguments](#arguments-8)
 
 The [Tag Groups](https://publishpress.com/links/tag-groups) plugin does integrate with the WordPress REST API, however the features below are still considered experimental and not officially supported.
 
@@ -27,12 +63,12 @@ Permissions to create or edit groups can be changed in the [Tag Groups](https://
 
 Add the routes after your site URL. In GET requests you can simply add the arguments as parameters. Any returned data will be JSON-encoded, if applicable.
 
-## Authentication [#](#0-toc-title)
+## Authentication
 
 - POST/PUT/DELETE require authentication. You can not perform any of these action if you’re not logged in and have the require capability)
 - READ(GET) doesn’t require authentication as data is for both guests and users consumption
 
-## Enabling POST/PUT/DELETE [#](#1-toc-title)
+## Enabling POST/PUT/DELETE
 
 While all GET (retrieve) operations are available by default, all PUT/POST/DELETE (create, update, delete) operations are opt-in. You enable them by adding to your wp-config.php:
 
@@ -42,23 +78,23 @@ define( 'TAG_GROUPS_REST_API_EDITABLE', true );
 
 Additionally you may have to authenticate, see below.
 
-## Groups [#](#groups)
+## Groups
 
-### Retrieve one or more groups [#](#3-toc-title)
+### Retrieve one or more groups
 
 Returns all groups or one group with its ID, label, position and terms.
 
-#### Routes [#](#routes)
+#### Routes
 
 /wp-json/tag-groups/v1/groups/
 
 /wp-json/tag-groups/v1/groups/{id}/
 
-#### Methods [#](#methods)
+#### Methods
 
 GET
 
-#### Arguments [#](#arguments)
+#### Arguments
 
 | Argument | Values | Default | Description |
 | --- | --- | --- | --- |
@@ -69,60 +105,60 @@ GET
 | order | ASC, DESC | ASC |  |
 | type | all, metabox | all | If you choose ‘metabox’, you see all groups that appear in the Tag Meta Box. (Pro version only) |
 
-### Create or update a group [#](#7-toc-title)
+### Create or update a group
 
 In order to use this endpoint you will need to authenticate as a user who has sufficient permissions.
 
 For creating a new group you use 0 as ID.
 
-#### Routes [#](#routes)
+#### Routes
 
 /wp-json/tag-groups/v1/groups/{id}/
 
-#### Methods [#](#methods)
+#### Methods
 
 PUT, POST
 
-#### Arguments [#](#arguments)
+#### Arguments
 
 | Argument | Values | Default | Description |
 | --- | --- | --- | --- |
 | label | string |  | cannot be empty if you create a new group |
 | position | integer > 0 | after last existing | The position among the groups. The new group will be added at the end if you omit this argument. |
 
-### Delete a group [#](#11-toc-title)
+### Delete a group
 
 In order to use this endpoint you will need to authenticate as a user who has sufficient permissions.
 
-#### Routes [#](#routes)
+#### Routes
 
 /wp-json/tag-groups/v1/groups/{id}/
 
-#### Methods [#](#methods)
+#### Methods
 
 DELETE
 
-#### Arguments [#](#arguments)
+#### Arguments
 
 not available
 
-## Terms (Tags) [#](#terms_tags)
+## Terms (Tags)
 
-### Retrieve one or more terms (tags) [#](#16-toc-title)
+### Retrieve one or more terms (tags)
 
 Returns all terms or one term with its ID, label, position and terms.
 
-#### Routes [#](#routes1)
+#### Routes
 
 /wp-json/tag-groups/v1/terms/
 
 /wp-json/tag-groups/v1/terms/{id}/
 
-#### Methods [#](#methods1)
+#### Methods
 
 GET
 
-#### Arguments [#](#arguments1)
+#### Arguments
 
 | Argument | Values | Default | Description |
 | --- | --- | --- | --- |
@@ -133,94 +169,94 @@ GET
 | orderby |  | name |  |
 | order |  | ASC |  |
 
-### Update the groups of a term (tag) [#](#20-toc-title)
+### Update the groups of a term (tag)
 
 In order to use this endpoint you will need to authenticate as a user who has sufficient permissions.
 
-#### Routes [#](#routes1)
+#### Routes
 
 /wp-json/tag-groups/v1/terms/{id}/
 
-#### Methods [#](#methods1)
+#### Methods
 
 PUT, POST
 
-#### Arguments [#](#arguments1)
+#### Arguments
 
 | Argument | Values | Description |
 | --- | --- | --- |
 | groups | comma-separated list of group IDs | Please note that groups will not be added but overwrite previous data. |
 
-## Taxonomies [#](#taxonomies)
+## Taxonomies
 
-### Retrieve enabled taxonomies [#](#25-toc-title)
+### Retrieve enabled taxonomies
 
 Returns all taxonomies (slug and name) that are enabled for tag groups or for the Tag Meta Box (Pro only).
 
-#### Routes [#](#routes2)
+#### Routes
 
 /wp-json/tag-groups/v1/taxonomies/
 
-#### Methods [#](#methods2)
+#### Methods
 
 GET
 
-#### Arguments [#](#arguments2)
+#### Arguments
 
 | Argument | Values | Default | Description |
 | --- | --- | --- | --- |
 | type | metabox, enabled | enabled |  |
 
-### Update enabled taxonomies [#](#29-toc-title)
+### Update enabled taxonomies
 
 Updates all taxonomies that are enabled for tag groups or for the Tag Meta Box (Pro only).
 
 In order to use this endpoint you will need to authenticate as a user who has sufficient permissions.
 
-#### Routes [#](#routes2)
+#### Routes
 
 /wp-json/tag-groups/v1/taxonomies/
 
-#### Methods [#](#methods2)
+#### Methods
 
 PUT, POST
 
-#### Arguments [#](#arguments2)
+#### Arguments
 
 | Argument | Values | Description |
 | --- | --- | --- |
 | enabled | comma-separated list of taxonomy slugs | taxonomies that are enabled for tag groups |
 | metabox | comma-separated list of taxonomy slugs | taxonomies that are enabled for the Tag Meta Box (Pro only) |
 
-## Post Tags [#](#33-toc-title)
+## Post Tags
 
 Only available in the Pro version.
 
 These endpoints retrieve and update only tags in groups as used by this plugin. If you need to handle other post data you should use the built-in endpoints of WP.
 
-### Retrieve post tags [#](#34-toc-title)
+### Retrieve post tags
 
 Only posts will appear that you are allowed to view.
 
 The ID is a post ID. For each post the authenticated user’s (if applicable) permissions will be checked.
 
-#### Routes [#](#routes2)
+#### Routes
 
 /wp-json/tag-groups/v1/post-tags/
 
 /wp-json/tag-groups/v1/post-tags/{id}/
 
-#### Methods [#](#methods2)
+#### Methods
 
 GET
 
-#### Arguments [#](#arguments2)
+#### Arguments
 
 | Argument | Values | Description |
 | --- | --- | --- |
 | post_type | string (slug) | usually “post_tag” |
 
-### Update post tags [#](#38-toc-title)
+### Update post tags
 
 In order to use this endpoint you will need to authenticate as a user who has sufficient permissions.
 
@@ -228,15 +264,15 @@ The ID is a post ID. For each post the authenticated user’s permissions will b
 
 If you add a tag to a post and this tag is not yet assigned to the submitted group, then this group will be assigned.
 
-#### Routes [#](#routes2)
+#### Routes
 
 /wp-json/tag-groups/v1/post-tags/{id}/
 
-#### Methods [#](#methods2)
+#### Methods
 
 PUT, POST
 
-#### Arguments [#](#arguments2)
+#### Arguments
 
 | Argument | Values | Description |
 | --- | --- | --- |

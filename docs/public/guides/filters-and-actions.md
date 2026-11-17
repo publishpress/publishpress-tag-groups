@@ -6,14 +6,21 @@ doc_category: publishpress-tag-groups
 
 # Filters and Actions in Tag Groups
 
-Table of Contents
+**Table of Contents**
 
 - [Actions](#actions)
-- [Filters](#filters)[View Filters](#2-toc-title)[Term Filters](#3-toc-title)[Group Filters](#4-toc-title)[Filters for Tag Clouds](#5-toc-title)[Filters for Live Post Filters](#6-toc-title)[Post Tags (Under Posts)](#7-toc-title)[Admin](#8-toc-title)
+- [Filters](#filters)
+  - [View Filters](#view-filters)
+  - [Term Filters](#term-filters)
+  - [Group Filters](#group-filters)
+  - [Filters for Tag Clouds](#filters-for-tag-clouds)
+  - [Filters for Live Post Filters](#filters-for-live-post-filters)
+  - [Post Tags (Under Posts)](#post-tags-under-posts)
+  - [Admin](#admin)
 
 This is a guide to the filter hooks and action hooks of the [Tag Groups](https://publishpress.com/links/tag-groups) plugin. If a feature is only in the Pro version of the plugin, the corresponding hooks will also be limited to the Pro version.
 
-## Actions [#](#actions)
+## Actions
 
 Hook into an action with [add_action()](https://developer.wordpress.org/reference/functions/add_action/). Example:
 
@@ -31,7 +38,7 @@ add_action( 'term_group_deleted', 'group_is_gone_message' );
 | groups_of_term_saved | integer: term ID  
 integer or array of integers: tag group IDs | after a term’s assignment to groups was saved |
 
-## Filters [#](#filters)
+## Filters
 
 Hook into a filter with [add_filter()](https://developer.wordpress.org/reference/functions/add_filter/). Examples:
 
@@ -52,7 +59,7 @@ function add_my_icon_to_accordion_tag( $html, $id, $font_size, $post_count, $sho
 add_filter( 'tag_groups_cloud_tag_append', 'add_my_icon_to_accordion_tag', 10, 5 );
 ```
 
-### View Filters [#](#2-toc-title)
+### View Filters
 
 Filter the arguments or the final HTML of views (templates) that we use for pages or page fragments on the front and back end.
 
@@ -65,7 +72,7 @@ string: slug, see tag_groups_view-{$view_slug} | array, must contain same fields
 | tag_groups_premium_view_atts | array: attributes  
 string: slug, see tag_groups_view-{$view_slug} | array, must contain same fields and data types as the attributes | filters the attributes before they are being sent to the view (premium part) |
 
-### Term Filters [#](#3-toc-title)
+### Term Filters
 
 Filter the terms that were retrieved from the database.
 
@@ -83,7 +90,7 @@ string: include
 string exclude  
 integer: threshold | same as the first parameter (terms) | filters the terms (tags); please note that not all parameters are in use, depending on the purpose that these tags are used for (tag clouds, backend) |
 
-### Group Filters [#](#4-toc-title)
+### Group Filters
 
 Here you can filter data about [tag groups](https://publishpress.com/links/tag-groups) after loading from the database, or before saving it.
 
@@ -96,7 +103,7 @@ Here you can filter data about [tag groups](https://publishpress.com/links/tag-g
 | tag_groups_save_group_labels | array; keys are group IDs, values are the labels (names) | array (same as argument) | filters the group labels before saving to the database |
 | tag_groups_save_group_positions | array: keys are group IDs, values are the positions (determining the order) | array (same as argument) | filters the group positions before saving to the database |
 
-### Filters for Tag Clouds [#](#5-toc-title)
+### Filters for Tag Clouds
 
 | Filter name | Arguments of callback | Return data type of callback | Filters what |
 | --- | --- | --- | --- |
@@ -127,7 +134,7 @@ integer: post count | string | filters the HTML title attribute of each tag that
 string: shortcode name  
 integer: post count | string | Filters the title attribute of a tag before replacing all placeholders |
 
-### Filters for Live Post Filters [#](#6-toc-title)
+### Filters for Live Post Filters
 
 | Filter name | Arguments of callback | Return data type of callback | Filters what |
 | --- | --- | --- | --- |
@@ -139,13 +146,13 @@ integer: post count | string | Filters the title attribute of a tag before repla
 | tag_groups_before_placeholders | string: The HTML template  
 object: WP_Post object (the currently processed post) | HTML for a post with optional placeholders | This callback filters the post template before starting to process the placeholders for a post. It is run for each post that is in the queue for output. This filter can be used to create own placeholders or change the post HTML depending on the post. |
 
-### Post Tags (Under Posts) [#](#7-toc-title)
+### Post Tags (Under Posts)
 
 | Filter name | Arguments of callback | Return data type of callback | Filters what |
 | --- | --- | --- | --- |
 | tag_groups_post_terms | string: content (HTML) | string | filters a string containing the table of post tags, in TagGroups_Premium_Post_Terms::get_table() |
 
-### Admin [#](#8-toc-title)
+### Admin
 
 | Filter name | Arguments of callback | Return data type of callback | Filters what |
 | --- | --- | --- | --- |

@@ -6,9 +6,9 @@ doc_category: publishpress-tag-groups
 
 # Introduction to Tag Groups
 
-Table of Contents
+**Table of Contents**
 
-- [What are Tag Groups?](#0-toc-title)
+- [What are Tag Groups?](#what-are-tag-groups)
 
 Welcome to the [Tag Groups](https://publishpress.com/links/tag-groups) plugin!
 
@@ -16,7 +16,7 @@ Welcome to the [Tag Groups](https://publishpress.com/links/tag-groups) plugin!
 
 The Tag Groups plugin allows you to show tags in clouds, tabs, accordions, tables, lists and much more. You can customize your term displays with a huge number of options and use them in posts, pages, blocks, or shortcodes.
 
-## What are Tag Groups? [#](#0-toc-title)
+## What are Tag Groups?
 
 Tag Groups are like containers that contain tags. These groups have IDs, names and an order in which they appear in tag clouds and in menus.
 

@@ -6,10 +6,10 @@ doc_category: publishpress-tag-groups
 
 # How to Show Tag Groups on Posts
 
-Table of Contents
+**Table of Contents**
 
-- [How to customize the Post Tags feature](#0-toc-title)
-- [How to Add Tag Groups Elsewhere in Your Posts](#1-toc-title)
+- [How to customize the Post Tags feature](#how-to-customize-the-post-tags-feature)
+- [How to Add Tag Groups Elsewhere in Your Posts](#how-to-add-tag-groups-elsewhere-in-your-posts)
 
 By default, WordPress posts usually show all the tags that belong to that post.
 
@@ -21,13 +21,13 @@ If you want to display your tags sorted into groups, you can use the “Post Tag
 
 Because themes are hard-coded, we cannot insert the tags at any position. It is only possible to add them after the post content.
 
-## How to customize the Post Tags feature [#](#0-toc-title)
+## How to customize the Post Tags feature
 
 You can customize the display of the Post Tags by going to [Tag Groups](https://publishpress.com/links/tag-groups) > Frontend > Post Tags.
 
 ![](https://docs-media.publishpress.com/publishpress-tag-groups/post-tags-9160275737.webp)
 
-## How to Add Tag Groups Elsewhere in Your Posts [#](#1-toc-title)
+## How to Add Tag Groups Elsewhere in Your Posts
 
 If you need to show the tags groups of a post in another position, you can try doing this:
 

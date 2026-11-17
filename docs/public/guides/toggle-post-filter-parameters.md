@@ -6,14 +6,14 @@ doc_category: publishpress-tag-groups
 
 # Toggle Post Filter – Shortcodes Overview
 
-Table of Contents
+**Table of Contents**
 
-- [Shortcodes](#0-toc-title)
-- [Example](#1-toc-title)
+- [Shortcodes](#shortcodes)
+- [Example](#example)
 
 This guide shows you how to use and customize all the shortcodes for the Toggle Post Filter feature in the [Tag Groups](https://publishpress.com/links/tag-groups) plugin.
 
-## Shortcodes [#](#0-toc-title)
+## Shortcodes
 
 This feature consists of several shortcodes that you can place at different locations of the page, including widgets. The main parts create the menu and the body (for the posts). [Click here for more on the menu shortcode](https://taxopress.com/docs/toggle-post-filter-menu-shortcode-parameters/) and [click here for more on the posts shortcode](https://taxopress.com/docs/toggle-post-filter-posts-body-shortcode-parameters/).
 
@@ -61,7 +61,7 @@ This shortcode doesn’t have any parameters.
 
 Note: Old shortcodes with the pattern tg_dpf_toggle_… still remain functional.
 
-## Example [#](#1-toc-title)
+## Example
 
 ```
 Here comes the filter part:
