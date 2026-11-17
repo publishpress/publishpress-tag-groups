@@ -60,6 +60,12 @@ class TagGroups_Mcp_Settings
     public static function schema()
     {
         $fields = self::fields();
+        // Discovery and writes use the live native taxonomy choices from fields().
+        foreach (array('tag_group_taxonomy', 'tag_group_meta_box_taxonomy') as $name) {
+            if (isset($fields[$name])) {
+                unset($fields[$name]['items']['enum']);
+            }
+        }
         foreach (array('tag_group_meta_box_include', 'tag_group_new_tag_default_groups', 'tag_group_display_groups_under_posts') as $name) {
             if (isset($fields[$name])) {
                 unset($fields[$name]['items']['enum'], $fields[$name]['maxItems']);
