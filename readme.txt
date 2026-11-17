@@ -1,6 +1,6 @@
-=== PublishPress Tag Groups is the Advanced Way to Display Your Taxonomy Terms ===
+=== PublishPress Tag Groups: Stylish Displays For Your Tags and Categories ===
 Contributors: stevejburge, andergmartins, olatechpro, ojopaul
-Tags: tags, tag cloud, tabs, accordion, taxonomy, tag, woocommerce tags, Woocommerce categories, Tabbed Tag Cloud, Tag List, Accordion Tag Cloud, Alphabetical Tags, Alphabetical Tag Cloud, Alphabetical Tag Index, Post List, Post Filter
+Tags: tags, tag cloud, accordion, taxonomy
 Requires at least: 4.9
 Tested up to: 7.1
 Stable tag: 3.0.3
@@ -18,21 +18,21 @@ The PublishPress Tag Groups plugin allows you to organize your WordPress taxonom
 
 The Free version of the PublishPress Tag Groups plugin comes with the following features. All of these features are available as both shortcodes and also Gutenberg blocks.
 
-* **Tag List:** Tags appear in columns, sorted into groups. [View demos](https://demo.taxopress.com/tag-list/).
-* **Tabbed Tag Cloud:** A tag cloud where tags are sorted into groups that appear in tabs. [View demos](https://demo.taxopress.com/tabbed-tag-cloud/).
-* **Accordion Tag Cloud:** A tag cloud where tags are sorted into vertically stacked accordion groups. [View demos](https://demo.taxopress.com/accordion-tab-cloud/).
-* **Alphabetical Tag Cloud:** Tags are sorted alphabetically by first letter under tabs. [View demos](https://demo.taxopress.com/alphabetical-tabs/).
-* **Alphabetical Tag Index:** Tag appear in columns, sorted alphabetically by first letter. [View demos](https://demo.taxopress.com/alphabetical-index/).
-* **Post List:** Display posts with a specific tag or in a particular tag group. [View demos](https://demo.taxopress.com/post-list/).
+* **Tag List:** Tags appear in columns, sorted into groups. [View demos](https://demo.publishpress.com/tag-list/).
+* **Tabbed Tag Cloud:** A tag cloud where tags are sorted into groups that appear in tabs. [View demos](https://demo.publishpress.com/tabbed-tag-cloud/).
+* **Accordion Tag Cloud:** A tag cloud where tags are sorted into vertically stacked accordion groups. [View demos](https://demo.publishpress.com/accordion-tab-cloud/).
+* **Alphabetical Tag Cloud:** Tags are sorted alphabetically by first letter under tabs. [View demos](https://demo.publishpress.com/alphabetical-tabs/).
+* **Alphabetical Tag Index:** Tags appear in columns, sorted alphabetically by first letter. [View demos](https://demo.publishpress.com/alphabetical-index/).
+* **Post List:** Display posts with a specific tag or in a particular tag group. [View demos](https://demo.publishpress.com/post-list/).
 
 The Pro version of the PublishPress Tag Groups plugin also has these extra features:
 
-* **Tag Cloud:** This is an advanced version of a traditional Tag Cloud, with many customization options. [View demos](https://demo.taxopress.com/cloud/).
-* **Table Tag Cloud:** This feature organizes tags in a table, with groups as headers. [View demos](https://demo.taxopress.com/table-tag-cloud/).
-* **Shuffle Box:** This is a tag cloud that allows you to filter the tags by their names or by their tag groups. [View demos](https://demo.taxopress.com/shuffle-box/).
-* **Tag Cloud Search**: Add a search box to any of our static tag displays: Cloud, Tabs, Accordion, or Table. [View demos](https://demo.taxopress.com/tag-cloud-search/).
-* **Toggle Post Filter**: This allows users to dynamically search for posts that have tags they choose. [View demos](https://demo.taxopress.com/post-filter-tags-menu/).
-* **Dynamic Post Filter**: This aallows users to dynamically search for posts via a dropdown menu showing tags. [View demos](https://demo.taxopress.com/post-filter-dropdown-menu/).
+* **Tag Cloud:** This is an advanced version of a traditional Tag Cloud, with many customization options. [View demos](https://demo.publishpress.com/cloud/).
+* **Table Tag Cloud:** This feature organizes tags in a table, with groups as headers. [View demos](https://demo.publishpress.com/table-tag-cloud/).
+* **Shuffle Box:** This is a tag cloud that allows you to filter the tags by their names or by their tag groups. [View demos](https://demo.publishpress.com/shuffle-box/).
+* **Tag Cloud Search**: Add a search box to any of our static tag displays: Cloud, Tabs, Accordion, or Table. [View demos](https://demo.publishpress.com/tag-cloud-search/).
+* **Toggle Post Filter**: This allows users to dynamically search for posts that have tags they choose. [View demos](https://demo.publishpress.com/post-filter-tags-menu/).
+* **Dynamic Post Filter**: This allows users to dynamically search for posts via a dropdown menu showing tags. [View demos](https://demo.publishpress.com/post-filter-dropdown-menu/).
 
 ## PublishPress Tag Groups Pro ##
 
