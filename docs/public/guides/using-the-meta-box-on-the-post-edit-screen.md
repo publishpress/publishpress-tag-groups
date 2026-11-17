@@ -6,16 +6,16 @@ doc_category: publishpress-tag-groups
 
 # Using the Tag Groups Metabox on the Post Edit Screen
 
-Table of Contents
+**Table of Contents**
 
-- [Introducing the Tag Groups Metabox](#0-toc-title)
-- [Additional notes and restrictions](#1-toc-title)
+- [Introducing the Tag Groups Metabox](#introducing-the-tag-groups-metabox)
+- [Additional notes and restrictions](#additional-notes-and-restrictions)
 
 This is a feature of [Tag Groups](https://publishpress.com/links/tag-groups) Pro.
 
 The default WordPress “Tags” box does not use [tag groups](https://publishpress.com/links/tag-groups). Therefore, the Tag Groups plugin offers a “Tag Meta Box” that helps you edit post tags separated by groups. The default box is disabled when using our plugin.
 
-## Introducing the Tag Groups Metabox [#](#0-toc-title)
+## Introducing the Tag Groups Metabox
 
 This screenshot below shows the metabox provided by the Tag Groups plugin:
 
@@ -33,7 +33,7 @@ Only when you save the post, it will receive the new tags and keep the old tags 
 
 Please note that other plugins and themes don’t use tag groups. For them, all tags form just one unsorted group. If you want to display them in groups to your visitors, you need to use the **Gutenberg blocks** or **shortcodes** of this plugin or **modify your theme**. You can also [display post tags under the posts](https://taxopress.com/docs/post-tags/) sorted by groups.
 
-## Additional notes and restrictions [#](#1-toc-title)
+## Additional notes and restrictions
 
 **Note 1:**Since tags are separated in the input field by comma (“,”), **tag names cannot contain this character** in order to work with the meta box.
 

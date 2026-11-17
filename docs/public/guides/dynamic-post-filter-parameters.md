@@ -6,21 +6,55 @@ doc_category: publishpress-tag-groups
 
 # Dynamic Post Filter – Shortcode Parameters
 
-Table of Contents
+**Table of Contents**
 
-- [Shortcode](#0-toc-title)
-- [Example](#1-toc-title)
+- [Shortcode](#shortcode)
+- [Example](#example)
 - [Data Types](#data-types)
-- [Parameters](#tags_and_terms)[Tags and Terms](#4-toc-title)[taxonomy](#taxonomy)[operator](#operator)[Groups](#groups)[include](#include)[open](#open)[hide_close_buttons](#hide_close_buttons)[sumoselect](#sumoselect)[groups_only](#groups_only)[Posts](#posts)[caching_time](#caching_time)[posts_per_page](#posts_per_page)[pager](#pager)[orderby](#orderby)[order](#order)[display_amount](#display_amount)[template](#20-toc-title)[{post_title}](#21-toc-title)[transition](#transition)[static_taxonomy](#static_taxonomy)[static_terms](#static_terms)
-- [Other](#25-toc-title)[persistent_filter](#persistent_filter)
-- [Labels and Messages](#labels_and_messages)[placeholder](#placeholder)[posts_placeholder](#posts_placeholder)[default_option_label](#default_option_label)[groups_header](#groups_header)[message_only_existing](#message_only_existing)[message_same_group](#message_same_group)[message_nothing_found](#message_nothing_found)[message_load_more](#message_load_more)[message_go_back](#message_go_back)[message_amount_singular](#message_amount_singular)[message_amount_plural](#message_amount_plural)
-- [Advanced Styling](#advanced_styling)[div_class](#div_class)[div_id](#div_id)
+- [Parameters](#parameters)
+  - [Tags and Terms](#tags-and-terms)
+  - [taxonomy](#taxonomy)
+  - [operator](#operator)
+  - [Groups](#groups)
+  - [include](#include)
+  - [open](#open)
+  - [hide_close_buttons](#hide_close_buttons)
+  - [sumoselect](#sumoselect)
+  - [groups_only](#groups_only)
+  - [Posts](#posts)
+  - [caching_time](#caching_time)
+  - [posts_per_page](#posts_per_page)
+  - [pager](#pager)
+  - [orderby](#orderby)
+  - [order](#order)
+  - [display_amount](#display_amount)
+  - [template](#template)
+  - [transition](#transition)
+  - [static_taxonomy](#static_taxonomy)
+  - [static_terms](#static_terms)
+- [Other](#other)
+  - [persistent_filter](#persistent_filter)
+- [Labels and Messages](#labels-and-messages)
+  - [placeholder](#placeholder)
+  - [posts_placeholder](#posts_placeholder)
+  - [default_option_label](#default_option_label)
+  - [groups_header](#groups_header)
+  - [message_only_existing](#message_only_existing)
+  - [message_same_group](#message_same_group)
+  - [message_nothing_found](#message_nothing_found)
+  - [message_load_more](#message_load_more)
+  - [message_go_back](#message_go_back)
+  - [message_amount_singular](#message_amount_singular)
+  - [message_amount_plural](#message_amount_plural)
+- [Advanced Styling](#advanced-styling)
+  - [div_class](#div_class)
+  - [div_id](#div_id)
 
 This guide shows you how to use and customize the shortcode for the Dynamic Post Filter feature in the [Tag Groups](https://publishpress.com/links/tag-groups) Pro plugin.
 
 **Note:**This shortcode or block can only be used **once** on a page (including widgets), and it cannot be used together with the shortcode or block of the Dynamic Post Filter With Toggles.
 
-## Shortcode [#](#0-toc-title)
+## Shortcode
 
 ```
 [tag_groups_dpf]
@@ -32,23 +66,23 @@ You can optionally display posts separated from the menu. Simply use in this sho
 [tag_groups_dpf_body]
 ```
 
-## Example [#](#1-toc-title)
+## Example
 
 ```
 [tag_groups_dpf include=1,2,3,5 open=1,2,3,5 caching_time=60 persistent_filter=60 pager=1 display_amount=1 transition=fade]
 ```
 
-## Data Types [#](#data-types)
+## Data Types
 
 - **string:** A text. For identifiers that won’t be visible to visitors you often have to replace spaces with _ or -. If the string contains spaces, you need to wrap it in quotes.
 - **integer:** A number without decimal places.
 - **0 or 1**: 0 turns the feature off and 1 on.
 
-## Parameters [#](#tags_and_terms)
+## Parameters
 
-### Tags and Terms [#](#4-toc-title)
+### Tags and Terms
 
-#### taxonomy [#](#taxonomy)
+#### taxonomy
 
 Restrict the tags only to these taxonomies. Available are only taxonomies that have been activated in the Settings.
 
@@ -56,7 +90,7 @@ Restrict the tags only to these taxonomies. Available are only taxonomies that h
 | --- | --- | --- |
 | comma-separated list of taxonomy names | Taxonomies selected in the settings under “Basics”. | `taxonomy=post_tag,product_tag` |
 
-#### operator [#](#operator)
+#### operator
 
 The operator determines how selected tags and groups should be logically connected when searching for matching posts. Possible values are “IN”/”OR” (at least one tag is among the post tags), “AND” (all tags are among the post tags of the same group), “IN AND” (at least one tag from each group is among the post tags), “EXACT” (the selection of tags must be identical to the post tags of that same group, not more and not less; this option is not available for the option groups_only=1), or a per-group definition:
 
@@ -78,9 +112,9 @@ Remarks about the per-group notation:
 | string | IN/OR | `operator="IN AND"`  
 `operator="all:and\|1:or\|5:exact\|3:and"` |
 
-### Groups [#](#groups)
+### Groups
 
-#### include [#](#include)
+#### include
 
 [Tag groups](https://publishpress.com/links/tag-groups) that will be selectable by visitors. In the short code you use the IDs, which you find in the left column in the list of groups. Empty or not used means that all tag groups will be used.
 
@@ -88,7 +122,7 @@ Remarks about the per-group notation:
 | --- | --- | --- |
 | comma-separated list of integers | empty (=all) | `include=1,5,9` |
 
-#### open [#](#open)
+#### open
 
 Tag groups that are initially open. If you use include, then all selected groups must also be included. Empty or not used means that all tag groups will be open.
 
@@ -96,7 +130,7 @@ Tag groups that are initially open. If you use include, then all selected groups
 | --- | --- | --- |
 | comma-separated list of integers | empty (=all) | `open=1,9` |
 
-#### hide_close_buttons [#](#hide_close_buttons)
+#### hide_close_buttons
 
 Disables the possibility to remove the input fields of groups. You can use that option together with the include and open parameters if you want to show a fixed set of groups that cannot be altered by visitors.
 
@@ -104,7 +138,7 @@ Disables the possibility to remove the input fields of groups. You can use that 
 | --- | --- | --- |
 | integer | 0 | `hide_close_buttons=1` |
 
-#### sumoselect [#](#sumoselect)
+#### sumoselect
 
 Changes the default select menu to a more stylish one.
 
@@ -112,7 +146,7 @@ Changes the default select menu to a more stylish one.
 | --- | --- | --- |
 | integer | 1 | `sumoselect=0` |
 
-#### groups_only [#](#groups_only)
+#### groups_only
 
 Skip the tag selection and display all products that match the selected groups.
 
@@ -120,9 +154,9 @@ Skip the tag selection and display all products that match the selected groups.
 | --- | --- | --- |
 | integer | 0 | `groups_only=1` |
 
-### Posts [#](#posts)
+### Posts
 
-#### caching_time [#](#caching_time)
+#### caching_time
 
 Time in minutes that results remain in the cache.
 
@@ -130,7 +164,7 @@ Time in minutes that results remain in the cache.
 | --- | --- | --- |
 | integer | 10 | `caching_time=10` |
 
-#### posts_per_page [#](#posts_per_page)
+#### posts_per_page
 
 How many posts appear under the filter. Use -1 to show all.
 
@@ -142,7 +176,7 @@ Tip: If you use the parameter “display_amount” you can reduce the additional
 | --- | --- | --- |
 | integer | 5 | `posts_per_page=10` |
 
-#### pager [#](#pager)
+#### pager
 
 If the pager is enabled then visitors can load the next or previous page.
 
@@ -150,7 +184,7 @@ If the pager is enabled then visitors can load the next or previous page.
 | --- | --- | --- |
 | integer | 0 | `pager=1` |
 
-#### orderby [#](#orderby)
+#### orderby
 
 Which field to use for sorting.
 
@@ -167,7 +201,7 @@ Which field to use for sorting.
 | --- | --- | --- |
 | string | date | `orderby=title` |
 
-#### order [#](#order)
+#### order
 
 Whether to sort the posts in ascending or descending order. Ascending order also means from oldest to newest.
 
@@ -175,7 +209,7 @@ Whether to sort the posts in ascending or descending order. Ascending order also
 | --- | --- | --- |
 | string | DESC | `order=asc` |
 
-#### display_amount [#](#display_amount)
+#### display_amount
 
 Whether to display a line that shows the total amount of posts.
 
@@ -183,15 +217,13 @@ Whether to display a line that shows the total amount of posts.
 | --- | --- | --- |
 | 0 or 1 | 0 | `display_amount=1` |
 
-#### template [#](#20-toc-title)
+#### template
 
 HTML code that contains some placeholders. If you use only one template on your entire website, it is recommended to leave this parameter empty and edit the default template in the Front End settings.
 
-In order to prevent that WordPress parses the HTML and adds malformed
+In order to prevent that WordPress parses the HTML and adds malformed `<p>` tags, it is recommended to encode it before using it.
 
-tags, it is recommended to encode it before using it.
-
-Possible placeholders are: {post_id}, {post_title}, {permalink}, {post_excerpt} (automatically generated), {post_excerpt_html} (preserves most common html tags), {post_date}, {post_author}, {image_src} or {image_src|image size}, {image_alt}, {post_category}, {post_tags}, {custom_field:<name>}((A value from the post meta <name>.
+Possible placeholders are: {post_id}, {post_title}, {permalink}, {post_excerpt} (automatically generated), {post_excerpt_html} (preserves most common html tags), {post_date}, {post_author}, {image_src} or {image_src|image size}, {image_alt}, {post_category}, {post_tags}, {custom_field:`<name>`}(a value from the post meta `<name>`).
 
 image_src also accepts percentages or “auto” as values. If you want to use pixels, you enter the number without any “px”
 
@@ -202,7 +234,6 @@ image_src also accepts percentages or “auto” as values. If you want to use p
 Default template:
 
 ```
-
 
 {post_title} #
 Posted on {post_date} by {post_author}.
@@ -231,7 +262,7 @@ Examples for the image tag:
 
 ```
 
-#### transition [#](#transition)
+#### transition
 
 Transition between loading the list of posts.
 
@@ -239,7 +270,7 @@ Transition between loading the list of posts.
 | --- | --- | --- |
 | string | none | `transition=fade` |
 
-#### static_taxonomy [#](#static_taxonomy)
+#### static_taxonomy
 
 Optionally filter also by terms of an additional taxonomy (not necessarily one of the taxonomies used for tag groups). Used together with [static_terms](#static_terms).
 
@@ -247,7 +278,7 @@ Optionally filter also by terms of an additional taxonomy (not necessarily one o
 | --- | --- | --- |
 | string | none | `static_taxonomy=category` |
 
-#### static_terms [#](#static_terms)
+#### static_terms
 
 Optionally filter also by terms of an additional taxonomy (not necessarily one of the taxonomies used for tag groups). Used together with [static_taxonomy](#static_taxonomy).
 
@@ -255,9 +286,9 @@ Optionally filter also by terms of an additional taxonomy (not necessarily one o
 | --- | --- | --- |
 | comma-separated list of integers | none | `static_terms=42,255` |
 
-## Other [#](#25-toc-title)
+## Other
 
-#### persistent_filter [#](#persistent_filter)
+### persistent_filter
 
 The Dynamic Post Filter can optionally remember the selection of groups and tags so that your visitors who clicked on an article and then return to this page will see the same list of articles again. After loading, the page will scroll to the group selection menu. (Otherwise the browser might go to a random post, depending on the loading speed.)
 
@@ -269,9 +300,9 @@ The value is the time in minutes. Zero means off.
 | --- | --- | --- |
 | integer | 0 (off) | ` persistent_filter=30` |
 
-## Labels and Messages [#](#labels_and_messages)
+## Labels and Messages
 
-#### placeholder [#](#placeholder)
+### placeholder
 
 Placeholder message in the tag input field. It disappears as soon as you enter tags.
 
@@ -279,7 +310,7 @@ Placeholder message in the tag input field. It disappears as soon as you enter t
 | --- | --- | --- |
 | string | “Please enter your tags here.” | `placeholder=""` |
 
-#### posts_placeholder [#](#posts_placeholder)
+### posts_placeholder
 
 Placeholder message for the list of posts.
 
@@ -287,7 +318,7 @@ Placeholder message for the list of posts.
 | --- | --- | --- |
 | string | “Please select a group.” | `posts_placeholder=""` |
 
-#### default_option_label [#](#default_option_label)
+### default_option_label
 
 What the pull-down menu should show if no group is selected.
 
@@ -295,7 +326,7 @@ What the pull-down menu should show if no group is selected.
 | --- | --- | --- |
 | string | “Filter by group” | `default_option_label=""` |
 
-#### groups_header [#](#groups_header)
+### groups_header
 
 Header above the list of selected groups.
 
@@ -303,7 +334,7 @@ Header above the list of selected groups.
 | --- | --- | --- |
 | string | “Selected groups:” | `groups_header=""` |
 
-#### message_only_existing [#](#message_only_existing)
+### message_only_existing
 
 Error message if user tries to enter a tag that doesn’t exist.
 
@@ -311,7 +342,7 @@ Error message if user tries to enter a tag that doesn’t exist.
 | --- | --- | --- |
 | string | 0 | `message_only_existing=""` |
 
-#### message_same_group [#](#message_same_group)
+### message_same_group
 
 Error message if user tries to enter a tag from another group.
 
@@ -319,7 +350,7 @@ Error message if user tries to enter a tag from another group.
 | --- | --- | --- |
 | string | 0 | `message_same_group=""` |
 
-#### message_nothing_found [#](#message_nothing_found)
+### message_nothing_found
 
 Message to show if no posts were found.
 
@@ -327,7 +358,7 @@ Message to show if no posts were found.
 | --- | --- | --- |
 | string | “Nothing found.” | `message_nothing_found=""` |
 
-#### message_load_more [#](#message_load_more)
+### message_load_more
 
 Label of the link to load more posts, if the pager is active.
 
@@ -335,7 +366,7 @@ Label of the link to load more posts, if the pager is active.
 | --- | --- | --- |
 | string | “Load more” | `message_load_more=""` |
 
-#### message_go_back [#](#message_go_back)
+### message_go_back
 
 Label of the link to go back, if the pager is active.
 
@@ -343,7 +374,7 @@ Label of the link to go back, if the pager is active.
 | --- | --- | --- |
 | string | “Go back” | `message_go_back=""` |
 
-#### message_amount_singular [#](#message_amount_singular)
+### message_amount_singular
 
 Message if one post was found, if display_amount is active.
 
@@ -351,7 +382,7 @@ Message if one post was found, if display_amount is active.
 | --- | --- | --- |
 | string | “1 post found.” | `message_amount_singular="One recipe found."` |
 
-#### message_amount_plural [#](#message_amount_plural)
+### message_amount_plural
 
 Message if many posts were found, if display_amount is active. May contain the placeholder {count}
 
@@ -359,21 +390,21 @@ Message if many posts were found, if display_amount is active. May contain the p
 | --- | --- | --- |
 | string | “{count} posts found.” | `message_amount_plural="We found {count} recipes."` |
 
-## Advanced Styling [#](#advanced_styling)
+## Advanced Styling
 
 You can set here classes to be referred to in CSS. You need some knowledge of CSS to use these options.
 
-#### div_class [#](#div_class)
+### div_class
 
-Define a class for the <div>.
+Define a class for the `<div>`.
 
 | accepted values | default | example |
 | --- | --- | --- |
 | string | empty | `div_class="change-pointer"` |
 
-#### div_id [#](#div_id)
+### div_id
 
-Define an ID for the enclosing <div>.
+Define an ID for the enclosing `<div>`.
 
 | accepted values | default | example |
 | --- | --- | --- |

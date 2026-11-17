@@ -6,15 +6,15 @@ doc_category: publishpress-tag-groups
 
 # First Steps With Tag Groups
 
-Table of Contents
+**Table of Contents**
 
-- [Step #1. Select the Taxonomies](#0-toc-title)
-- [Step #2. Create and Edit Tag Groups](#1-toc-title)
-- [Step #3. Assign Tags](#2-toc-title)
+- [Step #1. Select the Taxonomies](#step-1-select-the-taxonomies)
+- [Step #2. Create and Edit Tag Groups](#step-2-create-and-edit-tag-groups)
+- [Step #3. Assign Tags](#step-3-assign-tags)
 
 Follow these steps to start using the [Tag Groups](https://publishpress.com/links/tag-groups) plugin for the first time. After installing the plugin, this guide will get you started with [Tag Groups](https://publishpress.com/links/tag-groups).
 
-## Step #1. Select the Taxonomies [#](#0-toc-title)
+## Step #1. Select the Taxonomies
 
 The plugin creates a new menu called **Tag Groups**. First you should go to the **Taxonomies** sub-menu.
 
@@ -28,7 +28,7 @@ Select the taxonomy that you want to organize in groups. The default is **Tags**
 
 After you have saved your changes, a new submenu **Tag Groups Admin** will appear under the menu of that chosen post type. For Tag (post_tag), you find the **Tag Groups Admin** menu under **Posts**.
 
-## Step #2. Create and Edit Tag Groups [#](#1-toc-title)
+## Step #2. Create and Edit Tag Groups
 
 The next step is to create groups. Before you have any tag groups, you cannot assign your tags to them.
 
@@ -46,7 +46,7 @@ You can always come back later and add, rename and reorder the groups.
 
 Deleting a group will not delete any tags, but mark them as “unassigned”.
 
-## Step #3. Assign Tags [#](#2-toc-title)
+## Step #3. Assign Tags
 
 Next, go to the tags (or your chosen taxonomy) and assign them to groups. By default, each tag is unassigned (group ID 0). In the free version each tag can be assigned only to *one* group.
 

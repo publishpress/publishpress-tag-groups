@@ -6,39 +6,71 @@ doc_category: publishpress-tag-groups
 
 # Post List – Shortcode Parameters
 
-Table of Contents
+**Table of Contents**
 
-- [Shortcode](#0-toc-title)
-- [Example](#1-toc-title)
-- [Data Types](#2-toc-title)
-- [Parameters](#3-toc-title)[Tags and Terms](#4-toc-title)[taxonomy](#taxonomy)[operator](#operator)[Tag Groups](#groups)[include](#include)[Posts](#posts)[author](#author)[cat](#cat)[caching_time](#caching_time)[posts_per_page](#posts_per_page)[pager](#pager)[pager_position](#pager_position)[orderby](#orderby)[order](#order)[display_amount](#display_amount)[search](#search)[tag](#tag)[tag__and](#tag__and)[tag__in](#tag__in)[tag__not_in](#tag__not_in)[tag_id](#tag_id)[tag_slug__and](#tag_slug__and)[tag_slug__in](#tag_slug__in)[template](#27-toc-title)[Labels and Messages](#labels_and_messages)[message_nothing_found](#message_nothing_found)[message_load_more](#message_load_more)[message_go_back](#message_go_back)[message_amount_singular](#message_amount_singular)[message_amount_plural](#message_amount_plural)
-- [Advanced Styling](#advanced_styling)[div_class](#div_class)[article_class](#article_class)
+- [Shortcode](#shortcode)
+- [Example](#example)
+- [Data Types](#data-types)
+- [Parameters](#parameters)
+  - [Tags and Terms](#tags-and-terms)
+  - [taxonomy](#taxonomy)
+  - [operator](#operator)
+  - [Tag Groups](#tag-groups)
+  - [include](#include)
+  - [Posts](#posts)
+  - [author](#author)
+  - [cat](#cat)
+  - [caching_time](#caching_time)
+  - [posts_per_page](#posts_per_page)
+  - [pager](#pager)
+  - [pager_position](#pager_position)
+  - [orderby](#orderby)
+  - [order](#order)
+  - [display_amount](#display_amount)
+  - [search](#search)
+  - [tag](#tag)
+  - [tag__and](#tag__and)
+  - [tag__in](#tag__in)
+  - [tag__not_in](#tag__not_in)
+  - [tag_id](#tag_id)
+  - [tag_slug__and](#tag_slug__and)
+  - [tag_slug__in](#tag_slug__in)
+  - [template](#template)
+  - [Labels and Messages](#labels-and-messages)
+  - [message_nothing_found](#message_nothing_found)
+  - [message_load_more](#message_load_more)
+  - [message_go_back](#message_go_back)
+  - [message_amount_singular](#message_amount_singular)
+  - [message_amount_plural](#message_amount_plural)
+- [Advanced Styling](#advanced-styling)
+  - [div_class](#div_class)
+  - [article_class](#article_class)
 
 This is a guide to using shortcodes to display the “[Post List](https://taxopress.com/docs/the-post-list/)” feature in the [Tag Groups](https://publishpress.com/links/tag-groups) Pro plugin.
 
-## Shortcode [#](#0-toc-title)
+## Shortcode
 
 ```
 [tag_groups_post_list]
 ```
 
-## Example [#](#1-toc-title)
+## Example
 
 ```
 [tag_groups_post_list include=1,2,3,5 display_amount=1]
 ```
 
-## Data Types [#](#2-toc-title)
+## Data Types
 
 - **string:** A text. For identifiers that won’t be visible to visitors you often have to replace spaces with _ or -. If the string contains spaces, you need to wrap it in quotes.
 - **integer:** A number without decimal places.
 - **0 or 1**: 0 turns the feature off and 1 on.
 
-## Parameters [#](#3-toc-title)
+## Parameters
 
-### Tags and Terms [#](#4-toc-title)
+### Tags and Terms
 
-#### taxonomy [#](#taxonomy)
+#### taxonomy
 
 Restrict the tags only to these taxonomies. Available are only taxonomies that have been activated in the Settings.
 
@@ -46,7 +78,7 @@ Restrict the tags only to these taxonomies. Available are only taxonomies that h
 | --- | --- | --- |
 | comma-separated list of taxonomy names | Taxonomies selected in the settings under “Basics”. | `taxonomy=post_tag,product_tag` |
 
-#### operator [#](#operator)
+#### operator
 
 How the tags should be logically connected. Possible values are “OR” (At least one group matches.) or “AND” (All groups match.).
 
@@ -54,9 +86,9 @@ How the tags should be logically connected. Possible values are “OR” (At lea
 | --- | --- | --- |
 | string | OR | `operator="AND"` |
 
-### Tag Groups [#](#groups)
+### Tag Groups
 
-#### include [#](#include)
+#### include
 
 [Tag groups](https://publishpress.com/links/tag-groups) that will be selectable by visitors. In the short code you use the IDs, which you find in the left column in the list of groups. Empty or not used means that all tag groups will be used.
 
@@ -64,9 +96,9 @@ How the tags should be logically connected. Possible values are “OR” (At lea
 | --- | --- | --- |
 | comma-separated list of integers | empty (=all) | `include=1,5,9` |
 
-### Posts [#](#posts)
+### Posts
 
-#### author [#](#author)
+#### author
 
 Filter by author.
 
@@ -74,7 +106,7 @@ Filter by author.
 | --- | --- | --- |
 | author ID or comma-separated list of IDs | off | `author=1,3` |
 
-#### cat [#](#cat)
+#### cat
 
 Filter by category.
 
@@ -82,7 +114,7 @@ Filter by category.
 | --- | --- | --- |
 | category ID | off | `cat=5` |
 
-#### caching_time [#](#caching_time)
+#### caching_time
 
 Time in minutes that results remain in the cache.
 
@@ -90,7 +122,7 @@ Time in minutes that results remain in the cache.
 | --- | --- | --- |
 | integer | 10 | `caching_time=10` |
 
-#### posts_per_page [#](#posts_per_page)
+#### posts_per_page
 
 How many posts appear under the filter. Use -1 to show all.
 
@@ -100,7 +132,7 @@ Please note that high numbers of posts may impact the performance.
 | --- | --- | --- |
 | integer | 5 | `posts_per_page=10` |
 
-#### pager [#](#pager)
+#### pager
 
 - 0: off
 - 1: Simple pager; visitors can load the next or previous page.
@@ -112,7 +144,7 @@ It is also possible to use the cursor keys left and right to flip through pages.
 | --- | --- | --- |
 | integer | 0 | `pager=2` |
 
-#### pager_position [#](#pager_position)
+#### pager_position
 
 - top
 - bottom
@@ -122,7 +154,7 @@ It is also possible to use the cursor keys left and right to flip through pages.
 | --- | --- | --- |
 | string | bottom | `pager_position=both` |
 
-#### orderby [#](#orderby)
+#### orderby
 
 Which field to use for sorting.
 
@@ -138,7 +170,7 @@ Which field to use for sorting.
 | --- | --- | --- |
 | string | date | `orderby=title` |
 
-#### order [#](#order)
+#### order
 
 Whether to sort the posts in ascending or descending order. Ascending order also means from oldest to newest.
 
@@ -146,7 +178,7 @@ Whether to sort the posts in ascending or descending order. Ascending order also
 | --- | --- | --- |
 | string | DESC | `order=asc` |
 
-#### display_amount [#](#display_amount)
+#### display_amount
 
 Whether to display a line that shows the total amount of posts. This message appears only if the number is greater than zero.
 
@@ -154,7 +186,7 @@ Whether to display a line that shows the total amount of posts. This message app
 | --- | --- | --- |
 | 0 or 1 | 0 | `display_amount=1` |
 
-#### search [#](#search)
+#### search
 
 Filter by a search term
 
@@ -162,7 +194,7 @@ Filter by a search term
 | --- | --- | --- |
 | string | empty | `search=hello` |
 
-#### tag [#](#tag)
+#### tag
 
 Filter by a tag slug.
 
@@ -170,7 +202,7 @@ Filter by a tag slug.
 | --- | --- | --- |
 | string | empty | `tag=my-tag` |
 
-#### tag__and [#](#tag__and)
+#### tag__and
 
 Filter by a list of tag IDs. Combine them with “and”.
 
@@ -178,7 +210,7 @@ Filter by a list of tag IDs. Combine them with “and”.
 | --- | --- | --- |
 | comma-separated list of tag IDs | empty | `tag__and=12,45` |
 
-#### tag__in [#](#tag__in)
+#### tag__in
 
 Filter by a list of tag IDs. Combine them with “or”. (“in” a set of tags)
 
@@ -186,7 +218,7 @@ Filter by a list of tag IDs. Combine them with “or”. (“in” a set of tags
 | --- | --- | --- |
 | comma-separated list of tag IDs | empty | tag__in=12,45 |
 
-#### tag__not_in [#](#tag__not_in)
+#### tag__not_in
 
 Filter by a list of tag IDs. Combine them with “nor”. (“not in” a set of tags)
 
@@ -194,7 +226,7 @@ Filter by a list of tag IDs. Combine them with “nor”. (“not in” a set of
 | --- | --- | --- |
 | comma-separated list of tag IDs | empty | tag__not_in=12,45 |
 
-#### tag_id [#](#tag_id)
+#### tag_id
 
 Filter by a tag ID.
 
@@ -202,7 +234,7 @@ Filter by a tag ID.
 | --- | --- | --- |
 | integer | empty | `tag_id=10` |
 
-#### tag_slug__and [#](#tag_slug__and)
+#### tag_slug__and
 
 Filter by a list of tag slugs. Combine them with “and”.
 
@@ -210,7 +242,7 @@ Filter by a list of tag slugs. Combine them with “and”.
 | --- | --- | --- |
 | comma-separated list of tag slugs | empty | tag_slug__and=my-tag,your-tag |
 
-#### tag_slug__in [#](#tag_slug__in)
+#### tag_slug__in
 
 Filter by a list of tag slugs. Combine them with “or”. (“in” a set of tags)
 
@@ -218,15 +250,13 @@ Filter by a list of tag slugs. Combine them with “or”. (“in” a set of ta
 | --- | --- | --- |
 | comma-separated list of tag slugs | empty | tag_slug__in=my-tag,your-tag |
 
-#### template [#](#27-toc-title)
+#### template
 
 HTML code that contains some placeholders. If you use only one template on your entire website, it is recommended to leave this parameter empty and edit the default template in the Front End settings.
 
-In order to prevent that WordPress parses the HTML and adds malformed
+In order to prevent that WordPress parses the HTML and adds malformed `<p>` tags, it is recommended to encode it before using it.
 
-tags, it is recommended to encode it before using it.
-
-Possible placeholders are: {post_id}, {post_title}, {post_guid} (link to the post, {post_excerpt} (automatically generated), {post_date}, {post_author}, {image_src} or {image_src|image size} (followed by the dimensions – will create also width and height attributes), {image_alt}, {post_category}, {post_tags}, {custom_field:<name>}
+Possible placeholders are: {post_id}, {post_title}, {post_guid} (link to the post, {post_excerpt} (automatically generated), {post_date}, {post_author}, {image_src} or {image_src|image size} (followed by the dimensions – will create also width and height attributes), {image_alt}, {post_category}, {post_tags}, {custom_field:`<name>`}
 
 | accepted values | default | example shortcode |
 | --- | --- | --- |
@@ -264,9 +294,9 @@ Examples for the image tag:
 
 ```
 
-### Labels and Messages [#](#labels_and_messages)
+### Labels and Messages
 
-#### message_nothing_found [#](#message_nothing_found)
+#### message_nothing_found
 
 Message to show if no posts were found.
 
@@ -274,7 +304,7 @@ Message to show if no posts were found.
 | --- | --- | --- |
 | string | “Nothing found.” | `message_nothing_found=""` |
 
-#### message_load_more [#](#message_load_more)
+#### message_load_more
 
 Label of the link to load more posts, if the pager is active.
 
@@ -282,7 +312,7 @@ Label of the link to load more posts, if the pager is active.
 | --- | --- | --- |
 | string | “Load more” | `message_load_more=""` |
 
-#### message_go_back [#](#message_go_back)
+#### message_go_back
 
 Label of the link to go back, if the pager is active.
 
@@ -290,7 +320,7 @@ Label of the link to go back, if the pager is active.
 | --- | --- | --- |
 | string | “Go back” | `message_go_back=""` |
 
-#### message_amount_singular [#](#message_amount_singular)
+#### message_amount_singular
 
 Message if one post was found, if display_amount is active.
 
@@ -298,7 +328,7 @@ Message if one post was found, if display_amount is active.
 | --- | --- | --- |
 | string | “1 post found.” | `message_amount_singular="One recipe found."` |
 
-#### message_amount_plural [#](#message_amount_plural)
+#### message_amount_plural
 
 Message if many posts were found, if display_amount is active. May contain the placeholder {count}
 
@@ -306,21 +336,21 @@ Message if many posts were found, if display_amount is active. May contain the p
 | --- | --- | --- |
 | string | “{count} posts found.” | `message_amount_plural="We found {count} recipes."` |
 
-## Advanced Styling [#](#advanced_styling)
+## Advanced Styling
 
 You can set here classes to be referred to in CSS. You need some knowledge of CSS to use these options.
 
-#### div_class [#](#div_class)
+### div_class
 
-Define a class for the <div>.
+Define a class for the `<div>`.
 
 | accepted values | default | example shortcode |
 | --- | --- | --- |
 | string | empty | `div_class="change-pointer"` |
 
-#### article_class [#](#article_class)
+### article_class
 
-Define a class for the enclosing <article>.
+Define a class for the enclosing `<article>`.
 
 | accepted values | default | example shortcode |
 | --- | --- | --- |

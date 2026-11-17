@@ -6,38 +6,75 @@ doc_category: publishpress-tag-groups
 
 # Tag List – Shortcode Parameters
 
-Table of Contents
+**Table of Contents**
 
-- [Shortcode](#0-toc-title)
-- [Example](#1-toc-title)
+- [Shortcode](#shortcode)
+- [Example](#example)
 - [Data Types](#data-types)
-- [Parameters](#3-toc-title)[add_premium_filter](#4-toc-title)[amount](#5-toc-title)[append](#6-toc-title)[assigned_class](#7-toc-title)[column_count](#8-toc-title)[column_gap](#9-toc-title)[custom_title](#custom_title)[custom_title_zero](#custom_title_zero)[custom_title_plural](#custom_title_plural)[div_class](#13-toc-title)[div_id](#14-toc-title)[exclude_terms](#15-toc-title)[group_in_class](#16-toc-title)[groups_post_id](#17-toc-title)[h_level](#18-toc-title)[header_class](#19-toc-title)[hide_empty_content](#20-toc-title)[hide_empty](#21-toc-title)[threshold](#threshold)[include](#23-toc-title)[exclude](#exclude)[include_terms](#25-toc-title)[keep_together](#26-toc-title)[largest](#27-toc-title)[link_target](#28-toc-title)[link_append](#29-toc-title)[not_assigned_name](#30-toc-title)[order](#31-toc-title)[orderby](#32-toc-title)[prepend](#33-toc-title)[show_not_assigned](#34-toc-title)[show_all_groups](#35-toc-title)[show_tag_count](#36-toc-title)[smallest](#37-toc-title)[tags_div_class](#38-toc-title)[tags_post_id](#39-toc-title)[taxonomy](#40-toc-title)
+- [Parameters](#parameters)
+  - [add_premium_filter](#add_premium_filter)
+  - [amount](#amount)
+  - [append](#append)
+  - [assigned_class](#assigned_class)
+  - [column_count](#column_count)
+  - [column_gap](#column_gap)
+  - [custom_title](#custom_title)
+  - [custom_title_zero](#custom_title_zero)
+  - [custom_title_plural](#custom_title_plural)
+  - [div_class](#div_class)
+  - [div_id](#div_id)
+  - [exclude_terms](#exclude_terms)
+  - [group_in_class](#group_in_class)
+  - [groups_post_id](#groups_post_id)
+  - [h_level](#h_level)
+  - [header_class](#header_class)
+  - [hide_empty_content](#hide_empty_content)
+  - [hide_empty](#hide_empty)
+  - [threshold](#threshold)
+  - [include](#include)
+  - [exclude](#exclude)
+  - [include_terms](#include_terms)
+  - [keep_together](#keep_together)
+  - [largest](#largest)
+  - [link_target](#link_target)
+  - [link_append](#link_append)
+  - [not_assigned_name](#not_assigned_name)
+  - [order](#order)
+  - [orderby](#orderby)
+  - [prepend](#prepend)
+  - [show_not_assigned](#show_not_assigned)
+  - [show_all_groups](#show_all_groups)
+  - [show_tag_count](#show_tag_count)
+  - [smallest](#smallest)
+  - [tags_div_class](#tags_div_class)
+  - [tags_post_id](#tags_post_id)
+  - [taxonomy](#taxonomy)
 
 This guide shows you how to use and customize the shortcode for the Tag List feature in the [Tag Groups](https://publishpress.com/links/tag-groups) plugin.
 
-## Shortcode [#](#0-toc-title)
+## Shortcode
 
 ```
 [tag_groups_tag_list]
 ```
 
-## Example [#](#1-toc-title)
+## Example
 
 ```
 [tag_groups_tag_list append="{count}"]
 ```
 
-## Data Types [#](#data-types)
+## Data Types
 
 - **string:** A text. For identifiers that won’t be visible to visitors you often have to replace spaces with _ or -. If the string contains spaces, you need to wrap it in quotes.
 - **integer:** A number without decimal places.
 - **0 or 1**: 0 turns the feature off and 1 on.
 
-## Parameters [#](#3-toc-title)
+## Parameters
 
 This overview assumes that you know how to use shortcodes. Shortcodes are the traditional WordPress way how to add features into posts, pages and widgets.
 
-### add_premium_filter [#](#4-toc-title)
+### add_premium_filter
 
 Modifies the URL – for the case that you use the same tag in various groups.
 
@@ -45,7 +82,7 @@ Modifies the URL – for the case that you use the same tag in various groups.
 | --- | --- | --- |
 | 0 (false) | 0 or 1 | `add_premium_filter=1` |
 
-### amount [#](#5-toc-title)
+### amount
 
 the maximum number of tags per group to display
 
@@ -53,7 +90,7 @@ the maximum number of tags per group to display
 | --- | --- | --- |
 | 0 (no limit) | integer | `amount=10` |
 
-### append [#](#6-toc-title)
+### append
 
 adds something behind the tag name; placeholder: {count} for post count
 
@@ -61,7 +98,7 @@ adds something behind the tag name; placeholder: {count} for post count
 | --- | --- | --- |
 | empty | string | append`=`” ({count})” |
 
-### assigned_class [#](#7-toc-title)
+### assigned_class
 
 adds class name to tags that shows whether the tag is assigned or not; assigned tags have “_1” appended, unassigned “_0” to the class name
 
@@ -69,7 +106,7 @@ adds class name to tags that shows whether the tag is assigned or not; assigned 
 | --- | --- | --- |
 | empty | string | `assigned_class="colored-tags"` |
 
-### column_count [#](#8-toc-title)
+### column_count
 
 number of columns
 
@@ -77,7 +114,7 @@ number of columns
 | --- | --- | --- |
 | 2 | integer | `column_count=3` |
 
-### column_gap [#](#9-toc-title)
+### column_gap
 
 width of the gap between columns
 
@@ -85,7 +122,7 @@ width of the gap between columns
 | --- | --- | --- |
 | 10px | string | `column_gap=20px` |
 
-### custom_title [#](#custom_title)
+### custom_title
 
 tooltip when hovering the mouse over a tag; placeholders: {count} for post count, {description} for tag description, {name} for tag name
 
@@ -95,7 +132,7 @@ If you also use custom_title_plural then the text of custom_title will be used f
 | --- | --- | --- |
 | depends on show_tag_count | string | `custom_title="One post uses {name}"` |
 
-### custom_title_zero [#](#custom_title_zero)
+### custom_title_zero
 
 tooltip when hovering the mouse over a tag; placeholders: {count} for post count, {description} for tag description, {name} for tag name
 
@@ -105,7 +142,7 @@ This text will be used for tags that have a post count of 0 (i.e. they are not u
 | --- | --- | --- |
 | not used | string | `custom_title_zero="No post uses {name}"` |
 
-### custom_title_plural [#](#custom_title_plural)
+### custom_title_plural
 
 tooltip when hovering the mouse over a tag; placeholders: {count} for post count, {description} for tag description, {name} for tag name
 
@@ -115,7 +152,7 @@ This text will be used for tags that have a post count of >1. You can use here p
 | --- | --- | --- |
 | not used | string | `custom_title_plural="{count} posts use {name}"` |
 
-### div_class [#](#13-toc-title)
+### div_class
 
 class of the enclosing div for own styling
 
@@ -123,7 +160,7 @@ class of the enclosing div for own styling
 | --- | --- | --- |
 | tag-groups-tag-list | string | `div_class="my-class"` |
 
-### div_id [#](#14-toc-title)
+### div_id
 
 ID of the enclosing div
 
@@ -131,7 +168,7 @@ ID of the enclosing div
 | --- | --- | --- |
 | random | string (must be unique on the page) | `div_id="my-id"` |
 
-### exclude_terms [#](#15-toc-title)
+### exclude_terms
 
 a list of tags that should not appear
 
@@ -139,7 +176,7 @@ a list of tags that should not appear
 | --- | --- | --- |
 | empty | comma-separated list of tag IDs | `exclude_terms=` |
 
-### group_in_class [#](#16-toc-title)
+### group_in_class
 
 whether to add information about the groups into the class attribute; tg_tag_group_id_ + ID and tg_tag_group_label_ + tag name (spaces replaced with dashes)
 
@@ -147,7 +184,7 @@ whether to add information about the groups into the class attribute; tg_tag_gro
 | --- | --- | --- |
 | 0 (off) | 0 or 1 | `group_in_class=1` |
 
-### groups_post_id [#](#17-toc-title)
+### groups_post_id
 
 ID of a post that the tags should be take from. 0 tries to get current post.
 
@@ -155,7 +192,7 @@ ID of a post that the tags should be take from. 0 tries to get current post.
 | --- | --- | --- |
 | -1 (off) | integer | `groups_post_id=5634` |
 
-### h_level [#](#18-toc-title)
+### h_level
 
 H3, then H4 etc.. Headings with the group names
 
@@ -163,7 +200,7 @@ H3, then H4 etc.. Headings with the group names
 | --- | --- | --- |
 | 3 | integer | `h_level=2` |
 
-### header_class [#](#19-toc-title)
+### header_class
 
 class for the headers
 
@@ -171,7 +208,7 @@ class for the headers
 | --- | --- | --- |
 | empty | string | `header_class="my-class"` |
 
-### hide_empty_content [#](#20-toc-title)
+### hide_empty_content
 
 hide empty groups
 
@@ -179,7 +216,7 @@ hide empty groups
 | --- | --- | --- |
 | 0 (off) | 0 or 1 | `hide_empty_content=1` |
 
-### hide_empty [#](#21-toc-title)
+### hide_empty
 
 hide tags with post count zero
 
@@ -187,7 +224,7 @@ hide tags with post count zero
 | --- | --- | --- |
 | 1 | 0 or 1 | `hide_empty=0` |
 
-### threshold [#](#threshold)
+### threshold
 
 Set a minimum count of published posts that use a tag for this tag to appear. Posts are counted across all groups. Please also pay attention to the value of hide_empty.
 
@@ -195,7 +232,7 @@ Set a minimum count of published posts that use a tag for this tag to appear. Po
 | --- | --- | --- |
 | 0 | integer | `hide_empty=0` |
 
-### include [#](#23-toc-title)
+### include
 
 groups to include
 
@@ -203,7 +240,7 @@ groups to include
 | --- | --- | --- |
 | all | comma-separated list of group IDs | `include=2,3,5` |
 
-### exclude [#](#exclude)
+### exclude
 
 groups to exclude
 
@@ -211,7 +248,7 @@ groups to exclude
 | --- | --- | --- |
 | none | comma-separated list of group IDs | `exclude=2,3,5` |
 
-### include_terms [#](#25-toc-title)
+### include_terms
 
 tags to include (see also “hide_empty”)
 
@@ -219,7 +256,7 @@ tags to include (see also “hide_empty”)
 | --- | --- | --- |
 | all | comma-separated list of tag IDs | `include_terms=12,34,255` |
 
-### keep_together [#](#26-toc-title)
+### keep_together
 
 whether to keep headings and tag block together; otherwise tags lists may continue in a new column
 
@@ -227,7 +264,7 @@ whether to keep headings and tag block together; otherwise tags lists may contin
 | --- | --- | --- |
 | 1 (on) | 0 or 1 | `keep_together=1` |
 
-### largest [#](#27-toc-title)
+### largest
 
 max. font size in pt
 
@@ -235,7 +272,7 @@ max. font size in pt
 | --- | --- | --- |
 | 12 | integer | `largest=32` |
 
-### link_target [#](#28-toc-title)
+### link_target
 
 target attribute of the tag link (_blank, _top, _self, …)
 
@@ -243,7 +280,7 @@ target attribute of the tag link (_blank, _top, _self, …)
 | --- | --- | --- |
 | empty | string | `link_target="_top"` |
 
-### link_append [#](#29-toc-title)
+### link_append
 
 append query to the link
 
@@ -251,7 +288,7 @@ append query to the link
 | --- | --- | --- |
 | empty | string | `link_append=`“source=cloud” |
 
-### not_assigned_name [#](#30-toc-title)
+### not_assigned_name
 
 lets you choose a custom group name for not-assigned tags
 
@@ -259,7 +296,7 @@ lets you choose a custom group name for not-assigned tags
 | --- | --- | --- |
 | not assigned | string | `not_assigned_name="unsorted tags"` |
 
-### order [#](#31-toc-title)
+### order
 
 ascending or descending order; use with orderby
 
@@ -267,7 +304,7 @@ ascending or descending order; use with orderby
 | --- | --- | --- |
 | asc | string (asc or desc) | `order=desc` |
 
-### orderby [#](#32-toc-title)
+### orderby
 
 by what to order the tags
 
@@ -277,7 +314,7 @@ use together with order
 | --- | --- | --- |
 | name | string | `orderby=natural` |
 
-### prepend [#](#33-toc-title)
+### prepend
 
 prepend to the tag; placeholder: {count} for post count
 
@@ -285,7 +322,7 @@ prepend to the tag; placeholder: {count} for post count
 | --- | --- | --- |
 | empty | string | `prepend="#"` |
 
-### show_not_assigned [#](#34-toc-title)
+### show_not_assigned
 
 whether to show tags that are not assigned to any group
 
@@ -293,7 +330,7 @@ whether to show tags that are not assigned to any group
 | --- | --- | --- |
 | 0 | 0 or 1 | `show_not_assigned=1` |
 
-### show_all_groups [#](#35-toc-title)
+### show_all_groups
 
 whether to show also empty groups
 
@@ -301,7 +338,7 @@ whether to show also empty groups
 | --- | --- | --- |
 | 0 (off) | 0 or 1 | `show_all_groups=1` |
 
-### show_tag_count [#](#36-toc-title)
+### show_tag_count
 
 show the post count in the title (deprecated option, better use custom_title
 
@@ -309,7 +346,7 @@ show the post count in the title (deprecated option, better use custom_title
 | --- | --- | --- |
 | 1 (on) | 0 or 1 | `show_tag_count=0` |
 
-### smallest [#](#37-toc-title)
+### smallest
 
 min. font size in pt
 
@@ -317,7 +354,7 @@ min. font size in pt
 | --- | --- | --- |
 | 12 | integer | `smallest=14` |
 
-### tags_div_class [#](#38-toc-title)
+### tags_div_class
 
 class name for the divs around tags
 
@@ -325,7 +362,7 @@ class name for the divs around tags
 | --- | --- | --- |
 | empty | string | `tags_div_class="my-class"` |
 
-### tags_post_id [#](#39-toc-title)
+### tags_post_id
 
 Use post ID or zero for current post.
 
@@ -333,7 +370,7 @@ Use post ID or zero for current post.
 | --- | --- | --- |
 | -1 (not used) | integer | `tags_post_id=0` |
 
-### taxonomy [#](#40-toc-title)
+### taxonomy
 
 taxonomies (tag types) to use
 

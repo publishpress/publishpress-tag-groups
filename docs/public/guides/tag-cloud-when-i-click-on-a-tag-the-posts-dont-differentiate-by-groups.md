@@ -6,10 +6,10 @@ doc_category: publishpress-tag-groups
 
 # Tag Cloud: When I Click on a Tag, the Posts Don’t Differentiate by Groups
 
-Table of Contents
+**Table of Contents**
 
-- [Shortcode](#0-toc-title)
-- [Gutenberg Block](#1-toc-title)
+- [Shortcode](#shortcode)
+- [Gutenberg Block](#gutenberg-block)
 
 If you use the same tag in *more than one* group, clicking on the *same* tag in a tag cloud should show *different* posts, depending on the group where you clicked. That means that the list of posts must be filtered by group.
 
@@ -19,7 +19,7 @@ For this case you need to turn on an additional filter.
 
 If all your tags show the correct posts, you won’t have to use this feature.
 
-## Shortcode [#](#0-toc-title)
+## Shortcode
 
 Add an additional parameter to the shortcode:
 
@@ -27,6 +27,6 @@ Add an additional parameter to the shortcode:
 add_premium_filter=1
 ```
 
-## Gutenberg Block [#](#1-toc-title)
+## Gutenberg Block
 
 Turning on the option **“Add filter to tags for multiple groups.”** in the Gutenberg block.

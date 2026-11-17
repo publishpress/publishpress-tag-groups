@@ -6,10 +6,10 @@ doc_category: publishpress-tag-groups
 
 # How to Improve the Performance of the Toggle Post Filter/Dynamic Post Filter
 
-Table of Contents
+**Table of Contents**
 
-- [How to add an index to the postmeta table](#0-toc-title)
-- [Alternative index structure](#1-toc-title)
+- [How to add an index to the postmeta table](#how-to-add-an-index-to-the-postmeta-table)
+- [Alternative index structure](#alternative-index-structure)
 
 When searching for matching posts in the post filters we make use of the WP_Query class. Usually it performs well, but for larger amounts of posts and complex searches the database may run into memory or performance issues.
 
@@ -19,7 +19,7 @@ Since this solution changes the structure of the WordPress database, we don’t 
 
 **These queries are for advanced users. Use them at your own risk!**
 
-## How to add an index to the postmeta table [#](#0-toc-title)
+## How to add an index to the postmeta table
 
 Before you start, **create a complete backup** of your database that would allow you to restore it if something goes wrong.
 
@@ -33,7 +33,7 @@ CREATE INDEX id_key_val ON wp_postmeta (post_id,meta_key,meta_value(255));
 
 You should be able to see the result when you view the structure of the postmeta table.
 
-## Alternative index structure [#](#1-toc-title)
+## Alternative index structure
 
 Alternatively you can try the following query. Please be aware that this one does not only add an index but also *modifies the existing indexes* that may be required somewhere else.
 

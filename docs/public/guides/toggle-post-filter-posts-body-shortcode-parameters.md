@@ -6,32 +6,55 @@ doc_category: publishpress-tag-groups
 
 # Toggle Post Filter, Posts – Shortcode Parameters
 
-Table of Contents
+**Table of Contents**
 
-- [Overview](#0-toc-title)
+- [Overview](#overview)
 - [Data Types](#data-types)
-- [Parameters](#2-toc-title)[Posts](#posts)[default_show_posts](#default_show_posts)[posts_per_page](#posts_per_page)[pager](#pager)[pager_position](#pager_position)[orderby](#orderby)[order](#order)[display_amount](#display_amount)[template](#11-toc-title)[default_image_src](#default_image_src)[transition](#transition)[Messages and Placeholders](#14-toc-title)[posts_placeholder](#posts_placeholder)[message_nothing_found](#message_nothing_found)[message_load_more](#message_load_more)[message_go_back](#message_go_back)[message_amount_singular](#message_amount_singular)[message_amount_plural](#message_amount_plural)[Theme and Layout](#21-toc-title)[theme](#theme)[layout](#layout_body)
-- [Advanced Styling](#advanced_styling)[div_id](#div_id_body)[div_class](#div_class_body)
+- [Parameters](#parameters)
+  - [Posts](#posts)
+  - [default_show_posts](#default_show_posts)
+  - [posts_per_page](#posts_per_page)
+  - [pager](#pager)
+  - [pager_position](#pager_position)
+  - [orderby](#orderby)
+  - [order](#order)
+  - [display_amount](#display_amount)
+  - [template](#template)
+  - [default_image_src](#default_image_src)
+  - [transition](#transition)
+  - [Messages and Placeholders](#messages-and-placeholders)
+  - [posts_placeholder](#posts_placeholder)
+  - [message_nothing_found](#message_nothing_found)
+  - [message_load_more](#message_load_more)
+  - [message_go_back](#message_go_back)
+  - [message_amount_singular](#message_amount_singular)
+  - [message_amount_plural](#message_amount_plural)
+  - [Theme and Layout](#theme-and-layout)
+  - [theme](#theme)
+  - [layout](#layout)
+- [Advanced Styling](#advanced-styling)
+  - [div_id](#div_id)
+  - [div_class](#div_class)
 
 This guide shows you how to use and customize the shortcode for posts in the Toggle Post Filter feature in the [Tag Groups](https://publishpress.com/links/tag-groups) plugin.
 
 **Note:**This shortcode or block can only be used once on a page (including widgets), and it cannot be used together with the shortcode or block of the Dynamic Post Filter.
 
-## Overview [#](#0-toc-title)
+## Overview
 
 You find [here the overview of all shortcodes](https://taxopress.com/docs/toggle-post-filter-parameters/) for the Toggle Post Filter.
 
-## Data Types [#](#data-types)
+## Data Types
 
 - **string:** A text. For identifiers that won’t be visible to visitors you often have to replace spaces with _ or -. If the string contains spaces, you need to wrap it in quotes.
 - **integer:** A number without decimal places.
 - **0 or 1**: 0 turns the feature off and 1 on.
 
-## Parameters [#](#2-toc-title)
+## Parameters
 
-### Posts [#](#posts)
+### Posts
 
-#### default_show_posts [#](#default_show_posts)
+#### default_show_posts
 
 Show a list of posts if no filter is active. This will contribute to the impression that you filter the entirety of posts by reducing their number.
 
@@ -39,7 +62,7 @@ Show a list of posts if no filter is active. This will contribute to the impress
 | --- | --- | --- |
 | integer | 0 (=off) | `default_show_posts=1` |
 
-#### posts_per_page [#](#posts_per_page)
+#### posts_per_page
 
 How many posts appear under the filter. Use -1 to show all.
 
@@ -51,7 +74,7 @@ Tip: If you use the parameter “display_amount” you can reduce the additional
 | --- | --- | --- |
 | integer | 5 | `posts_per_page=10` |
 
-#### pager [#](#pager)
+#### pager
 
 - 0: off
 - 1: Simple pager; visitors can load the next or previous page.
@@ -63,7 +86,7 @@ It is also possible to use the cursor keys left and right to flip through pages.
 | --- | --- | --- |
 | integer | 0 | `pager=2` |
 
-#### pager_position [#](#pager_position)
+#### pager_position
 
 - top
 - bottom
@@ -73,7 +96,7 @@ It is also possible to use the cursor keys left and right to flip through pages.
 | --- | --- | --- |
 | string | bottom | `pager_position=both` |
 
-#### orderby [#](#orderby)
+#### orderby
 
 Which field to use for sorting the posts.
 
@@ -90,7 +113,7 @@ Which field to use for sorting the posts.
 | --- | --- | --- |
 | string | date | `orderby=title` |
 
-#### order [#](#order)
+#### order
 
 Whether to sort the posts in ascending or descending order. Ascending order also means from oldest to newest.
 
@@ -98,7 +121,7 @@ Whether to sort the posts in ascending or descending order. Ascending order also
 | --- | --- | --- |
 | string | DESC | `order=asc` |
 
-#### display_amount [#](#display_amount)
+#### display_amount
 
 Whether to display how many posts were found. If the pager is off, this will be the number of displayed posts.
 
@@ -110,15 +133,13 @@ Whether to display how many posts were found. If the pager is off, this will be 
 | --- | --- | --- |
 | 0, 1 or 2 | 0 | `display_amount=1` |
 
-#### template [#](#11-toc-title)
+#### template
 
 HTML code that contains some placeholders. If you use only one template on your entire website, it is recommended to leave this parameter empty and edit the default template in the Front End settings.
 
-In order to prevent that WordPress parses the HTML and adds malformed
+In order to prevent that WordPress parses the HTML and adds malformed `<p>` tags, it is recommended to encode it before using it.
 
-tags, it is recommended to encode it before using it.
-
-Possible placeholders are: {post_id}, {post_title}, {permalink}, {post_excerpt} (automatically generated), {post_excerpt_html} (preserves most common html tags), {post_date}, {post_author}, {image_src} or {image_src|image size}, {image_alt}, {post_category}, {post_tags}, {custom_field:<name>}
+Possible placeholders are: {post_id}, {post_title}, {permalink}, {post_excerpt} (automatically generated), {post_excerpt_html} (preserves most common html tags), {post_date}, {post_author}, {image_src} or {image_src|image size}, {image_alt}, {post_category}, {post_tags}, {custom_field:`<name>`}
 
 | accepted values | default | example shortcode |
 | --- | --- | --- |
@@ -145,7 +166,7 @@ Examples for the image tag:
 
 ```
 
-#### default_image_src [#](#default_image_src)
+#### default_image_src
 
 Here you can insert the full URL to your own default image.
 
@@ -153,7 +174,7 @@ Here you can insert the full URL to your own default image.
 | --- | --- | --- |
 | string | none | `default_image_src=https://www.example.com/image.jpg` |
 
-#### transition [#](#transition)
+#### transition
 
 Transition between loading the list of posts.
 
@@ -161,9 +182,9 @@ Transition between loading the list of posts.
 | --- | --- | --- |
 | string | none | `transition=fade` |
 
-### Messages and Placeholders [#](#14-toc-title)
+### Messages and Placeholders
 
-#### posts_placeholder [#](#posts_placeholder)
+#### posts_placeholder
 
 Placeholder message for the list of posts.
 
@@ -171,7 +192,7 @@ Placeholder message for the list of posts.
 | --- | --- | --- |
 | string | “Please select a group.” | `posts_placeholder="Please open the filter."` |
 
-#### message_nothing_found [#](#message_nothing_found)
+#### message_nothing_found
 
 Message to show if no posts were found.
 
@@ -179,7 +200,7 @@ Message to show if no posts were found.
 | --- | --- | --- |
 | string | “Nothing found.” | `message_nothing_found="No courses available."` |
 
-#### message_load_more [#](#message_load_more)
+#### message_load_more
 
 Label of the link to load more posts, if the pager is active.
 
@@ -187,7 +208,7 @@ Label of the link to load more posts, if the pager is active.
 | --- | --- | --- |
 | string | “Load more” | `message_load_more="forward"` |
 
-#### message_go_back [#](#message_go_back)
+#### message_go_back
 
 Label of the link to go back, if the pager is active.
 
@@ -195,7 +216,7 @@ Label of the link to go back, if the pager is active.
 | --- | --- | --- |
 | string | “Go back” | `message_go_back="back"` |
 
-#### message_amount_singular [#](#message_amount_singular)
+#### message_amount_singular
 
 Message if one post was found, if display_amount is active.
 
@@ -203,7 +224,7 @@ Message if one post was found, if display_amount is active.
 | --- | --- | --- |
 | string | “1 post found.” | `message_amount_singular="One recipe found."` |
 
-#### message_amount_plural [#](#message_amount_plural)
+#### message_amount_plural
 
 Message if many posts were found, if display_amount is active. May contain the placeholder {count}
 
@@ -211,9 +232,9 @@ Message if many posts were found, if display_amount is active. May contain the p
 | --- | --- | --- |
 | string | “{count} posts found.” | `message_amount_plural="We found {count} recipes."` |
 
-### Theme and Layout [#](#21-toc-title)
+### Theme and Layout
 
-#### theme [#](#theme)
+#### theme
 
 Available are “light” and “dark”.
 
@@ -221,7 +242,7 @@ Available are “light” and “dark”.
 | --- | --- | --- |
 | string | light | `theme="dark"` |
 
-#### layout [#](#layout_body)
+#### layout
 
 - **classic:** Posts appear stacked on each other in a narrow container. If you select “classic” for the posts, also the menu should display as “classic” layout.
 - **wide:** Posts appear stacked on each other in a wide container.
@@ -236,21 +257,21 @@ Available are “light” and “dark”.
 | --- | --- | --- |
 | string | classis | layout=”masonry” |
 
-## Advanced Styling [#](#advanced_styling)
+## Advanced Styling
 
 You can set here classes to be referred to in CSS. You need some knowledge of CSS to use these options.
 
-#### div_id [#](#div_id_body)
+### div_id
 
-Define an id for the enclosing <div>.
+Define an id for the enclosing `<div>`.
 
 | accepted values | default | example shortcode |
 | --- | --- | --- |
 | string | tag_groups_dpf_toggle_body | `div_id="something"` |
 
-#### div_class [#](#div_class_body)
+### div_class
 
-Define a class for the enclosing <div>. You can use here a class identifier for a theme. Use the “theme” parameter for built-in themes.
+Define a class for the enclosing `<div>`. You can use here a class identifier for a theme. Use the “theme” parameter for built-in themes.
 
 | accepted values | default | example shortcode |
 | --- | --- | --- |

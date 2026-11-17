@@ -6,15 +6,15 @@ doc_category: publishpress-tag-groups
 
 # Tag Groups Themes: Design and Colors
 
-Table of Contents
+**Table of Contents**
 
-- [Default Themes](#0-toc-title)
-- [Shuffle Box Themes](#1-toc-title)
-- [Further CSS Customization](#2-toc-title)
+- [Default Themes](#default-themes)
+- [Shuffle Box Themes](#shuffle-box-themes)
+- [Further CSS Customization](#further-css-customization)
 
 This guide will show you how to select the colors of displays in the [Tag Groups](https://publishpress.com/links/tag-groups) plugin. We’ll cover the default themes and also show how to make your own customizations.
 
-## Default Themes [#](#0-toc-title)
+## Default Themes
 
 If you want to change the style of the tabs or the accordion panels, you simply select one of the bundled themes that you find in the [Tag Groups](https://publishpress.com/links/tag-groups) settings, Front End, Themes and Appearance.
 
@@ -57,7 +57,7 @@ Since the tag size is fixed, the maximum font size should not exceed 18px. The c
 
 ![](https://docs-media.publishpress.com/publishpress-tag-groups/tag-cloud-tags-with-holes-css-902dd9609c.webp)
 
-## Shuffle Box Themes [#](#1-toc-title)
+## Shuffle Box Themes
 
 For the Shuffle Box feature, you can use the following class names. The color will also be applied to the buttons.
 
@@ -74,7 +74,7 @@ Here’s an example of this theme with shortcode:
 
 [Click here for more details on Shuffle Box themes](https://taxopress.com/docs/custom-color-scheme-shuffle-box/).
 
-## Further CSS Customization [#](#2-toc-title)
+## Further CSS Customization
 
 Advanced users with some knowledge of CSS can simply copy the corresponding lines from the file /css/frontend.css, change the class names and modify them to create their own variations. Save your customized styling to your child theme’s style.css file or in the WordPress customizer so that changes won’t be overwritten with the next plugin update.
 

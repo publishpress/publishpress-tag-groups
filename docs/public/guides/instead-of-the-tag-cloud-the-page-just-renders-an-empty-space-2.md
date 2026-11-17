@@ -6,9 +6,9 @@ doc_category: publishpress-tag-groups
 
 # Instead of the Tag Cloud There’s An Empty Space
 
-Table of Contents
+**Table of Contents**
 
-- [Find out what causes the error](#0-toc-title)
+- [Find out what causes the error](#find-out-what-causes-the-error)
 
 This is usually the result of a JavaScript error on that page. It can be caused by any active plugin or theme on your site. It might also happens if you use a very unusual location for the tag cloud, for example in a menu or inside another widget.
 
@@ -20,7 +20,7 @@ Example for a shortcode
 [tag_groups_cloud ... delay=0]
 ```
 
-## Find out what causes the error [#](#0-toc-title)
+## Find out what causes the error
 
 Please try the following:
 

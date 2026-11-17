@@ -6,9 +6,13 @@ doc_category: publishpress-tag-groups
 
 # Organizing Groups with a Parent Level
 
-Table of Contents
+**Table of Contents**
 
-- [Tag Group Administration](#0-toc-title)[Tag and Post Filters](#1-toc-title)[Tag Clouds and Lists](#2-toc-title)[Post Tags (under Posts)](#3-toc-title)[Tag Meta Box (on the Post Edit Screen)](#4-toc-title)
+- [Tag Group Administration](#tag-group-administration)
+  - [Tag and Post Filters](#tag-and-post-filters)
+  - [Tag Clouds and Lists](#tag-clouds-and-lists)
+  - [Post Tags (under Posts)](#post-tags-under-posts)
+  - [Tag Meta Box (on the Post Edit Screen)](#tag-meta-box-on-the-post-edit-screen)
 
 In [Tag Groups](https://publishpress.com/links/tag-groups) Pro is it possible to create a parent level for your [tag groups](https://publishpress.com/links/tag-groups).
 
@@ -32,7 +36,7 @@ parent group: bicycles
 
 Parent groups don’t appear in frontend post filters (Toggle Post Filter, Dynamic Post Filter) and they have no effect on their logic operations.
 
-## Tag Group Administration [#](#0-toc-title)
+## Tag Group Administration
 
 On the Tag Group Administration screen you find a text field where you can add a parent group by entering the name.
 
@@ -44,7 +48,7 @@ It is also possible to use tag groups without a parent level.
 
 Note: If you are using parent groups, all groups can have duplicate names. It is still recommended to avoid duplicates, however, because at some places you might confuse groups with identical names.
 
-### Tag and Post Filters [#](#1-toc-title)
+### Tag and Post Filters
 
 Once you’ve created parent groups, you will find them in the drop-down menus above the lists of tags and posts. If you select a parent group, all of its children will automatically be included in the filtering criteria.
 
@@ -52,15 +56,15 @@ Note: Styling of parent groups in menus depends on browser capabilities.
 
 ![](https://docs-media.publishpress.com/publishpress-tag-groups/screenshot-tag-filter-parents-e1620812462122-87db5555e9.webp)
 
-### Tag Clouds and Lists [#](#2-toc-title)
+### Tag Clouds and Lists
 
 Parent groups are not visible on your public web site, but they make your work easier on the back end. You can, for example, include or exclude all children by referring to their parent group. If you use shortcodes, you simply insert the parent group’s ID, exactly how you would use the list of group IDs.
 
-### Post Tags (under Posts) [#](#3-toc-title)
+### Post Tags (under Posts)
 
 In the Tag Group settings, under *Front End > Post Tags*, you find an option that lets you show also parent groups in the tags below the post content. Parent groups, default groups and tags are displayed in a table. The precise appearance depends on how your theme displays tables.
 
-### Tag Meta Box (on the Post Edit Screen) [#](#4-toc-title)
+### Tag Meta Box (on the Post Edit Screen)
 
 Also the Tag Meta Box on the post edit screen shows your groups sorted under parent groups. This upper level acts only as a visual guidance that helps you organize your groups but it doesn’t change the way how we handle tags.
 

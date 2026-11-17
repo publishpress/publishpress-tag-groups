@@ -6,11 +6,11 @@ doc_category: publishpress-tag-groups
 
 # Tag Cloud Search – Overview
 
-Table of Contents
+**Table of Contents**
 
-- [Tag Cloud Search Integrations](#0-toc-title)
-- [Connect the Search to the Tag Cloud](#1-toc-title)
-- [Notes on the Tag Cloud Search](#2-toc-title)
+- [Tag Cloud Search Integrations](#tag-cloud-search-integrations)
+- [Connect the Search to the Tag Cloud](#connect-the-search-to-the-tag-cloud)
+- [Notes on the Tag Cloud Search](#notes-on-the-tag-cloud-search)
 
 Tag Cloud Search is a feature of the [Tag Groups](https://publishpress.com/links/tag-groups) Pro plugin. The Tag Cloud Search is an element that you can add into a page to let visitors filter tag clouds by tag names.
 
@@ -18,7 +18,7 @@ Here’s a screenshot of the Tag Cloud Search feature. This display combines a s
 
 ![](https://docs-media.publishpress.com/publishpress-tag-groups/tag-cloud-search-ea97add2dc.webp)
 
-## Tag Cloud Search Integrations [#](#0-toc-title)
+## Tag Cloud Search Integrations
 
 The Tag Cloud Search feature works together with the following tag clouds:
 
@@ -30,7 +30,7 @@ The Tag Cloud Search feature works together with the following tag clouds:
 
 The Shuffle Box has its own text search field.
 
-## Connect the Search to the Tag Cloud [#](#1-toc-title)
+## Connect the Search to the Tag Cloud
 
 You simply add this feature as shortcode or Gutenberg block to the same page where you use one or more of these tag clouds. It will generate an input field where visitors can enter a search term. The filtering will happen live while they type.
 
@@ -50,7 +50,7 @@ On the same page you use a tag cloud with the same class name “tag-groups-clou
 
 Now the search will filter the tags in this cloud.
 
-## Notes on the Tag Cloud Search [#](#2-toc-title)
+## Notes on the Tag Cloud Search
 
 - The filter always works on the tag names. You can chose to filter additionally by tag descriptions. For that to work you need to display the description in the “title” attribute (i.e. in the tooltip): Use the placeholder `{description}` in the “custom title” field or parameter.
 - If you use the filter with the Tabbed Tag Cloud or the Alphabetical Tabs, we automatically open the tab of the first tag that matches the filter. This, however, doesn’t work if you connect the Tag Cloud Search with more than one tag clouds.
